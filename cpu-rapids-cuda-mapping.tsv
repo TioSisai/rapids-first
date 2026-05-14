@@ -22,7 +22,7 @@ scipy.stats	cupyx.scipy.stats	-	-
 pandas	cudf	cudf.pandas	zero-code via `python -m cudf.pandas script.py` or first-cell `%load_ext cudf.pandas`; or `import cudf.pandas; cudf.pandas.install()` BEFORE `import pandas`
 pandas.api.types	cudf.api.types	cudf.pandas	-
 pandas.testing	cudf.testing	cudf.pandas	-
-dask.dataframe	dask_cudf	dask-cudf-backend	zero-code via `dask.config.set({"dataframe.backend": "cudf"})`; pair with dask_cuda.LocalCUDACluster
+dask.dataframe	dask_cudf	dask-cudf-backend	zero-code via `dask.config.set({'dataframe.backend': 'cudf'})`; pair with dask_cuda.LocalCUDACluster
 sklearn	cuml	cuml.accel	zero-code via `python -m cuml.accel script.py` or `%load_ext cuml.accel` or env `CUML_ACCEL_ENABLED=1`
 sklearn.cluster	cuml.cluster	cuml.accel	KMeans, DBSCAN, HDBSCAN, AgglomerativeClustering
 sklearn.linear_model	cuml.linear_model	cuml.accel	LinearRegression, LogisticRegression, Ridge, Lasso, ElasticNet, MBSGD*
@@ -40,7 +40,7 @@ sklearn.model_selection	cuml.model_selection	cuml.accel	train_test_split
 umap	cuml.manifold.UMAP	cuml.accel	standalone umap-learn -> cuML
 hdbscan	cuml.cluster.HDBSCAN	cuml.accel	standalone hdbscan -> cuML
 statsmodels.tsa	cuml.tsa	-	ARIMA, AutoARIMA, Holt-Winters
-networkx	nx_cugraph	nx-cugraph-backend	zero-code via env `NX_CUGRAPH_AUTOCONFIG=True` (NetworkX backend dispatch, requires NetworkX >= 3.2); per-call: `nx.func(G, backend="cugraph")`
+networkx	nx_cugraph	nx-cugraph-backend	zero-code via env `NX_CUGRAPH_AUTOCONFIG=True` (NetworkX backend dispatch, requires NetworkX >= 3.2); per-call: `nx.func(G, backend='cugraph')`
 networkx.algorithms.centrality	cugraph.centrality	nx-cugraph-backend	betweenness/eigenvector/Katz/degree
 networkx.algorithms.community	cugraph.community	nx-cugraph-backend	Louvain, Leiden, ECG, triangle count
 networkx.algorithms.components	cugraph.components	nx-cugraph-backend	connected/strongly connected
