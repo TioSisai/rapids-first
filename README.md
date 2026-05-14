@@ -15,6 +15,54 @@ This skill activates **only when the user includes `rapids-first` in their reque
 
 See [SKILL.md](./skills/rapids-first/SKILL.md) for the full workflow, API search recipes, and "what not to do" guardrails.
 
+## Quick demo
+
+Drop the literal token `rapids-first` into your prompt and the skill takes over the rewrite.
+
+Prompt:
+
+> Rewrite this pandas preprocessing script with `rapids-first`.
+
+Before — **0.87 s** (mean of 5 runs, after a warmup pass):
+
+```python
+import pandas as pd
+
+df = pd.read_parquet("events.parquet")
+df["x"] = df["a"] / df["b"]
+out = df.groupby("user_id")["x"].mean()
+```
+
+After — **0.05 s** (mean of 5 runs, after a warmup pass) — **~17× faster**:
+
+```python
+import cudf
+
+df = cudf.read_parquet("events.parquet")
+df["x"] = df["a"] / df["b"]
+out = df.groupby("user_id")["x"].mean()
+```
+
+Three things to notice:
+
+- **The only change is the import.** `cudf` is a drop-in for `pandas` here — the same `read_parquet` / arithmetic / `groupby().mean()` chain runs end-to-end on the GPU.
+- **No mid-stream device round-trips.** Per the skill's GPU-data-lifecycle rule, the result stays in GPU memory; we don't call `.to_pandas()` until the consumer actually needs CPU data.
+- **Zero-code alternative.** For an existing script you'd rather not touch at all, run it as `python -m cudf.pandas script.py` — the skill picks this path automatically when the user wants "make existing code run faster" instead of "show me explicit RAPIDS imports".
+
+Reproduce locally (10M rows, ~2M unique `user_id`, RTX 4060 Ti, cudf 26.02.01, pandas 2.3.3):
+
+```python
+# gen_events.py — generate ~130 MB events.parquet in $TMPDIR
+import os, numpy as np, pandas as pd
+rng = np.random.default_rng(20260514)
+n_rows, n_users = 10_000_000, 2_000_000
+pd.DataFrame({
+    "user_id": rng.integers(0, n_users, size=n_rows, dtype=np.int32),
+    "a": rng.normal(10.0, 3.0, n_rows).astype(np.float32),
+    "b": rng.uniform(0.5, 5.0, n_rows).astype(np.float32),
+}).to_parquet(f"{os.environ['TMPDIR']}/events.parquet", index=False)
+```
+
 ## Requirements
 
 - [**RAPIDS**](https://rapids.ai/) — the GPU data-science stack this skill steers toward (`cupy`, `cudf`, `cuml`, `cugraph`, `cucim`, `cuvs`, `nx-cugraph`, `dask-cudf`, `cuxfilter`, `pylibraft`, `raft-dask`). A CUDA-capable NVIDIA GPU and matching CUDA driver are required for the underlying libraries to import.

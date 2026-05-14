@@ -15,6 +15,54 @@
 
 完整工作流、API 检索范例与「不要做的事」清单见 [SKILL.md](./skills/rapids-first/SKILL.md)。
 
+## Quick demo
+
+在 prompt 里写上字面 token `rapids-first`,skill 就会接管整段改写。
+
+Prompt:
+
+> 用 `rapids-first` 改写这个 pandas 预处理脚本。
+
+改写前 —— **0.87 秒**(5 次取平均,首次 warmup 不计):
+
+```python
+import pandas as pd
+
+df = pd.read_parquet("events.parquet")
+df["x"] = df["a"] / df["b"]
+out = df.groupby("user_id")["x"].mean()
+```
+
+改写后 —— **0.05 秒**(5 次取平均,首次 warmup 不计)—— **约 17× 加速**:
+
+```python
+import cudf
+
+df = cudf.read_parquet("events.parquet")
+df["x"] = df["a"] / df["b"]
+out = df.groupby("user_id")["x"].mean()
+```
+
+三个值得注意的点:
+
+- **唯一的改动是 import。** 在这条链路上 `cudf` 是 `pandas` 的 drop-in 替代 —— 同一套 `read_parquet` / 算术运算 / `groupby().mean()` 全程在 GPU 上跑完。
+- **链路中段不做 device 往返。** 遵循 skill 的「GPU 数据生命周期」纪律,结果一直留在 GPU 显存里,直到下游真正需要 CPU 数据才会调 `.to_pandas()`。
+- **零代码替代方案。** 如果你压根不想动现有脚本,直接用 `python -m cudf.pandas script.py` 跑;当用户的诉求是「让现有代码跑得更快」而不是「写显式的 RAPIDS import」时,skill 会自动选这条路径。
+
+复现命令(10M 行,~2M 个不同 `user_id`,RTX 4060 Ti,cudf 26.02.01,pandas 2.3.3):
+
+```python
+# gen_events.py —— 在 $TMPDIR 下生成 ~130 MB 的 events.parquet
+import os, numpy as np, pandas as pd
+rng = np.random.default_rng(20260514)
+n_rows, n_users = 10_000_000, 2_000_000
+pd.DataFrame({
+    "user_id": rng.integers(0, n_users, size=n_rows, dtype=np.int32),
+    "a": rng.normal(10.0, 3.0, n_rows).astype(np.float32),
+    "b": rng.uniform(0.5, 5.0, n_rows).astype(np.float32),
+}).to_parquet(f"{os.environ['TMPDIR']}/events.parquet", index=False)
+```
+
 ## 依赖
 
 - [**RAPIDS**](https://rapids.ai/) —— 本 skill 引导使用的 GPU 数据科学栈(`cupy`、`cudf`、`cuml`、`cugraph`、`cucim`、`cuvs`、`nx-cugraph`、`dask-cudf`、`cuxfilter`、`pylibraft`、`raft-dask`)。底层库的 import 需要一块 CUDA 兼容的 NVIDIA GPU 以及匹配的 CUDA driver。
