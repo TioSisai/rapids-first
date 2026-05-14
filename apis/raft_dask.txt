@@ -1,0 +1,88 @@
+raft_dask.common.Comms(comms_p2p=False, client=None, verbose=False, streams_per_handle=0, nccl_root_location='scheduler') - Initializes and manages underlying NCCL and UCX comms handles across
+raft_dask.common.Comms.create_nccl_uniqueid(self)
+raft_dask.common.Comms.destroy(self) - Shuts down initialized comms and cleans up resources. This will
+raft_dask.common.Comms.init(self, workers=None) - Initializes the underlying comms. NCCL is required but
+raft_dask.common.Comms.worker_info(self, workers) - Builds a dictionary of { (worker_address, worker_port) :
+raft_dask.common.UCX(listener_callback) - Singleton UCX context to encapsulate all interactions with the
+raft_dask.common.UCX.add_server_endpoint(self, ep)
+raft_dask.common.UCX.close_endpoints(self)
+raft_dask.common.UCX.get(listener_callback=<function _connection_func at 0x7cc110155d00>)
+raft_dask.common.UCX.get_endpoint(self, ip, port)
+raft_dask.common.UCX.get_worker(self)
+raft_dask.common.UCX.listener_port(self)
+raft_dask.common.comms.Comms(comms_p2p=False, client=None, verbose=False, streams_per_handle=0, nccl_root_location='scheduler') - Initializes and manages underlying NCCL and UCX comms handles across
+raft_dask.common.comms.Comms.create_nccl_uniqueid(self)
+raft_dask.common.comms.Comms.destroy(self) - Shuts down initialized comms and cleans up resources. This will
+raft_dask.common.comms.Comms.init(self, workers=None) - Initializes the underlying comms. NCCL is required but
+raft_dask.common.comms.Comms.worker_info(self, workers) - Builds a dictionary of { (worker_address, worker_port) :
+raft_dask.common.comms.UCX(listener_callback) - Singleton UCX context to encapsulate all interactions with the
+raft_dask.common.comms.UCX.add_server_endpoint(self, ep)
+raft_dask.common.comms.UCX.close_endpoints(self)
+raft_dask.common.comms.UCX.get(listener_callback=<function _connection_func at 0x7cc110155d00>)
+raft_dask.common.comms.UCX.get_endpoint(self, ip, port)
+raft_dask.common.comms.UCX.get_worker(self)
+raft_dask.common.comms.UCX.listener_port(self)
+raft_dask.common.comms.get_raft_comm_state(sessionId, state_object=None, dask_worker=None) - Retrieves cuML comms state on the scheduler node, for the given sessionId,
+raft_dask.common.comms.get_ucx(dask_worker=None) - A simple convenience wrapper to make sure UCP listener and
+raft_dask.common.comms.inject_comms_on_handle(handle, nccl_inst, is_ucxx, ucp_worker, eps, size, rank, verbose) - inject_comms_on_handle(handle, nccl_inst, is_ucxx, ucp_worker, eps, size, rank, verbose)
+raft_dask.common.comms.inject_comms_on_handle_coll_only(handle, nccl_inst, size, rank, verbose) - inject_comms_on_handle_coll_only(handle, nccl_inst, size, rank, verbose)
+raft_dask.common.comms.local_handle(sessionId, dask_worker=None) - Simple helper function for retrieving the local handle_t instance
+raft_dask.common.comms.nccl(...) - A NCCL wrapper for initializing and closing NCCL comms
+raft_dask.common.comms.nccl.abort(self) - nccl.abort(self)
+raft_dask.common.comms.nccl.cu_device(self) - nccl.cu_device(self)
+raft_dask.common.comms.nccl.destroy(self) - nccl.destroy(self)
+raft_dask.common.comms.nccl.get_comm(self) - nccl.get_comm(self)
+raft_dask.common.comms.nccl.get_unique_id() - nccl.get_unique_id()
+raft_dask.common.comms.nccl.init(self, nranks, commId, rank) - nccl.init(self, nranks, commId, rank)
+raft_dask.common.comms.nccl.user_rank(self) - nccl.user_rank(self)
+raft_dask.common.comms.parse_host_port(address) - Given a string address with host/port, build a tuple(host, port)
+raft_dask.common.comms.set_nccl_root(sessionId, state_object)
+raft_dask.common.comms_utils.inject_comms_on_handle(handle, nccl_inst, is_ucxx, ucp_worker, eps, size, rank, verbose) - inject_comms_on_handle(handle, nccl_inst, is_ucxx, ucp_worker, eps, size, rank, verbose)
+raft_dask.common.comms_utils.inject_comms_on_handle_coll_only(handle, nccl_inst, size, rank, verbose) - inject_comms_on_handle_coll_only(handle, nccl_inst, size, rank, verbose)
+raft_dask.common.comms_utils.perform_test_comm_split(handle, n_colors) - perform_test_comm_split(handle, n_colors)
+raft_dask.common.comms_utils.perform_test_comms_allgather(handle, root) - perform_test_comms_allgather(handle, root)
+raft_dask.common.comms_utils.perform_test_comms_allreduce(handle, root) - perform_test_comms_allreduce(handle, root)
+raft_dask.common.comms_utils.perform_test_comms_bcast(handle, root) - perform_test_comms_bcast(handle, root)
+raft_dask.common.comms_utils.perform_test_comms_device_multicast_sendrecv(handle, n_trials) - perform_test_comms_device_multicast_sendrecv(handle, n_trials)
+raft_dask.common.comms_utils.perform_test_comms_device_send_or_recv(handle, n_trials) - perform_test_comms_device_send_or_recv(handle, n_trials)
+raft_dask.common.comms_utils.perform_test_comms_device_sendrecv(handle, n_trials) - perform_test_comms_device_sendrecv(handle, n_trials)
+raft_dask.common.comms_utils.perform_test_comms_gather(handle, root) - perform_test_comms_gather(handle, root)
+raft_dask.common.comms_utils.perform_test_comms_gatherv(handle, root) - perform_test_comms_gatherv(handle, root)
+raft_dask.common.comms_utils.perform_test_comms_reduce(handle, root) - perform_test_comms_reduce(handle, root)
+raft_dask.common.comms_utils.perform_test_comms_reducescatter(handle, root) - perform_test_comms_reducescatter(handle, root)
+raft_dask.common.comms_utils.perform_test_comms_send_recv(handle, n_trials) - perform_test_comms_send_recv(handle, n_trials)
+raft_dask.common.inject_comms_on_handle(handle, nccl_inst, is_ucxx, ucp_worker, eps, size, rank, verbose) - inject_comms_on_handle(handle, nccl_inst, is_ucxx, ucp_worker, eps, size, rank, verbose)
+raft_dask.common.inject_comms_on_handle_coll_only(handle, nccl_inst, size, rank, verbose) - inject_comms_on_handle_coll_only(handle, nccl_inst, size, rank, verbose)
+raft_dask.common.local_handle(sessionId, dask_worker=None) - Simple helper function for retrieving the local handle_t instance
+raft_dask.common.nccl.nccl(...) - A NCCL wrapper for initializing and closing NCCL comms
+raft_dask.common.nccl.nccl.abort(self) - nccl.abort(self)
+raft_dask.common.nccl.nccl.cu_device(self) - nccl.cu_device(self)
+raft_dask.common.nccl.nccl.destroy(self) - nccl.destroy(self)
+raft_dask.common.nccl.nccl.get_comm(self) - nccl.get_comm(self)
+raft_dask.common.nccl.nccl.get_unique_id() - nccl.get_unique_id()
+raft_dask.common.nccl.nccl.init(self, nranks, commId, rank) - nccl.init(self, nranks, commId, rank)
+raft_dask.common.nccl.nccl.user_rank(self) - nccl.user_rank(self)
+raft_dask.common.nccl.unique_id() - unique_id()
+raft_dask.common.perform_test_comm_split(handle, n_colors) - perform_test_comm_split(handle, n_colors)
+raft_dask.common.perform_test_comms_allgather(handle, root) - perform_test_comms_allgather(handle, root)
+raft_dask.common.perform_test_comms_allreduce(handle, root) - perform_test_comms_allreduce(handle, root)
+raft_dask.common.perform_test_comms_bcast(handle, root) - perform_test_comms_bcast(handle, root)
+raft_dask.common.perform_test_comms_device_multicast_sendrecv(handle, n_trials) - perform_test_comms_device_multicast_sendrecv(handle, n_trials)
+raft_dask.common.perform_test_comms_device_send_or_recv(handle, n_trials) - perform_test_comms_device_send_or_recv(handle, n_trials)
+raft_dask.common.perform_test_comms_device_sendrecv(handle, n_trials) - perform_test_comms_device_sendrecv(handle, n_trials)
+raft_dask.common.perform_test_comms_gather(handle, root) - perform_test_comms_gather(handle, root)
+raft_dask.common.perform_test_comms_gatherv(handle, root) - perform_test_comms_gatherv(handle, root)
+raft_dask.common.perform_test_comms_reduce(handle, root) - perform_test_comms_reduce(handle, root)
+raft_dask.common.perform_test_comms_reducescatter(handle, root) - perform_test_comms_reducescatter(handle, root)
+raft_dask.common.perform_test_comms_send_recv(handle, n_trials) - perform_test_comms_send_recv(handle, n_trials)
+raft_dask.common.ucx.UCX(listener_callback) - Singleton UCX context to encapsulate all interactions with the
+raft_dask.common.ucx.UCX.add_server_endpoint(self, ep)
+raft_dask.common.ucx.UCX.close_endpoints(self)
+raft_dask.common.ucx.UCX.get(listener_callback=<function _connection_func at 0x7cc110155d00>)
+raft_dask.common.ucx.UCX.get_endpoint(self, ip, port)
+raft_dask.common.ucx.UCX.get_worker(self)
+raft_dask.common.ucx.UCX.listener_port(self)
+raft_dask.common.utils.get_client(client=None)
+raft_dask.common.utils.parse_host_port(address) - Given a string address with host/port, build a tuple(host, port)
+raft_dask.include_test.raft_include_test() - raft_include_test()
+raft_dask.include_test.raft_include_test.raft_include_test() - raft_include_test()

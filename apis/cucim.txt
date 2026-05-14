@@ -1,0 +1,635 @@
+cucim.CuImage(...)
+cucim.CuImage.associated_image(...) - associated_image(self: cucim.clara._cucim.CuImage, name: str = '', device: cucim.clara._cucim.io.Device = cpu) -> object
+cucim.CuImage.associated_images - Returns a set of associated image names.
+cucim.CuImage.cache(...) - cache(type: object = None, **kwargs) -> cucim.clara._cucim.cache.ImageCache
+cucim.CuImage.channel_names - A channel name list.
+cucim.CuImage.close(...) - close(self: cucim.clara._cucim.CuImage) -> None
+cucim.CuImage.coord_sys - Coordinate frame in which the direction cosines are measured.
+cucim.CuImage.device - A device type.
+cucim.CuImage.dims - A string containing a list of dimensions being requested.
+cucim.CuImage.direction - Direction cosines (size is always 3x3).
+cucim.CuImage.dtype - The data type of the image.
+cucim.CuImage.is_loaded - True if image data is loaded & available.
+cucim.CuImage.metadata - A metadata object as `dict`.
+cucim.CuImage.ndim - The number of dimensions.
+cucim.CuImage.origin - Physical location of (0, 0, 0) (size is always 3).
+cucim.CuImage.path - Underlying file path for this object.
+cucim.CuImage.profiler(...) - profiler(**kwargs) -> cucim.clara._cucim.profiler.Profiler
+cucim.CuImage.raw_metadata - A raw metadata string.
+cucim.CuImage.read_region(...) - read_region(self: cucim.clara._cucim.CuImage, location: Iterable = (), size: List[int] = (), level: int = 0, num_workers: int = 0, batch_size: int = 1, drop_last: bool = False, prefetch_factor: int = 2, shuffle: bool = False, seed: int = 0, device: cucim.clara._cucim.io.Device = cpu, buf: object = None, shm_name: str = '', **kwargs) -> object
+cucim.CuImage.resolutions - Returns a dict that includes resolution information.
+cucim.CuImage.save(...) - save(self: cucim.clara._cucim.CuImage, arg0: str) -> None
+cucim.CuImage.shape - A tuple of dimension sizes (in the order of `dims`)
+cucim.CuImage.size(...) - size(self: cucim.clara._cucim.CuImage, dim_order: str = '') -> List[int]
+cucim.CuImage.spacing(...) - spacing(self: cucim.clara._cucim.CuImage, dim_order: str = '') -> List[float]
+cucim.CuImage.spacing_units(...) - spacing_units(self: cucim.clara._cucim.CuImage, dim_order: str = '') -> List[str]
+cucim.CuImage.typestr - The data type of the image in string format.
+cucim.clara.CuImage(...)
+cucim.clara.CuImage.associated_image(...) - associated_image(self: cucim.clara._cucim.CuImage, name: str = '', device: cucim.clara._cucim.io.Device = cpu) -> object
+cucim.clara.CuImage.associated_images - Returns a set of associated image names.
+cucim.clara.CuImage.cache(...) - cache(type: object = None, **kwargs) -> cucim.clara._cucim.cache.ImageCache
+cucim.clara.CuImage.channel_names - A channel name list.
+cucim.clara.CuImage.close(...) - close(self: cucim.clara._cucim.CuImage) -> None
+cucim.clara.CuImage.coord_sys - Coordinate frame in which the direction cosines are measured.
+cucim.clara.CuImage.device - A device type.
+cucim.clara.CuImage.dims - A string containing a list of dimensions being requested.
+cucim.clara.CuImage.direction - Direction cosines (size is always 3x3).
+cucim.clara.CuImage.dtype - The data type of the image.
+cucim.clara.CuImage.is_loaded - True if image data is loaded & available.
+cucim.clara.CuImage.metadata - A metadata object as `dict`.
+cucim.clara.CuImage.ndim - The number of dimensions.
+cucim.clara.CuImage.origin - Physical location of (0, 0, 0) (size is always 3).
+cucim.clara.CuImage.path - Underlying file path for this object.
+cucim.clara.CuImage.profiler(...) - profiler(**kwargs) -> cucim.clara._cucim.profiler.Profiler
+cucim.clara.CuImage.raw_metadata - A raw metadata string.
+cucim.clara.CuImage.read_region(...) - read_region(self: cucim.clara._cucim.CuImage, location: Iterable = (), size: List[int] = (), level: int = 0, num_workers: int = 0, batch_size: int = 1, drop_last: bool = False, prefetch_factor: int = 2, shuffle: bool = False, seed: int = 0, device: cucim.clara._cucim.io.Device = cpu, buf: object = None, shm_name: str = '', **kwargs) -> object
+cucim.clara.CuImage.resolutions - Returns a dict that includes resolution information.
+cucim.clara.CuImage.save(...) - save(self: cucim.clara._cucim.CuImage, arg0: str) -> None
+cucim.clara.CuImage.shape - A tuple of dimension sizes (in the order of `dims`)
+cucim.clara.CuImage.size(...) - size(self: cucim.clara._cucim.CuImage, dim_order: str = '') -> List[int]
+cucim.clara.CuImage.spacing(...) - spacing(self: cucim.clara._cucim.CuImage, dim_order: str = '') -> List[float]
+cucim.clara.CuImage.spacing_units(...) - spacing_units(self: cucim.clara._cucim.CuImage, dim_order: str = '') -> List[str]
+cucim.clara.CuImage.typestr - The data type of the image in string format.
+cucim.clara.DLDataType(...)
+cucim.clara.DLDataType.bits - Number of bits, common choices are 8, 16, 32.
+cucim.clara.DLDataType.code - Type code of base types.
+cucim.clara.DLDataType.lanes - Number of lanes in the type, used for vector types.
+cucim.clara.DLDataTypeCode(...) - Members:
+cucim.clara.DLDataTypeCode.name - name(self: handle) -> str
+cucim.clara.DLDataTypeCode.value
+cucim.clara.cache.CacheType(...) - Members:
+cucim.clara.cache.CacheType.name - name(self: handle) -> str
+cucim.clara.cache.CacheType.value
+cucim.clara.cache.ImageCache(...)
+cucim.clara.cache.ImageCache.capacity - A capacity of list/hashmap.
+cucim.clara.cache.ImageCache.config - Returns the dictionary of configuration.
+cucim.clara.cache.ImageCache.free_memory - A cache memory size available in the cache memory.
+cucim.clara.cache.ImageCache.hit_count - A cache hit count.
+cucim.clara.cache.ImageCache.memory_capacity - A capacity of cache memory.
+cucim.clara.cache.ImageCache.memory_size - A size of cache memory used.
+cucim.clara.cache.ImageCache.miss_count - A cache miss count.
+cucim.clara.cache.ImageCache.record(...) - record(self: cucim.clara._cucim.cache.ImageCache, value: object = None) -> bool
+cucim.clara.cache.ImageCache.reserve(...) - reserve(self: cucim.clara._cucim.cache.ImageCache, memory_capacity: int, **kwargs) -> None
+cucim.clara.cache.ImageCache.size - A size of list/hashmap.
+cucim.clara.cache.ImageCache.type - A Cache type.
+cucim.clara.cache.preferred_memory_capacity(...) - preferred_memory_capacity(img: object = None, image_size: Optional[List[int]] = None, tile_size: Optional[List[int]] = None, patch_size: Optional[List[int]] = None, bytes_per_pixel: int = 3) -> int
+cucim.clara.filesystem.CuFileDriver(...)
+cucim.clara.filesystem.CuFileDriver.close(...) - close(self: cucim.clara._cucim.filesystem.CuFileDriver) -> bool
+cucim.clara.filesystem.CuFileDriver.pread(...) - pread(self: cucim.clara._cucim.filesystem.CuFileDriver, buf: object, count: int, file_offset: int, buf_offset: int = 0) -> int
+cucim.clara.filesystem.CuFileDriver.pwrite(...) - pwrite(self: cucim.clara._cucim.filesystem.CuFileDriver, buf: object, count: int, file_offset: int, buf_offset: int = 0) -> int
+cucim.clara.filesystem.close(...) - close(arg0: cucim.clara._cucim.filesystem.CuFileDriver) -> bool
+cucim.clara.filesystem.discard_page_cache(...) - discard_page_cache(file_path: str) -> bool
+cucim.clara.filesystem.open(...) - open(file_path: str, flags: str, mode: int = 420) -> cucim.clara._cucim.filesystem.CuFileDriver
+cucim.clara.filesystem.pread(...) - pread(fd: cucim.clara._cucim.filesystem.CuFileDriver, buf: object, count: int, file_offset: int, buf_offset: int = 0) -> int
+cucim.clara.filesystem.pwrite(...) - pwrite(fd: cucim.clara._cucim.filesystem.CuFileDriver, buf: object, count: int, file_offset: int, buf_offset: int = 0) -> int
+cucim.clara.io.Device(...)
+cucim.clara.io.Device.index - Device index.
+cucim.clara.io.Device.parse_type(...) - parse_type(arg0: str) -> cucim.clara._cucim.io.DeviceType
+cucim.clara.io.Device.type - Device type.
+cucim.clara.io.DeviceType(...) - Members:
+cucim.clara.io.DeviceType.name - name(self: handle) -> str
+cucim.clara.io.DeviceType.value
+cucim.core.operations.color.color_jitter(img: Any, brightness=0, contrast=0, saturation=0, hue=0) - Applies color jitter by random sequential application of
+cucim.core.operations.color.image_to_absorbance(image, source_intensity=255.0, dtype=<class 'numpy.float32'>) - Convert an image to units of absorbance (optical density).
+cucim.core.operations.color.jitter.color_jitter(img: Any, brightness=0, contrast=0, saturation=0, hue=0) - Applies color jitter by random sequential application of
+cucim.core.operations.color.jitter.rand_color_jitter(img: Any, brightness=0, contrast=0, saturation=0, hue=0, prob: float = 0.1, whole_batch: bool = False) - Randomly applies color jitter by random sequential application of
+cucim.core.operations.color.normalize_colors_pca(image, source_intensity: float = 240.0, alpha: float = 1.0, beta: float = 0.345, ref_stain_coeff: tuple | cupy.ndarray = ((0.5626, 0.2159), (0.7201, 0.8012), (0.4062, 0.5581)), ref_max_conc: tuple | cupy.ndarray = (1.9705, 1.0308), image_type: str = 'intensity', channel_axis: int = 0) - Extract the matrix of stain coefficient from the image.
+cucim.core.operations.color.stain_extraction_pca(image, source_intensity=240, alpha=1, beta=0.345, *, channel_axis=0, image_type='intensity') - Extract the matrix of H & E stain coefficient from an image.
+cucim.core.operations.color.stain_normalizer.absorbance_to_image(absorbance, source_intensity=255, dtype=<class 'numpy.uint8'>) - Convert an absorbance (optical density) image back to a standard image.
+cucim.core.operations.color.stain_normalizer.image_to_absorbance(image, source_intensity=255.0, dtype=<class 'numpy.float32'>) - Convert an image to units of absorbance (optical density).
+cucim.core.operations.color.stain_normalizer.normalize_colors_pca(image, source_intensity: float = 240.0, alpha: float = 1.0, beta: float = 0.345, ref_stain_coeff: tuple | cupy.ndarray = ((0.5626, 0.2159), (0.7201, 0.8012), (0.4062, 0.5581)), ref_max_conc: tuple | cupy.ndarray = (1.9705, 1.0308), image_type: str = 'intensity', channel_axis: int = 0) - Extract the matrix of stain coefficient from the image.
+cucim.core.operations.color.stain_normalizer.stain_extraction_pca(image, source_intensity=240, alpha=1, beta=0.345, *, channel_axis=0, image_type='intensity') - Extract the matrix of H & E stain coefficient from an image.
+cucim.core.operations.intensity.normalize.normalize_data(img: Any, norm_constant: float, min_value: float, max_value: float, type: str = 'range') -> Any - Apply intensity normalization to the input array.
+cucim.core.operations.intensity.normalize_data(img: Any, norm_constant: float, min_value: float, max_value: float, type: str = 'range') -> Any - Apply intensity normalization to the input array.
+cucim.core.operations.intensity.rand_zoom(img: Any, min_zoom: collections.abc.Sequence[float] | float = 0.9, max_zoom: collections.abc.Sequence[float] | float = 1.1, prob: float = 0.1, whole_batch: bool = False) - Randomly Calls zoom with random zoom factor
+cucim.core.operations.intensity.scale_intensity_range(img: Any, b_max: float, b_min: float, a_max: float, a_min: float, clip: bool = False) -> Any - Apply intensity scaling to the input array.
+cucim.core.operations.intensity.scaling.scale_intensity_range(img: Any, b_max: float, b_min: float, a_max: float, a_min: float, clip: bool = False) -> Any - Apply intensity scaling to the input array.
+cucim.core.operations.intensity.zoom(img: Any, zoom_factor: collections.abc.Sequence[float]) - Zooms an ND image
+cucim.core.operations.intensity.zoom.get_zoom_factor(min_zoom: collections.abc.Sequence[float] | float = 0.9, max_zoom: collections.abc.Sequence[float] | float = 1.1)
+cucim.core.operations.intensity.zoom.rand_zoom(img: Any, min_zoom: collections.abc.Sequence[float] | float = 0.9, max_zoom: collections.abc.Sequence[float] | float = 1.1, prob: float = 0.1, whole_batch: bool = False) - Randomly Calls zoom with random zoom factor
+cucim.core.operations.intensity.zoom.zoom(img: Any, zoom_factor: collections.abc.Sequence[float]) - Zooms an ND image
+cucim.core.operations.morphology.distance_transform_edt(image, sampling=None, return_distances=True, return_indices=False, distances=None, indices=None, *, block_params=None, float64_distances=False) - Exact Euclidean distance transform.
+cucim.core.operations.spatial.image_flip(img: Any, spatial_axis: ()) -> Any - Shape preserving order reversal of elements in input array
+cucim.core.operations.spatial.image_rotate_90(img: Any, k: int, spatial_axis: ()) -> Any - Rotate input array by 90 degrees along the given axis
+cucim.core.operations.spatial.rand_image_flip(img: Any, spatial_axis: (), prob: float = 0.1, whole_batch: bool = False) -> Any - Randomly flips the image along axis.
+cucim.core.operations.spatial.rand_image_rotate_90(img: Any, spatial_axis: (), prob: float = 0.1, max_k: int = 3, whole_batch: bool = False) -> Any - With probability `prob`, input arrays are rotated by 90 degrees
+cucim.core.operations.spatial.rotate_and_flip.image_flip(img: Any, spatial_axis: ()) -> Any - Shape preserving order reversal of elements in input array
+cucim.core.operations.spatial.rotate_and_flip.image_rotate_90(img: Any, k: int, spatial_axis: ()) -> Any - Rotate input array by 90 degrees along the given axis
+cucim.core.operations.spatial.rotate_and_flip.rand_image_flip(img: Any, spatial_axis: (), prob: float = 0.1, whole_batch: bool = False) -> Any - Randomly flips the image along axis.
+cucim.core.operations.spatial.rotate_and_flip.rand_image_rotate_90(img: Any, spatial_axis: (), prob: float = 0.1, max_k: int = 3, whole_batch: bool = False) -> Any - With probability `prob`, input arrays are rotated by 90 degrees
+cucim.is_available(module_name: str = '') -> bool - Check if a specific module is available.
+cucim.skimage.color.adapt_rgb.adapt_rgb(apply_to_rgb) - Return decorator that adapts to RGB images to a gray-scale filter.
+cucim.skimage.color.adapt_rgb.each_channel(image_filter, image, *args, **kwargs) - Return color image by applying `image_filter` on channels of `image`.
+cucim.skimage.color.adapt_rgb.hsv_value(image_filter, image, *args, **kwargs) - Return color image by applying `image_filter` on HSV-value of `image`.
+cucim.skimage.color.colorconv.channel_as_last_axis(channel_arg_positions=(0,), channel_kwarg_names=(), multichannel_output=True) - Decorator for automatically making channels axis last for all arrays.
+cucim.skimage.color.colorconv.combine_stains(stains, conv_matrix, *, channel_axis=-1) - Stain to RGB color space conversion.
+cucim.skimage.color.colorconv.convert_colorspace(arr, fromspace, tospace, *, channel_axis=-1) - Convert an image array to a new color space.
+cucim.skimage.color.colorconv.dtype_limits(image, clip_negative=False) - Return intensity limits, i.e. (min, max) tuple, of the image's dtype.
+cucim.skimage.color.colorconv.gray2rgb(image, *, channel_axis=-1) - Create an RGB representation of a gray-level image.
+cucim.skimage.color.colorconv.gray2rgba(image, alpha=None, *, channel_axis=-1, check_alpha=True) - Create a RGBA representation of a gray-level image.
+cucim.skimage.color.colorconv.hed2rgb(hed, *, channel_axis=-1) - Haematoxylin-Eosin-DAB (HED) to RGB color space conversion.
+cucim.skimage.color.colorconv.hsv2rgb(hsv, *, channel_axis=-1) - HSV to RGB color space conversion.
+cucim.skimage.color.colorconv.identity(image, *args, **kwargs) - Returns the first argument unmodified.
+cucim.skimage.color.colorconv.lab2lch(lab, *, channel_axis=-1) - CIE-LAB to CIE-LCH color space conversion.
+cucim.skimage.color.colorconv.lab2rgb(lab, illuminant='D65', observer='2', *, channel_axis=-1) - Convert image in CIE-LAB to sRGB color space.
+cucim.skimage.color.colorconv.lab2xyz(lab, illuminant='D65', observer='2', *, channel_axis=-1) - Convert image in CIE-LAB to XYZ color space.
+cucim.skimage.color.colorconv.lch2lab(lch, *, channel_axis=-1) - CIE-LCH to CIE-LAB color space conversion.
+cucim.skimage.color.colorconv.luv2rgb(luv, *, channel_axis=-1) - Luv to RGB color space conversion.
+cucim.skimage.color.colorconv.luv2xyz(luv, illuminant='D65', observer='2', *, channel_axis=-1) - CIE-Luv to XYZ color space conversion.
+cucim.skimage.color.colorconv.rgb2gray(rgb, *, channel_axis=-1) - Compute luminance of an RGB image.
+cucim.skimage.color.colorconv.rgb2hed(rgb, *, channel_axis=-1) - RGB to Haematoxylin-Eosin-DAB (HED) color space conversion.
+cucim.skimage.color.colorconv.rgb2hsv(rgb, *, channel_axis=-1) - RGB to HSV color space conversion.
+cucim.skimage.color.colorconv.rgb2lab(rgb, illuminant='D65', observer='2', *, channel_axis=-1) - Conversion from the sRGB color space (IEC 61966-2-1:1999)
+cucim.skimage.color.colorconv.rgb2luv(rgb, *, channel_axis=-1) - RGB to CIE-Luv color space conversion.
+cucim.skimage.color.colorconv.rgb2rgbcie(rgb, *, channel_axis=-1) - RGB to RGB CIE color space conversion.
+cucim.skimage.color.colorconv.rgb2xyz(rgb, *, channel_axis=-1) - RGB to XYZ color space conversion.
+cucim.skimage.color.colorconv.rgb2ycbcr(rgb, *, channel_axis=-1) - RGB to YCbCr color space conversion.
+cucim.skimage.color.colorconv.rgb2ydbdr(rgb, *, channel_axis=-1) - RGB to YDbDr color space conversion.
+cucim.skimage.color.colorconv.rgb2yiq(rgb, *, channel_axis=-1) - RGB to YIQ color space conversion.
+cucim.skimage.color.colorconv.rgb2ypbpr(rgb, *, channel_axis=-1) - RGB to YPbPr color space conversion.
+cucim.skimage.color.colorconv.rgb2yuv(rgb, *, channel_axis=-1) - RGB to YUV color space conversion.
+cucim.skimage.color.colorconv.rgba2rgb(rgba, background=(1, 1, 1), *, channel_axis=-1) - RGBA to RGB conversion using alpha blending [1]_.
+cucim.skimage.color.colorconv.rgbcie2rgb(rgbcie, *, channel_axis=-1) - RGB CIE to RGB color space conversion.
+cucim.skimage.color.colorconv.separate_stains(rgb, conv_matrix, *, channel_axis=-1) - RGB to stain color space conversion.
+cucim.skimage.color.colorconv.xyz2lab(xyz, illuminant='D65', observer='2', *, channel_axis=-1) - XYZ to CIE-LAB color space conversion.
+cucim.skimage.color.colorconv.xyz2luv(xyz, illuminant='D65', observer='2', *, channel_axis=-1) - XYZ to CIE-Luv color space conversion.
+cucim.skimage.color.colorconv.xyz2rgb(xyz, *, channel_axis=-1) - XYZ to RGB color space conversion.
+cucim.skimage.color.colorconv.xyz_tristimulus_values(*, illuminant, observer, dtype=None) - Get the CIE XYZ tristimulus values.
+cucim.skimage.color.colorconv.ycbcr2rgb(ycbcr, *, channel_axis=-1) - YCbCr to RGB color space conversion.
+cucim.skimage.color.colorconv.ydbdr2rgb(ydbdr, *, channel_axis=-1) - YDbDr to RGB color space conversion.
+cucim.skimage.color.colorconv.yiq2rgb(yiq, *, channel_axis=-1) - YIQ to RGB color space conversion.
+cucim.skimage.color.colorconv.ypbpr2rgb(ypbpr, *, channel_axis=-1) - YPbPr to RGB color space conversion.
+cucim.skimage.color.colorconv.yuv2rgb(yuv, *, channel_axis=-1) - YUV to RGB color space conversion.
+cucim.skimage.color.colorlabel.label2rgb(label, image=None, colors=None, alpha=0.3, bg_label=0, bg_color=(0, 0, 0), image_alpha=1, kind='overlay', *, saturation=0, channel_axis=-1) - Return an RGB image where color-coded labels are painted over the image.
+cucim.skimage.color.combine_stains(stains, conv_matrix, *, channel_axis=-1) - Stain to RGB color space conversion.
+cucim.skimage.color.convert_colorspace(arr, fromspace, tospace, *, channel_axis=-1) - Convert an image array to a new color space.
+cucim.skimage.color.deltaE_cie76(lab1, lab2, channel_axis=-1) - Euclidean distance between two points in Lab color space
+cucim.skimage.color.deltaE_ciede2000(lab1, lab2, kL=1, kC=1, kH=1, *, channel_axis=-1) - Color difference as given by the CIEDE 2000 standard.
+cucim.skimage.color.deltaE_ciede94(lab1, lab2, kH=1, kC=1, kL=1, k1=0.045, k2=0.015, *, channel_axis=-1) - Color difference according to CIEDE 94 standard
+cucim.skimage.color.deltaE_cmc(lab1, lab2, kL=1, kC=1, *, channel_axis=-1) - Color difference from the  CMC l:c standard.
+cucim.skimage.color.delta_e.deltaE_cie76(lab1, lab2, channel_axis=-1) - Euclidean distance between two points in Lab color space
+cucim.skimage.color.delta_e.deltaE_ciede2000(lab1, lab2, kL=1, kC=1, kH=1, *, channel_axis=-1) - Color difference as given by the CIEDE 2000 standard.
+cucim.skimage.color.delta_e.deltaE_ciede94(lab1, lab2, kH=1, kC=1, kL=1, k1=0.045, k2=0.015, *, channel_axis=-1) - Color difference according to CIEDE 94 standard
+cucim.skimage.color.delta_e.deltaE_cmc(lab1, lab2, kL=1, kC=1, *, channel_axis=-1) - Color difference from the  CMC l:c standard.
+cucim.skimage.color.delta_e.get_dH2(lab1, lab2, *, channel_axis=-1) - squared hue difference term occurring in deltaE_cmc and deltaE_ciede94
+cucim.skimage.color.delta_e.lab2lch(lab, *, channel_axis=-1) - CIE-LAB to CIE-LCH color space conversion.
+cucim.skimage.color.gray2rgb(image, *, channel_axis=-1) - Create an RGB representation of a gray-level image.
+cucim.skimage.color.gray2rgba(image, alpha=None, *, channel_axis=-1, check_alpha=True) - Create a RGBA representation of a gray-level image.
+cucim.skimage.color.hed2rgb(hed, *, channel_axis=-1) - Haematoxylin-Eosin-DAB (HED) to RGB color space conversion.
+cucim.skimage.color.hsv2rgb(hsv, *, channel_axis=-1) - HSV to RGB color space conversion.
+cucim.skimage.color.lab2lch(lab, *, channel_axis=-1) - CIE-LAB to CIE-LCH color space conversion.
+cucim.skimage.color.lab2rgb(lab, illuminant='D65', observer='2', *, channel_axis=-1) - Convert image in CIE-LAB to sRGB color space.
+cucim.skimage.color.lab2xyz(lab, illuminant='D65', observer='2', *, channel_axis=-1) - Convert image in CIE-LAB to XYZ color space.
+cucim.skimage.color.label2rgb(label, image=None, colors=None, alpha=0.3, bg_label=0, bg_color=(0, 0, 0), image_alpha=1, kind='overlay', *, saturation=0, channel_axis=-1) - Return an RGB image where color-coded labels are painted over the image.
+cucim.skimage.color.lch2lab(lch, *, channel_axis=-1) - CIE-LCH to CIE-LAB color space conversion.
+cucim.skimage.color.luv2rgb(luv, *, channel_axis=-1) - Luv to RGB color space conversion.
+cucim.skimage.color.luv2xyz(luv, illuminant='D65', observer='2', *, channel_axis=-1) - CIE-Luv to XYZ color space conversion.
+cucim.skimage.color.rgb2gray(rgb, *, channel_axis=-1) - Compute luminance of an RGB image.
+cucim.skimage.color.rgb2hed(rgb, *, channel_axis=-1) - RGB to Haematoxylin-Eosin-DAB (HED) color space conversion.
+cucim.skimage.color.rgb2hsv(rgb, *, channel_axis=-1) - RGB to HSV color space conversion.
+cucim.skimage.color.rgb2lab(rgb, illuminant='D65', observer='2', *, channel_axis=-1) - Conversion from the sRGB color space (IEC 61966-2-1:1999)
+cucim.skimage.color.rgb2luv(rgb, *, channel_axis=-1) - RGB to CIE-Luv color space conversion.
+cucim.skimage.color.rgb2rgbcie(rgb, *, channel_axis=-1) - RGB to RGB CIE color space conversion.
+cucim.skimage.color.rgb2xyz(rgb, *, channel_axis=-1) - RGB to XYZ color space conversion.
+cucim.skimage.color.rgb2ycbcr(rgb, *, channel_axis=-1) - RGB to YCbCr color space conversion.
+cucim.skimage.color.rgb2ydbdr(rgb, *, channel_axis=-1) - RGB to YDbDr color space conversion.
+cucim.skimage.color.rgb2yiq(rgb, *, channel_axis=-1) - RGB to YIQ color space conversion.
+cucim.skimage.color.rgb2ypbpr(rgb, *, channel_axis=-1) - RGB to YPbPr color space conversion.
+cucim.skimage.color.rgb2yuv(rgb, *, channel_axis=-1) - RGB to YUV color space conversion.
+cucim.skimage.color.rgba2rgb(rgba, background=(1, 1, 1), *, channel_axis=-1) - RGBA to RGB conversion using alpha blending [1]_.
+cucim.skimage.color.rgbcie2rgb(rgbcie, *, channel_axis=-1) - RGB CIE to RGB color space conversion.
+cucim.skimage.color.separate_stains(rgb, conv_matrix, *, channel_axis=-1) - RGB to stain color space conversion.
+cucim.skimage.color.xyz2lab(xyz, illuminant='D65', observer='2', *, channel_axis=-1) - XYZ to CIE-LAB color space conversion.
+cucim.skimage.color.xyz2luv(xyz, illuminant='D65', observer='2', *, channel_axis=-1) - XYZ to CIE-Luv color space conversion.
+cucim.skimage.color.xyz2rgb(xyz, *, channel_axis=-1) - XYZ to RGB color space conversion.
+cucim.skimage.color.xyz_tristimulus_values(*, illuminant, observer, dtype=None) - Get the CIE XYZ tristimulus values.
+cucim.skimage.color.ycbcr2rgb(ycbcr, *, channel_axis=-1) - YCbCr to RGB color space conversion.
+cucim.skimage.color.ydbdr2rgb(ydbdr, *, channel_axis=-1) - YDbDr to RGB color space conversion.
+cucim.skimage.color.yiq2rgb(yiq, *, channel_axis=-1) - YIQ to RGB color space conversion.
+cucim.skimage.color.ypbpr2rgb(ypbpr, *, channel_axis=-1) - YPbPr to RGB color space conversion.
+cucim.skimage.color.yuv2rgb(yuv, *, channel_axis=-1) - YUV to RGB color space conversion.
+cucim.skimage.data.binary_blobs(length=512, blob_size_fraction=0.1, n_dim=2, volume_fraction=0.5, rng=None) - Generate synthetic binary image with several rounded blob-like objects.
+cucim.skimage.exposure.adjust_gamma(image, gamma=1, gain=1) - Performs Gamma Correction on the input image.
+cucim.skimage.exposure.adjust_log(image, gain=1, inv=False) - Performs Logarithmic correction on the input image.
+cucim.skimage.exposure.adjust_sigmoid(image, cutoff=0.5, gain=10, inv=False) - Performs Sigmoid Correction on the input image.
+cucim.skimage.exposure.cumulative_distribution(image, nbins=256) - Return cumulative distribution function (cdf) for the given image.
+cucim.skimage.exposure.equalize_adapthist(image, kernel_size=None, clip_limit=0.01, nbins=256) - Contrast Limited Adaptive Histogram Equalization (CLAHE).
+cucim.skimage.exposure.equalize_hist(image, nbins=256, mask=None) - Return image after histogram equalization.
+cucim.skimage.exposure.exposure.adjust_gamma(image, gamma=1, gain=1) - Performs Gamma Correction on the input image.
+cucim.skimage.exposure.exposure.adjust_log(image, gain=1, inv=False) - Performs Logarithmic correction on the input image.
+cucim.skimage.exposure.exposure.adjust_sigmoid(image, cutoff=0.5, gain=10, inv=False) - Performs Sigmoid Correction on the input image.
+cucim.skimage.exposure.exposure.cumulative_distribution(image, nbins=256) - Return cumulative distribution function (cdf) for the given image.
+cucim.skimage.exposure.exposure.equalize_hist(image, nbins=256, mask=None) - Return image after histogram equalization.
+cucim.skimage.exposure.exposure.histogram(image, nbins=256, source_range='image', normalize=False, *, channel_axis=None) - Return histogram of image.
+cucim.skimage.exposure.exposure.rescale_intensity(image, in_range='image', out_range='dtype') - Return image after stretching or shrinking its intensity levels.
+cucim.skimage.exposure.histogram(image, nbins=256, source_range='image', normalize=False, *, channel_axis=None) - Return histogram of image.
+cucim.skimage.exposure.histogram_matching.match_histograms(image, reference, *, channel_axis=None) - Adjust an image so that its cumulative histogram matches that of another.
+cucim.skimage.exposure.is_low_contrast(image, fraction_threshold=0.05, lower_percentile=1, upper_percentile=99, method='linear') - Determine if an image is low contrast.
+cucim.skimage.exposure.match_histograms(image, reference, *, channel_axis=None) - Adjust an image so that its cumulative histogram matches that of another.
+cucim.skimage.exposure.rescale_intensity(image, in_range='image', out_range='dtype') - Return image after stretching or shrinking its intensity levels.
+cucim.skimage.feature.blob.blob_dog(image, min_sigma=1, max_sigma=50, sigma_ratio=1.6, threshold=0.5, overlap=0.5, *, threshold_rel=None, exclude_border=False) - Finds blobs in the given grayscale image.
+cucim.skimage.feature.blob.blob_doh(image, min_sigma=1, max_sigma=30, num_sigma=10, threshold=0.01, overlap=0.5, log_scale=False, *, threshold_rel=None) - Finds blobs in the given grayscale image.
+cucim.skimage.feature.blob.blob_log(image, min_sigma=1, max_sigma=50, num_sigma=10, threshold=0.2, overlap=0.5, log_scale=False, *, threshold_rel=None, exclude_border=False) - Finds blobs in the given grayscale image.
+cucim.skimage.feature.blob.check_nD(array, ndim, arg_name='image') - Verify an array meets the desired ndims and array isn't empty.
+cucim.skimage.feature.blob.gaussian(image, sigma=1, mode='nearest', cval=0, preserve_range=False, truncate=4.0, *, channel_axis=None, out=None) - Multi-dimensional Gaussian filter.
+cucim.skimage.feature.blob.img_as_float(image, force_copy=False) - Convert an image to floating point format.
+cucim.skimage.feature.blob.integral_image(image, *, dtype=None) - Integral image / summed area table.
+cucim.skimage.feature.blob.peak_local_max(image, min_distance=1, threshold_abs=None, threshold_rel=None, exclude_border=True, num_peaks=inf, footprint=None, labels=None, num_peaks_per_label=inf, p_norm=inf) - Find peaks in an image as coordinate list.
+cucim.skimage.feature.blob_dog(image, min_sigma=1, max_sigma=50, sigma_ratio=1.6, threshold=0.5, overlap=0.5, *, threshold_rel=None, exclude_border=False) - Finds blobs in the given grayscale image.
+cucim.skimage.feature.blob_doh(image, min_sigma=1, max_sigma=30, num_sigma=10, threshold=0.01, overlap=0.5, log_scale=False, *, threshold_rel=None) - Finds blobs in the given grayscale image.
+cucim.skimage.feature.blob_log(image, min_sigma=1, max_sigma=50, num_sigma=10, threshold=0.2, overlap=0.5, log_scale=False, *, threshold_rel=None, exclude_border=False) - Finds blobs in the given grayscale image.
+cucim.skimage.feature.canny(image, sigma=1.0, low_threshold=None, high_threshold=None, mask=None, use_quantiles=False, *, mode='constant', cval=0.0) - Edge filter an image using the Canny algorithm.
+cucim.skimage.feature.corner.corner_foerstner(image, sigma=1) - Compute Foerstner corner measure response image.
+cucim.skimage.feature.corner.corner_harris(image, method='k', k=0.05, eps=1e-06, sigma=1) - Compute Harris corner measure response image.
+cucim.skimage.feature.corner.corner_kitchen_rosenfeld(image, mode='constant', cval=0) - Compute Kitchen and Rosenfeld corner measure response image.
+cucim.skimage.feature.corner.corner_peaks(image, min_distance=1, threshold_abs=None, threshold_rel=None, exclude_border=True, indices=True, num_peaks=inf, footprint=None, labels=None, *, num_peaks_per_label=inf, p_norm=inf) - Find peaks in corner measure response image.
+cucim.skimage.feature.corner.corner_shi_tomasi(image, sigma=1) - Compute Shi-Tomasi (Kanade-Tomasi) corner measure response image.
+cucim.skimage.feature.corner.gradient(f, axis=None, output_as_array=False) - Return the gradient of an N-dimensional array.
+cucim.skimage.feature.corner.hessian_matrix(image, sigma=1, mode='constant', cval=0, order='rc', use_gaussian_derivatives=None) - Compute the Hessian matrix.
+cucim.skimage.feature.corner.hessian_matrix_det(image, sigma=1, approximate=True) - Compute the approximate Hessian Determinant over an image.
+cucim.skimage.feature.corner.hessian_matrix_eigvals(H_elems) - Compute eigenvalues of Hessian matrix.
+cucim.skimage.feature.corner.img_as_float(image, force_copy=False) - Convert an image to floating point format.
+cucim.skimage.feature.corner.integral_image(image, *, dtype=None) - Integral image / summed area table.
+cucim.skimage.feature.corner.peak_local_max(image, min_distance=1, threshold_abs=None, threshold_rel=None, exclude_border=True, num_peaks=inf, footprint=None, labels=None, num_peaks_per_label=inf, p_norm=inf) - Find peaks in an image as coordinate list.
+cucim.skimage.feature.corner.shape_index(image, sigma=1, mode='constant', cval=0) - Compute the shape index.
+cucim.skimage.feature.corner.structure_tensor(image, sigma=1, mode='constant', cval=0, order='rc') - Compute structure tensor using sum of squared differences.
+cucim.skimage.feature.corner.structure_tensor_eigenvalues(A_elems) - Compute eigenvalues of structure tensor.
+cucim.skimage.feature.corner_foerstner(image, sigma=1) - Compute Foerstner corner measure response image.
+cucim.skimage.feature.corner_harris(image, method='k', k=0.05, eps=1e-06, sigma=1) - Compute Harris corner measure response image.
+cucim.skimage.feature.corner_kitchen_rosenfeld(image, mode='constant', cval=0) - Compute Kitchen and Rosenfeld corner measure response image.
+cucim.skimage.feature.corner_peaks(image, min_distance=1, threshold_abs=None, threshold_rel=None, exclude_border=True, indices=True, num_peaks=inf, footprint=None, labels=None, *, num_peaks_per_label=inf, p_norm=inf) - Find peaks in corner measure response image.
+cucim.skimage.feature.corner_shi_tomasi(image, sigma=1) - Compute Shi-Tomasi (Kanade-Tomasi) corner measure response image.
+cucim.skimage.feature.daisy(image, step=4, radius=15, rings=3, histograms=8, orientations=8, normalization='l1', sigmas=None, ring_radii=None, visualize=False) - Extract DAISY feature descriptors densely for the given image.
+cucim.skimage.feature.hessian_matrix(image, sigma=1, mode='constant', cval=0, order='rc', use_gaussian_derivatives=None) - Compute the Hessian matrix.
+cucim.skimage.feature.hessian_matrix_det(image, sigma=1, approximate=True) - Compute the approximate Hessian Determinant over an image.
+cucim.skimage.feature.hessian_matrix_eigvals(H_elems) - Compute eigenvalues of Hessian matrix.
+cucim.skimage.feature.match.match_descriptors(descriptors1, descriptors2, metric=None, p=2, max_distance=inf, cross_check=True, max_ratio=1.0) - Brute-force matching of descriptors.
+cucim.skimage.feature.match_descriptors(descriptors1, descriptors2, metric=None, p=2, max_distance=inf, cross_check=True, max_ratio=1.0) - Brute-force matching of descriptors.
+cucim.skimage.feature.match_template(image, template, pad_input=False, mode='constant', constant_values=0) - Match a template to a 2-D or 3-D image using normalized correlation.
+cucim.skimage.feature.multiscale_basic_features(image, intensity=True, edges=True, texture=True, sigma_min=0.5, sigma_max=16, num_sigma=None, num_workers=None, *, channel_axis=None) - Local features for a single- or multi-channel nd image.
+cucim.skimage.feature.peak.ensure_spacing(coords, spacing=1, p_norm=inf, min_split_size=50, max_out=None, *, max_split_size=2000) - Returns a subset of coord where a minimum spacing is guaranteed.
+cucim.skimage.feature.peak.peak_local_max(image, min_distance=1, threshold_abs=None, threshold_rel=None, exclude_border=True, num_peaks=inf, footprint=None, labels=None, num_peaks_per_label=inf, p_norm=inf) - Find peaks in an image as coordinate list.
+cucim.skimage.feature.peak_local_max(image, min_distance=1, threshold_abs=None, threshold_rel=None, exclude_border=True, num_peaks=inf, footprint=None, labels=None, num_peaks_per_label=inf, p_norm=inf) - Find peaks in an image as coordinate list.
+cucim.skimage.feature.shape_index(image, sigma=1, mode='constant', cval=0) - Compute the shape index.
+cucim.skimage.feature.structure_tensor(image, sigma=1, mode='constant', cval=0, order='rc') - Compute structure tensor using sum of squared differences.
+cucim.skimage.feature.structure_tensor_eigenvalues(A_elems) - Compute eigenvalues of structure tensor.
+cucim.skimage.feature.template.check_nD(array, ndim, arg_name='image') - Verify an array meets the desired ndims and array isn't empty.
+cucim.skimage.feature.template.match_template(image, template, pad_input=False, mode='constant', constant_values=0) - Match a template to a 2-D or 3-D image using normalized correlation.
+cucim.skimage.feature.template.pad(array, pad_width, mode='constant', **kwargs) - Pads an array with specified widths and values.
+cucim.skimage.feature.util.check_nD(array, ndim, arg_name='image') - Verify an array meets the desired ndims and array isn't empty.
+cucim.skimage.feature.util.img_as_float(image, force_copy=False) - Convert an image to floating point format.
+cucim.skimage.filters.LPIFilter2D(impulse_response, **filter_params) - Linear Position-Invariant Filter (2-dimensional)
+cucim.skimage.filters.apply_hysteresis_threshold(image, low, high) - Apply hysteresis thresholding to ``image``.
+cucim.skimage.filters.butterworth(image, cutoff_frequency_ratio=0.005, high_pass=True, order=2.0, channel_axis=None, *, squared_butterworth=True, npad=0) - Apply a Butterworth filter to enhance high or low frequency features.
+cucim.skimage.filters.correlate_sparse(image, kernel, mode='reflect') - Compute valid cross-correlation of `padded_array` and `kernel`.
+cucim.skimage.filters.difference_of_gaussians(image, low_sigma, high_sigma=None, *, mode='nearest', cval=0, channel_axis=None, truncate=4.0) - Find features between ``low_sigma`` and ``high_sigma`` in size.
+cucim.skimage.filters.edges.check_nD(array, ndim, arg_name='image') - Verify an array meets the desired ndims and array isn't empty.
+cucim.skimage.filters.edges.farid(image, mask=None, *, axis=None, mode='reflect', cval=0.0) - Find the edge magnitude using the Farid transform.
+cucim.skimage.filters.edges.farid_h(image, *, mask=None) - Find the horizontal edges of an image using the Farid transform.
+cucim.skimage.filters.edges.farid_v(image, *, mask=None) - Find the vertical edges of an image using the Farid transform.
+cucim.skimage.filters.edges.img_as_float(image, force_copy=False) - Convert an image to floating point format.
+cucim.skimage.filters.edges.laplace(image, ksize=3, mask=None) - Find the edges of an image using the Laplace operator.
+cucim.skimage.filters.edges.laplacian(ndim, shape, is_real=True, *, dtype=None) - Return the transfer function of the Laplacian.
+cucim.skimage.filters.edges.prewitt(image, mask=None, *, axis=None, mode='reflect', cval=0.0) - Find the edge magnitude using the Prewitt transform.
+cucim.skimage.filters.edges.prewitt_h(image, mask=None) - Find the horizontal edges of an image using the Prewitt transform.
+cucim.skimage.filters.edges.prewitt_v(image, mask=None) - Find the vertical edges of an image using the Prewitt transform.
+cucim.skimage.filters.edges.roberts(image, mask=None) - Find the edge magnitude using Roberts' cross operator.
+cucim.skimage.filters.edges.roberts_neg_diag(image, mask=None) - Find the cross edges of an image using the Roberts' Cross operator.
+cucim.skimage.filters.edges.roberts_pos_diag(image, mask=None) - Find the cross edges of an image using Roberts' cross operator.
+cucim.skimage.filters.edges.scharr(image, mask=None, *, axis=None, mode='reflect', cval=0.0) - Find the edge magnitude using the Scharr transform.
+cucim.skimage.filters.edges.scharr_h(image, mask=None) - Find the horizontal edges of an image using the Scharr transform.
+cucim.skimage.filters.edges.scharr_v(image, mask=None) - Find the vertical edges of an image using the Scharr transform.
+cucim.skimage.filters.edges.sobel(image, mask=None, *, axis=None, mode='reflect', cval=0.0) - Find edges in an image using the Sobel filter.
+cucim.skimage.filters.edges.sobel_h(image, mask=None) - Find the horizontal edges of an image using the Sobel transform.
+cucim.skimage.filters.edges.sobel_v(image, mask=None) - Find the vertical edges of an image using the Sobel transform.
+cucim.skimage.filters.farid(image, mask=None, *, axis=None, mode='reflect', cval=0.0) - Find the edge magnitude using the Farid transform.
+cucim.skimage.filters.farid_h(image, *, mask=None) - Find the horizontal edges of an image using the Farid transform.
+cucim.skimage.filters.farid_v(image, *, mask=None) - Find the vertical edges of an image using the Farid transform.
+cucim.skimage.filters.filter_forward(data, impulse_response=None, filter_params=None, predefined_filter=None) - Apply the given filter to data.
+cucim.skimage.filters.filter_inverse(data, impulse_response=None, filter_params=None, max_gain=2, predefined_filter=None) - Apply the filter in reverse to the given data.
+cucim.skimage.filters.frangi(image, sigmas=range(1, 10, 2), scale_range=None, scale_step=None, alpha=0.5, beta=0.5, gamma=None, black_ridges=True, mode='reflect', cval=0) - Filter an image with the Frangi vesselness filter.
+cucim.skimage.filters.gabor(image, frequency, theta=0, bandwidth=1, sigma_x=None, sigma_y=None, n_stds=3, offset=0, mode='reflect', cval=0) - Return real and imaginary responses to Gabor filter.
+cucim.skimage.filters.gabor_kernel(frequency, theta=0, bandwidth=1, sigma_x=None, sigma_y=None, n_stds=3, offset=0, dtype=None, *, float_dtype=None) - Return complex 2D Gabor filter kernel.
+cucim.skimage.filters.gaussian(image, sigma=1, mode='nearest', cval=0, preserve_range=False, truncate=4.0, *, channel_axis=None, out=None) - Multi-dimensional Gaussian filter.
+cucim.skimage.filters.hessian(image, sigmas=range(1, 10, 2), scale_range=None, scale_step=None, alpha=0.5, beta=0.5, gamma=15, black_ridges=True, mode='reflect', cval=0) - Filter an image with the Hybrid Hessian filter.
+cucim.skimage.filters.laplace(image, ksize=3, mask=None) - Find the edges of an image using the Laplace operator.
+cucim.skimage.filters.lpi_filter.LPIFilter2D(impulse_response, **filter_params) - Linear Position-Invariant Filter (2-dimensional)
+cucim.skimage.filters.lpi_filter.check_nD(array, ndim, arg_name='image') - Verify an array meets the desired ndims and array isn't empty.
+cucim.skimage.filters.lpi_filter.filter_forward(data, impulse_response=None, filter_params=None, predefined_filter=None) - Apply the given filter to data.
+cucim.skimage.filters.lpi_filter.filter_inverse(data, impulse_response=None, filter_params=None, max_gain=2, predefined_filter=None) - Apply the filter in reverse to the given data.
+cucim.skimage.filters.lpi_filter.wiener(data, impulse_response=None, filter_params=None, K=0.25, predefined_filter=None) - Minimum Mean Square Error (Wiener) inverse filter.
+cucim.skimage.filters.median(image, footprint=None, out=None, mode='nearest', cval=0.0, behavior='ndimage', *, algorithm='auto', algorithm_kwargs={}) - Return local median of an image.
+cucim.skimage.filters.meijering(image, sigmas=range(1, 10, 2), alpha=None, black_ridges=True, mode='reflect', cval=0) - Filter an image with the Meijering neuriteness filter.
+cucim.skimage.filters.prewitt(image, mask=None, *, axis=None, mode='reflect', cval=0.0) - Find the edge magnitude using the Prewitt transform.
+cucim.skimage.filters.prewitt_h(image, mask=None) - Find the horizontal edges of an image using the Prewitt transform.
+cucim.skimage.filters.prewitt_v(image, mask=None) - Find the vertical edges of an image using the Prewitt transform.
+cucim.skimage.filters.rank_order(image) - Return an image of the same shape where each pixel is the
+cucim.skimage.filters.ridges.check_nD(array, ndim, arg_name='image') - Verify an array meets the desired ndims and array isn't empty.
+cucim.skimage.filters.ridges.frangi(image, sigmas=range(1, 10, 2), scale_range=None, scale_step=None, alpha=0.5, beta=0.5, gamma=None, black_ridges=True, mode='reflect', cval=0) - Filter an image with the Frangi vesselness filter.
+cucim.skimage.filters.ridges.hessian(image, sigmas=range(1, 10, 2), scale_range=None, scale_step=None, alpha=0.5, beta=0.5, gamma=15, black_ridges=True, mode='reflect', cval=0) - Filter an image with the Hybrid Hessian filter.
+cucim.skimage.filters.ridges.hessian_matrix(image, sigma=1, mode='constant', cval=0, order='rc', use_gaussian_derivatives=None) - Compute the Hessian matrix.
+cucim.skimage.filters.ridges.hessian_matrix_eigvals(H_elems) - Compute eigenvalues of Hessian matrix.
+cucim.skimage.filters.ridges.meijering(image, sigmas=range(1, 10, 2), alpha=None, black_ridges=True, mode='reflect', cval=0) - Filter an image with the Meijering neuriteness filter.
+cucim.skimage.filters.ridges.sato(image, sigmas=range(1, 10, 2), black_ridges=True, mode='reflect', cval=0) - Filter an image with the Sato tubeness filter.
+cucim.skimage.filters.roberts(image, mask=None) - Find the edge magnitude using Roberts' cross operator.
+cucim.skimage.filters.roberts_neg_diag(image, mask=None) - Find the cross edges of an image using the Roberts' Cross operator.
+cucim.skimage.filters.roberts_pos_diag(image, mask=None) - Find the cross edges of an image using Roberts' cross operator.
+cucim.skimage.filters.sato(image, sigmas=range(1, 10, 2), black_ridges=True, mode='reflect', cval=0) - Filter an image with the Sato tubeness filter.
+cucim.skimage.filters.scharr(image, mask=None, *, axis=None, mode='reflect', cval=0.0) - Find the edge magnitude using the Scharr transform.
+cucim.skimage.filters.scharr_h(image, mask=None) - Find the horizontal edges of an image using the Scharr transform.
+cucim.skimage.filters.scharr_v(image, mask=None) - Find the vertical edges of an image using the Scharr transform.
+cucim.skimage.filters.sobel(image, mask=None, *, axis=None, mode='reflect', cval=0.0) - Find edges in an image using the Sobel filter.
+cucim.skimage.filters.sobel_h(image, mask=None) - Find the horizontal edges of an image using the Sobel transform.
+cucim.skimage.filters.sobel_v(image, mask=None) - Find the vertical edges of an image using the Sobel transform.
+cucim.skimage.filters.threshold_isodata(image=None, nbins=256, return_all=False, *, hist=None) - Return threshold value(s) based on ISODATA method.
+cucim.skimage.filters.threshold_li(image, *, tolerance=None, initial_guess=None, iter_callback=None) - Compute threshold value by Li's iterative Minimum Cross Entropy method.
+cucim.skimage.filters.threshold_local(image, block_size=3, method='gaussian', offset=0, mode='reflect', param=None, cval=0) - Compute a threshold mask image based on local pixel neighborhood.
+cucim.skimage.filters.threshold_mean(image) - Return threshold value based on the mean of grayscale values.
+cucim.skimage.filters.threshold_minimum(image=None, nbins=256, max_num_iter=10000, *, hist=None) - Return threshold value based on minimum method.
+cucim.skimage.filters.threshold_multiotsu(image=None, classes=3, nbins=256, *, hist=None) - Generate `classes`-1 threshold values to divide gray levels in `image`,
+cucim.skimage.filters.threshold_niblack(image, window_size=15, k=0.2) - Applies Niblack local threshold to an array.
+cucim.skimage.filters.threshold_otsu(image=None, nbins=256, *, hist=None) - Return threshold value based on Otsu's method.
+cucim.skimage.filters.threshold_sauvola(image, window_size=15, k=0.2, r=None) - Applies Sauvola local threshold to an array. Sauvola is a
+cucim.skimage.filters.threshold_triangle(image, nbins=256) - Return threshold value based on the triangle algorithm.
+cucim.skimage.filters.threshold_yen(image=None, nbins=256, *, hist=None) - Return threshold value based on Yen's method.
+cucim.skimage.filters.thresholding.apply_hysteresis_threshold(image, low, high) - Apply hysteresis thresholding to ``image``.
+cucim.skimage.filters.thresholding.threshold_isodata(image=None, nbins=256, return_all=False, *, hist=None) - Return threshold value(s) based on ISODATA method.
+cucim.skimage.filters.thresholding.threshold_li(image, *, tolerance=None, initial_guess=None, iter_callback=None) - Compute threshold value by Li's iterative Minimum Cross Entropy method.
+cucim.skimage.filters.thresholding.threshold_local(image, block_size=3, method='gaussian', offset=0, mode='reflect', param=None, cval=0) - Compute a threshold mask image based on local pixel neighborhood.
+cucim.skimage.filters.thresholding.threshold_mean(image) - Return threshold value based on the mean of grayscale values.
+cucim.skimage.filters.thresholding.threshold_minimum(image=None, nbins=256, max_num_iter=10000, *, hist=None) - Return threshold value based on minimum method.
+cucim.skimage.filters.thresholding.threshold_multiotsu(image=None, classes=3, nbins=256, *, hist=None) - Generate `classes`-1 threshold values to divide gray levels in `image`,
+cucim.skimage.filters.thresholding.threshold_niblack(image, window_size=15, k=0.2) - Applies Niblack local threshold to an array.
+cucim.skimage.filters.thresholding.threshold_otsu(image=None, nbins=256, *, hist=None) - Return threshold value based on Otsu's method.
+cucim.skimage.filters.thresholding.threshold_sauvola(image, window_size=15, k=0.2, r=None) - Applies Sauvola local threshold to an array. Sauvola is a
+cucim.skimage.filters.thresholding.threshold_triangle(image, nbins=256) - Return threshold value based on the triangle algorithm.
+cucim.skimage.filters.thresholding.threshold_yen(image=None, nbins=256, *, hist=None) - Return threshold value based on Yen's method.
+cucim.skimage.filters.thresholding.try_all_threshold(image, figsize=(8, 5), verbose=True) - Returns a figure comparing the outputs of different thresholding methods.
+cucim.skimage.filters.try_all_threshold(image, figsize=(8, 5), verbose=True) - Returns a figure comparing the outputs of different thresholding methods.
+cucim.skimage.filters.unsharp_mask(image, radius=1.0, amount=1.0, preserve_range=False, *, channel_axis=None) - Unsharp masking filter.
+cucim.skimage.filters.wiener(data, impulse_response=None, filter_params=None, K=0.25, predefined_filter=None) - Minimum Mean Square Error (Wiener) inverse filter.
+cucim.skimage.filters.window(window_type, shape, warp_kwargs=None) - Return an n-dimensional window of a given size and dimensionality.
+cucim.skimage.measure.approximate_polygon(coords, tolerance) - Approximate a polygonal chain with the specified tolerance.
+cucim.skimage.measure.block.block_reduce(image, block_size=2, func=<function sum at 0x7cc2d5f52a20>, cval=0, func_kwargs=None) - Downsample image by applying function `func` to local blocks.
+cucim.skimage.measure.block.pad(array, pad_width, mode='constant', **kwargs) - Pads an array with specified widths and values.
+cucim.skimage.measure.block.view_as_blocks(arr_in, block_shape) - Block view of the input n-dimensional array (using re-striding).
+cucim.skimage.measure.block_reduce(image, block_size=2, func=<function sum at 0x7cc2d5f52a20>, cval=0, func_kwargs=None) - Downsample image by applying function `func` to local blocks.
+cucim.skimage.measure.blur_effect(image, h_size=11, channel_axis=None, reduce_func=<built-in function max>) - Compute a metric that indicates the strength of blur in an image
+cucim.skimage.measure.centroid(image, *, spacing=None) - Return the (weighted) centroid of an image.
+cucim.skimage.measure.entropy.shannon_entropy(image, base=2) - Calculate the Shannon entropy of an image.
+cucim.skimage.measure.euler_number(image, connectivity=None) - Calculate the Euler characteristic in binary image.
+cucim.skimage.measure.inertia_tensor(image, mu=None, *, spacing=None) - Compute the inertia tensor of the input image.
+cucim.skimage.measure.inertia_tensor_eigvals(image, mu=None, T=None, *, spacing=None) - Compute the eigenvalues of the inertia tensor of the image.
+cucim.skimage.measure.intersection_coeff(image0_mask, image1_mask, mask=None) - Fraction of a channel's segmented binary mask that overlaps with a
+cucim.skimage.measure.label(label_image, background=None, return_num=False, connectivity=None) - Label connected regions of an integer array.
+cucim.skimage.measure.manders_coloc_coeff(image0, image1_mask, mask=None) - Manders' colocalization coefficient between two channels.
+cucim.skimage.measure.manders_overlap_coeff(image0, image1, mask=None) - Manders' overlap coefficient
+cucim.skimage.measure.moments(image, order=3, *, spacing=None) - Calculate all raw image moments up to a certain order.
+cucim.skimage.measure.moments_central(image, center=None, order=3, *, spacing=None, **kwargs) - Calculate all central image moments up to a certain order.
+cucim.skimage.measure.moments_coords(coords, order=3) - Calculate all raw image moments up to a certain order.
+cucim.skimage.measure.moments_coords_central(coords, center=None, order=3) - Calculate all central image moments up to a certain order.
+cucim.skimage.measure.moments_hu(nu) - Calculate Hu's set of image moments (2D-only).
+cucim.skimage.measure.moments_normalized(mu, order=3, spacing=None) - Calculate all normalized central image moments up to a certain order.
+cucim.skimage.measure.pearson_corr_coeff(image0, image1, mask=None) - Calculate Pearson's Correlation Coefficient between pixel intensities
+cucim.skimage.measure.perimeter(image, neighborhood=4) - Calculate total perimeter of all objects in binary image.
+cucim.skimage.measure.perimeter_crofton(image, directions=4) - Calculate total Crofton perimeter of all objects in binary image.
+cucim.skimage.measure.profile.profile_line(image, src, dst, linewidth=1, order=None, mode='reflect', cval=0.0, *, reduce_func=<function mean at 0x7cc2d5f83880>) - Return the intensity profile of an image measured along a scan line.
+cucim.skimage.measure.profile_line(image, src, dst, linewidth=1, order=None, mode='reflect', cval=0.0, *, reduce_func=<function mean at 0x7cc2d5f83880>) - Return the intensity profile of an image measured along a scan line.
+cucim.skimage.measure.regionprops(label_image, intensity_image=None, cache=True, *, extra_properties=None, spacing=None) - Measure properties of labeled image regions.
+cucim.skimage.measure.regionprops_table(label_image, intensity_image=None, properties=('label', 'bbox'), *, cache=True, separator='-', extra_properties=None, spacing=None, batch_processing=True) - Compute image properties and return them as a pandas-compatible table.
+cucim.skimage.measure.shannon_entropy(image, base=2) - Calculate the Shannon entropy of an image.
+cucim.skimage.measure.subdivide_polygon(coords, degree=2, preserve_ends=False) - Subdivision of polygonal curves using B-Splines.
+cucim.skimage.metrics.adapted_rand_error(image_true=None, image_test=None, *, table=None, ignore_labels=(0,), alpha=0.5) - Compute Adapted Rand error as defined by the SNEMI3D contest. [1]_
+cucim.skimage.metrics.contingency_table(im_true, im_test, *, ignore_labels=None, normalize=False, sparse_type='matrix') - Return the contingency table for all regions in matched segmentations.
+cucim.skimage.metrics.mean_squared_error(image0, image1) - Compute the mean-squared error between two images.
+cucim.skimage.metrics.normalized_mutual_information(image0, image1, *, bins=100) - Compute the normalized mutual information (NMI).
+cucim.skimage.metrics.normalized_root_mse(image_true, image_test, *, normalization='euclidean') - Compute the normalized root mean-squared error (NRMSE) between two
+cucim.skimage.metrics.peak_signal_noise_ratio(image_true, image_test, *, data_range=None) - Compute the peak signal to noise ratio (PSNR) for an image.
+cucim.skimage.metrics.simple_metrics.mean_squared_error(image0, image1) - Compute the mean-squared error between two images.
+cucim.skimage.metrics.simple_metrics.normalized_mutual_information(image0, image1, *, bins=100) - Compute the normalized mutual information (NMI).
+cucim.skimage.metrics.simple_metrics.normalized_root_mse(image_true, image_test, *, normalization='euclidean') - Compute the normalized root mean-squared error (NRMSE) between two
+cucim.skimage.metrics.simple_metrics.peak_signal_noise_ratio(image_true, image_test, *, data_range=None) - Compute the peak signal to noise ratio (PSNR) for an image.
+cucim.skimage.metrics.structural_similarity(im1, im2, *, win_size=None, gradient=False, data_range=None, channel_axis=None, gaussian_weights=False, full=False, **kwargs) - Compute the mean structural similarity index between two images.
+cucim.skimage.metrics.variation_of_information(image0=None, image1=None, *, table=None, ignore_labels=()) - Return symmetric conditional entropies associated with the VI. [1]_
+cucim.skimage.morphology.ball(radius, dtype=<class 'numpy.uint8'>, *, strict_radius=True, decomposition=None) - Generates a ball-shaped footprint.
+cucim.skimage.morphology.binary.binary_closing(image, footprint=None, out=None, *, mode='ignore') - Return fast binary morphological closing of an image.
+cucim.skimage.morphology.binary.binary_dilation(image, footprint=None, out=None, *, mode='ignore') - Return fast binary morphological dilation of an image.
+cucim.skimage.morphology.binary.binary_erosion(image, footprint=None, out=None, *, mode='ignore') - Return fast binary morphological erosion of an image.
+cucim.skimage.morphology.binary.binary_opening(image, footprint=None, out=None, *, mode='ignore') - Return fast binary morphological opening of an image.
+cucim.skimage.morphology.binary.default_footprint(func) - Decorator to add a default footprint to morphology functions.
+cucim.skimage.morphology.binary.pad_footprint(footprint, *, pad_end=True) - Pad the footprint to an odd size along each dimension.
+cucim.skimage.morphology.binary_closing(image, footprint=None, out=None, *, mode='ignore') - Return fast binary morphological closing of an image.
+cucim.skimage.morphology.binary_dilation(image, footprint=None, out=None, *, mode='ignore') - Return fast binary morphological dilation of an image.
+cucim.skimage.morphology.binary_erosion(image, footprint=None, out=None, *, mode='ignore') - Return fast binary morphological erosion of an image.
+cucim.skimage.morphology.binary_opening(image, footprint=None, out=None, *, mode='ignore') - Return fast binary morphological opening of an image.
+cucim.skimage.morphology.black_tophat(image, footprint=None, out=None, *, mode='reflect', cval=0.0) - Return black top hat of an image.
+cucim.skimage.morphology.closing(image, footprint=None, out=None, *, mode='reflect', cval=0.0) - Return grayscale morphological closing of an image.
+cucim.skimage.morphology.convex_hull.convex_hull_image(image, offset_coordinates=True, tolerance=1e-10, include_borders=True, *, omit_empty_coords_check=False, float64_computation=True, cpu_fallback_threshold=None) - Compute the convex hull image of a binary image.
+cucim.skimage.morphology.convex_hull.convex_hull_object(image, *, connectivity=2, float64_computation=False, cpu_fallback_threshold=None) - Compute the convex hull image of individual objects in a binary image.
+cucim.skimage.morphology.convex_hull_image(image, offset_coordinates=True, tolerance=1e-10, include_borders=True, *, omit_empty_coords_check=False, float64_computation=True, cpu_fallback_threshold=None) - Compute the convex hull image of a binary image.
+cucim.skimage.morphology.convex_hull_object(image, *, connectivity=2, float64_computation=False, cpu_fallback_threshold=None) - Compute the convex hull image of individual objects in a binary image.
+cucim.skimage.morphology.diamond(radius, dtype=<class 'numpy.uint8'>, *, decomposition=None) - Generates a flat, diamond-shaped footprint.
+cucim.skimage.morphology.dilation(image, footprint=None, out=None, shift_x=<DEPRECATED>, shift_y=<DEPRECATED>, *, mode='reflect', cval=0.0) - Return grayscale morphological dilation of an image.
+cucim.skimage.morphology.disk(radius, dtype=<class 'numpy.uint8'>, *, strict_radius=True, decomposition=None) - Generates a flat, disk-shaped footprint.
+cucim.skimage.morphology.ellipse(width, height, dtype=<class 'numpy.uint8'>, *, decomposition=None) - Generates a flat, ellipse-shaped footprint.
+cucim.skimage.morphology.erosion(image, footprint=None, out=None, shift_x=<DEPRECATED>, shift_y=<DEPRECATED>, *, mode='reflect', cval=0.0) - Return grayscale morphological erosion of an image.
+cucim.skimage.morphology.footprint_from_sequence(footprints) - Convert a footprint sequence into an equivalent ndarray.
+cucim.skimage.morphology.footprint_rectangle(shape, *, dtype=<class 'numpy.uint8'>, decomposition=None) - Generate a rectangular or hyper-rectangular footprint.
+cucim.skimage.morphology.footprints.ball(radius, dtype=<class 'numpy.uint8'>, *, strict_radius=True, decomposition=None) - Generates a ball-shaped footprint.
+cucim.skimage.morphology.footprints.diamond(radius, dtype=<class 'numpy.uint8'>, *, decomposition=None) - Generates a flat, diamond-shaped footprint.
+cucim.skimage.morphology.footprints.disk(radius, dtype=<class 'numpy.uint8'>, *, strict_radius=True, decomposition=None) - Generates a flat, disk-shaped footprint.
+cucim.skimage.morphology.footprints.ellipse(width, height, dtype=<class 'numpy.uint8'>, *, decomposition=None) - Generates a flat, ellipse-shaped footprint.
+cucim.skimage.morphology.footprints.footprint_from_sequence(footprints) - Convert a footprint sequence into an equivalent ndarray.
+cucim.skimage.morphology.footprints.footprint_rectangle(shape, *, dtype=<class 'numpy.uint8'>, decomposition=None) - Generate a rectangular or hyper-rectangular footprint.
+cucim.skimage.morphology.footprints.mirror_footprint(footprint) - Mirror each dimension in the footprint.
+cucim.skimage.morphology.footprints.octagon(m, n, dtype=<class 'numpy.uint8'>, *, decomposition=None) - Generates an octagon shaped footprint.
+cucim.skimage.morphology.footprints.octahedron(radius, dtype=<class 'numpy.uint8'>, *, decomposition=None) - Generates a octahedron-shaped footprint.
+cucim.skimage.morphology.footprints.pad_footprint(footprint, *, pad_end=True) - Pad the footprint to an odd size along each dimension.
+cucim.skimage.morphology.footprints.star(a, dtype=<class 'numpy.uint8'>) - Generates a star shaped footprint.
+cucim.skimage.morphology.gray.black_tophat(image, footprint=None, out=None, *, mode='reflect', cval=0.0) - Return black top hat of an image.
+cucim.skimage.morphology.gray.closing(image, footprint=None, out=None, *, mode='reflect', cval=0.0) - Return grayscale morphological closing of an image.
+cucim.skimage.morphology.gray.dilation(image, footprint=None, out=None, shift_x=<DEPRECATED>, shift_y=<DEPRECATED>, *, mode='reflect', cval=0.0) - Return grayscale morphological dilation of an image.
+cucim.skimage.morphology.gray.erosion(image, footprint=None, out=None, shift_x=<DEPRECATED>, shift_y=<DEPRECATED>, *, mode='reflect', cval=0.0) - Return grayscale morphological erosion of an image.
+cucim.skimage.morphology.gray.opening(image, footprint=None, out=None, *, mode='reflect', cval=0.0) - Return grayscale morphological opening of an image.
+cucim.skimage.morphology.gray.white_tophat(image, footprint=None, out=None, *, mode='reflect', cval=0.0) - Return white top hat of an image.
+cucim.skimage.morphology.grayreconstruct.reconstruction(seed, mask, method='dilation', footprint=None, offset=None) - Perform a morphological reconstruction of an image.
+cucim.skimage.morphology.isotropic.distance_transform_edt(image, sampling=None, return_distances=True, return_indices=False, distances=None, indices=None, *, block_params=None, float64_distances=False) - Exact Euclidean distance transform.
+cucim.skimage.morphology.isotropic.isotropic_closing(image, radius, out=None, spacing=None) - Return binary morphological closing of an image.
+cucim.skimage.morphology.isotropic.isotropic_dilation(image, radius, out=None, spacing=None) - Return binary morphological dilation of an image.
+cucim.skimage.morphology.isotropic.isotropic_erosion(image, radius, out=None, spacing=None) - Return binary morphological erosion of an image.
+cucim.skimage.morphology.isotropic.isotropic_opening(image, radius, out=None, spacing=None) - Return binary morphological opening of an image.
+cucim.skimage.morphology.isotropic_closing(image, radius, out=None, spacing=None) - Return binary morphological closing of an image.
+cucim.skimage.morphology.isotropic_dilation(image, radius, out=None, spacing=None) - Return binary morphological dilation of an image.
+cucim.skimage.morphology.isotropic_erosion(image, radius, out=None, spacing=None) - Return binary morphological erosion of an image.
+cucim.skimage.morphology.isotropic_opening(image, radius, out=None, spacing=None) - Return binary morphological opening of an image.
+cucim.skimage.morphology.medial_axis(image, mask=None, return_distance=False, *, rng=None) - Compute the medial axis transform of a binary image.
+cucim.skimage.morphology.misc.default_footprint(func) - Decorator to add a default footprint to morphology functions.
+cucim.skimage.morphology.misc.remove_small_holes(ar, area_threshold=64, connectivity=1, *, out=None) - Remove contiguous holes smaller than the specified size.
+cucim.skimage.morphology.misc.remove_small_objects(ar, min_size=64, connectivity=1, *, out=None) - Remove objects smaller than the specified size.
+cucim.skimage.morphology.octagon(m, n, dtype=<class 'numpy.uint8'>, *, decomposition=None) - Generates an octagon shaped footprint.
+cucim.skimage.morphology.octahedron(radius, dtype=<class 'numpy.uint8'>, *, decomposition=None) - Generates a octahedron-shaped footprint.
+cucim.skimage.morphology.opening(image, footprint=None, out=None, *, mode='reflect', cval=0.0) - Return grayscale morphological opening of an image.
+cucim.skimage.morphology.reconstruction(seed, mask, method='dilation', footprint=None, offset=None) - Perform a morphological reconstruction of an image.
+cucim.skimage.morphology.remove_small_holes(ar, area_threshold=64, connectivity=1, *, out=None) - Remove contiguous holes smaller than the specified size.
+cucim.skimage.morphology.remove_small_objects(ar, min_size=64, connectivity=1, *, out=None) - Remove objects smaller than the specified size.
+cucim.skimage.morphology.star(a, dtype=<class 'numpy.uint8'>) - Generates a star shaped footprint.
+cucim.skimage.morphology.thin(image, max_num_iter=None) - Perform morphological thinning of a binary image.
+cucim.skimage.morphology.white_tophat(image, footprint=None, out=None, *, mode='reflect', cval=0.0) - Return white top hat of an image.
+cucim.skimage.registration.optical_flow_ilk(reference_image, moving_image, *, radius=7, num_warp=10, gaussian=False, prefilter=False, dtype=<class 'numpy.float32'>) - Coarse to fine optical flow estimator.
+cucim.skimage.registration.optical_flow_tvl1(reference_image, moving_image, *, attachment=15, tightness=0.3, num_warp=5, num_iter=10, tol=0.0001, prefilter=False, dtype=<class 'numpy.float32'>) - Coarse to fine optical flow estimator.
+cucim.skimage.registration.phase_cross_correlation(reference_image, moving_image, *, upsample_factor=1, space='real', disambiguate=False, reference_mask=None, moving_mask=None, overlap_ratio=0.3, normalization='phase') - Efficient subpixel image translation registration by cross-correlation.
+cucim.skimage.restoration.calibrate_denoiser(image, denoise_function, denoise_parameters, *, stride=4, approximate_loss=True, extra_output=False) - Calibrate a denoising function and return optimal J-invariant version.
+cucim.skimage.restoration.deconvolution.richardson_lucy(image, psf, num_iter=50, clip=True, filter_epsilon=None) - Richardson-Lucy deconvolution.
+cucim.skimage.restoration.deconvolution.unsupervised_wiener(image, psf, reg=None, user_params=None, is_real=True, clip=True, *, rng=None) - Unsupervised Wiener-Hunt deconvolution.
+cucim.skimage.restoration.deconvolution.wiener(image, psf, balance, reg=None, is_real=True, clip=True) - Wiener-Hunt deconvolution
+cucim.skimage.restoration.denoise_invariant(image, denoise_function, *, stride=4, masks=None, denoiser_kwargs=None) - Apply a J-invariant version of `denoise_function`.
+cucim.skimage.restoration.denoise_tv_chambolle(image, weight=0.1, eps=0.0002, max_num_iter=200, *, channel_axis=None) - Perform total variation denoising in nD.
+cucim.skimage.restoration.j_invariant.calibrate_denoiser(image, denoise_function, denoise_parameters, *, stride=4, approximate_loss=True, extra_output=False) - Calibrate a denoising function and return optimal J-invariant version.
+cucim.skimage.restoration.j_invariant.denoise_invariant(image, denoise_function, *, stride=4, masks=None, denoiser_kwargs=None) - Apply a J-invariant version of `denoise_function`.
+cucim.skimage.restoration.j_invariant.img_as_float(image, force_copy=False) - Convert an image to floating point format.
+cucim.skimage.restoration.j_invariant.mean_squared_error(image0, image1) - Compute the mean-squared error between two images.
+cucim.skimage.restoration.richardson_lucy(image, psf, num_iter=50, clip=True, filter_epsilon=None) - Richardson-Lucy deconvolution.
+cucim.skimage.restoration.uft.image_quad_norm(inarray) - Return the quadratic norm of images in Fourier space.
+cucim.skimage.restoration.uft.ir2tf(imp_resp, shape, dim=None, is_real=True) - Compute the transfer function of an impulse response (IR).
+cucim.skimage.restoration.uft.laplacian(ndim, shape, is_real=True, *, dtype=None) - Return the transfer function of the Laplacian.
+cucim.skimage.restoration.uft.ufft2(inarray) - 2-dimensional unitary Fourier transform.
+cucim.skimage.restoration.uft.ufftn(inarray, dim=None) - N-dimensional unitary Fourier transform.
+cucim.skimage.restoration.uft.uifft2(inarray) - 2-dimensional inverse unitary Fourier transform.
+cucim.skimage.restoration.uft.uifftn(inarray, dim=None) - N-dimensional unitary inverse Fourier transform.
+cucim.skimage.restoration.uft.uirfft2(inarray, shape=None) - 2-dimensional inverse real unitary Fourier transform.
+cucim.skimage.restoration.uft.uirfftn(inarray, dim=None, shape=None) - N-dimensional inverse real unitary Fourier transform.
+cucim.skimage.restoration.uft.urfft2(inarray) - 2-dimensional real unitary Fourier transform
+cucim.skimage.restoration.uft.urfftn(inarray, dim=None) - N-dimensional real unitary Fourier transform.
+cucim.skimage.restoration.unsupervised_wiener(image, psf, reg=None, user_params=None, is_real=True, clip=True, *, rng=None) - Unsupervised Wiener-Hunt deconvolution.
+cucim.skimage.restoration.wiener(image, psf, balance, reg=None, is_real=True, clip=True) - Wiener-Hunt deconvolution
+cucim.skimage.segmentation.boundaries.dilation(image, footprint=None, out=None, shift_x=<DEPRECATED>, shift_y=<DEPRECATED>, *, mode='reflect', cval=0.0) - Return grayscale morphological dilation of an image.
+cucim.skimage.segmentation.boundaries.erosion(image, footprint=None, out=None, shift_x=<DEPRECATED>, shift_y=<DEPRECATED>, *, mode='reflect', cval=0.0) - Return grayscale morphological erosion of an image.
+cucim.skimage.segmentation.boundaries.find_boundaries(label_img, connectivity=1, mode='thick', background=0) - Return bool array where boundaries between labeled regions are True.
+cucim.skimage.segmentation.boundaries.footprint_rectangle(shape, *, dtype=<class 'numpy.uint8'>, decomposition=None) - Generate a rectangular or hyper-rectangular footprint.
+cucim.skimage.segmentation.boundaries.gray2rgb(image, *, channel_axis=-1) - Create an RGB representation of a gray-level image.
+cucim.skimage.segmentation.boundaries.img_as_float(image, force_copy=False) - Convert an image to floating point format.
+cucim.skimage.segmentation.boundaries.mark_boundaries(image, label_img, color=(1, 1, 0), outline_color=None, mode='outer', background_label=0, *, order=3) - Return image with boundaries between labeled regions highlighted.
+cucim.skimage.segmentation.chan_vese(image, mu=0.25, lambda1=1.0, lambda2=1.0, tol=0.001, max_num_iter=500, dt=0.5, init_level_set='checkerboard', extended_output=False) - Chan-Vese segmentation algorithm.
+cucim.skimage.segmentation.checkerboard_level_set(image_shape, square_size=5) - Create a checkerboard level set with binary values.
+cucim.skimage.segmentation.clear_border(labels, buffer_size=0, bgval=0, mask=None, *, out=None) - Clear objects connected to the label image border.
+cucim.skimage.segmentation.disk_level_set(image_shape, *, center=None, radius=None) - Create a disk level set with binary values.
+cucim.skimage.segmentation.expand_labels(label_image, distance=1, spacing=1) - Expand labels in label image by ``distance`` pixels without overlapping.
+cucim.skimage.segmentation.find_boundaries(label_img, connectivity=1, mode='thick', background=0) - Return bool array where boundaries between labeled regions are True.
+cucim.skimage.segmentation.inverse_gaussian_gradient(image, alpha=100.0, sigma=5.0) - Inverse of gradient magnitude.
+cucim.skimage.segmentation.join_segmentations(s1, s2, return_mapping: bool = False) - Return the join of the two input segmentations.
+cucim.skimage.segmentation.mark_boundaries(image, label_img, color=(1, 1, 0), outline_color=None, mode='outer', background_label=0, *, order=3) - Return image with boundaries between labeled regions highlighted.
+cucim.skimage.segmentation.morphological_chan_vese(image, num_iter, init_level_set='checkerboard', smoothing=1, lambda1=1, lambda2=1, iter_callback=<function <lambda> at 0x7cc0701253a0>) - Morphological Active Contours without Edges (MorphACWE)
+cucim.skimage.segmentation.morphological_geodesic_active_contour(gimage, num_iter, init_level_set='disk', smoothing=1, threshold='auto', balloon=0, iter_callback=<function <lambda> at 0x7cc0701254e0>) - Morphological Geodesic Active Contours (MorphGAC).
+cucim.skimage.segmentation.morphsnakes.checkerboard_level_set(image_shape, square_size=5) - Create a checkerboard level set with binary values.
+cucim.skimage.segmentation.morphsnakes.disk_level_set(image_shape, *, center=None, radius=None) - Create a disk level set with binary values.
+cucim.skimage.segmentation.morphsnakes.inverse_gaussian_gradient(image, alpha=100.0, sigma=5.0) - Inverse of gradient magnitude.
+cucim.skimage.segmentation.morphsnakes.morphological_chan_vese(image, num_iter, init_level_set='checkerboard', smoothing=1, lambda1=1, lambda2=1, iter_callback=<function <lambda> at 0x7cc0701253a0>) - Morphological Active Contours without Edges (MorphACWE)
+cucim.skimage.segmentation.morphsnakes.morphological_geodesic_active_contour(gimage, num_iter, init_level_set='disk', smoothing=1, threshold='auto', balloon=0, iter_callback=<function <lambda> at 0x7cc0701254e0>) - Morphological Geodesic Active Contours (MorphGAC).
+cucim.skimage.segmentation.random_walker(data, labels, beta=130, mode='cg_j', tol=0.001, copy=True, return_full_prob=False, spacing=None, *, prob_tol=0.001, channel_axis=None) - Random walker algorithm for segmentation from markers.
+cucim.skimage.segmentation.random_walker_segmentation.img_as_float(image, force_copy=False) - Convert an image to floating point format.
+cucim.skimage.segmentation.random_walker_segmentation.random_walker(data, labels, beta=130, mode='cg_j', tol=0.001, copy=True, return_full_prob=False, spacing=None, *, prob_tol=0.001, channel_axis=None) - Random walker algorithm for segmentation from markers.
+cucim.skimage.segmentation.relabel_sequential(label_field, offset=1) - Relabel arbitrary labels to {`offset`, ... `offset` + number_of_labels}.
+cucim.skimage.transform.AffineTransform(matrix=None, scale=None, rotation=None, shear=None, translation=None, *, dimensionality=2, xp=<module 'cupy' from '/home/zhangshi/miniconda3/envs/audioal/lib/python3.12/site-packages/cupy/__init__.py'>) - Affine transformation.
+cucim.skimage.transform.AffineTransform.dimensionality - The dimensionality of the transformation.
+cucim.skimage.transform.AffineTransform.estimate(self, src, dst, weights=None) - Estimate the transformation from a set of corresponding points.
+cucim.skimage.transform.AffineTransform.inverse(self, coords) - Apply inverse transformation.
+cucim.skimage.transform.AffineTransform.residuals(self, src, dst) - Determine residuals of transformed destination coordinates.
+cucim.skimage.transform.AffineTransform.rotation
+cucim.skimage.transform.AffineTransform.scale
+cucim.skimage.transform.AffineTransform.shear
+cucim.skimage.transform.AffineTransform.translation
+cucim.skimage.transform.EssentialMatrixTransform(rotation=None, translation=None, matrix=None, *, dimensionality=2, xp=<module 'cupy' from '/home/zhangshi/miniconda3/envs/audioal/lib/python3.12/site-packages/cupy/__init__.py'>) - Essential matrix transformation.
+cucim.skimage.transform.EssentialMatrixTransform.estimate(self, src, dst) - Estimate essential matrix using 8-point algorithm.
+cucim.skimage.transform.EssentialMatrixTransform.inverse(self, coords) - Apply inverse transformation.
+cucim.skimage.transform.EssentialMatrixTransform.residuals(self, src, dst) - Compute the Sampson distance.
+cucim.skimage.transform.EuclideanTransform(matrix=None, rotation=None, translation=None, *, dimensionality=2, xp=<module 'cupy' from '/home/zhangshi/miniconda3/envs/audioal/lib/python3.12/site-packages/cupy/__init__.py'>) - Euclidean transformation, also known as a rigid transform.
+cucim.skimage.transform.EuclideanTransform.dimensionality - The dimensionality of the transformation.
+cucim.skimage.transform.EuclideanTransform.estimate(self, src, dst) - Estimate the transformation from a set of corresponding points.
+cucim.skimage.transform.EuclideanTransform.inverse(self, coords) - Apply inverse transformation.
+cucim.skimage.transform.EuclideanTransform.residuals(self, src, dst) - Determine residuals of transformed destination coordinates.
+cucim.skimage.transform.EuclideanTransform.rotation
+cucim.skimage.transform.EuclideanTransform.translation
+cucim.skimage.transform.FundamentalMatrixTransform(matrix=None, *, dimensionality=2, xp=<module 'cupy' from '/home/zhangshi/miniconda3/envs/audioal/lib/python3.12/site-packages/cupy/__init__.py'>) - Fundamental matrix transformation.
+cucim.skimage.transform.FundamentalMatrixTransform.estimate(self, src, dst) - Estimate fundamental matrix using 8-point algorithm.
+cucim.skimage.transform.FundamentalMatrixTransform.inverse(self, coords) - Apply inverse transformation.
+cucim.skimage.transform.FundamentalMatrixTransform.residuals(self, src, dst) - Compute the Sampson distance.
+cucim.skimage.transform.PiecewiseAffineTransform() - Piecewise affine transformation.
+cucim.skimage.transform.PiecewiseAffineTransform.estimate(self, src, dst) - Estimate the transformation from a set of corresponding points.
+cucim.skimage.transform.PiecewiseAffineTransform.inverse(self, coords) - Apply inverse transformation.
+cucim.skimage.transform.PiecewiseAffineTransform.residuals(self, src, dst) - Determine residuals of transformed destination coordinates.
+cucim.skimage.transform.PolynomialTransform(params=None, *, dimensionality=2, xp=<module 'cupy' from '/home/zhangshi/miniconda3/envs/audioal/lib/python3.12/site-packages/cupy/__init__.py'>) - 2D polynomial transformation.
+cucim.skimage.transform.PolynomialTransform.estimate(self, src, dst, order=2, weights=None) - Estimate the transformation from a set of corresponding points.
+cucim.skimage.transform.PolynomialTransform.inverse(self, coords) - Apply inverse transformation.
+cucim.skimage.transform.PolynomialTransform.residuals(self, src, dst) - Determine residuals of transformed destination coordinates.
+cucim.skimage.transform.ProjectiveTransform(matrix=None, *, dimensionality=2, xp=<module 'cupy' from '/home/zhangshi/miniconda3/envs/audioal/lib/python3.12/site-packages/cupy/__init__.py'>) - Projective transformation.
+cucim.skimage.transform.ProjectiveTransform.dimensionality - The dimensionality of the transformation.
+cucim.skimage.transform.ProjectiveTransform.estimate(self, src, dst, weights=None) - Estimate the transformation from a set of corresponding points.
+cucim.skimage.transform.ProjectiveTransform.inverse(self, coords) - Apply inverse transformation.
+cucim.skimage.transform.ProjectiveTransform.residuals(self, src, dst) - Determine residuals of transformed destination coordinates.
+cucim.skimage.transform.SimilarityTransform(matrix=None, scale=None, rotation=None, translation=None, *, dimensionality=2, xp=<module 'cupy' from '/home/zhangshi/miniconda3/envs/audioal/lib/python3.12/site-packages/cupy/__init__.py'>) - Similarity transformation.
+cucim.skimage.transform.SimilarityTransform.dimensionality - The dimensionality of the transformation.
+cucim.skimage.transform.SimilarityTransform.estimate(self, src, dst) - Estimate the transformation from a set of corresponding points.
+cucim.skimage.transform.SimilarityTransform.inverse(self, coords) - Apply inverse transformation.
+cucim.skimage.transform.SimilarityTransform.residuals(self, src, dst) - Determine residuals of transformed destination coordinates.
+cucim.skimage.transform.SimilarityTransform.rotation
+cucim.skimage.transform.SimilarityTransform.scale
+cucim.skimage.transform.SimilarityTransform.translation
+cucim.skimage.transform.downscale_local_mean(image, factors, cval=0, clip=True) - Down-sample N-dimensional image by local averaging.
+cucim.skimage.transform.estimate_transform(ttype, src, dst, *args, **kwargs) - Estimate 2D geometric transformation parameters.
+cucim.skimage.transform.integral.integral_image(image, *, dtype=None) - Integral image / summed area table.
+cucim.skimage.transform.integral.integrate(ii, start, end) - Use an integral image to integrate over a given window.
+cucim.skimage.transform.integral_image(image, *, dtype=None) - Integral image / summed area table.
+cucim.skimage.transform.integrate(ii, start, end) - Use an integral image to integrate over a given window.
+cucim.skimage.transform.matrix_transform(coords, matrix) - Apply 2D matrix transform.
+cucim.skimage.transform.pyramid_expand(image, upscale=2, sigma=None, order=1, mode='reflect', cval=0, preserve_range=False, *, channel_axis=None) - Upsample and then smooth image.
+cucim.skimage.transform.pyramid_gaussian(image, max_layer=-1, downscale=2, sigma=None, order=1, mode='reflect', cval=0, preserve_range=False, *, channel_axis=None) - Yield images of the Gaussian pyramid formed by the input image.
+cucim.skimage.transform.pyramid_laplacian(image, max_layer=-1, downscale=2, sigma=None, order=1, mode='reflect', cval=0, preserve_range=False, *, channel_axis=None) - Yield images of the laplacian pyramid formed by the input image.
+cucim.skimage.transform.pyramid_reduce(image, downscale=2, sigma=None, order=1, mode='reflect', cval=0, preserve_range=False, *, channel_axis=None) - Smooth and then downsample image.
+cucim.skimage.transform.pyramids.convert_to_float(image, preserve_range) - Convert input image to float image with the appropriate range.
+cucim.skimage.transform.pyramids.gaussian(image, sigma=1, mode='nearest', cval=0, preserve_range=False, truncate=4.0, *, channel_axis=None, out=None) - Multi-dimensional Gaussian filter.
+cucim.skimage.transform.pyramids.pyramid_expand(image, upscale=2, sigma=None, order=1, mode='reflect', cval=0, preserve_range=False, *, channel_axis=None) - Upsample and then smooth image.
+cucim.skimage.transform.pyramids.pyramid_gaussian(image, max_layer=-1, downscale=2, sigma=None, order=1, mode='reflect', cval=0, preserve_range=False, *, channel_axis=None) - Yield images of the Gaussian pyramid formed by the input image.
+cucim.skimage.transform.pyramids.pyramid_laplacian(image, max_layer=-1, downscale=2, sigma=None, order=1, mode='reflect', cval=0, preserve_range=False, *, channel_axis=None) - Yield images of the laplacian pyramid formed by the input image.
+cucim.skimage.transform.pyramids.pyramid_reduce(image, downscale=2, sigma=None, order=1, mode='reflect', cval=0, preserve_range=False, *, channel_axis=None) - Smooth and then downsample image.
+cucim.skimage.transform.pyramids.resize(image, output_shape, order=None, mode='reflect', cval=0, clip=None, preserve_range=False, anti_aliasing=None, anti_aliasing_sigma=None) - Resize image to match a certain size.
+cucim.skimage.transform.rescale(image, scale, order=None, mode='reflect', cval=0, clip=None, preserve_range=False, anti_aliasing=None, anti_aliasing_sigma=None, *, channel_axis=None) - Scale image by a certain factor.
+cucim.skimage.transform.resize(image, output_shape, order=None, mode='reflect', cval=0, clip=None, preserve_range=False, anti_aliasing=None, anti_aliasing_sigma=None) - Resize image to match a certain size.
+cucim.skimage.transform.resize_local_mean(image, output_shape, grid_mode=True, preserve_range=False, *, channel_axis=None) - Resize an array with the local mean / bilinear scaling.
+cucim.skimage.transform.rotate(image, angle, resize=False, center=None, order=None, mode='constant', cval=0, clip=True, preserve_range=False) - Rotate image by a certain angle around its center.
+cucim.skimage.transform.swirl(image, center=None, strength=1, radius=100, rotation=0, output_shape=None, order=None, mode='reflect', cval=0, clip=None, preserve_range=False) - Perform a swirl transformation.
+cucim.skimage.transform.warp(image, inverse_map, map_args=None, output_shape=None, order=None, mode='constant', cval=0.0, clip=None, preserve_range=False) - Warp an image according to a given coordinate transformation.
+cucim.skimage.transform.warp_coords(coord_map, shape, dtype=<class 'numpy.float64'>) - Build the source coordinates for the output of a 2-D image warp.
+cucim.skimage.transform.warp_polar(image, center=None, *, radius=None, output_shape=None, scaling='linear', channel_axis=None, **kwargs) - Remap image to polar or log-polar coordinates space.
+cucim.skimage.util.arraycrop.crop(ar, crop_width, copy=False, order='K') - Crop array `ar` by `crop_width` along each dimension.
+cucim.skimage.util.compare.compare_absdiff(img1, img2)
+cucim.skimage.util.compare.compare_blend(img1, img2)
+cucim.skimage.util.compare.compare_images(image0, image1, *, method='diff', n_tiles=(8, 8)) - Return an image showing the differences between two images.
+cucim.skimage.util.compare.img_as_float(image, force_copy=False) - Convert an image to floating point format.
+cucim.skimage.util.compare_images(image0, image1, *, method='diff', n_tiles=(8, 8)) - Return an image showing the differences between two images.
+cucim.skimage.util.crop(ar, crop_width, copy=False, order='K') - Crop array `ar` by `crop_width` along each dimension.
+cucim.skimage.util.dtype.dtype_limits(image, clip_negative=False) - Return intensity limits, i.e. (min, max) tuple, of the image's dtype.
+cucim.skimage.util.dtype.img_as_bool(image, force_copy=False) - Convert an image to boolean format.
+cucim.skimage.util.dtype.img_as_float(image, force_copy=False) - Convert an image to floating point format.
+cucim.skimage.util.dtype.img_as_float32(image, force_copy=False) - Convert an image to single-precision (32-bit) floating point format.
+cucim.skimage.util.dtype.img_as_float64(image, force_copy=False) - Convert an image to double-precision (64-bit) floating point format.
+cucim.skimage.util.dtype.img_as_int(image, force_copy=False) - Convert an image to 16-bit signed integer format.
+cucim.skimage.util.dtype.img_as_ubyte(image, force_copy=False) - Convert an image to 8-bit unsigned integer format.
+cucim.skimage.util.dtype.img_as_uint(image, force_copy=False) - Convert an image to 16-bit unsigned integer format.
+cucim.skimage.util.dtype_limits(image, clip_negative=False) - Return intensity limits, i.e. (min, max) tuple, of the image's dtype.
+cucim.skimage.util.img_as_bool(image, force_copy=False) - Convert an image to boolean format.
+cucim.skimage.util.img_as_float(image, force_copy=False) - Convert an image to floating point format.
+cucim.skimage.util.img_as_float32(image, force_copy=False) - Convert an image to single-precision (32-bit) floating point format.
+cucim.skimage.util.img_as_float64(image, force_copy=False) - Convert an image to double-precision (64-bit) floating point format.
+cucim.skimage.util.img_as_int(image, force_copy=False) - Convert an image to 16-bit signed integer format.
+cucim.skimage.util.img_as_ubyte(image, force_copy=False) - Convert an image to 8-bit unsigned integer format.
+cucim.skimage.util.img_as_uint(image, force_copy=False) - Convert an image to 16-bit unsigned integer format.
+cucim.skimage.util.invert(image, signed_float=False) - Invert an image.
+cucim.skimage.util.map_array(input_arr, input_vals, output_vals, out=None) - Map values from input array from input_vals to output_vals.
+cucim.skimage.util.montage(arr_in, fill='mean', rescale_intensity=False, grid_shape=None, padding_width=0, *, channel_axis=None, square_grid_default=True) - Create a montage of several single- or multichannel images.
+cucim.skimage.util.noise.random_noise(image, mode='gaussian', rng=None, clip=True, **kwargs) - Function to add random noise of various types to a floating-point image.
+cucim.skimage.util.random_noise(image, mode='gaussian', rng=None, clip=True, **kwargs) - Function to add random noise of various types to a floating-point image.
+cucim.skimage.util.shape.view_as_blocks(arr_in, block_shape) - Block view of the input n-dimensional array (using re-striding).
+cucim.skimage.util.shape.view_as_windows(arr_in, window_shape, step=1) - Rolling window view of the input n-dimensional array.
+cucim.skimage.util.view_as_blocks(arr_in, block_shape) - Block view of the input n-dimensional array (using re-striding).
+cucim.skimage.util.view_as_windows(arr_in, window_shape, step=1) - Rolling window view of the input n-dimensional array.
+cucim.time.repeat(func, args=(), kwargs={}, n_repeat=10000, *, name=None, n_warmup=10, max_duration=inf, devices=None)

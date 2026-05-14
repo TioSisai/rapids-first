@@ -1,0 +1,1178 @@
+cupyx.GeneralizedUFunc(func, signature, *, name=None, doc=None, supports_batched=False, supports_out=False, signatures=None, try_fastcall_func=None) - Creates a Generalized Universal Function by wrapping a user
+cupyx.cusparse.BaseDescriptor(descriptor, get=None, destroyer=None)
+cupyx.cusparse.DnMatDescriptor(descriptor, get=None, destroyer=None)
+cupyx.cusparse.DnMatDescriptor.create(a)
+cupyx.cusparse.DnVecDescriptor(descriptor, get=None, destroyer=None)
+cupyx.cusparse.DnVecDescriptor.create(x)
+cupyx.cusparse.MatDescriptor(descriptor)
+cupyx.cusparse.MatDescriptor.create()
+cupyx.cusparse.MatDescriptor.set_mat_diag_type(self, diag_type)
+cupyx.cusparse.MatDescriptor.set_mat_fill_mode(self, fill_mode)
+cupyx.cusparse.MatDescriptor.set_mat_index_base(self, base)
+cupyx.cusparse.MatDescriptor.set_mat_type(self, typ)
+cupyx.cusparse.SpMatDescriptor(descriptor, get=None, destroyer=None)
+cupyx.cusparse.SpMatDescriptor.create(a)
+cupyx.cusparse.SpMatDescriptor.set_attribute(self, attribute, data)
+cupyx.cusparse.SpVecDescriptor(descriptor, get=None, destroyer=None)
+cupyx.cusparse.SpVecDescriptor.create(idx, x)
+cupyx.cusparse.check_availability(name)
+cupyx.cusparse.coo2csc(x)
+cupyx.cusparse.coo2csr(x)
+cupyx.cusparse.coosort(x, sort_by='r') - Sorts indices of COO-matrix in place.
+cupyx.cusparse.csc2coo(x, data, indices) - Converts a CSC-matrix to COO format.
+cupyx.cusparse.csc2csr(x)
+cupyx.cusparse.csc2csrEx2(x)
+cupyx.cusparse.csc2dense(x, out=None) - Converts CSC-matrix to a dense matrix.
+cupyx.cusparse.cscsort(x) - Sorts indices of CSC-matrix in place.
+cupyx.cusparse.csr2coo(x, data, indices) - Converts a CSR-matrix to COO format.
+cupyx.cusparse.csr2csc(x)
+cupyx.cusparse.csr2cscEx2(x)
+cupyx.cusparse.csr2csr_compress(x, tol)
+cupyx.cusparse.csr2dense(x, out=None) - Converts CSR-matrix to a dense matrix.
+cupyx.cusparse.csrgeam(a, b, alpha=1, beta=1) - Matrix-matrix addition.
+cupyx.cusparse.csrgeam2(a, b, alpha=1, beta=1) - Matrix-matrix addition.
+cupyx.cusparse.csrgemm(a, b, transa=False, transb=False) - Matrix-matrix product for CSR-matrix.
+cupyx.cusparse.csrgemm2(a, b, d=None, alpha=1, beta=1) - Matrix-matrix product for CSR-matrix.
+cupyx.cusparse.csrilu02(a, level_info=False) - Computes incomplete LU decomposition for a sparse square matrix.
+cupyx.cusparse.csrmm(a, b, c=None, alpha=1, beta=0, transa=False) - Matrix-matrix product for a CSR-matrix and a dense matrix.
+cupyx.cusparse.csrmm2(a, b, c=None, alpha=1.0, beta=0.0, transa=False, transb=False) - Matrix-matrix product for a CSR-matrix and a dense matrix.
+cupyx.cusparse.csrmv(a, x, y=None, alpha=1, beta=0, transa=False) - Matrix-vector product for a CSR-matrix and a dense vector.
+cupyx.cusparse.csrmvEx(a, x, y=None, alpha=1, beta=0, merge_path=True) - Matrix-vector product for a CSR-matrix and a dense vector.
+cupyx.cusparse.csrmvExIsAligned(a, x, y=None) - Check if the pointers of arguments for csrmvEx are aligned or not
+cupyx.cusparse.csrsm2(a, b, alpha=1.0, lower=True, unit_diag=False, transa=False, blocking=True, level_info=False) - Solves a sparse triangular linear system op(a) * x = alpha * b.
+cupyx.cusparse.csrsort(x) - Sorts indices of CSR-matrix in place.
+cupyx.cusparse.dense2csc(x) - Converts a dense matrix in CSC format.
+cupyx.cusparse.dense2csr(x) - Converts a dense matrix in CSR format.
+cupyx.cusparse.denseToSparse(x, format='csr') - Converts a dense matrix into a CSR, CSC or COO format.
+cupyx.cusparse.getVersion() -> 'int'
+cupyx.cusparse.sparseToDense(x, out=None) - Converts sparse matrix to a dense matrix.
+cupyx.cusparse.spgemm(a, b, alpha=1) - Matrix-matrix product for CSR-matrix.
+cupyx.cusparse.spmm(a, b, c=None, alpha=1, beta=0, transa=False, transb=False) - Multiplication of sparse matrix and dense matrix.
+cupyx.cusparse.spmv(a, x, y=None, alpha=1, beta=0, transa=False) - Multiplication of sparse matrix and dense vector.
+cupyx.cusparse.spsm(a, b, alpha=1.0, lower=True, unit_diag=False, transa=False) - Solves a sparse triangular linear system op(a) * x = alpha * op(b).
+cupyx.distributed.NCCLBackend(n_devices, rank, host='127.0.0.1', port=13333, use_mpi=False) - Interface that uses NVIDIA's NCCL to perform communications.
+cupyx.distributed.NCCLBackend.all_gather(self, in_array, out_array, count, stream=None) - Performs an all gather operation.
+cupyx.distributed.NCCLBackend.all_reduce(self, in_array, out_array, op='sum', stream=None) - Performs an all reduce operation.
+cupyx.distributed.NCCLBackend.all_to_all(self, in_array, out_array, stream=None) - Performs an all to all operation.
+cupyx.distributed.NCCLBackend.barrier(self) - Performs a barrier operation.
+cupyx.distributed.NCCLBackend.broadcast(self, in_out_array, root=0, stream=None) - Performs a broadcast operation.
+cupyx.distributed.NCCLBackend.gather(self, in_array, out_array, root=0, stream=None) - Performs a gather operation.
+cupyx.distributed.NCCLBackend.recv(self, out_array, peer, stream=None) - Performs a receive operation.
+cupyx.distributed.NCCLBackend.reduce(self, in_array, out_array, root=0, op='sum', stream=None) - Performs a reduce operation.
+cupyx.distributed.NCCLBackend.reduce_scatter(self, in_array, out_array, count, op='sum', stream=None) - Performs a reduce scatter operation.
+cupyx.distributed.NCCLBackend.scatter(self, in_array, out_array, root=0, stream=None) - Performs a scatter operation.
+cupyx.distributed.NCCLBackend.send(self, array, peer, stream=None) - Performs a send operation.
+cupyx.distributed.NCCLBackend.send_recv(self, in_array, out_array, peer, stream=None) - Performs a send and receive operation.
+cupyx.distributed.NCCLBackend.stop(self)
+cupyx.distributed.array.DistributedArray(shape: 'tuple[int, ...]', dtype: 'DTypeLike', chunks_map: 'dict[int, list[_Chunk]]', mode: '_modes.Mode' = None, comms: 'dict[int, _Communicator] | None' = None) -> 'DistributedArray' - __init__(self, shape, dtype, chunks_map, mode=REPLICA, comms=None)
+cupyx.distributed.array.DistributedArray.T - Not supported.
+cupyx.distributed.array.DistributedArray.all(self, *args, **kwargs) - Not supported.
+cupyx.distributed.array.DistributedArray.all_chunks(self) -> 'dict[int, list[ndarray]]' - Return the chunks with all buffered data flushed.
+cupyx.distributed.array.DistributedArray.any(self, *args, **kwargs) - Not supported.
+cupyx.distributed.array.DistributedArray.argmax(self, *args, **kwargs) - Not supported.
+cupyx.distributed.array.DistributedArray.argmin(self, *args, **kwargs) - Not supported.
+cupyx.distributed.array.DistributedArray.argpartition(self, *args, **kwargs) - Not supported.
+cupyx.distributed.array.DistributedArray.argsort(self, *args, **kwargs) - Not supported.
+cupyx.distributed.array.DistributedArray.astype(self, *args, **kwargs) - Not supported.
+cupyx.distributed.array.DistributedArray.base - Not supported.
+cupyx.distributed.array.DistributedArray.change_mode(self, mode: '_modes.Mode') -> 'DistributedArray' - Return a view or a copy in the given mode.
+cupyx.distributed.array.DistributedArray.choose(self, *args, **kwargs) - Not supported.
+cupyx.distributed.array.DistributedArray.clip(self, *args, **kwargs) - Not supported.
+cupyx.distributed.array.DistributedArray.compress(self, *args, **kwargs) - Not supported.
+cupyx.distributed.array.DistributedArray.conj(...) - _ndarray_base.conj(self) -> _ndarray_base
+cupyx.distributed.array.DistributedArray.conjugate(...) - _ndarray_base.conjugate(self) -> _ndarray_base
+cupyx.distributed.array.DistributedArray.copy(self, *args, **kwargs) - Not supported.
+cupyx.distributed.array.DistributedArray.cstruct - Not supported.
+cupyx.distributed.array.DistributedArray.cumprod(self, *args, **kwargs) - Not supported.
+cupyx.distributed.array.DistributedArray.cumsum(self, *args, **kwargs) - Not supported.
+cupyx.distributed.array.DistributedArray.data - Not supported.
+cupyx.distributed.array.DistributedArray.device - Not supported.
+cupyx.distributed.array.DistributedArray.devices - A collection of device IDs holding part of the data.
+cupyx.distributed.array.DistributedArray.diagonal(self, *args, **kwargs) - Not supported.
+cupyx.distributed.array.DistributedArray.dot(self, *args, **kwargs) - Not supported.
+cupyx.distributed.array.DistributedArray.dump(self, *args, **kwargs) - Not supported.
+cupyx.distributed.array.DistributedArray.dumps(self, *args, **kwargs) - Not supported.
+cupyx.distributed.array.DistributedArray.fill(self, *args, **kwargs) - Not supported.
+cupyx.distributed.array.DistributedArray.flags - Not supported.
+cupyx.distributed.array.DistributedArray.flat - Not supported.
+cupyx.distributed.array.DistributedArray.flatten(self, *args, **kwargs) - Not supported.
+cupyx.distributed.array.DistributedArray.get(self, stream=None, order='C', out=None, blocking=True) -> 'numpy.ndarray' - Return a copy of the array on the host memory.
+cupyx.distributed.array.DistributedArray.imag - Not supported.
+cupyx.distributed.array.DistributedArray.index_map - Indices for the chunks that devices with designated IDs own.
+cupyx.distributed.array.DistributedArray.item(self, *args, **kwargs) - Not supported.
+cupyx.distributed.array.DistributedArray.max(self, axis=None, out=None, keepdims=False) - Return the maximum along a given axis.
+cupyx.distributed.array.DistributedArray.mdspan(...) - _ndarray_base.mdspan(self, *, index_type, allow_unsafe=False)
+cupyx.distributed.array.DistributedArray.mean(self, *args, **kwargs) - Not supported.
+cupyx.distributed.array.DistributedArray.min(self, axis=None, out=None, keepdims=False) - Return the minimum along a given axis.
+cupyx.distributed.array.DistributedArray.mode - Describe how overlaps of the chunks are interpreted.
+cupyx.distributed.array.DistributedArray.nonzero(self, *args, **kwargs) - Not supported.
+cupyx.distributed.array.DistributedArray.partition(self, *args, **kwargs) - Not supported.
+cupyx.distributed.array.DistributedArray.prod(self, axis=None, dtype=None, out=None, keepdims=None) - Return the minimum along a given axis.
+cupyx.distributed.array.DistributedArray.ptp(self, *args, **kwargs) - Not supported.
+cupyx.distributed.array.DistributedArray.put(self, *args, **kwargs) - Not supported.
+cupyx.distributed.array.DistributedArray.ravel(self, *args, **kwargs) - Not supported.
+cupyx.distributed.array.DistributedArray.real - Not supported.
+cupyx.distributed.array.DistributedArray.reduced_view(self, *args, **kwargs) - Not supported.
+cupyx.distributed.array.DistributedArray.repeat(self, *args, **kwargs) - Not supported.
+cupyx.distributed.array.DistributedArray.reshape(self, *args, **kwargs) - Not supported.
+cupyx.distributed.array.DistributedArray.reshard(self, index_map: 'dict[int, Any]') -> 'DistributedArray' - Return a view or a copy having the given index_map.
+cupyx.distributed.array.DistributedArray.round(self, *args, **kwargs) - Not supported.
+cupyx.distributed.array.DistributedArray.scatter_add(self, *args, **kwargs) - Not supported.
+cupyx.distributed.array.DistributedArray.scatter_max(self, *args, **kwargs) - Not supported.
+cupyx.distributed.array.DistributedArray.scatter_min(self, *args, **kwargs) - Not supported.
+cupyx.distributed.array.DistributedArray.searchsorted(self, *args, **kwargs) - Not supported.
+cupyx.distributed.array.DistributedArray.set(self, *args, **kwargs) - Not supported.
+cupyx.distributed.array.DistributedArray.shape - Tuple of array dimensions.
+cupyx.distributed.array.DistributedArray.sort(self, *args, **kwargs) - Not supported.
+cupyx.distributed.array.DistributedArray.squeeze(self, *args, **kwargs) - Not supported.
+cupyx.distributed.array.DistributedArray.std(self, *args, **kwargs) - Not supported.
+cupyx.distributed.array.DistributedArray.strides - Not supported.
+cupyx.distributed.array.DistributedArray.sum(self, axis=None, dtype=None, out=None, keepdims=False) - Return the minimum along a given axis.
+cupyx.distributed.array.DistributedArray.swapaxes(self, *args, **kwargs) - Not supported.
+cupyx.distributed.array.DistributedArray.take(self, *args, **kwargs) - Not supported.
+cupyx.distributed.array.DistributedArray.toDlpack(self, *args, **kwargs) - Not supported.
+cupyx.distributed.array.DistributedArray.tobytes(self, *args, **kwargs) - Not supported.
+cupyx.distributed.array.DistributedArray.tofile(self, *args, **kwargs) - Not supported.
+cupyx.distributed.array.DistributedArray.tolist(self, *args, **kwargs) - Not supported.
+cupyx.distributed.array.DistributedArray.trace(self, *args, **kwargs) - Not supported.
+cupyx.distributed.array.DistributedArray.transpose(self, *args, **kwargs) - Not supported.
+cupyx.distributed.array.DistributedArray.var(self, *args, **kwargs) - Not supported.
+cupyx.distributed.array.DistributedArray.view(self, *args, **kwargs) - Not supported.
+cupyx.distributed.array.MAX
+cupyx.distributed.array.MIN
+cupyx.distributed.array.PROD
+cupyx.distributed.array.SUM
+cupyx.distributed.array.distributed_array(array: 'ArrayLike', index_map: 'dict[int, Any]', mode: '_modes.Mode' = None) -> 'DistributedArray' - Creates a distributed array from the given data.
+cupyx.distributed.array.make_2d_index_map(i_partitions: 'list[int]', j_partitions: 'list[int]', devices: 'list[list[set[int]]]') -> 'dict[int, list[tuple[slice, ...]]]' - Create an ``index_map`` for a 2D matrix with a specified blocking.
+cupyx.distributed.array.matmul(a: '_array.DistributedArray', b: '_array.DistributedArray', out: '_array.DistributedArray | None' = None, **kwargs) -> '_array.DistributedArray' - Matrix multiplication between distributed arrays.
+cupyx.distributed.init_process_group(n_devices, rank, *, backend='nccl', host=None, port=None, use_mpi=False) - Start `cupyx.distributed` and obtain a communicator.
+cupyx.empty_like_pinned(a, dtype=None, order='K', subok=None, shape=None) - Returns a new, uninitialized NumPy array with the same shape and dtype
+cupyx.empty_pinned(shape, dtype=<class 'float'>, order='C') - Returns a new, uninitialized NumPy array with the given shape
+cupyx.errstate(*, divide=None, over=None, under=None, invalid=None, linalg=None) - TODO(hvy): Write docs.
+cupyx.get_runtime_info(*, full=True)
+cupyx.geterr() - TODO(hvy): Write docs.
+cupyx.jit.atomic_add(array, index, value, alt_value=None) - Calls the ``atomicAdd`` function to operate atomically on
+cupyx.jit.atomic_and(array, index, value, alt_value=None) - Calls the ``atomicAnd`` function to operate atomically on
+cupyx.jit.atomic_cas(array, index, value, alt_value=None) - Calls the ``atomicCAS`` function to operate atomically on
+cupyx.jit.atomic_dec(array, index, value, alt_value=None) - Calls the ``atomicDec`` function to operate atomically on
+cupyx.jit.atomic_exch(array, index, value, alt_value=None) - Calls the ``atomicExch`` function to operate atomically on
+cupyx.jit.atomic_inc(array, index, value, alt_value=None) - Calls the ``atomicInc`` function to operate atomically on
+cupyx.jit.atomic_max(array, index, value, alt_value=None) - Calls the ``atomicMax`` function to operate atomically on
+cupyx.jit.atomic_min(array, index, value, alt_value=None) - Calls the ``atomicMin`` function to operate atomically on
+cupyx.jit.atomic_or(array, index, value, alt_value=None) - Calls the ``atomicOr`` function to operate atomically on
+cupyx.jit.atomic_sub(array, index, value, alt_value=None) - Calls the ``atomicSub`` function to operate atomically on
+cupyx.jit.atomic_xor(array, index, value, alt_value=None) - Calls the ``atomicXor`` function to operate atomically on
+cupyx.jit.blockDim - dim3 blockDim
+cupyx.jit.blockIdx - dim3 blockIdx
+cupyx.jit.cg.memcpy_async(group, dst, dst_idx, src, src_idx, size, *, aligned_size=None) - Calls ``cg::memcpy_sync()``.
+cupyx.jit.cg.sync(group) - Calls ``cg::sync()``.
+cupyx.jit.cg.this_grid() - Returns the current grid group (:class:`~cupyx.jit.cg._GridGroup`).
+cupyx.jit.cg.this_thread_block() - Returns the current thread block group (:class:`~cupyx.jit.cg._ThreadBlockGroup`).
+cupyx.jit.cg.wait(group) - Calls ``cg::wait()``.
+cupyx.jit.cg.wait_prior(group) - Calls ``cg::wait_prior<N>()``.
+cupyx.jit.cub.BlockReduce
+cupyx.jit.cub.Max() -> 'NoReturn'
+cupyx.jit.cub.Min() -> 'NoReturn'
+cupyx.jit.cub.Sum() -> 'NoReturn'
+cupyx.jit.cub.WarpReduce
+cupyx.jit.grid(ndim) - Compute the thread index in the grid.
+cupyx.jit.gridDim - dim3 gridDim
+cupyx.jit.gridsize(ndim) - Compute the grid size.
+cupyx.jit.laneid() - Returns the lane ID of the calling thread, ranging in
+cupyx.jit.range(*args, unroll=None) - Range with loop unrolling support.
+cupyx.jit.rawkernel(*, mode='cuda', device=False) - A decorator compiles a Python function into CUDA kernel.
+cupyx.jit.shared_memory(dtype, size, alignment=None) - Allocates shared memory and returns it as a 1-D array.
+cupyx.jit.shfl_down_sync(mask, var, val_id, *, width=32) - Calls the ``__shfl_down_sync`` function. Please refer to
+cupyx.jit.shfl_sync(mask, var, val_id, *, width=32) - Calls the ``__shfl_sync`` function. Please refer to
+cupyx.jit.shfl_up_sync(mask, var, val_id, *, width=32) - Calls the ``__shfl_up_sync`` function. Please refer to
+cupyx.jit.shfl_xor_sync(mask, var, val_id, *, width=32) - Calls the ``__shfl_xor_sync`` function. Please refer to
+cupyx.jit.syncthreads() - Calls ``__syncthreads()``.
+cupyx.jit.syncwarp(*, mask=4294967295) - Calls ``__syncwarp()``.
+cupyx.jit.threadIdx - dim3 threadIdx
+cupyx.jit.thrust.adjacent_difference() -> 'NoReturn'
+cupyx.jit.thrust.binary_search() -> 'NoReturn'
+cupyx.jit.thrust.copy() -> 'NoReturn'
+cupyx.jit.thrust.count() -> 'NoReturn'
+cupyx.jit.thrust.device - thrust::device
+cupyx.jit.thrust.equal() -> 'NoReturn'
+cupyx.jit.thrust.equal_range() -> 'NoReturn'
+cupyx.jit.thrust.exclusive_scan() -> 'NoReturn'
+cupyx.jit.thrust.exclusive_scan_by_key() -> 'NoReturn'
+cupyx.jit.thrust.fill() -> 'NoReturn'
+cupyx.jit.thrust.find() -> 'NoReturn'
+cupyx.jit.thrust.gather() -> 'NoReturn'
+cupyx.jit.thrust.host - thrust::host
+cupyx.jit.thrust.inclusive_scan() -> 'NoReturn'
+cupyx.jit.thrust.inclusive_scan_by_key() -> 'NoReturn'
+cupyx.jit.thrust.inner_product() -> 'NoReturn'
+cupyx.jit.thrust.is_sorted() -> 'NoReturn'
+cupyx.jit.thrust.is_sorted_until() -> 'NoReturn'
+cupyx.jit.thrust.lower_bound() -> 'NoReturn'
+cupyx.jit.thrust.make_constant_iterator() -> 'NoReturn'
+cupyx.jit.thrust.make_counting_iterator() -> 'NoReturn'
+cupyx.jit.thrust.mismatch() -> 'NoReturn'
+cupyx.jit.thrust.reduce() -> 'NoReturn'
+cupyx.jit.thrust.reduce_by_key() -> 'NoReturn'
+cupyx.jit.thrust.remove() -> 'NoReturn'
+cupyx.jit.thrust.remove_copy() -> 'NoReturn'
+cupyx.jit.thrust.replace() -> 'NoReturn'
+cupyx.jit.thrust.replace_copy() -> 'NoReturn'
+cupyx.jit.thrust.reverse() -> 'NoReturn'
+cupyx.jit.thrust.reverse_copy() -> 'NoReturn'
+cupyx.jit.thrust.scatter() -> 'NoReturn'
+cupyx.jit.thrust.seq - thrust::seq
+cupyx.jit.thrust.sequence() -> 'NoReturn'
+cupyx.jit.thrust.set_difference() -> 'NoReturn'
+cupyx.jit.thrust.set_difference_by_key() -> 'NoReturn'
+cupyx.jit.thrust.set_intersection() -> 'NoReturn'
+cupyx.jit.thrust.set_intersection_by_key() -> 'NoReturn'
+cupyx.jit.thrust.set_symmetric_difference() -> 'NoReturn'
+cupyx.jit.thrust.set_symmetric_difference_by_key() -> 'NoReturn'
+cupyx.jit.thrust.set_union() -> 'NoReturn'
+cupyx.jit.thrust.set_union_by_key() -> 'NoReturn'
+cupyx.jit.thrust.sort() -> 'NoReturn'
+cupyx.jit.thrust.sort_by_key() -> 'NoReturn'
+cupyx.jit.thrust.stable_sort() -> 'NoReturn'
+cupyx.jit.thrust.stable_sort_by_key() -> 'NoReturn'
+cupyx.jit.thrust.swap_ranges() -> 'NoReturn'
+cupyx.jit.thrust.unique() -> 'NoReturn'
+cupyx.jit.thrust.unique_by_key() -> 'NoReturn'
+cupyx.jit.thrust.upper_bound() -> 'NoReturn'
+cupyx.jit.warpsize - Returns the number of threads in a warp.
+cupyx.lapack.gels(a, b) - Solves over/well/under-determined linear systems.
+cupyx.lapack.gesv(a, b) - Solve a linear matrix equation using cusolverDn<t>getr[fs]().
+cupyx.lapack.posv(a, b) - Solve the linear equations A x = b via Cholesky factorization of A,
+cupyx.lapack.potrs(L, b, lower) - Implements lapack XPOTRS through cusolver.potrs. Solves linear system
+cupyx.linalg.cho_solve(c_and_lower, b, overwrite_b=False, check_finite=True) - Solves the linear system Ax = b using the Cholesky factorization of A.
+cupyx.linalg.invh(a) - Compute the inverse of a Hermitian matrix.
+cupyx.linalg.sparse.lschol(A, b) - Solves linear system with cholesky decomposition.
+cupyx.optimizing.optimize(*, key=None, path=None, readonly=False, **config_dict) - Context manager that optimizes kernel launch parameters.
+cupyx.profiler.benchmark(func, args=(), kwargs={}, n_repeat=10000, *, name=None, n_warmup=10, max_duration=inf, devices=None) - Timing utility for measuring time spent by both CPU and GPU.
+cupyx.profiler.load_ipython_extension(ipython) - Load the %gpu_timeit magic.
+cupyx.profiler.profile() - Enable CUDA profiling during with statement.
+cupyx.profiler.time_range(message=None, color_id=None, argb_color=None, sync=False) - Mark function calls with ranges using NVTX/rocTX. This object can be
+cupyx.scatter_add(a, slices, value) - Adds given values to specified elements of an array.
+cupyx.scatter_max(a, slices, value) - Stores a maximum value of elements specified by indices to an array.
+cupyx.scatter_min(a, slices, value) - Stores a minimum value of elements specified by indices to an array.
+cupyx.scipy.fft.dct(x, type=2, n=None, axis=-1, norm=None, overwrite_x=False) - Return the Discrete Cosine Transform of an array, x.
+cupyx.scipy.fft.dctn(x, type=2, s=None, axes=None, norm=None, overwrite_x=False) - Compute a multidimensional Discrete Cosine Transform.
+cupyx.scipy.fft.dst(x, type=2, n=None, axis=-1, norm=None, overwrite_x=False) - Return the Discrete Sine Transform of an array, x.
+cupyx.scipy.fft.dstn(x, type=2, s=None, axes=None, norm=None, overwrite_x=False) - Compute a multidimensional Discrete Sine Transform.
+cupyx.scipy.fft.fft(x, n=None, axis=-1, norm=None, overwrite_x=False, *, plan=None) - Compute the one-dimensional FFT.
+cupyx.scipy.fft.fft2(x, s=None, axes=(-2, -1), norm=None, overwrite_x=False, *, plan=None) - Compute the two-dimensional FFT.
+cupyx.scipy.fft.fftn(x, s=None, axes=None, norm=None, overwrite_x=False, *, plan=None) - Compute the N-dimensional FFT.
+cupyx.scipy.fft.fht(a, dln, mu, offset=0.0, bias=0.0) - Compute the fast Hankel transform.
+cupyx.scipy.fft.get_fft_plan(a, shape=None, axes=None, value_type='C2C') - Generate a CUDA FFT plan for transforming up to three axes.
+cupyx.scipy.fft.hfft(x, n=None, axis=-1, norm=None, overwrite_x=False, *, plan=None) - Compute the FFT of a signal that has Hermitian symmetry.
+cupyx.scipy.fft.hfft2(x, s=None, axes=(-2, -1), norm=None, overwrite_x=False, *, plan=None) - Compute the FFT of a two-dimensional signal that has Hermitian symmetry.
+cupyx.scipy.fft.hfftn(x, s=None, axes=None, norm=None, overwrite_x=False, *, plan=None) - Compute the FFT of a N-dimensional signal that has Hermitian symmetry.
+cupyx.scipy.fft.idct(x, type=2, n=None, axis=-1, norm=None, overwrite_x=False) - Return the Inverse Discrete Cosine Transform of an array, x.
+cupyx.scipy.fft.idctn(x, type=2, s=None, axes=None, norm=None, overwrite_x=False) - Compute a multidimensional Discrete Cosine Transform.
+cupyx.scipy.fft.idst(x, type=2, n=None, axis=-1, norm=None, overwrite_x=False) - Return the Inverse Discrete Sine Transform of an array, x.
+cupyx.scipy.fft.idstn(x, type=2, s=None, axes=None, norm=None, overwrite_x=False) - Compute a multidimensional Discrete Sine Transform.
+cupyx.scipy.fft.ifft(x, n=None, axis=-1, norm=None, overwrite_x=False, *, plan=None) - Compute the one-dimensional inverse FFT.
+cupyx.scipy.fft.ifft2(x, s=None, axes=(-2, -1), norm=None, overwrite_x=False, *, plan=None) - Compute the two-dimensional inverse FFT.
+cupyx.scipy.fft.ifftn(x, s=None, axes=None, norm=None, overwrite_x=False, *, plan=None) - Compute the N-dimensional inverse FFT.
+cupyx.scipy.fft.ifht(A, dln, mu, offset=0.0, bias=0.0) - Compute the inverse fast Hankel transform.
+cupyx.scipy.fft.ihfft(x, n=None, axis=-1, norm=None, overwrite_x=False, *, plan=None) - Compute the FFT of a signal that has Hermitian symmetry.
+cupyx.scipy.fft.ihfft2(x, s=None, axes=(-2, -1), norm=None, overwrite_x=False, *, plan=None) - Compute the Inverse FFT of a two-dimensional signal that has Hermitian
+cupyx.scipy.fft.ihfftn(x, s=None, axes=None, norm=None, overwrite_x=False, *, plan=None) - Compute the Inverse FFT of a N-dimensional signal that has Hermitian
+cupyx.scipy.fft.irfft(x, n=None, axis=-1, norm=None, overwrite_x=False, *, plan=None) - Compute the one-dimensional inverse FFT for real input.
+cupyx.scipy.fft.irfft2(x, s=None, axes=(-2, -1), norm=None, overwrite_x=False, *, plan=None) - Compute the two-dimensional inverse FFT for real input.
+cupyx.scipy.fft.irfftn(x, s=None, axes=None, norm=None, overwrite_x=False, *, plan=None) - Compute the N-dimensional inverse FFT for real input.
+cupyx.scipy.fft.next_fast_len(target, real=False) - Find the next fast size to ``fft``.
+cupyx.scipy.fft.rfft(x, n=None, axis=-1, norm=None, overwrite_x=False, *, plan=None) - Compute the one-dimensional FFT for real input.
+cupyx.scipy.fft.rfft2(x, s=None, axes=(-2, -1), norm=None, overwrite_x=False, *, plan=None) - Compute the two-dimensional FFT for real input.
+cupyx.scipy.fft.rfftn(x, s=None, axes=None, norm=None, overwrite_x=False, *, plan=None) - Compute the N-dimensional FFT for real input.
+cupyx.scipy.fftpack.fft(x, n=None, axis=-1, overwrite_x=False, plan=None) - Compute the one-dimensional FFT.
+cupyx.scipy.fftpack.fft2(x, shape=None, axes=(-2, -1), overwrite_x=False, plan=None) - Compute the two-dimensional FFT.
+cupyx.scipy.fftpack.fftn(x, shape=None, axes=None, overwrite_x=False, plan=None) - Compute the N-dimensional FFT.
+cupyx.scipy.fftpack.get_fft_plan(a, shape=None, axes=None, value_type='C2C') - Generate a CUDA FFT plan for transforming up to three axes.
+cupyx.scipy.fftpack.ifft(x, n=None, axis=-1, overwrite_x=False, plan=None) - Compute the one-dimensional inverse FFT.
+cupyx.scipy.fftpack.ifft2(x, shape=None, axes=(-2, -1), overwrite_x=False, plan=None) - Compute the two-dimensional inverse FFT.
+cupyx.scipy.fftpack.ifftn(x, shape=None, axes=None, overwrite_x=False, plan=None) - Compute the N-dimensional inverse FFT.
+cupyx.scipy.fftpack.irfft(x, n=None, axis=-1, overwrite_x=False) - Compute the one-dimensional inverse FFT for real input.
+cupyx.scipy.fftpack.rfft(x, n=None, axis=-1, overwrite_x=False, plan=None) - Compute the one-dimensional FFT for real input.
+cupyx.scipy.get_array_module(*args) - Returns the array module for arguments.
+cupyx.scipy.interpolate.Akima1DInterpolator(x, y, axis=0) - Akima interpolator
+cupyx.scipy.interpolate.Akima1DInterpolator.antiderivative(self, nu=1) - Construct a new piecewise polynomial representing the antiderivative.
+cupyx.scipy.interpolate.Akima1DInterpolator.construct_fast(c, x, extrapolate=None, axis=0) - Construct the piecewise polynomial without making checks.
+cupyx.scipy.interpolate.Akima1DInterpolator.derivative(self, nu=1) - Construct a new piecewise polynomial representing the derivative.
+cupyx.scipy.interpolate.Akima1DInterpolator.extend(self, c, x, right=True) - Add additional breakpoints and coefficients to the polynomial.
+cupyx.scipy.interpolate.Akima1DInterpolator.from_bernstein_basis(bp, extrapolate=None) - Construct a piecewise polynomial in the power basis
+cupyx.scipy.interpolate.Akima1DInterpolator.from_spline(tck, extrapolate=None) - Construct a piecewise polynomial from a spline
+cupyx.scipy.interpolate.Akima1DInterpolator.integrate(self, a, b, extrapolate=None) - Compute a definite integral over a piecewise polynomial.
+cupyx.scipy.interpolate.Akima1DInterpolator.roots(self, discontinuity=True, extrapolate=None) - Find real roots of the piecewise polynomial.
+cupyx.scipy.interpolate.Akima1DInterpolator.solve(self, y=0.0, discontinuity=True, extrapolate=None) - Find real solutions of the equation ``pp(x) == y``.
+cupyx.scipy.interpolate.BPoly(c, x, extrapolate=None, axis=0) - Piecewise polynomial in terms of coefficients and breakpoints.
+cupyx.scipy.interpolate.BPoly.antiderivative(self, nu=1) - Construct a new piecewise polynomial representing the antiderivative.
+cupyx.scipy.interpolate.BPoly.construct_fast(c, x, extrapolate=None, axis=0) - Construct the piecewise polynomial without making checks.
+cupyx.scipy.interpolate.BPoly.derivative(self, nu=1) - Construct a new piecewise polynomial representing the derivative.
+cupyx.scipy.interpolate.BPoly.extend(self, c, x) - Add additional breakpoints and coefficients to the polynomial.
+cupyx.scipy.interpolate.BPoly.from_derivatives(xi, yi, orders=None, extrapolate=None) - Construct a piecewise polynomial in the Bernstein basis,
+cupyx.scipy.interpolate.BPoly.from_power_basis(pp, extrapolate=None) - Construct a piecewise polynomial in Bernstein basis
+cupyx.scipy.interpolate.BPoly.integrate(self, a, b, extrapolate=None) - Compute a definite integral over a piecewise polynomial.
+cupyx.scipy.interpolate.BSpline(t, c, k, extrapolate=True, axis=0) - Univariate spline in the B-spline basis.
+cupyx.scipy.interpolate.BSpline.antiderivative(self, nu=1) - Return a B-spline representing the antiderivative.
+cupyx.scipy.interpolate.BSpline.basis_element(t, extrapolate=True) - Return a B-spline basis element ``B(x | t[0], ..., t[k+1])``.
+cupyx.scipy.interpolate.BSpline.construct_fast(t, c, k, extrapolate=True, axis=0) - Construct a spline without making checks.
+cupyx.scipy.interpolate.BSpline.derivative(self, nu=1) - Return a B-spline representing the derivative.
+cupyx.scipy.interpolate.BSpline.design_matrix(x, t, k, extrapolate=False) - Returns a design matrix as a CSR format sparse array.
+cupyx.scipy.interpolate.BSpline.integrate(self, a, b, extrapolate=None) - Compute a definite integral of the spline.
+cupyx.scipy.interpolate.BSpline.tck - Equivalent to ``(self.t, self.c, self.k)`` (read-only).
+cupyx.scipy.interpolate.BarycentricInterpolator(xi, yi=None, axis=0) - The interpolating polynomial for a set of points.
+cupyx.scipy.interpolate.BarycentricInterpolator.add_xi(self, xi, yi=None) - Add more x values to the set to be interpolated.
+cupyx.scipy.interpolate.BarycentricInterpolator.set_yi(self, yi, axis=None) - Update the y values to be interpolated.
+cupyx.scipy.interpolate.CloughTocher2DInterpolator(points, values, fill_value=nan, tol=1e-06, maxiter=400, rescale=False) - CloughTocher2DInterpolator(points, values, tol=1e-6).
+cupyx.scipy.interpolate.CubicHermiteSpline(x, y, dydx, axis=0, extrapolate=None) - Piecewise-cubic interpolator matching values and first derivatives.
+cupyx.scipy.interpolate.CubicHermiteSpline.antiderivative(self, nu=1) - Construct a new piecewise polynomial representing the antiderivative.
+cupyx.scipy.interpolate.CubicHermiteSpline.construct_fast(c, x, extrapolate=None, axis=0) - Construct the piecewise polynomial without making checks.
+cupyx.scipy.interpolate.CubicHermiteSpline.derivative(self, nu=1) - Construct a new piecewise polynomial representing the derivative.
+cupyx.scipy.interpolate.CubicHermiteSpline.extend(self, c, x) - Add additional breakpoints and coefficients to the polynomial.
+cupyx.scipy.interpolate.CubicHermiteSpline.from_bernstein_basis(bp, extrapolate=None) - Construct a piecewise polynomial in the power basis
+cupyx.scipy.interpolate.CubicHermiteSpline.from_spline(tck, extrapolate=None) - Construct a piecewise polynomial from a spline
+cupyx.scipy.interpolate.CubicHermiteSpline.integrate(self, a, b, extrapolate=None) - Compute a definite integral over a piecewise polynomial.
+cupyx.scipy.interpolate.CubicHermiteSpline.roots(self, discontinuity=True, extrapolate=None) - Find real roots of the piecewise polynomial.
+cupyx.scipy.interpolate.CubicHermiteSpline.solve(self, y=0.0, discontinuity=True, extrapolate=None) - Find real solutions of the equation ``pp(x) == y``.
+cupyx.scipy.interpolate.CubicSpline(x, y, axis=0, bc_type='not-a-knot', extrapolate=None) - Cubic spline data interpolator.
+cupyx.scipy.interpolate.CubicSpline.antiderivative(self, nu=1) - Construct a new piecewise polynomial representing the antiderivative.
+cupyx.scipy.interpolate.CubicSpline.construct_fast(c, x, extrapolate=None, axis=0) - Construct the piecewise polynomial without making checks.
+cupyx.scipy.interpolate.CubicSpline.derivative(self, nu=1) - Construct a new piecewise polynomial representing the derivative.
+cupyx.scipy.interpolate.CubicSpline.extend(self, c, x) - Add additional breakpoints and coefficients to the polynomial.
+cupyx.scipy.interpolate.CubicSpline.from_bernstein_basis(bp, extrapolate=None) - Construct a piecewise polynomial in the power basis
+cupyx.scipy.interpolate.CubicSpline.from_spline(tck, extrapolate=None) - Construct a piecewise polynomial from a spline
+cupyx.scipy.interpolate.CubicSpline.integrate(self, a, b, extrapolate=None) - Compute a definite integral over a piecewise polynomial.
+cupyx.scipy.interpolate.CubicSpline.roots(self, discontinuity=True, extrapolate=None) - Find real roots of the piecewise polynomial.
+cupyx.scipy.interpolate.CubicSpline.solve(self, y=0.0, discontinuity=True, extrapolate=None) - Find real solutions of the equation ``pp(x) == y``.
+cupyx.scipy.interpolate.InterpolatedUnivariateSpline(x, y, w=None, bbox=[None, None], k=3, ext=0) - 1-D interpolating spline for a given set of data points.
+cupyx.scipy.interpolate.InterpolatedUnivariateSpline.antiderivative(self, n=1) - Construct a new spline representing the antiderivative of this spline.
+cupyx.scipy.interpolate.InterpolatedUnivariateSpline.derivative(self, n=1) - Construct a new spline representing the derivative of this spline.
+cupyx.scipy.interpolate.InterpolatedUnivariateSpline.derivatives(self, x) - Return all derivatives of the spline at the point x.
+cupyx.scipy.interpolate.InterpolatedUnivariateSpline.get_coeffs(self) - Return spline coefficients.
+cupyx.scipy.interpolate.InterpolatedUnivariateSpline.get_knots(self) - Return positions of interior knots of the spline.
+cupyx.scipy.interpolate.InterpolatedUnivariateSpline.get_residual(self) - Return weighted sum of squared residuals of the spline approx.
+cupyx.scipy.interpolate.InterpolatedUnivariateSpline.integral(self, a, b) - Return definite integral of the spline between two given points.
+cupyx.scipy.interpolate.InterpolatedUnivariateSpline.set_smoothing_factor(self, s, t=None) - Continue spline computation with the given smoothing
+cupyx.scipy.interpolate.KroghInterpolator(xi, yi, axis=0) - Interpolating polynomial for a set of points.
+cupyx.scipy.interpolate.KroghInterpolator.derivative(self, x, der=1) - Evaluate one derivative of the polynomial at the point x
+cupyx.scipy.interpolate.KroghInterpolator.derivatives(self, x, der=None) - Evaluate many derivatives of the polynomial at the point x.
+cupyx.scipy.interpolate.LSQUnivariateSpline(x, y, t, w=None, bbox=[None, None], k=3, ext=0) - 1-D spline with explicit internal knots.
+cupyx.scipy.interpolate.LSQUnivariateSpline.antiderivative(self, n=1) - Construct a new spline representing the antiderivative of this spline.
+cupyx.scipy.interpolate.LSQUnivariateSpline.derivative(self, n=1) - Construct a new spline representing the derivative of this spline.
+cupyx.scipy.interpolate.LSQUnivariateSpline.derivatives(self, x) - Return all derivatives of the spline at the point x.
+cupyx.scipy.interpolate.LSQUnivariateSpline.get_coeffs(self) - Return spline coefficients.
+cupyx.scipy.interpolate.LSQUnivariateSpline.get_knots(self) - Return positions of interior knots of the spline.
+cupyx.scipy.interpolate.LSQUnivariateSpline.get_residual(self) - Return weighted sum of squared residuals of the spline approx.
+cupyx.scipy.interpolate.LSQUnivariateSpline.integral(self, a, b) - Return definite integral of the spline between two given points.
+cupyx.scipy.interpolate.LSQUnivariateSpline.set_smoothing_factor(self, s, t=None) - Continue spline computation with the given smoothing
+cupyx.scipy.interpolate.LinearNDInterpolator(points, values, fill_value=nan, rescale=False) - LinearNDInterpolator(points, values, fill_value=cupy.nan, rescale=False)
+cupyx.scipy.interpolate.NdBSpline(t, c, k, *, extrapolate=None) - Tensor product spline object.
+cupyx.scipy.interpolate.NdBSpline.design_matrix(xvals, t, k, extrapolate=True) - Construct the design matrix as a CSR format sparse array.
+cupyx.scipy.interpolate.NdPPoly(c, x, extrapolate=None) - Piecewise tensor product polynomial
+cupyx.scipy.interpolate.NdPPoly.antiderivative(self, nu) - Construct a new piecewise polynomial representing the antiderivative.
+cupyx.scipy.interpolate.NdPPoly.construct_fast(c, x, extrapolate=None) - Construct the piecewise polynomial without making checks.
+cupyx.scipy.interpolate.NdPPoly.derivative(self, nu) - Construct a new piecewise polynomial representing the derivative.
+cupyx.scipy.interpolate.NdPPoly.integrate(self, ranges, extrapolate=None) - Compute a definite integral over a piecewise polynomial.
+cupyx.scipy.interpolate.NdPPoly.integrate_1d(self, a, b, axis, extrapolate=None) - Compute NdPPoly representation for one dimensional definite integral
+cupyx.scipy.interpolate.NearestNDInterpolator(x, y, rescale=False, tree_options=None) - NearestNDInterpolator(x, y).
+cupyx.scipy.interpolate.PPoly(c, x, extrapolate=None, axis=0) - Piecewise polynomial in terms of coefficients and breakpoints
+cupyx.scipy.interpolate.PPoly.antiderivative(self, nu=1) - Construct a new piecewise polynomial representing the antiderivative.
+cupyx.scipy.interpolate.PPoly.construct_fast(c, x, extrapolate=None, axis=0) - Construct the piecewise polynomial without making checks.
+cupyx.scipy.interpolate.PPoly.derivative(self, nu=1) - Construct a new piecewise polynomial representing the derivative.
+cupyx.scipy.interpolate.PPoly.extend(self, c, x) - Add additional breakpoints and coefficients to the polynomial.
+cupyx.scipy.interpolate.PPoly.from_bernstein_basis(bp, extrapolate=None) - Construct a piecewise polynomial in the power basis
+cupyx.scipy.interpolate.PPoly.from_spline(tck, extrapolate=None) - Construct a piecewise polynomial from a spline
+cupyx.scipy.interpolate.PPoly.integrate(self, a, b, extrapolate=None) - Compute a definite integral over a piecewise polynomial.
+cupyx.scipy.interpolate.PPoly.roots(self, discontinuity=True, extrapolate=None) - Find real roots of the piecewise polynomial.
+cupyx.scipy.interpolate.PPoly.solve(self, y=0.0, discontinuity=True, extrapolate=None) - Find real solutions of the equation ``pp(x) == y``.
+cupyx.scipy.interpolate.PchipInterpolator(x, y, axis=0, extrapolate=None) - PCHIP 1-D monotonic cubic interpolation.
+cupyx.scipy.interpolate.PchipInterpolator.antiderivative(self, nu=1) - Construct a new piecewise polynomial representing the antiderivative.
+cupyx.scipy.interpolate.PchipInterpolator.construct_fast(c, x, extrapolate=None, axis=0) - Construct the piecewise polynomial without making checks.
+cupyx.scipy.interpolate.PchipInterpolator.derivative(self, nu=1) - Construct a new piecewise polynomial representing the derivative.
+cupyx.scipy.interpolate.PchipInterpolator.extend(self, c, x) - Add additional breakpoints and coefficients to the polynomial.
+cupyx.scipy.interpolate.PchipInterpolator.from_bernstein_basis(bp, extrapolate=None) - Construct a piecewise polynomial in the power basis
+cupyx.scipy.interpolate.PchipInterpolator.from_spline(tck, extrapolate=None) - Construct a piecewise polynomial from a spline
+cupyx.scipy.interpolate.PchipInterpolator.integrate(self, a, b, extrapolate=None) - Compute a definite integral over a piecewise polynomial.
+cupyx.scipy.interpolate.PchipInterpolator.roots(self, discontinuity=True, extrapolate=None) - Find real roots of the piecewise polynomial.
+cupyx.scipy.interpolate.PchipInterpolator.solve(self, y=0.0, discontinuity=True, extrapolate=None) - Find real solutions of the equation ``pp(x) == y``.
+cupyx.scipy.interpolate.RBFInterpolator(y, d, neighbors=None, smoothing=0.0, kernel='thin_plate_spline', epsilon=None, degree=None) - Radial basis function (RBF) interpolation in N dimensions.
+cupyx.scipy.interpolate.RegularGridInterpolator(points, values, method='linear', bounds_error=True, fill_value=nan) - Interpolator on a regular or rectilinear grid in arbitrary dimensions.
+cupyx.scipy.interpolate.UnivariateSpline(x, y, w=None, bbox=[None, None], k=3, s=None, ext=0) - 1-D smoothing spline fit to a given set of data points.
+cupyx.scipy.interpolate.UnivariateSpline.antiderivative(self, n=1) - Construct a new spline representing the antiderivative of this spline.
+cupyx.scipy.interpolate.UnivariateSpline.derivative(self, n=1) - Construct a new spline representing the derivative of this spline.
+cupyx.scipy.interpolate.UnivariateSpline.derivatives(self, x) - Return all derivatives of the spline at the point x.
+cupyx.scipy.interpolate.UnivariateSpline.get_coeffs(self) - Return spline coefficients.
+cupyx.scipy.interpolate.UnivariateSpline.get_knots(self) - Return positions of interior knots of the spline.
+cupyx.scipy.interpolate.UnivariateSpline.get_residual(self) - Return weighted sum of squared residuals of the spline approx.
+cupyx.scipy.interpolate.UnivariateSpline.integral(self, a, b) - Return definite integral of the spline between two given points.
+cupyx.scipy.interpolate.UnivariateSpline.set_smoothing_factor(self, s, t=None) - Continue spline computation with the given smoothing
+cupyx.scipy.interpolate.barycentric_interpolate(xi, yi, x, axis=0) - Convenience function for polynomial interpolation.
+cupyx.scipy.interpolate.interp1d(x, y, kind='linear', axis=-1, copy=True, bounds_error=None, fill_value=nan, assume_sorted=False) - Interpolate a 1-D function.
+cupyx.scipy.interpolate.interp1d.fill_value - The fill value.
+cupyx.scipy.interpolate.interpn(points, values, xi, method='linear', bounds_error=True, fill_value=nan) - Multidimensional interpolation on regular or rectilinear grids.
+cupyx.scipy.interpolate.krogh_interpolate(xi, yi, x, der=0, axis=0) - Convenience function for polynomial interpolation
+cupyx.scipy.interpolate.make_interp_spline(x, y, k=3, t=None, bc_type=None, axis=0, check_finite=True) - Compute the (coefficients of) interpolating B-spline.
+cupyx.scipy.interpolate.make_lsq_spline(x, y, t, k=3, w=None, axis=0, check_finite=True, *, method='qr') - Construct a BSpline via an LSQ (Least SQuared) fit.
+cupyx.scipy.interpolate.pchip(x, y, axis=0, extrapolate=None) - PCHIP 1-D monotonic cubic interpolation.
+cupyx.scipy.interpolate.pchip.antiderivative(self, nu=1) - Construct a new piecewise polynomial representing the antiderivative.
+cupyx.scipy.interpolate.pchip.construct_fast(c, x, extrapolate=None, axis=0) - Construct the piecewise polynomial without making checks.
+cupyx.scipy.interpolate.pchip.derivative(self, nu=1) - Construct a new piecewise polynomial representing the derivative.
+cupyx.scipy.interpolate.pchip.extend(self, c, x) - Add additional breakpoints and coefficients to the polynomial.
+cupyx.scipy.interpolate.pchip.from_bernstein_basis(bp, extrapolate=None) - Construct a piecewise polynomial in the power basis
+cupyx.scipy.interpolate.pchip.from_spline(tck, extrapolate=None) - Construct a piecewise polynomial from a spline
+cupyx.scipy.interpolate.pchip.integrate(self, a, b, extrapolate=None) - Compute a definite integral over a piecewise polynomial.
+cupyx.scipy.interpolate.pchip.roots(self, discontinuity=True, extrapolate=None) - Find real roots of the piecewise polynomial.
+cupyx.scipy.interpolate.pchip.solve(self, y=0.0, discontinuity=True, extrapolate=None) - Find real solutions of the equation ``pp(x) == y``.
+cupyx.scipy.interpolate.pchip_interpolate(xi, yi, x, der=0, axis=0) - Convenience function for pchip interpolation.
+cupyx.scipy.interpolate.splantider(tck, n=1) - Compute the spline for the antiderivative (integral) of a given spline.
+cupyx.scipy.interpolate.splder(tck, n=1) - Compute the spline representation of the derivative of a given spline
+cupyx.scipy.linalg.bandwidth(a) - Return the lower and upper bandwidth of a 2D numeric array.
+cupyx.scipy.linalg.block_diag(*arrs) - Create a block diagonal matrix from provided arrays.
+cupyx.scipy.linalg.circulant(c) - Construct a circulant matrix.
+cupyx.scipy.linalg.companion(a) - Create a companion matrix.
+cupyx.scipy.linalg.convolution_matrix(a, n, mode='full') - Construct a convolution matrix.
+cupyx.scipy.linalg.dft(n, scale=None) - Discrete Fourier transform matrix.
+cupyx.scipy.linalg.expm(a) - Compute the matrix exponential.
+cupyx.scipy.linalg.fiedler(a) - Returns a symmetric Fiedler matrix
+cupyx.scipy.linalg.fiedler_companion(a) - Returns a Fiedler companion matrix
+cupyx.scipy.linalg.hadamard(n, dtype=<class 'int'>) - Construct an Hadamard matrix.
+cupyx.scipy.linalg.hankel(c, r=None) - Construct a Hankel matrix.
+cupyx.scipy.linalg.helmert(n, full=False) - Create an Helmert matrix of order ``n``.
+cupyx.scipy.linalg.hilbert(n) - Create a Hilbert matrix of order ``n``.
+cupyx.scipy.linalg.khatri_rao(a, b) - Khatri-rao product
+cupyx.scipy.linalg.kron(a, b) - Kronecker product.
+cupyx.scipy.linalg.leslie(f, s) - Create a Leslie matrix.
+cupyx.scipy.linalg.lu(a, permute_l=False, overwrite_a=False, check_finite=True) - LU decomposition.
+cupyx.scipy.linalg.lu_factor(a, overwrite_a=False, check_finite=True) - LU decomposition.
+cupyx.scipy.linalg.lu_solve(lu_and_piv, b, trans=0, overwrite_b=False, check_finite=True) - Solve an equation system, ``a * x = b``, given the LU factorization of ``a``
+cupyx.scipy.linalg.solve_triangular(a, b, trans=0, lower=False, unit_diagonal=False, overwrite_b=False, check_finite=False) - Solve the equation a x = b for x, assuming a is a triangular matrix.
+cupyx.scipy.linalg.toeplitz(c, r=None) - Construct a Toeplitz matrix.
+cupyx.scipy.ndimage.affine_transform(input, matrix, offset=0.0, output_shape=None, output=None, order=3, mode='constant', cval=0.0, prefilter=True, *, texture_memory=False) - Apply an affine transformation.
+cupyx.scipy.ndimage.binary_closing(input, structure=None, iterations=1, output=None, origin=0, mask=None, border_value=0, brute_force=False, *, axes=None) - Multidimensional binary closing with the given structuring element.
+cupyx.scipy.ndimage.binary_dilation(input, structure=None, iterations=1, mask=None, output=None, border_value=0, origin=0, brute_force=False, *, axes=None) - Multidimensional binary dilation with the given structuring element.
+cupyx.scipy.ndimage.binary_erosion(input, structure=None, iterations=1, mask=None, output=None, border_value=0, origin=0, brute_force=False, *, axes=None) - Multidimensional binary erosion with a given structuring element.
+cupyx.scipy.ndimage.binary_fill_holes(input, structure=None, output=None, origin=0, *, axes=None) - Fill the holes in binary objects.
+cupyx.scipy.ndimage.binary_hit_or_miss(input, structure1=None, structure2=None, output=None, origin1=0, origin2=None, *, axes=None) - Multidimensional binary hit-or-miss transform.
+cupyx.scipy.ndimage.binary_opening(input, structure=None, iterations=1, output=None, origin=0, mask=None, border_value=0, brute_force=False, *, axes=None) - Multidimensional binary opening with the given structuring element.
+cupyx.scipy.ndimage.binary_propagation(input, structure=None, mask=None, output=None, border_value=0, origin=0, *, axes=None) - Multidimensional binary propagation with the given structuring element.
+cupyx.scipy.ndimage.black_tophat(input, size=None, footprint=None, structure=None, output=None, mode='reflect', cval=0.0, origin=0, *, axes=None) - Multidimensional black tophat filter.
+cupyx.scipy.ndimage.center_of_mass(input, labels=None, index=None) - Calculate the center of mass of the values of an array at labels.
+cupyx.scipy.ndimage.convolve(input, weights, output=None, mode='reflect', cval=0.0, origin=0, *, axes=None) - Multi-dimensional convolution.
+cupyx.scipy.ndimage.convolve1d(input, weights, axis=-1, output=None, mode='reflect', cval=0.0, origin=0) - One-dimensional convolution.
+cupyx.scipy.ndimage.correlate(input, weights, output=None, mode='reflect', cval=0.0, origin=0, *, axes=None) - Multi-dimensional correlate.
+cupyx.scipy.ndimage.correlate1d(input, weights, axis=-1, output=None, mode='reflect', cval=0.0, origin=0) - One-dimensional correlate.
+cupyx.scipy.ndimage.distance_transform_edt(image, sampling=None, return_distances=True, return_indices=False, distances=None, indices=None, *, block_params=None, float64_distances=True) - Exact Euclidean distance transform.
+cupyx.scipy.ndimage.extrema(input, labels=None, index=None) - Calculate the minimums and maximums of the values of an array at labels,
+cupyx.scipy.ndimage.find_objects(input, max_label=0) - Find objects in a labeled array.
+cupyx.scipy.ndimage.fourier_ellipsoid(input, size, n=-1, axis=-1, output=None) - Multidimensional ellipsoid Fourier filter.
+cupyx.scipy.ndimage.fourier_gaussian(input, sigma, n=-1, axis=-1, output=None) - Multidimensional Gaussian shift filter.
+cupyx.scipy.ndimage.fourier_shift(input, shift, n=-1, axis=-1, output=None) - Multidimensional Fourier shift filter.
+cupyx.scipy.ndimage.fourier_uniform(input, size, n=-1, axis=-1, output=None) - Multidimensional uniform shift filter.
+cupyx.scipy.ndimage.gaussian_filter(input, sigma, order=0, output=None, mode='reflect', cval=0.0, truncate=4.0, radius=None, axes=None) - Multi-dimensional Gaussian filter.
+cupyx.scipy.ndimage.gaussian_filter1d(input, sigma, axis=-1, order=0, output=None, mode='reflect', cval=0.0, truncate=4.0) - One-dimensional Gaussian filter along the given axis.
+cupyx.scipy.ndimage.gaussian_gradient_magnitude(input, sigma, output=None, mode='reflect', cval=0.0, *, axes=None, **kwargs) - Multi-dimensional gradient magnitude using Gaussian derivatives.
+cupyx.scipy.ndimage.gaussian_laplace(input, sigma, output=None, mode='reflect', cval=0.0, *, axes=None, **kwargs) - Multi-dimensional Laplace filter using Gaussian second derivatives.
+cupyx.scipy.ndimage.generate_binary_structure(rank, connectivity) - Generate a binary structure for binary morphological operations.
+cupyx.scipy.ndimage.generic_filter(input, function, size=None, footprint=None, output=None, mode='reflect', cval=0.0, origin=0, *, axes=None) - Compute a multi-dimensional filter using the provided raw kernel or
+cupyx.scipy.ndimage.generic_filter1d(input, function, filter_size, axis=-1, output=None, mode='reflect', cval=0.0, origin=0) - Compute a 1D filter along the given axis using the provided raw kernel.
+cupyx.scipy.ndimage.generic_gradient_magnitude(input, derivative, output=None, mode='reflect', cval=0.0, extra_arguments=(), extra_keywords=None, *, axes=None) - Multi-dimensional gradient magnitude filter using a provided derivative
+cupyx.scipy.ndimage.generic_laplace(input, derivative2, output=None, mode='reflect', cval=0.0, extra_arguments=(), extra_keywords=None, *, axes=None) - Multi-dimensional Laplace filter using a provided second derivative
+cupyx.scipy.ndimage.grey_closing(input, size=None, footprint=None, structure=None, output=None, mode='reflect', cval=0.0, origin=0, *, axes=None) - Calculates a multi-dimensional greyscale closing.
+cupyx.scipy.ndimage.grey_dilation(input, size=None, footprint=None, structure=None, output=None, mode='reflect', cval=0.0, origin=0, *, axes=None) - Calculates a greyscale dilation.
+cupyx.scipy.ndimage.grey_erosion(input, size=None, footprint=None, structure=None, output=None, mode='reflect', cval=0.0, origin=0, *, axes=None) - Calculates a greyscale erosion.
+cupyx.scipy.ndimage.grey_opening(input, size=None, footprint=None, structure=None, output=None, mode='reflect', cval=0.0, origin=0, *, axes=None) - Calculates a multi-dimensional greyscale opening.
+cupyx.scipy.ndimage.histogram(input, min, max, bins, labels=None, index=None) - Calculate the histogram of the values of an array, optionally at labels.
+cupyx.scipy.ndimage.iterate_structure(structure, iterations, origin=None) - Iterate a structure by dilating it with itself.
+cupyx.scipy.ndimage.label(input, structure=None, output=None) - Labels features in an array.
+cupyx.scipy.ndimage.labeled_comprehension(input, labels, index, func, out_dtype, default, pass_positions=False) - Array resulting from applying ``func`` to each labeled region.
+cupyx.scipy.ndimage.laplace(input, output=None, mode='reflect', cval=0.0, *, axes=None) - Multi-dimensional Laplace filter based on approximate second
+cupyx.scipy.ndimage.map_coordinates(input, coordinates, output=None, order=3, mode='constant', cval=0.0, prefilter=True) - Map the input array to new coordinates by interpolation.
+cupyx.scipy.ndimage.maximum(input, labels=None, index=None) - Calculate the maximum of the values of an array over labeled regions.
+cupyx.scipy.ndimage.maximum_filter(input, size=None, footprint=None, output=None, mode='reflect', cval=0.0, origin=0, axes=None) - Multi-dimensional maximum filter.
+cupyx.scipy.ndimage.maximum_filter1d(input, size, axis=-1, output=None, mode='reflect', cval=0.0, origin=0) - Compute the maximum filter along a single axis.
+cupyx.scipy.ndimage.maximum_position(input, labels=None, index=None) - Find the positions of the maximums of the values of an array at labels.
+cupyx.scipy.ndimage.mean(input, labels=None, index=None) - Calculates the mean of the values of an n-D image array, optionally
+cupyx.scipy.ndimage.median(input, labels=None, index=None) - Calculate the median of the values of an array over labeled regions.
+cupyx.scipy.ndimage.median_filter(input, size=None, footprint=None, output=None, mode='reflect', cval=0.0, origin=0, axes=None) - Multi-dimensional median filter.
+cupyx.scipy.ndimage.minimum(input, labels=None, index=None) - Calculate the minimum of the values of an array over labeled regions.
+cupyx.scipy.ndimage.minimum_filter(input, size=None, footprint=None, output=None, mode='reflect', cval=0.0, origin=0, axes=None) - Multi-dimensional minimum filter.
+cupyx.scipy.ndimage.minimum_filter1d(input, size, axis=-1, output=None, mode='reflect', cval=0.0, origin=0) - Compute the minimum filter along a single axis.
+cupyx.scipy.ndimage.minimum_position(input, labels=None, index=None) - Find the positions of the minimums of the values of an array at labels.
+cupyx.scipy.ndimage.morphological_gradient(input, size=None, footprint=None, structure=None, output=None, mode='reflect', cval=0.0, origin=0, *, axes=None) - Multidimensional morphological gradient.
+cupyx.scipy.ndimage.morphological_laplace(input, size=None, footprint=None, structure=None, output=None, mode='reflect', cval=0.0, origin=0, *, axes=None) - Multidimensional morphological laplace.
+cupyx.scipy.ndimage.percentile_filter(input, percentile, size=None, footprint=None, output=None, mode='reflect', cval=0.0, origin=0, axes=None) - Multi-dimensional percentile filter.
+cupyx.scipy.ndimage.prewitt(input, axis=-1, output=None, mode='reflect', cval=0.0) - Compute a Prewitt filter along the given axis.
+cupyx.scipy.ndimage.rank_filter(input, rank, size=None, footprint=None, output=None, mode='reflect', cval=0.0, origin=0, axes=None) - Multi-dimensional rank filter.
+cupyx.scipy.ndimage.rotate(input, angle, axes=(1, 0), reshape=True, output=None, order=3, mode='constant', cval=0.0, prefilter=True) - Rotate an array.
+cupyx.scipy.ndimage.shift(input, shift, output=None, order=3, mode='constant', cval=0.0, prefilter=True) - Shift an array.
+cupyx.scipy.ndimage.sobel(input, axis=-1, output=None, mode='reflect', cval=0.0) - Compute a Sobel filter along the given axis.
+cupyx.scipy.ndimage.spline_filter(input, order=3, output=<class 'numpy.float64'>, mode='mirror') - Multidimensional spline filter.
+cupyx.scipy.ndimage.spline_filter1d(input, order=3, axis=-1, output=<class 'numpy.float64'>, mode='mirror') - Calculate a 1-D spline filter along the given axis.
+cupyx.scipy.ndimage.standard_deviation(input, labels=None, index=None) - Calculates the standard deviation of the values of an n-D image array,
+cupyx.scipy.ndimage.sum(input, labels=None, index=None) - Calculates the sum of the values of an n-D image array, optionally
+cupyx.scipy.ndimage.sum_labels(input, labels=None, index=None) - Calculates the sum of the values of an n-D image array, optionally
+cupyx.scipy.ndimage.uniform_filter(input, size=3, output=None, mode='reflect', cval=0.0, origin=0, axes=None) - Multi-dimensional uniform filter.
+cupyx.scipy.ndimage.uniform_filter1d(input, size, axis=-1, output=None, mode='reflect', cval=0.0, origin=0) - One-dimensional uniform filter along the given axis.
+cupyx.scipy.ndimage.value_indices(arr, *, ignore_value=None, adaptive_index_dtype=False) - Find indices of each distinct value in given array.
+cupyx.scipy.ndimage.variance(input, labels=None, index=None) - Calculates the variance of the values of an n-D image array, optionally
+cupyx.scipy.ndimage.white_tophat(input, size=None, footprint=None, structure=None, output=None, mode='reflect', cval=0.0, origin=0, *, axes=None) - Multidimensional white tophat filter.
+cupyx.scipy.ndimage.zoom(input, zoom, output=None, order=3, mode='constant', cval=0.0, prefilter=True, *, grid_mode=False) - Zoom an array.
+cupyx.scipy.signal.BadCoefficients(...) - Warning about badly conditioned filter coefficients
+cupyx.scipy.signal.BadCoefficients.add_note(...) - Exception.add_note(note) --
+cupyx.scipy.signal.BadCoefficients.with_traceback(...) - Exception.with_traceback(tb) --
+cupyx.scipy.signal.CZT(n, m=None, w=None, a=(1+0j)) - Create a callable chirp z-transform function.
+cupyx.scipy.signal.CZT.points(self) - Return the points at which the chirp z-transform is computed.
+cupyx.scipy.signal.StateSpace(*system, **kwargs) - Linear Time Invariant system in state-space form.
+cupyx.scipy.signal.StateSpace.A - State matrix of the `StateSpace` system.
+cupyx.scipy.signal.StateSpace.B - Input matrix of the `StateSpace` system.
+cupyx.scipy.signal.StateSpace.C - Output matrix of the `StateSpace` system.
+cupyx.scipy.signal.StateSpace.D - Feedthrough matrix of the `StateSpace` system.
+cupyx.scipy.signal.StateSpace.dt - Return the sampling time of the system, `None` for `lti` systems.
+cupyx.scipy.signal.StateSpace.poles - Poles of the system.
+cupyx.scipy.signal.StateSpace.to_ss(self) - Return a copy of the current `StateSpace` system.
+cupyx.scipy.signal.StateSpace.to_tf(self, **kwargs) - Convert system representation to `TransferFunction`.
+cupyx.scipy.signal.StateSpace.to_zpk(self, **kwargs) - Convert system representation to `ZerosPolesGain`.
+cupyx.scipy.signal.StateSpace.zeros - Zeros of the system.
+cupyx.scipy.signal.TransferFunction(*system, **kwargs) - Linear Time Invariant system class in transfer function form.
+cupyx.scipy.signal.TransferFunction.den - Denominator of the `TransferFunction` system.
+cupyx.scipy.signal.TransferFunction.dt - Return the sampling time of the system, `None` for `lti` systems.
+cupyx.scipy.signal.TransferFunction.num - Numerator of the `TransferFunction` system.
+cupyx.scipy.signal.TransferFunction.poles - Poles of the system.
+cupyx.scipy.signal.TransferFunction.to_ss(self) - Convert system representation to `StateSpace`.
+cupyx.scipy.signal.TransferFunction.to_tf(self) - Return a copy of the current `TransferFunction` system.
+cupyx.scipy.signal.TransferFunction.to_zpk(self) - Convert system representation to `ZerosPolesGain`.
+cupyx.scipy.signal.TransferFunction.zeros - Zeros of the system.
+cupyx.scipy.signal.ZerosPolesGain(*system, **kwargs) - Linear Time Invariant system class in zeros, poles, gain form.
+cupyx.scipy.signal.ZerosPolesGain.dt - Return the sampling time of the system, `None` for `lti` systems.
+cupyx.scipy.signal.ZerosPolesGain.gain - Gain of the `ZerosPolesGain` system.
+cupyx.scipy.signal.ZerosPolesGain.poles - Poles of the `ZerosPolesGain` system.
+cupyx.scipy.signal.ZerosPolesGain.to_ss(self) - Convert system representation to `StateSpace`.
+cupyx.scipy.signal.ZerosPolesGain.to_tf(self) - Convert system representation to `TransferFunction`.
+cupyx.scipy.signal.ZerosPolesGain.to_zpk(self) - Return a copy of the current 'ZerosPolesGain' system.
+cupyx.scipy.signal.ZerosPolesGain.zeros - Zeros of the `ZerosPolesGain` system.
+cupyx.scipy.signal.ZoomFFT(n, fn, m=None, *, fs=2, endpoint=False) - Create a callable zoom FFT transform function.
+cupyx.scipy.signal.ZoomFFT.points(self) - Return the points at which the chirp z-transform is computed.
+cupyx.scipy.signal.abcd_normalize(A=None, B=None, C=None, D=None) - Check state-space matrices and ensure they are 2-D.
+cupyx.scipy.signal.argrelextrema(data, comparator, axis=0, order=1, mode='clip') - Calculate the relative extrema of `data`.
+cupyx.scipy.signal.argrelmax(data, axis=0, order=1, mode='clip') - Calculate the relative maxima of `data`.
+cupyx.scipy.signal.argrelmin(data, axis=0, order=1, mode='clip') - Calculate the relative minima of `data`.
+cupyx.scipy.signal.band_stop_obj(wp, ind, passb, stopb, gpass, gstop, type) - Band Stop Objective Function for order minimization.
+cupyx.scipy.signal.bilinear(b, a, fs=1.0) - Return a digital IIR filter from an analog one using a bilinear transform.
+cupyx.scipy.signal.bilinear_zpk(z, p, k, fs) - Return a digital IIR filter from an analog one using a bilinear transform.
+cupyx.scipy.signal.bode(system, w=None, n=100) - Calculate Bode magnitude and phase data of a continuous-time system.
+cupyx.scipy.signal.buttap(N) - Return (z,p,k) for analog prototype of Nth-order Butterworth filter.
+cupyx.scipy.signal.butter(N, Wn, btype='low', analog=False, output='ba', fs=None) - Butterworth digital and analog filter design.
+cupyx.scipy.signal.buttord(wp, ws, gpass, gstop, analog=False, fs=None) - Butterworth filter order selection.
+cupyx.scipy.signal.cheb1ap(N, rp) - Return (z,p,k) for Nth-order Chebyshev type I analog lowpass filter.
+cupyx.scipy.signal.cheb1ord(wp, ws, gpass, gstop, analog=False, fs=None) - Chebyshev type I filter order selection.
+cupyx.scipy.signal.cheb2ap(N, rs) - Return (z,p,k) for Nth-order Chebyshev type I analog lowpass filter.
+cupyx.scipy.signal.cheb2ord(wp, ws, gpass, gstop, analog=False, fs=None) - Chebyshev type II filter order selection.
+cupyx.scipy.signal.cheby1(N, rp, Wn, btype='low', analog=False, output='ba', fs=None) - Chebyshev type I digital and analog filter design.
+cupyx.scipy.signal.cheby2(N, rs, Wn, btype='low', analog=False, output='ba', fs=None) - Chebyshev type II digital and analog filter design.
+cupyx.scipy.signal.check_COLA(window, nperseg, noverlap, tol=1e-10) - Check whether the Constant OverLap Add (COLA) constraint is met.
+cupyx.scipy.signal.check_NOLA(window, nperseg, noverlap, tol=1e-10) - Check whether the Nonzero Overlap Add (NOLA) constraint is met.
+cupyx.scipy.signal.chirp(t, f0, t1, f1, method='linear', phi=0, vertex_zero=True) - Frequency-swept cosine generator.
+cupyx.scipy.signal.choose_conv_method(in1, in2, mode='full') - Find the fastest convolution/correlation method.
+cupyx.scipy.signal.coherence(x, y, fs=1.0, window='hann', nperseg=None, noverlap=None, nfft=None, detrend='constant', axis=-1) - Estimate the magnitude squared coherence estimate, Cxy, of
+cupyx.scipy.signal.cont2discrete(system, dt, method='zoh', alpha=None) - Transform a continuous to a discrete state-space system.
+cupyx.scipy.signal.convolve(in1, in2, mode='full', method='auto') - Convolve two N-dimensional arrays.
+cupyx.scipy.signal.convolve2d(in1, in2, mode='full', boundary='fill', fillvalue=0) - Convolve two 2-dimensional arrays.
+cupyx.scipy.signal.correlate(in1, in2, mode='full', method='auto') - Cross-correlate two N-dimensional arrays.
+cupyx.scipy.signal.correlate2d(in1, in2, mode='full', boundary='fill', fillvalue=0) - Cross-correlate two 2-dimensional arrays.
+cupyx.scipy.signal.correlation_lags(in1_len, in2_len, mode='full') - Calculates the lag / displacement indices array for 1D cross-correlation.
+cupyx.scipy.signal.csd(x, y, fs=1.0, window='hann', nperseg=None, noverlap=None, nfft=None, detrend='constant', return_onesided=True, scaling='density', axis=-1, average='mean') - Estimate the cross power spectral density, Pxy, using Welch's
+cupyx.scipy.signal.cspline1d(signal, lamb=0.0) - Compute cubic spline coefficients for rank-1 array.
+cupyx.scipy.signal.cspline1d_eval(cj, newx, dx=1.0, x0=0) - Evaluate a cubic spline at the new set of points.
+cupyx.scipy.signal.cspline2d(signal, lamb=0.0, precision=-1.0) - Coefficients for 2-D cubic (3rd order) B-spline.
+cupyx.scipy.signal.cwt(data, wavelet, widths) - Continuous wavelet transform.
+cupyx.scipy.signal.czt(x, m=None, w=None, a=(1+0j), *, axis=-1) - Compute the frequency response around a spiral in the Z plane.
+cupyx.scipy.signal.czt_points(m, w=None, a=(1+0j)) - Return the points at which the chirp z-transform is computed.
+cupyx.scipy.signal.dbode(system, w=None, n=100) - Calculate Bode magnitude and phase data of a discrete-time system.
+cupyx.scipy.signal.decimate(x, q, n=None, ftype='iir', axis=-1, zero_phase=True) - Downsample the signal after applying an anti-aliasing filter.
+cupyx.scipy.signal.deconvolve(signal, divisor) - Deconvolves ``divisor`` out of ``signal`` using inverse filtering.
+cupyx.scipy.signal.detrend(data, axis=-1, type='linear', bp=0, overwrite_data=False) - Remove linear trend along axis from data.
+cupyx.scipy.signal.dfreqresp(system, w=None, n=10000, whole=False) - Calculate the frequency response of a discrete-time system.
+cupyx.scipy.signal.dimpulse(system, x0=None, t=None, n=None) - Impulse response of discrete-time system.
+cupyx.scipy.signal.dlsim(system, u, t=None, x0=None) - Simulate output of a discrete-time linear system.
+cupyx.scipy.signal.dlti(*system, **kwargs) - Discrete-time linear time invariant system base class.
+cupyx.scipy.signal.dlti.bode(self, w=None, n=100) - Calculate Bode magnitude and phase data of a discrete-time system.
+cupyx.scipy.signal.dlti.dt - Return the sampling time of the system.
+cupyx.scipy.signal.dlti.freqresp(self, w=None, n=10000, whole=False) - Calculate the frequency response of a discrete-time system.
+cupyx.scipy.signal.dlti.impulse(self, x0=None, t=None, n=None) - Return the impulse response of the discrete-time `dlti` system.
+cupyx.scipy.signal.dlti.output(self, u, t, x0=None) - Return the response of the discrete-time system to input `u`.
+cupyx.scipy.signal.dlti.poles - Poles of the system.
+cupyx.scipy.signal.dlti.step(self, x0=None, t=None, n=None) - Return the step response of the discrete-time `dlti` system.
+cupyx.scipy.signal.dlti.zeros - Zeros of the system.
+cupyx.scipy.signal.dstep(system, x0=None, t=None, n=None) - Step response of discrete-time system.
+cupyx.scipy.signal.ellip(N, rp, rs, Wn, btype='low', analog=False, output='ba', fs=None) - Elliptic (Cauer) digital and analog filter design.
+cupyx.scipy.signal.ellipap(N, rp, rs) - Return (z,p,k) of Nth-order elliptic analog lowpass filter.
+cupyx.scipy.signal.ellipord(wp, ws, gpass, gstop, analog=False, fs=None) - Elliptic (Cauer) filter order selection.
+cupyx.scipy.signal.fftconvolve(in1, in2, mode='full', axes=None) - Convolve two N-dimensional arrays using FFT.
+cupyx.scipy.signal.filtfilt(b, a, x, axis=-1, padtype='odd', padlen=None, method='pad', irlen=None) - Apply a digital filter forward and backward to a signal.
+cupyx.scipy.signal.find_peaks(x, height=None, threshold=None, distance=None, prominence=None, width=None, wlen=None, rel_height=0.5, plateau_size=None) - Find peaks inside a signal based on peak properties.
+cupyx.scipy.signal.findfreqs(num, den, N, kind='ba') - Find array of frequencies for computing the response of an analog filter.
+cupyx.scipy.signal.firls(numtaps, bands, desired, weight=None, fs=2) - FIR filter design using least-squares error minimization.
+cupyx.scipy.signal.firwin(numtaps, cutoff, width=None, window='hamming', pass_zero=True, scale=True, fs=2) - FIR filter design using the window method.
+cupyx.scipy.signal.firwin2(numtaps, freq, gain, nfreqs=None, window='hamming', nyq=None, antisymmetric=False, fs=2.0) - FIR filter design using the window method.
+cupyx.scipy.signal.freqresp(system, w=None, n=10000) - Calculate the frequency response of a continuous-time system.
+cupyx.scipy.signal.freqs(b, a, worN=200, plot=None) - Compute frequency response of analog filter.
+cupyx.scipy.signal.freqs_zpk(z, p, k, worN=200) - Compute frequency response of analog filter.
+cupyx.scipy.signal.freqz(b, a=1, worN=512, whole=False, plot=None, fs=6.283185307179586, include_nyquist=False) - Compute the frequency response of a digital filter.
+cupyx.scipy.signal.freqz_sos(sos, worN=512, whole=False, fs=6.283185307179586) - Compute the frequency response of a digital filter in SOS format.
+cupyx.scipy.signal.freqz_zpk(z, p, k, worN=512, whole=False, fs=6.283185307179586) - Compute the frequency response of a digital filter in ZPK form.
+cupyx.scipy.signal.gammatone(freq, ftype, order=None, numtaps=None, fs=None) - Gammatone filter design.
+cupyx.scipy.signal.gauss_spline(x, n) - Gaussian approximation to B-spline basis function of order n.
+cupyx.scipy.signal.gausspulse(t, fc=1000, bw=0.5, bwr=-6, tpr=-60, retquad=False, retenv=False) - Return a Gaussian modulated sinusoid:
+cupyx.scipy.signal.get_window(window, Nx, fftbins=True) - Return a window of a given length and type.
+cupyx.scipy.signal.group_delay(system, w=512, whole=False, fs=6.283185307179586) - Compute the group delay of a digital filter.
+cupyx.scipy.signal.hilbert(x, N=None, axis=-1) - Compute the analytic signal, using the Hilbert transform.
+cupyx.scipy.signal.hilbert2(x, N=None) - Compute the '2-D' analytic signal of `x`
+cupyx.scipy.signal.iircomb(w0, Q, ftype='notch', fs=2.0, *, pass_zero=False) - Design IIR notching or peaking digital comb filter.
+cupyx.scipy.signal.iirdesign(wp, ws, gpass, gstop, analog=False, ftype='ellip', output='ba', fs=None) - Complete IIR digital and analog filter design.
+cupyx.scipy.signal.iirfilter(N, Wn, rp=None, rs=None, btype='band', analog=False, ftype='butter', output='ba', fs=None) - IIR digital and analog filter design given order and critical points.
+cupyx.scipy.signal.iirnotch(w0, Q, fs=2.0) - Design second-order IIR notch digital filter.
+cupyx.scipy.signal.iirpeak(w0, Q, fs=2.0) - Design second-order IIR peak (resonant) digital filter.
+cupyx.scipy.signal.impulse(system, X0=None, T=None, N=None) - Impulse response of continuous-time system.
+cupyx.scipy.signal.invres(r, p, k, tol=0.001, rtype='avg') - Compute b(s) and a(s) from partial fraction expansion.
+cupyx.scipy.signal.invresz(r, p, k, tol=0.001, rtype='avg') - Compute b(z) and a(z) from partial fraction expansion.
+cupyx.scipy.signal.istft(Zxx, fs=1.0, window='hann', nperseg=None, noverlap=None, nfft=None, input_onesided=True, boundary=True, time_axis=-1, freq_axis=-2, scaling='spectrum') - Perform the inverse Short Time Fourier transform (iSTFT).
+cupyx.scipy.signal.kaiser_atten(numtaps, width) - Compute the attenuation of a Kaiser FIR filter.
+cupyx.scipy.signal.kaiser_beta(a) - Compute the Kaiser parameter `beta`, given the attenuation `a`.
+cupyx.scipy.signal.kaiserord(ripple, width) - Determine the filter window parameters for the Kaiser window method.
+cupyx.scipy.signal.lfilter(b, a, x, axis=-1, zi=None) - Filter data along one-dimension with an IIR or FIR filter.
+cupyx.scipy.signal.lfilter_zi(b, a) - Construct initial conditions for lfilter for step response steady-state.
+cupyx.scipy.signal.lfiltic(b, a, y, x=None) - Construct initial conditions for lfilter given input and output vectors.
+cupyx.scipy.signal.lombscargle(x, y, freqs, precenter=False, normalize=False) - lombscargle(x, y, freqs)
+cupyx.scipy.signal.lp2bp(b, a, wo=1.0, bw=1.0) - Transform a lowpass filter prototype to a bandpass filter.
+cupyx.scipy.signal.lp2bp_zpk(z, p, k, wo=1.0, bw=1.0) - Transform a lowpass filter prototype to a bandpass filter.
+cupyx.scipy.signal.lp2bs(b, a, wo=1.0, bw=1.0) - Transform a lowpass filter prototype to a bandstop filter.
+cupyx.scipy.signal.lp2bs_zpk(z, p, k, wo=1.0, bw=1.0) - Transform a lowpass filter prototype to a bandstop filter.
+cupyx.scipy.signal.lp2hp(b, a, wo=1.0) - Transform a lowpass filter prototype to a highpass filter.
+cupyx.scipy.signal.lp2hp_zpk(z, p, k, wo=1.0) - Transform a lowpass filter prototype to a highpass filter.
+cupyx.scipy.signal.lp2lp(b, a, wo=1.0) - Transform a lowpass filter prototype to a different frequency.
+cupyx.scipy.signal.lp2lp_zpk(z, p, k, wo=1.0) - Transform a lowpass filter prototype to a different frequency.
+cupyx.scipy.signal.lsim(system, U, T, X0=None, interp=True) - Simulate output of a continuous-time linear system.
+cupyx.scipy.signal.lti(*system) - Continuous-time linear time invariant system base class.
+cupyx.scipy.signal.lti.bode(self, w=None, n=100) - Calculate Bode magnitude and phase data of a continuous-time system.
+cupyx.scipy.signal.lti.dt - Return the sampling time of the system, `None` for `lti` systems.
+cupyx.scipy.signal.lti.freqresp(self, w=None, n=10000) - Calculate the frequency response of a continuous-time system.
+cupyx.scipy.signal.lti.impulse(self, X0=None, T=None, N=None) - Return the impulse response of a continuous-time system.
+cupyx.scipy.signal.lti.output(self, U, T, X0=None) - Return the response of a continuous-time system to input `U`.
+cupyx.scipy.signal.lti.poles - Poles of the system.
+cupyx.scipy.signal.lti.step(self, X0=None, T=None, N=None) - Return the step response of a continuous-time system.
+cupyx.scipy.signal.lti.to_discrete(self, dt, method='zoh', alpha=None) - Return a discretized version of the current system.
+cupyx.scipy.signal.lti.zeros - Zeros of the system.
+cupyx.scipy.signal.max_len_seq(nbits, state=None, length=None, taps=None) - Maximum length sequence (MLS) generator.
+cupyx.scipy.signal.medfilt(volume, kernel_size=None) - Perform a median filter on an N-dimensional array.
+cupyx.scipy.signal.medfilt2d(input, kernel_size=3) - Median filter a 2-dimensional array.
+cupyx.scipy.signal.minimum_phase(h, method='homomorphic', n_fft=None, half=True) - Convert a linear-phase FIR filter to minimum phase
+cupyx.scipy.signal.morlet(M, w=5.0, s=1.0, complete=True) - Complex Morlet wavelet.
+cupyx.scipy.signal.morlet2(M, s, w=5) - Complex Morlet wavelet, designed to work with `cwt`.
+cupyx.scipy.signal.normalize(b, a) - Normalize numerator/denominator of a continuous-time transfer function.
+cupyx.scipy.signal.oaconvolve(in1, in2, mode='full', axes=None) - Convolve two N-dimensional arrays using the overlap-add method.
+cupyx.scipy.signal.order_filter(a, domain, rank) - Perform an order filter on an N-D array.
+cupyx.scipy.signal.peak_prominences(x, peaks, wlen=None) - Calculate the prominence of each peak in a signal.
+cupyx.scipy.signal.peak_widths(x, peaks, rel_height=0.5, prominence_data=None, wlen=None) - Calculate the width of each peak in a signal.
+cupyx.scipy.signal.periodogram(x, fs=1.0, window='boxcar', nfft=None, detrend='constant', return_onesided=True, scaling='density', axis=-1) - Estimate power spectral density using a periodogram.
+cupyx.scipy.signal.place_poles(A, B, poles, method='YT', rtol=0.001, maxiter=30) - Compute K such that eigenvalues (A - dot(B, K))=poles.
+cupyx.scipy.signal.qmf(hk) - Return high-pass qmf filter from low-pass
+cupyx.scipy.signal.qspline1d(signal, lamb=0.0) - Compute quadratic spline coefficients for rank-1 array.
+cupyx.scipy.signal.qspline1d_eval(cj, newx, dx=1.0, x0=0) - Evaluate a quadratic spline at the new set of points.
+cupyx.scipy.signal.qspline2d(signal, lamb=0.0, precision=-1.0) - Coefficients for 2-D quadratic (2nd order) B-spline.
+cupyx.scipy.signal.resample(x, num, t=None, axis=0, window=None, domain='time') - Resample `x` to `num` samples using Fourier method along the given axis.
+cupyx.scipy.signal.resample_poly(x, up, down, axis=0, window=('kaiser', 5.0), padtype='constant', cval=None) - Resample `x` along the given axis using polyphase filtering.
+cupyx.scipy.signal.residue(b, a, tol=0.001, rtype='avg') - Compute partial-fraction expansion of b(s) / a(s).
+cupyx.scipy.signal.residuez(b, a, tol=0.001, rtype='avg') - Compute partial-fraction expansion of b(z) / a(z).
+cupyx.scipy.signal.ricker(points, a) - Return a Ricker wavelet, also known as the "Mexican hat wavelet".
+cupyx.scipy.signal.savgol_coeffs(window_length, polyorder, deriv=0, delta=1.0, pos=None, use='conv') - Compute the coefficients for a 1-D Savitzky-Golay FIR filter.
+cupyx.scipy.signal.savgol_filter(x, window_length, polyorder, deriv=0, delta=1.0, axis=-1, mode='interp', cval=0.0) - Apply a Savitzky-Golay filter to an array.
+cupyx.scipy.signal.sawtooth(t, width=1.0) - Return a periodic sawtooth or triangle waveform.
+cupyx.scipy.signal.sepfir2d(input, hrow, hcol) - Convolve with a 2-D separable FIR filter.
+cupyx.scipy.signal.sos2tf(sos) - Return a single transfer function from a series of second-order sections
+cupyx.scipy.signal.sos2zpk(sos) - Return zeros, poles, and gain of a series of second-order sections
+cupyx.scipy.signal.sosfilt(sos, x, axis=-1, zi=None) - Filter data along one dimension using cascaded second-order sections.
+cupyx.scipy.signal.sosfilt_zi(sos) - Construct initial conditions for sosfilt for step response steady-state.
+cupyx.scipy.signal.sosfiltfilt(sos, x, axis=-1, padtype='odd', padlen=None) - A forward-backward digital filter using cascaded second-order sections.
+cupyx.scipy.signal.sosfreqz(sos, worN=512, whole=False, fs=6.283185307179586) - A legacy alias for freqz_sos.
+cupyx.scipy.signal.spectrogram(x, fs=1.0, window=('tukey', 0.25), nperseg=None, noverlap=None, nfft=None, detrend='constant', return_onesided=True, scaling='density', axis=-1, mode='psd') - Compute a spectrogram with consecutive Fourier transforms.
+cupyx.scipy.signal.spline_filter(Iin, lmbda=5.0) - Smoothing spline (cubic) filtering of a rank-2 array.
+cupyx.scipy.signal.square(t, duty=0.5) - Return a periodic square-wave waveform.
+cupyx.scipy.signal.ss2tf(A, B, C, D, input=0) - State-space to transfer function.
+cupyx.scipy.signal.ss2zpk(A, B, C, D, input=0) - State-space representation to zero-pole-gain representation.
+cupyx.scipy.signal.step(system, X0=None, T=None, N=None) - Step response of continuous-time system.
+cupyx.scipy.signal.stft(x, fs=1.0, window='hann', nperseg=256, noverlap=None, nfft=None, detrend=False, return_onesided=True, boundary='zeros', padded=True, axis=-1, scaling='spectrum') - Compute the Short Time Fourier Transform (STFT).
+cupyx.scipy.signal.sweep_poly(t, poly, phi=0) - Frequency-swept cosine generator, with a time-dependent frequency.
+cupyx.scipy.signal.symiirorder1(input, c0, z1, precision=-1.0) - Implement a smoothing IIR filter with mirror-symmetric boundary conditions
+cupyx.scipy.signal.symiirorder2(input, r, omega, precision=-1.0) - Implement a smoothing IIR filter with mirror-symmetric boundary conditions
+cupyx.scipy.signal.tf2sos(b, a, pairing=None, *, analog=False) - Return second-order sections from transfer function representation
+cupyx.scipy.signal.tf2ss(num, den) - Transfer function to state-space representation.
+cupyx.scipy.signal.tf2zpk(b, a) - Return zero, pole, gain (z, p, k) representation from a numerator,
+cupyx.scipy.signal.unique_roots(p, tol=0.001, rtype='min') - Determine unique roots and their multiplicities from a list of roots.
+cupyx.scipy.signal.unit_impulse(shape, idx=None, dtype=<class 'float'>) - Unit impulse signal (discrete delta function) or unit basis vector.
+cupyx.scipy.signal.upfirdn(h, x, up=1, down=1, axis=-1, mode='constant', cval=0) - Upsample, FIR filter, and downsample.
+cupyx.scipy.signal.vectorstrength(events, period) - Determine the vector strength of the events corresponding to the given
+cupyx.scipy.signal.welch(x, fs=1.0, window='hann', nperseg=None, noverlap=None, nfft=None, detrend='constant', return_onesided=True, scaling='density', axis=-1, average='mean') - Estimate power spectral density using Welch's method.
+cupyx.scipy.signal.wiener(im, mysize=None, noise=None) - Perform a Wiener filter on an N-dimensional array.
+cupyx.scipy.signal.windows.barthann(M, sym=True) - Return a modified Bartlett-Hann window.
+cupyx.scipy.signal.windows.bartlett(M, sym=True) - Return a Bartlett window.
+cupyx.scipy.signal.windows.blackman(M, sym=True) - Return a Blackman window.
+cupyx.scipy.signal.windows.blackmanharris(M, sym=True) - Return a minimum 4-term Blackman-Harris window.
+cupyx.scipy.signal.windows.bohman(M, sym=True) - Return a Bohman window.
+cupyx.scipy.signal.windows.boxcar(M, sym=True) - Return a boxcar or rectangular window.
+cupyx.scipy.signal.windows.chebwin(M, at, sym=True) - Return a Dolph-Chebyshev window.
+cupyx.scipy.signal.windows.cosine(M, sym=True) - Return a window with a simple cosine shape.
+cupyx.scipy.signal.windows.exponential(M, center=None, tau=1.0, sym=True) - Return an exponential (or Poisson) window.
+cupyx.scipy.signal.windows.flattop(M, sym=True) - Return a flat top window.
+cupyx.scipy.signal.windows.gaussian(M, std, sym=True) - Return a Gaussian window.
+cupyx.scipy.signal.windows.general_cosine(M, a, sym=True) - Generic weighted sum of cosine terms window
+cupyx.scipy.signal.windows.general_gaussian(M, p, sig, sym=True) - Return a window with a generalized Gaussian shape.
+cupyx.scipy.signal.windows.general_hamming(M, alpha, sym=True) - Return a generalized Hamming window.
+cupyx.scipy.signal.windows.get_window(window, Nx, fftbins=True) - Return a window of a given length and type.
+cupyx.scipy.signal.windows.hamming(M, sym=True) - Return a Hamming window.
+cupyx.scipy.signal.windows.hann(M, sym=True) - Return a Hann window.
+cupyx.scipy.signal.windows.kaiser(M, beta, sym=True) - Return a Kaiser window.
+cupyx.scipy.signal.windows.kaiser_bessel_derived(M, beta, sym=True) - Return a Kaiser-Bessel derived window.
+cupyx.scipy.signal.windows.lanczos(M, sym=True) - Return a Lanczos window also known as a sinc window.
+cupyx.scipy.signal.windows.nuttall(M, sym=True) - Return a minimum 4-term Blackman-Harris window according to Nuttall.
+cupyx.scipy.signal.windows.parzen(M, sym=True) - Return a Parzen window.
+cupyx.scipy.signal.windows.taylor(M, nbar=4, sll=30, norm=True, sym=True) - Return a Taylor window.
+cupyx.scipy.signal.windows.triang(M, sym=True) - Return a triangular window.
+cupyx.scipy.signal.windows.tukey(M, alpha=0.5, sym=True) - Return a Tukey window, also known as a tapered cosine window.
+cupyx.scipy.signal.zoom_fft(x, fn, m=None, *, fs=2, endpoint=False, axis=-1) - Compute the DFT of `x` only for frequencies in range `fn`.
+cupyx.scipy.signal.zpk2sos(z, p, k, pairing=None, *, analog=False) - Return second-order sections from zeros, poles, and gain of a system
+cupyx.scipy.signal.zpk2ss(z, p, k) - Zero-pole-gain representation to state-space representation
+cupyx.scipy.signal.zpk2tf(z, p, k) - Return polynomial transfer function representation from zeros and poles
+cupyx.scipy.sparse.bmat(blocks, format=None, dtype=None) - Builds a sparse matrix from sparse sub-blocks
+cupyx.scipy.sparse.coo_matrix(arg1, shape=None, dtype=None, copy=False) - COOrdinate format sparse matrix.
+cupyx.scipy.sparse.coo_matrix.A - Dense ndarray representation of this matrix.
+cupyx.scipy.sparse.coo_matrix.H
+cupyx.scipy.sparse.coo_matrix.T
+cupyx.scipy.sparse.coo_matrix.arcsin(self) - Elementwise arcsin.
+cupyx.scipy.sparse.coo_matrix.arcsinh(self) - Elementwise arcsinh.
+cupyx.scipy.sparse.coo_matrix.arctan(self) - Elementwise arctan.
+cupyx.scipy.sparse.coo_matrix.arctanh(self) - Elementwise arctanh.
+cupyx.scipy.sparse.coo_matrix.asformat(self, format) - Return this matrix in a given sparse format.
+cupyx.scipy.sparse.coo_matrix.asfptype(self) - Upcasts matrix to a floating point format.
+cupyx.scipy.sparse.coo_matrix.astype(self, t) - Casts the array to given data type.
+cupyx.scipy.sparse.coo_matrix.ceil(self) - Elementwise ceil.
+cupyx.scipy.sparse.coo_matrix.conj(self, copy=True) - Element-wise complex conjugation.
+cupyx.scipy.sparse.coo_matrix.conjugate(self, copy=True) - Element-wise complex conjugation.
+cupyx.scipy.sparse.coo_matrix.copy(self) - Returns a copy of this matrix.
+cupyx.scipy.sparse.coo_matrix.count_nonzero(self) - Returns number of non-zero entries.
+cupyx.scipy.sparse.coo_matrix.deg2rad(self) - Elementwise deg2rad.
+cupyx.scipy.sparse.coo_matrix.device - CUDA device on which this array resides.
+cupyx.scipy.sparse.coo_matrix.diagonal(self, k=0) - Returns the k-th diagonal of the matrix.
+cupyx.scipy.sparse.coo_matrix.dot(self, other) - Ordinary dot product
+cupyx.scipy.sparse.coo_matrix.dtype - Data type of the matrix.
+cupyx.scipy.sparse.coo_matrix.eliminate_zeros(self) - Removes zero entories in place.
+cupyx.scipy.sparse.coo_matrix.expm1(self) - Elementwise expm1.
+cupyx.scipy.sparse.coo_matrix.floor(self) - Elementwise floor.
+cupyx.scipy.sparse.coo_matrix.get(self, stream=None) - Returns a copy of the array on host memory.
+cupyx.scipy.sparse.coo_matrix.getH(self)
+cupyx.scipy.sparse.coo_matrix.get_shape(self) - Returns the shape of the matrix.
+cupyx.scipy.sparse.coo_matrix.getformat(self)
+cupyx.scipy.sparse.coo_matrix.getmaxprint(self)
+cupyx.scipy.sparse.coo_matrix.getnnz(self, axis=None) - Returns the number of stored values, including explicit zeros.
+cupyx.scipy.sparse.coo_matrix.log1p(self) - Elementwise log1p.
+cupyx.scipy.sparse.coo_matrix.maximum(self, other)
+cupyx.scipy.sparse.coo_matrix.mean(self, axis=None, dtype=None, out=None) - Compute the arithmetic mean along the specified axis.
+cupyx.scipy.sparse.coo_matrix.minimum(self, other)
+cupyx.scipy.sparse.coo_matrix.multiply(self, other) - Point-wise multiplication by another matrix
+cupyx.scipy.sparse.coo_matrix.ndim
+cupyx.scipy.sparse.coo_matrix.nnz
+cupyx.scipy.sparse.coo_matrix.power(self, n, dtype=None) - Elementwise power function.
+cupyx.scipy.sparse.coo_matrix.rad2deg(self) - Elementwise rad2deg.
+cupyx.scipy.sparse.coo_matrix.reshape(self, *shape, order='C') - Gives a new shape to a sparse matrix without changing its data.
+cupyx.scipy.sparse.coo_matrix.rint(self) - Elementwise rint.
+cupyx.scipy.sparse.coo_matrix.set_shape(self, shape)
+cupyx.scipy.sparse.coo_matrix.setdiag(self, values, k=0) - Set diagonal or off-diagonal elements of the array.
+cupyx.scipy.sparse.coo_matrix.shape
+cupyx.scipy.sparse.coo_matrix.sign(self) - Elementwise sign.
+cupyx.scipy.sparse.coo_matrix.sin(self) - Elementwise sin.
+cupyx.scipy.sparse.coo_matrix.sinh(self) - Elementwise sinh.
+cupyx.scipy.sparse.coo_matrix.size
+cupyx.scipy.sparse.coo_matrix.sqrt(self) - Elementwise sqrt.
+cupyx.scipy.sparse.coo_matrix.sum(self, axis=None, dtype=None, out=None) - Sums the matrix elements over a given axis.
+cupyx.scipy.sparse.coo_matrix.sum_duplicates(self) - Eliminate duplicate matrix entries by adding them together.
+cupyx.scipy.sparse.coo_matrix.tan(self) - Elementwise tan.
+cupyx.scipy.sparse.coo_matrix.tanh(self) - Elementwise tanh.
+cupyx.scipy.sparse.coo_matrix.toarray(self, order=None, out=None) - Returns a dense matrix representing the same value.
+cupyx.scipy.sparse.coo_matrix.tobsr(self, blocksize=None, copy=False) - Convert this matrix to Block Sparse Row format.
+cupyx.scipy.sparse.coo_matrix.tocoo(self, copy=False) - Converts the matrix to COOrdinate format.
+cupyx.scipy.sparse.coo_matrix.tocsc(self, copy=False) - Converts the matrix to Compressed Sparse Column format.
+cupyx.scipy.sparse.coo_matrix.tocsr(self, copy=False) - Converts the matrix to Compressed Sparse Row format.
+cupyx.scipy.sparse.coo_matrix.todense(self, order=None, out=None) - Return a dense matrix representation of this matrix.
+cupyx.scipy.sparse.coo_matrix.todia(self, copy=False) - Convert this matrix to sparse DIAgonal format.
+cupyx.scipy.sparse.coo_matrix.todok(self, copy=False) - Convert this matrix to Dictionary Of Keys format.
+cupyx.scipy.sparse.coo_matrix.tolil(self, copy=False) - Convert this matrix to LInked List format.
+cupyx.scipy.sparse.coo_matrix.transpose(self, axes=None, copy=False) - Returns a transpose matrix.
+cupyx.scipy.sparse.coo_matrix.trunc(self) - Elementwise trunc.
+cupyx.scipy.sparse.csc_matrix(arg1, shape=None, dtype=None, copy=False) - Compressed Sparse Column matrix.
+cupyx.scipy.sparse.csc_matrix.A - Dense ndarray representation of this matrix.
+cupyx.scipy.sparse.csc_matrix.H
+cupyx.scipy.sparse.csc_matrix.T
+cupyx.scipy.sparse.csc_matrix.arcsin(self) - Elementwise arcsin.
+cupyx.scipy.sparse.csc_matrix.arcsinh(self) - Elementwise arcsinh.
+cupyx.scipy.sparse.csc_matrix.arctan(self) - Elementwise arctan.
+cupyx.scipy.sparse.csc_matrix.arctanh(self) - Elementwise arctanh.
+cupyx.scipy.sparse.csc_matrix.argmax(self, axis=None, out=None) - Returns indices of maximum elements along an axis.
+cupyx.scipy.sparse.csc_matrix.argmin(self, axis=None, out=None) - Returns indices of minimum elements along an axis.
+cupyx.scipy.sparse.csc_matrix.asformat(self, format) - Return this matrix in a given sparse format.
+cupyx.scipy.sparse.csc_matrix.asfptype(self) - Upcasts matrix to a floating point format.
+cupyx.scipy.sparse.csc_matrix.astype(self, t) - Casts the array to given data type.
+cupyx.scipy.sparse.csc_matrix.ceil(self) - Elementwise ceil.
+cupyx.scipy.sparse.csc_matrix.conj(self, copy=True) - Element-wise complex conjugation.
+cupyx.scipy.sparse.csc_matrix.conjugate(self, copy=True) - Element-wise complex conjugation.
+cupyx.scipy.sparse.csc_matrix.copy(self) - Returns a copy of this matrix.
+cupyx.scipy.sparse.csc_matrix.count_nonzero(self) - Returns number of non-zero entries.
+cupyx.scipy.sparse.csc_matrix.deg2rad(self) - Elementwise deg2rad.
+cupyx.scipy.sparse.csc_matrix.device - CUDA device on which this array resides.
+cupyx.scipy.sparse.csc_matrix.diagonal(self, k=0) - Returns the k-th diagonal of the matrix.
+cupyx.scipy.sparse.csc_matrix.dot(self, other) - Ordinary dot product
+cupyx.scipy.sparse.csc_matrix.dtype - Data type of the matrix.
+cupyx.scipy.sparse.csc_matrix.eliminate_zeros(self) - Removes zero entories in place.
+cupyx.scipy.sparse.csc_matrix.expm1(self) - Elementwise expm1.
+cupyx.scipy.sparse.csc_matrix.floor(self) - Elementwise floor.
+cupyx.scipy.sparse.csc_matrix.get(self, stream=None) - Returns a copy of the array on host memory.
+cupyx.scipy.sparse.csc_matrix.getH(self)
+cupyx.scipy.sparse.csc_matrix.get_shape(self) - Returns the shape of the matrix.
+cupyx.scipy.sparse.csc_matrix.getcol(self, i) - Returns a copy of column i of the matrix, as a (m x 1)
+cupyx.scipy.sparse.csc_matrix.getformat(self)
+cupyx.scipy.sparse.csc_matrix.getmaxprint(self)
+cupyx.scipy.sparse.csc_matrix.getnnz(self, axis=None) - Returns the number of stored values, including explicit zeros.
+cupyx.scipy.sparse.csc_matrix.getrow(self, i) - Returns a copy of row i of the matrix, as a (1 x n)
+cupyx.scipy.sparse.csc_matrix.has_canonical_format - Determine whether the matrix has sorted indices and no duplicates.
+cupyx.scipy.sparse.csc_matrix.has_sorted_indices - Determine whether the matrix has sorted indices.
+cupyx.scipy.sparse.csc_matrix.log1p(self) - Elementwise log1p.
+cupyx.scipy.sparse.csc_matrix.max(self, axis=None, out=None, *, explicit=False) - Returns the maximum of the matrix or maximum along an axis.
+cupyx.scipy.sparse.csc_matrix.maximum(self, other)
+cupyx.scipy.sparse.csc_matrix.mean(self, axis=None, dtype=None, out=None) - Compute the arithmetic mean along the specified axis.
+cupyx.scipy.sparse.csc_matrix.min(self, axis=None, out=None, *, explicit=False) - Returns the minimum of the matrix or maximum along an axis.
+cupyx.scipy.sparse.csc_matrix.minimum(self, other)
+cupyx.scipy.sparse.csc_matrix.multiply(self, other) - Point-wise multiplication by another matrix
+cupyx.scipy.sparse.csc_matrix.ndim
+cupyx.scipy.sparse.csc_matrix.nnz
+cupyx.scipy.sparse.csc_matrix.power(self, n, dtype=None) - Elementwise power function.
+cupyx.scipy.sparse.csc_matrix.rad2deg(self) - Elementwise rad2deg.
+cupyx.scipy.sparse.csc_matrix.reshape(self, *shape, order='C') - Gives a new shape to a sparse matrix without changing its data.
+cupyx.scipy.sparse.csc_matrix.rint(self) - Elementwise rint.
+cupyx.scipy.sparse.csc_matrix.set_shape(self, shape)
+cupyx.scipy.sparse.csc_matrix.setdiag(self, values, k=0) - Set diagonal or off-diagonal elements of the array.
+cupyx.scipy.sparse.csc_matrix.shape
+cupyx.scipy.sparse.csc_matrix.sign(self) - Elementwise sign.
+cupyx.scipy.sparse.csc_matrix.sin(self) - Elementwise sin.
+cupyx.scipy.sparse.csc_matrix.sinh(self) - Elementwise sinh.
+cupyx.scipy.sparse.csc_matrix.size
+cupyx.scipy.sparse.csc_matrix.sort_indices(self) - Sorts the indices of this matrix *in place*.
+cupyx.scipy.sparse.csc_matrix.sorted_indices(self) - Return a copy of this matrix with sorted indices
+cupyx.scipy.sparse.csc_matrix.sqrt(self) - Elementwise sqrt.
+cupyx.scipy.sparse.csc_matrix.sum(self, axis=None, dtype=None, out=None) - Sums the matrix elements over a given axis.
+cupyx.scipy.sparse.csc_matrix.sum_duplicates(self) - Eliminate duplicate matrix entries by adding them together.
+cupyx.scipy.sparse.csc_matrix.tan(self) - Elementwise tan.
+cupyx.scipy.sparse.csc_matrix.tanh(self) - Elementwise tanh.
+cupyx.scipy.sparse.csc_matrix.toarray(self, order=None, out=None) - Returns a dense matrix representing the same value.
+cupyx.scipy.sparse.csc_matrix.tobsr(self, blocksize=None, copy=False) - Convert this matrix to Block Sparse Row format.
+cupyx.scipy.sparse.csc_matrix.tocoo(self, copy=False) - Converts the matrix to COOrdinate format.
+cupyx.scipy.sparse.csc_matrix.tocsc(self, copy=None) - Converts the matrix to Compressed Sparse Column format.
+cupyx.scipy.sparse.csc_matrix.tocsr(self, copy=False) - Converts the matrix to Compressed Sparse Row format.
+cupyx.scipy.sparse.csc_matrix.todense(self, order=None, out=None) - Return a dense matrix representation of this matrix.
+cupyx.scipy.sparse.csc_matrix.todia(self, copy=False) - Convert this matrix to sparse DIAgonal format.
+cupyx.scipy.sparse.csc_matrix.todok(self, copy=False) - Convert this matrix to Dictionary Of Keys format.
+cupyx.scipy.sparse.csc_matrix.tolil(self, copy=False) - Convert this matrix to LInked List format.
+cupyx.scipy.sparse.csc_matrix.transpose(self, axes=None, copy=False) - Returns a transpose matrix.
+cupyx.scipy.sparse.csc_matrix.trunc(self) - Elementwise trunc.
+cupyx.scipy.sparse.csgraph.connected_components(csgraph, directed=True, connection='weak', return_labels=True) - Analyzes the connected components of a sparse graph
+cupyx.scipy.sparse.csr_matrix(arg1, shape=None, dtype=None, copy=False) - Compressed Sparse Row matrix.
+cupyx.scipy.sparse.csr_matrix.A - Dense ndarray representation of this matrix.
+cupyx.scipy.sparse.csr_matrix.H
+cupyx.scipy.sparse.csr_matrix.T
+cupyx.scipy.sparse.csr_matrix.arcsin(self) - Elementwise arcsin.
+cupyx.scipy.sparse.csr_matrix.arcsinh(self) - Elementwise arcsinh.
+cupyx.scipy.sparse.csr_matrix.arctan(self) - Elementwise arctan.
+cupyx.scipy.sparse.csr_matrix.arctanh(self) - Elementwise arctanh.
+cupyx.scipy.sparse.csr_matrix.argmax(self, axis=None, out=None) - Returns indices of maximum elements along an axis.
+cupyx.scipy.sparse.csr_matrix.argmin(self, axis=None, out=None) - Returns indices of minimum elements along an axis.
+cupyx.scipy.sparse.csr_matrix.asformat(self, format) - Return this matrix in a given sparse format.
+cupyx.scipy.sparse.csr_matrix.asfptype(self) - Upcasts matrix to a floating point format.
+cupyx.scipy.sparse.csr_matrix.astype(self, t) - Casts the array to given data type.
+cupyx.scipy.sparse.csr_matrix.ceil(self) - Elementwise ceil.
+cupyx.scipy.sparse.csr_matrix.conj(self, copy=True) - Element-wise complex conjugation.
+cupyx.scipy.sparse.csr_matrix.conjugate(self, copy=True) - Element-wise complex conjugation.
+cupyx.scipy.sparse.csr_matrix.copy(self) - Returns a copy of this matrix.
+cupyx.scipy.sparse.csr_matrix.count_nonzero(self) - Returns number of non-zero entries.
+cupyx.scipy.sparse.csr_matrix.deg2rad(self) - Elementwise deg2rad.
+cupyx.scipy.sparse.csr_matrix.device - CUDA device on which this array resides.
+cupyx.scipy.sparse.csr_matrix.diagonal(self, k=0) - Returns the k-th diagonal of the matrix.
+cupyx.scipy.sparse.csr_matrix.dot(self, other) - Ordinary dot product
+cupyx.scipy.sparse.csr_matrix.dtype - Data type of the matrix.
+cupyx.scipy.sparse.csr_matrix.eliminate_zeros(self) - Removes zero entories in place.
+cupyx.scipy.sparse.csr_matrix.expm1(self) - Elementwise expm1.
+cupyx.scipy.sparse.csr_matrix.floor(self) - Elementwise floor.
+cupyx.scipy.sparse.csr_matrix.get(self, stream=None) - Returns a copy of the array on host memory.
+cupyx.scipy.sparse.csr_matrix.getH(self)
+cupyx.scipy.sparse.csr_matrix.get_shape(self) - Returns the shape of the matrix.
+cupyx.scipy.sparse.csr_matrix.getcol(self, i) - Returns a copy of column i of the matrix, as a (m x 1)
+cupyx.scipy.sparse.csr_matrix.getformat(self)
+cupyx.scipy.sparse.csr_matrix.getmaxprint(self)
+cupyx.scipy.sparse.csr_matrix.getnnz(self, axis=None) - Returns the number of stored values, including explicit zeros.
+cupyx.scipy.sparse.csr_matrix.getrow(self, i) - Returns a copy of row i of the matrix, as a (1 x n)
+cupyx.scipy.sparse.csr_matrix.has_canonical_format - Determine whether the matrix has sorted indices and no duplicates.
+cupyx.scipy.sparse.csr_matrix.has_sorted_indices - Determine whether the matrix has sorted indices.
+cupyx.scipy.sparse.csr_matrix.log1p(self) - Elementwise log1p.
+cupyx.scipy.sparse.csr_matrix.max(self, axis=None, out=None, *, explicit=False) - Returns the maximum of the matrix or maximum along an axis.
+cupyx.scipy.sparse.csr_matrix.maximum(self, other)
+cupyx.scipy.sparse.csr_matrix.mean(self, axis=None, dtype=None, out=None) - Compute the arithmetic mean along the specified axis.
+cupyx.scipy.sparse.csr_matrix.min(self, axis=None, out=None, *, explicit=False) - Returns the minimum of the matrix or maximum along an axis.
+cupyx.scipy.sparse.csr_matrix.minimum(self, other)
+cupyx.scipy.sparse.csr_matrix.multiply(self, other) - Point-wise multiplication by another matrix, vector or scalar
+cupyx.scipy.sparse.csr_matrix.ndim
+cupyx.scipy.sparse.csr_matrix.nnz
+cupyx.scipy.sparse.csr_matrix.power(self, n, dtype=None) - Elementwise power function.
+cupyx.scipy.sparse.csr_matrix.rad2deg(self) - Elementwise rad2deg.
+cupyx.scipy.sparse.csr_matrix.reshape(self, *shape, order='C') - Gives a new shape to a sparse matrix without changing its data.
+cupyx.scipy.sparse.csr_matrix.rint(self) - Elementwise rint.
+cupyx.scipy.sparse.csr_matrix.set_shape(self, shape)
+cupyx.scipy.sparse.csr_matrix.setdiag(self, values, k=0) - Set diagonal or off-diagonal elements of the array.
+cupyx.scipy.sparse.csr_matrix.shape
+cupyx.scipy.sparse.csr_matrix.sign(self) - Elementwise sign.
+cupyx.scipy.sparse.csr_matrix.sin(self) - Elementwise sin.
+cupyx.scipy.sparse.csr_matrix.sinh(self) - Elementwise sinh.
+cupyx.scipy.sparse.csr_matrix.size
+cupyx.scipy.sparse.csr_matrix.sort_indices(self) - Sorts the indices of this matrix *in place*.
+cupyx.scipy.sparse.csr_matrix.sorted_indices(self) - Return a copy of this matrix with sorted indices
+cupyx.scipy.sparse.csr_matrix.sqrt(self) - Elementwise sqrt.
+cupyx.scipy.sparse.csr_matrix.sum(self, axis=None, dtype=None, out=None) - Sums the matrix elements over a given axis.
+cupyx.scipy.sparse.csr_matrix.sum_duplicates(self) - Eliminate duplicate matrix entries by adding them together.
+cupyx.scipy.sparse.csr_matrix.tan(self) - Elementwise tan.
+cupyx.scipy.sparse.csr_matrix.tanh(self) - Elementwise tanh.
+cupyx.scipy.sparse.csr_matrix.toarray(self, order=None, out=None) - Returns a dense matrix representing the same value.
+cupyx.scipy.sparse.csr_matrix.tobsr(self, blocksize=None, copy=False) - Convert this matrix to Block Sparse Row format.
+cupyx.scipy.sparse.csr_matrix.tocoo(self, copy=False) - Converts the matrix to COOrdinate format.
+cupyx.scipy.sparse.csr_matrix.tocsc(self, copy=False) - Converts the matrix to Compressed Sparse Column format.
+cupyx.scipy.sparse.csr_matrix.tocsr(self, copy=False) - Converts the matrix to Compressed Sparse Row format.
+cupyx.scipy.sparse.csr_matrix.todense(self, order=None, out=None) - Return a dense matrix representation of this matrix.
+cupyx.scipy.sparse.csr_matrix.todia(self, copy=False) - Convert this matrix to sparse DIAgonal format.
+cupyx.scipy.sparse.csr_matrix.todok(self, copy=False) - Convert this matrix to Dictionary Of Keys format.
+cupyx.scipy.sparse.csr_matrix.tolil(self, copy=False) - Convert this matrix to LInked List format.
+cupyx.scipy.sparse.csr_matrix.transpose(self, axes=None, copy=False) - Returns a transpose matrix.
+cupyx.scipy.sparse.csr_matrix.trunc(self) - Elementwise trunc.
+cupyx.scipy.sparse.dia_matrix(arg1, shape=None, dtype=None, copy=False) - Sparse matrix with DIAgonal storage.
+cupyx.scipy.sparse.dia_matrix.A - Dense ndarray representation of this matrix.
+cupyx.scipy.sparse.dia_matrix.H
+cupyx.scipy.sparse.dia_matrix.T
+cupyx.scipy.sparse.dia_matrix.arcsin(self) - Elementwise arcsin.
+cupyx.scipy.sparse.dia_matrix.arcsinh(self) - Elementwise arcsinh.
+cupyx.scipy.sparse.dia_matrix.arctan(self) - Elementwise arctan.
+cupyx.scipy.sparse.dia_matrix.arctanh(self) - Elementwise arctanh.
+cupyx.scipy.sparse.dia_matrix.asformat(self, format) - Return this matrix in a given sparse format.
+cupyx.scipy.sparse.dia_matrix.asfptype(self) - Upcasts matrix to a floating point format.
+cupyx.scipy.sparse.dia_matrix.astype(self, t) - Casts the array to given data type.
+cupyx.scipy.sparse.dia_matrix.ceil(self) - Elementwise ceil.
+cupyx.scipy.sparse.dia_matrix.conj(self, copy=True) - Element-wise complex conjugation.
+cupyx.scipy.sparse.dia_matrix.conjugate(self, copy=True) - Element-wise complex conjugation.
+cupyx.scipy.sparse.dia_matrix.copy(self) - Returns a copy of this matrix.
+cupyx.scipy.sparse.dia_matrix.count_nonzero(self) - Returns number of non-zero entries.
+cupyx.scipy.sparse.dia_matrix.deg2rad(self) - Elementwise deg2rad.
+cupyx.scipy.sparse.dia_matrix.device - CUDA device on which this array resides.
+cupyx.scipy.sparse.dia_matrix.diagonal(self, k=0) - Returns the k-th diagonal of the matrix.
+cupyx.scipy.sparse.dia_matrix.dot(self, other) - Ordinary dot product
+cupyx.scipy.sparse.dia_matrix.dtype - Data type of the matrix.
+cupyx.scipy.sparse.dia_matrix.expm1(self) - Elementwise expm1.
+cupyx.scipy.sparse.dia_matrix.floor(self) - Elementwise floor.
+cupyx.scipy.sparse.dia_matrix.get(self, stream=None) - Returns a copy of the array on host memory.
+cupyx.scipy.sparse.dia_matrix.getH(self)
+cupyx.scipy.sparse.dia_matrix.get_shape(self) - Returns the shape of the matrix.
+cupyx.scipy.sparse.dia_matrix.getformat(self)
+cupyx.scipy.sparse.dia_matrix.getmaxprint(self)
+cupyx.scipy.sparse.dia_matrix.getnnz(self, axis=None) - Returns the number of stored values, including explicit zeros.
+cupyx.scipy.sparse.dia_matrix.log1p(self) - Elementwise log1p.
+cupyx.scipy.sparse.dia_matrix.maximum(self, other)
+cupyx.scipy.sparse.dia_matrix.mean(self, axis=None, dtype=None, out=None) - Compute the arithmetic mean along the specified axis.
+cupyx.scipy.sparse.dia_matrix.minimum(self, other)
+cupyx.scipy.sparse.dia_matrix.multiply(self, other) - Point-wise multiplication by another matrix
+cupyx.scipy.sparse.dia_matrix.ndim
+cupyx.scipy.sparse.dia_matrix.nnz
+cupyx.scipy.sparse.dia_matrix.power(self, n, dtype=None) - Elementwise power function.
+cupyx.scipy.sparse.dia_matrix.rad2deg(self) - Elementwise rad2deg.
+cupyx.scipy.sparse.dia_matrix.reshape(self, *shape, order='C') - Gives a new shape to a sparse matrix without changing its data.
+cupyx.scipy.sparse.dia_matrix.rint(self) - Elementwise rint.
+cupyx.scipy.sparse.dia_matrix.set_shape(self, shape)
+cupyx.scipy.sparse.dia_matrix.setdiag(self, values, k=0) - Set diagonal or off-diagonal elements of the array.
+cupyx.scipy.sparse.dia_matrix.shape
+cupyx.scipy.sparse.dia_matrix.sign(self) - Elementwise sign.
+cupyx.scipy.sparse.dia_matrix.sin(self) - Elementwise sin.
+cupyx.scipy.sparse.dia_matrix.sinh(self) - Elementwise sinh.
+cupyx.scipy.sparse.dia_matrix.size
+cupyx.scipy.sparse.dia_matrix.sqrt(self) - Elementwise sqrt.
+cupyx.scipy.sparse.dia_matrix.sum(self, axis=None, dtype=None, out=None) - Sums the matrix elements over a given axis.
+cupyx.scipy.sparse.dia_matrix.tan(self) - Elementwise tan.
+cupyx.scipy.sparse.dia_matrix.tanh(self) - Elementwise tanh.
+cupyx.scipy.sparse.dia_matrix.toarray(self, order=None, out=None) - Returns a dense matrix representing the same value.
+cupyx.scipy.sparse.dia_matrix.tobsr(self, blocksize=None, copy=False) - Convert this matrix to Block Sparse Row format.
+cupyx.scipy.sparse.dia_matrix.tocoo(self, copy=False) - Convert this matrix to COOrdinate format.
+cupyx.scipy.sparse.dia_matrix.tocsc(self, copy=False) - Converts the matrix to Compressed Sparse Column format.
+cupyx.scipy.sparse.dia_matrix.tocsr(self, copy=False) - Converts the matrix to Compressed Sparse Row format.
+cupyx.scipy.sparse.dia_matrix.todense(self, order=None, out=None) - Return a dense matrix representation of this matrix.
+cupyx.scipy.sparse.dia_matrix.todia(self, copy=False) - Convert this matrix to sparse DIAgonal format.
+cupyx.scipy.sparse.dia_matrix.todok(self, copy=False) - Convert this matrix to Dictionary Of Keys format.
+cupyx.scipy.sparse.dia_matrix.tolil(self, copy=False) - Convert this matrix to LInked List format.
+cupyx.scipy.sparse.dia_matrix.transpose(self, axes=None, copy=False) - Reverses the dimensions of the sparse matrix.
+cupyx.scipy.sparse.dia_matrix.trunc(self) - Elementwise trunc.
+cupyx.scipy.sparse.diags(diagonals, offsets=0, shape=None, format=None, dtype=None) - Construct a sparse matrix from diagonals.
+cupyx.scipy.sparse.eye(m, n=None, k=0, dtype='d', format=None) - Creates a sparse matrix with ones on diagonal.
+cupyx.scipy.sparse.find(A) - Returns the indices and values of the nonzero elements of a matrix
+cupyx.scipy.sparse.hstack(blocks, format=None, dtype=None) - Stacks sparse matrices horizontally (column wise)
+cupyx.scipy.sparse.identity(n, dtype='d', format=None) - Creates an identity matrix in sparse format.
+cupyx.scipy.sparse.issparse(x) - Checks if a given matrix is a sparse matrix.
+cupyx.scipy.sparse.isspmatrix(x) - Checks if a given matrix is a sparse matrix.
+cupyx.scipy.sparse.isspmatrix_coo(x) - Checks if a given matrix is of COO format.
+cupyx.scipy.sparse.isspmatrix_csc(x) - Checks if a given matrix is of CSC format.
+cupyx.scipy.sparse.isspmatrix_csr(x) - Checks if a given matrix is of CSR format.
+cupyx.scipy.sparse.isspmatrix_dia(x) - Checks if a given matrix is of DIA format.
+cupyx.scipy.sparse.kron(A, B, format=None) - Kronecker product of sparse matrices A and B.
+cupyx.scipy.sparse.kronsum(A, B, format=None) - Kronecker sum of sparse matrices A and B.
+cupyx.scipy.sparse.linalg.LinearOperator(*args, **kwargs) - LinearOperator(shape, matvec, rmatvec=None, matmat=None, dtype=None, rmatmat=None)
+cupyx.scipy.sparse.linalg.LinearOperator.H - Hermitian adjoint.
+cupyx.scipy.sparse.linalg.LinearOperator.T - Transpose this linear operator.
+cupyx.scipy.sparse.linalg.LinearOperator.adjoint(self) - Hermitian adjoint.
+cupyx.scipy.sparse.linalg.LinearOperator.dot(self, x) - Matrix-matrix or matrix-vector multiplication.
+cupyx.scipy.sparse.linalg.LinearOperator.matmat(self, X) - Matrix-matrix multiplication.
+cupyx.scipy.sparse.linalg.LinearOperator.matvec(self, x) - Matrix-vector multiplication.
+cupyx.scipy.sparse.linalg.LinearOperator.rmatmat(self, X) - Adjoint matrix-matrix multiplication.
+cupyx.scipy.sparse.linalg.LinearOperator.rmatvec(self, x) - Adjoint matrix-vector multiplication.
+cupyx.scipy.sparse.linalg.LinearOperator.transpose(self) - Transpose this linear operator.
+cupyx.scipy.sparse.linalg.SuperLU(obj)
+cupyx.scipy.sparse.linalg.SuperLU.solve(self, rhs, trans='N') - Solves linear system of equations with one or several right-hand sides.
+cupyx.scipy.sparse.linalg.aslinearoperator(A) - Return `A` as a LinearOperator.
+cupyx.scipy.sparse.linalg.cg(A, b, x0=None, *, rtol=1e-05, atol=0.0, maxiter=None, M=None, callback=None) - Uses Conjugate Gradient iteration to solve ``Ax = b``.
+cupyx.scipy.sparse.linalg.cgs(A, b, x0=None, *, rtol=1e-05, atol=0.0, maxiter=None, M=None, callback=None) - Use Conjugate Gradient Squared iteration to solve ``Ax = b``.
+cupyx.scipy.sparse.linalg.eigsh(a, k=6, *, which='LM', v0=None, ncv=None, maxiter=None, tol=0, return_eigenvectors=True) - Find ``k`` eigenvalues and eigenvectors of the real symmetric square
+cupyx.scipy.sparse.linalg.factorized(A) - Return a function for solving a sparse linear system, with A pre-factorized.
+cupyx.scipy.sparse.linalg.gmres(A, b, x0=None, *, rtol=1e-05, atol=0.0, restart=None, maxiter=None, M=None, callback=None, callback_type=None) - Uses Generalized Minimal RESidual iteration to solve ``Ax = b``.
+cupyx.scipy.sparse.linalg.lobpcg(A, X, B=None, M=None, Y=None, tol=None, maxiter=None, largest=True, verbosityLevel=0, retLambdaHistory=False, retResidualNormsHistory=False) - Locally Optimal Block Preconditioned Conjugate Gradient Method (LOBPCG)
+cupyx.scipy.sparse.linalg.lsmr(A, b, x0=None, damp=0.0, atol=1e-06, btol=1e-06, conlim=100000000.0, maxiter=None) - Iterative solver for least-squares problems.
+cupyx.scipy.sparse.linalg.lsqr(A, b) - Solves linear system with QR decomposition.
+cupyx.scipy.sparse.linalg.minres(A, b, x0=None, shift=0.0, tol=1e-05, maxiter=None, M=None, callback=None, check=False) - Uses MINimum RESidual iteration to solve  ``Ax = b``.
+cupyx.scipy.sparse.linalg.norm(x, ord=None, axis=None) - Norm of a cupy.scipy.spmatrix
+cupyx.scipy.sparse.linalg.spilu(A, drop_tol=None, fill_factor=None, drop_rule=None, permc_spec=None, diag_pivot_thresh=None, relax=None, panel_size=None, options={}) - Computes the incomplete LU decomposition of a sparse square matrix.
+cupyx.scipy.sparse.linalg.splu(A, permc_spec=None, diag_pivot_thresh=None, relax=None, panel_size=None, options={}) - Computes the LU decomposition of a sparse square matrix.
+cupyx.scipy.sparse.linalg.spsolve(A, b) - Solves a sparse linear system ``A x = b``
+cupyx.scipy.sparse.linalg.spsolve_triangular(A, b, lower=True, overwrite_A=False, overwrite_b=False, unit_diagonal=False) - Solves a sparse triangular system ``A x = b``.
+cupyx.scipy.sparse.linalg.svds(a, k=6, *, ncv=None, tol=0, which='LM', maxiter=None, return_singular_vectors=True) - Finds the largest ``k`` singular values/vectors for a sparse matrix.
+cupyx.scipy.sparse.rand(m, n, density=0.01, format='coo', dtype=None, random_state=None) - Generates a random sparse matrix.
+cupyx.scipy.sparse.random(m, n, density=0.01, format='coo', dtype=None, random_state=None, data_rvs=None) - Generates a random sparse matrix.
+cupyx.scipy.sparse.spdiags(data, diags, m, n, format=None) - Creates a sparse matrix from diagonals.
+cupyx.scipy.sparse.spmatrix(maxprint=50) - Base class of all sparse matrixes.
+cupyx.scipy.sparse.spmatrix.A - Dense ndarray representation of this matrix.
+cupyx.scipy.sparse.spmatrix.H
+cupyx.scipy.sparse.spmatrix.T
+cupyx.scipy.sparse.spmatrix.asformat(self, format) - Return this matrix in a given sparse format.
+cupyx.scipy.sparse.spmatrix.asfptype(self) - Upcasts matrix to a floating point format.
+cupyx.scipy.sparse.spmatrix.astype(self, t) - Casts the array to given data type.
+cupyx.scipy.sparse.spmatrix.conj(self, copy=True) - Element-wise complex conjugation.
+cupyx.scipy.sparse.spmatrix.conjugate(self, copy=True) - Element-wise complex conjugation.
+cupyx.scipy.sparse.spmatrix.copy(self) - Returns a copy of this matrix.
+cupyx.scipy.sparse.spmatrix.count_nonzero(self) - Number of non-zero entries, equivalent to
+cupyx.scipy.sparse.spmatrix.device - CUDA device on which this array resides.
+cupyx.scipy.sparse.spmatrix.diagonal(self, k=0) - Returns the k-th diagonal of the matrix.
+cupyx.scipy.sparse.spmatrix.dot(self, other) - Ordinary dot product
+cupyx.scipy.sparse.spmatrix.get(self, stream=None) - Return a copy of the array on host memory.
+cupyx.scipy.sparse.spmatrix.getH(self)
+cupyx.scipy.sparse.spmatrix.get_shape(self)
+cupyx.scipy.sparse.spmatrix.getformat(self)
+cupyx.scipy.sparse.spmatrix.getmaxprint(self)
+cupyx.scipy.sparse.spmatrix.getnnz(self, axis=None) - Number of stored values, including explicit zeros.
+cupyx.scipy.sparse.spmatrix.maximum(self, other)
+cupyx.scipy.sparse.spmatrix.mean(self, axis=None, dtype=None, out=None) - Compute the arithmetic mean along the specified axis.
+cupyx.scipy.sparse.spmatrix.minimum(self, other)
+cupyx.scipy.sparse.spmatrix.multiply(self, other) - Point-wise multiplication by another matrix
+cupyx.scipy.sparse.spmatrix.ndim
+cupyx.scipy.sparse.spmatrix.nnz
+cupyx.scipy.sparse.spmatrix.power(self, n, dtype=None)
+cupyx.scipy.sparse.spmatrix.reshape(self, *shape, order='C') - Gives a new shape to a sparse matrix without changing its data.
+cupyx.scipy.sparse.spmatrix.set_shape(self, shape)
+cupyx.scipy.sparse.spmatrix.setdiag(self, values, k=0) - Set diagonal or off-diagonal elements of the array.
+cupyx.scipy.sparse.spmatrix.shape
+cupyx.scipy.sparse.spmatrix.size
+cupyx.scipy.sparse.spmatrix.sum(self, axis=None, dtype=None, out=None) - Sums the matrix elements over a given axis.
+cupyx.scipy.sparse.spmatrix.toarray(self, order=None, out=None) - Return a dense ndarray representation of this matrix.
+cupyx.scipy.sparse.spmatrix.tobsr(self, blocksize=None, copy=False) - Convert this matrix to Block Sparse Row format.
+cupyx.scipy.sparse.spmatrix.tocoo(self, copy=False) - Convert this matrix to COOrdinate format.
+cupyx.scipy.sparse.spmatrix.tocsc(self, copy=False) - Convert this matrix to Compressed Sparse Column format.
+cupyx.scipy.sparse.spmatrix.tocsr(self, copy=False) - Convert this matrix to Compressed Sparse Row format.
+cupyx.scipy.sparse.spmatrix.todense(self, order=None, out=None) - Return a dense matrix representation of this matrix.
+cupyx.scipy.sparse.spmatrix.todia(self, copy=False) - Convert this matrix to sparse DIAgonal format.
+cupyx.scipy.sparse.spmatrix.todok(self, copy=False) - Convert this matrix to Dictionary Of Keys format.
+cupyx.scipy.sparse.spmatrix.tolil(self, copy=False) - Convert this matrix to LInked List format.
+cupyx.scipy.sparse.spmatrix.transpose(self, axes=None, copy=False) - Reverses the dimensions of the sparse matrix.
+cupyx.scipy.sparse.tril(A, k=0, format=None) - Returns the lower triangular portion of a matrix in sparse format
+cupyx.scipy.sparse.triu(A, k=0, format=None) - Returns the upper triangular portion of a matrix in sparse format
+cupyx.scipy.sparse.vstack(blocks, format=None, dtype=None) - Stacks sparse matrices vertically (row wise)
+cupyx.scipy.spatial.Delaunay(points, furthest_site=False, incremental=False) - Delaunay tessellation in 2 dimensions.
+cupyx.scipy.spatial.Delaunay.find_simplex(self, xi, bruteforce=False, tol=None) - Find the simplices containing the given points.
+cupyx.scipy.spatial.Delaunay.vertex_neighbor_vertices(self) - Neighboring vertices of vertices.
+cupyx.scipy.spatial.KDTree(data, leafsize=10, compact_nodes=True, copy_data=False, balanced_tree=True, boxsize=None) - KDTree(data, leafsize=16, compact_nodes=True, copy_data=False,
+cupyx.scipy.spatial.KDTree.count_neighbors(self, other, r, p=2.0, weights=None, cumulative=True) - Count how many nearby pairs can be formed.
+cupyx.scipy.spatial.KDTree.query(self, x, k=1, eps=0.0, p=2.0, distance_upper_bound=inf) - Query the kd-tree for nearest neighbors.
+cupyx.scipy.spatial.KDTree.query_ball_point(self, x, r, p=2.0, eps=0, return_sorted=None, return_length=False) - Find all points within distance r of point(s) x.
+cupyx.scipy.spatial.KDTree.query_ball_tree(self, other, r, p=2.0, eps=0.0) - Find all pairs of points between `self` and `other` whose distance
+cupyx.scipy.spatial.KDTree.query_pairs(self, r, p=2.0, eps=0, output_type='ndarray') - Find all pairs of points in `self` whose distance is at most r.
+cupyx.scipy.spatial.KDTree.sparse_distance_matrix(self, other, max_distance, p=2.0, output_type='coo_matrix') - Compute a sparse distance matrix
+cupyx.scipy.spatial.distance.MetricInfo(canonical_name=None, aka=None, validator=None, types=None)
+cupyx.scipy.spatial.distance.canberra(u, v) - Compute the Canberra distance between two 1-D arrays.
+cupyx.scipy.spatial.distance.cdist(XA, XB, metric='euclidean', out=None, **kwargs) - Compute distance between each pair of the two collections of inputs.
+cupyx.scipy.spatial.distance.chebyshev(u, v) - Compute the Chebyshev distance between two 1-D arrays.
+cupyx.scipy.spatial.distance.check_soft_dependencies()
+cupyx.scipy.spatial.distance.cityblock(u, v) - Compute the City Block (Manhattan) distance between two 1-D arrays.
+cupyx.scipy.spatial.distance.correlation(u, v) - Compute the correlation distance between two 1-D arrays.
+cupyx.scipy.spatial.distance.cosine(u, v) - Compute the Cosine distance between two 1-D arrays.
+cupyx.scipy.spatial.distance.distance_matrix(x, y, p=2.0) - Compute the distance matrix.
+cupyx.scipy.spatial.distance.euclidean(u, v) - Compute the Euclidean distance between two 1-D arrays.
+cupyx.scipy.spatial.distance.hamming(u, v) - Compute the Hamming distance between two 1-D arrays.
+cupyx.scipy.spatial.distance.hellinger(u, v) - Compute the Hellinger distance between two 1-D arrays.
+cupyx.scipy.spatial.distance.jensenshannon(u, v) - Compute the Jensen-Shannon distance between two 1-D arrays.
+cupyx.scipy.spatial.distance.kl_divergence(u, v) - Compute the Kullback-Leibler divergence between two 1-D arrays.
+cupyx.scipy.spatial.distance.minkowski(u, v, p) - Compute the Minkowski distance between two 1-D arrays.
+cupyx.scipy.spatial.distance.pdist(X, metric='euclidean', *, out=None, **kwargs) - Compute distance between observations in n-dimensional space.
+cupyx.scipy.spatial.distance.russellrao(u, v) - Compute the Russell-Rao distance between two 1-D arrays.
+cupyx.scipy.spatial.distance.sqeuclidean(u, v) - Compute the squared Euclidean distance between two 1-D arrays.
+cupyx.scipy.spatial.distance_matrix(x, y, p=2.0) - Compute the distance matrix.
+cupyx.scipy.special.btdtr(a, b, x, out=None)
+cupyx.scipy.special.btdtri(a, b, p, out=None)
+cupyx.scipy.special.lambertw(z, k=0, tol=1e-08) - Lambert W function.
+cupyx.scipy.special.log_softmax(x, axis=None) - Compute logarithm of softmax function
+cupyx.scipy.special.logsumexp(a, axis=None, b=None, keepdims=False, return_sign=False) - Compute the log of the sum of exponentials of input elements.
+cupyx.scipy.special.multigammaln(a, d) - Returns the log of multivariate gamma, also sometimes called the
+cupyx.scipy.special.polygamma(n, x) - Polygamma function n.
+cupyx.scipy.special.softmax(x, axis=None) - Softmax function.
+cupyx.scipy.special.sph_harm(m, n, theta, phi, out=None) - Spherical Harmonic.
+cupyx.scipy.special.sph_harm_y(n, m, theta, phi, *, diff_n=0) - Spherical Harmonic.
+cupyx.scipy.special.spherical_yn(n, z, derivative=False) - Spherical Bessel function of the second kind or its derivative.
+cupyx.scipy.stats.boxcox_llf(lmb, data) - The boxcox log-likelihood function.
+cupyx.scipy.stats.entropy(pk, qk=None, base=None, axis=0) - Calculate the entropy of a distribution for given probability values.
+cupyx.scipy.stats.trim_mean(a, proportiontocut, axis=0) - Return mean of array after trimming distribution from both tails.
+cupyx.scipy.stats.zmap(scores, compare, axis=0, ddof=0, nan_policy='propagate') - Calculate the relative z-scores.
+cupyx.scipy.stats.zscore(a, axis=0, ddof=0, nan_policy='propagate') - Compute the z-score.
+cupyx.seterr(*, divide=None, over=None, under=None, invalid=None, linalg=None) - TODO(hvy): Write docs.
+cupyx.signal.ca_cfar(array, guard_cells, reference_cells, pfa=0.001) - Computes the cell-averaged constant false alarm rate (CA CFAR) detector
+cupyx.signal.cfar_alpha(pfa, N) - Computes the value of alpha corresponding to a given probability
+cupyx.signal.channelize_poly(x, h, n_chans) - Polyphase channelize signal into n channels
+cupyx.signal.complex_cepstrum(x, n=None, axis=-1) - Calculates the complex cepstrum of a real valued input sequence x
+cupyx.signal.convolve1d2o(in1, in2, mode='valid', method='direct') - Convolve a 1-dimensional arrays with a 2nd order filter.
+cupyx.signal.convolve1d3o(in1, in2, mode='valid', method='direct') - Convolve a 1-dimensional array with a 3rd order filter.
+cupyx.signal.firfilter(b, x, axis=-1, zi=None) - Filter data along one-dimension with an FIR filter.
+cupyx.signal.firfilter2(b, x, axis=-1, padtype='odd', padlen=None, method='pad', irlen=None) - Apply a digital filter forward and backward to a signal.
+cupyx.signal.firfilter_zi(b) - Construct initial conditions for lfilter for step response steady-state.
+cupyx.signal.freq_shift(x, freq, fs) - Frequency shift signal by freq at fs sample rate
+cupyx.signal.inverse_complex_cepstrum(ceps, ndelay) - Compute the inverse complex cepstrum of a real sequence.
+cupyx.signal.minimum_phase(x, n=None) - Compute the minimum phase reconstruction of a real sequence.
+cupyx.signal.mvdr(x, sv, calc_cov=True) - Minimum variance distortionless response (MVDR) beamformer weights
+cupyx.signal.pulse_compression(x, template, normalize=False, window=None, nfft=None) - Pulse Compression is used to increase the range resolution and SNR
+cupyx.signal.pulse_doppler(x, window=None, nfft=None) - Pulse doppler processing yields a range/doppler data matrix that represents
+cupyx.signal.real_cepstrum(x, n=None, axis=-1) - Calculates the real cepstrum of an input sequence x where the cepstrum is
+cupyx.time.repeat(func, args=(), kwargs={}, n_repeat=10000, *, name=None, n_warmup=10, max_duration=inf, devices=None) - Timing utility for measuring time spent by both CPU and GPU.
+cupyx.tools.install_library.calculate_destination(prefix, cuda, lib, lib_ver) - Calculates the installation directory.
+cupyx.tools.install_library.install_lib(cuda, prefix, library, arch)
+cupyx.tools.install_library.main(args)
+cupyx.zeros_like_pinned(a, dtype=None, order='K', subok=None, shape=None) - Returns a new, zero-initialized NumPy array with the same shape and dtype
+cupyx.zeros_pinned(shape, dtype=<class 'float'>, order='C') - Returns a new, zero-initialized NumPy array with the given shape

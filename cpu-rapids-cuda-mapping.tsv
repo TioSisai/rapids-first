@@ -1,0 +1,80 @@
+cpu_module	rapids_target	zero_code	notes
+numpy	cupy	-	import cupy as cp; substitute cp for np
+numpy.fft	cupy.fft	-	-
+numpy.linalg	cupy.linalg	-	-
+numpy.random	cupy.random	-	-
+numpy.polynomial	cupy.polynomial	-	-
+numpy.testing	cupy.testing	-	-
+scipy	cupyx.scipy	-	full GPU mirror of scipy submodules
+scipy.fft	cupyx.scipy.fft	-	-
+scipy.fftpack	cupyx.scipy.fftpack	-	legacy scipy.fftpack
+scipy.interpolate	cupyx.scipy.interpolate	-	-
+scipy.linalg	cupyx.scipy.linalg	-	-
+scipy.ndimage	cupyx.scipy.ndimage	-	-
+scipy.signal	cupyx.scipy.signal	-	includes scipy.signal.windows
+scipy.sparse	cupyx.scipy.sparse	-	csr/csc/coo/dia matrix all available
+scipy.sparse.linalg	cupyx.scipy.sparse.linalg	-	-
+scipy.sparse.csgraph	cupyx.scipy.sparse.csgraph	-	-
+scipy.spatial	cupyx.scipy.spatial	-	-
+scipy.spatial.distance	cupyx.scipy.spatial.distance	-	-
+scipy.special	cupyx.scipy.special	-	-
+scipy.stats	cupyx.scipy.stats	-	-
+pandas	cudf	cudf.pandas	zero-code via `python -m cudf.pandas script.py` or first-cell `%load_ext cudf.pandas`; or `import cudf.pandas; cudf.pandas.install()` BEFORE `import pandas`
+pandas.api.types	cudf.api.types	cudf.pandas	-
+pandas.testing	cudf.testing	cudf.pandas	-
+dask.dataframe	dask_cudf	dask-cudf-backend	zero-code via `dask.config.set({"dataframe.backend": "cudf"})`; pair with dask_cuda.LocalCUDACluster
+sklearn	cuml	cuml.accel	zero-code via `python -m cuml.accel script.py` or `%load_ext cuml.accel` or env `CUML_ACCEL_ENABLED=1`
+sklearn.cluster	cuml.cluster	cuml.accel	KMeans, DBSCAN, HDBSCAN, AgglomerativeClustering
+sklearn.linear_model	cuml.linear_model	cuml.accel	LinearRegression, LogisticRegression, Ridge, Lasso, ElasticNet, MBSGD*
+sklearn.ensemble	cuml.ensemble	cuml.accel	RandomForestClassifier/Regressor
+sklearn.neighbors	cuml.neighbors	cuml.accel	uses cuvs under the hood
+sklearn.decomposition	cuml.decomposition	cuml.accel	PCA, TruncatedSVD, IncrementalPCA
+sklearn.manifold	cuml.manifold	cuml.accel	TSNE, UMAP
+sklearn.preprocessing	cuml.preprocessing	cuml.accel	StandardScaler/MinMaxScaler/MaxAbsScaler/OneHot/LabelEncoder/...
+sklearn.svm	cuml.svm	cuml.accel	SVC, SVR, LinearSVC, LinearSVR
+sklearn.naive_bayes	cuml.naive_bayes	cuml.accel	Gaussian/Multinomial/Bernoulli/Complement/CategoricalNB
+sklearn.metrics	cuml.metrics	cuml.accel	-
+sklearn.feature_extraction	cuml.feature_extraction	cuml.accel	-
+sklearn.random_projection	cuml.random_projection	cuml.accel	-
+sklearn.model_selection	cuml.model_selection	cuml.accel	train_test_split
+umap	cuml.manifold.UMAP	cuml.accel	standalone umap-learn -> cuML
+hdbscan	cuml.cluster.HDBSCAN	cuml.accel	standalone hdbscan -> cuML
+statsmodels.tsa	cuml.tsa	-	ARIMA, AutoARIMA, Holt-Winters
+networkx	nx_cugraph	nx-cugraph-backend	zero-code via env `NX_CUGRAPH_AUTOCONFIG=True` (NetworkX backend dispatch, requires NetworkX >= 3.2); per-call: `nx.func(G, backend="cugraph")`
+networkx.algorithms.centrality	cugraph.centrality	nx-cugraph-backend	betweenness/eigenvector/Katz/degree
+networkx.algorithms.community	cugraph.community	nx-cugraph-backend	Louvain, Leiden, ECG, triangle count
+networkx.algorithms.components	cugraph.components	nx-cugraph-backend	connected/strongly connected
+networkx.algorithms.core	cugraph.cores	nx-cugraph-backend	k-core, core number
+networkx.algorithms.link_analysis	cugraph.link_analysis	nx-cugraph-backend	PageRank, HITS
+networkx.algorithms.link_prediction	cugraph.link_prediction	nx-cugraph-backend	Jaccard, Cosine, Overlap, Sorensen
+networkx.algorithms.traversal	cugraph.traversal	nx-cugraph-backend	BFS, SSSP
+networkx.algorithms.tree	cugraph.tree	nx-cugraph-backend	min/max spanning tree
+networkx.drawing.layout	cugraph.layout	-	ForceAtlas2 etc.
+skimage	cucim.skimage	-	scikit-image on GPU; operates on cupy arrays
+skimage.color	cucim.skimage.color	-	includes stain deconv (rgb2hed, separate_stains)
+skimage.exposure	cucim.skimage.exposure	-	-
+skimage.feature	cucim.skimage.feature	-	-
+skimage.filters	cucim.skimage.filters	-	-
+skimage.measure	cucim.skimage.measure	-	-
+skimage.metrics	cucim.skimage.metrics	-	-
+skimage.morphology	cucim.skimage.morphology	-	-
+skimage.registration	cucim.skimage.registration	-	-
+skimage.restoration	cucim.skimage.restoration	-	-
+skimage.segmentation	cucim.skimage.segmentation	-	-
+skimage.transform	cucim.skimage.transform	-	-
+openslide	cucim.clara.CuImage	-	whole-slide-image I/O (.svs/.tiff); supports read_region, multi-resolution pyramid, GPU Direct Storage
+tifffile	cucim.clara.CuImage	-	large tiled TIFF read via cucim
+faiss	cuvs.neighbors	-	ANN vector search; CAGRA/IVF-Flat/IVF-PQ/HNSW/Brute-Force/NN-Descent/Vamana; cuvs is RAPIDS' FAISS-equivalent
+hnswlib	cuvs.neighbors.hnsw	-	HNSW search of GPU-built index
+scann	cuvs.neighbors	-	ANN
+annoy	cuvs.neighbors	-	ANN
+pynndescent	cuvs.neighbors.nn_descent	-	NN-Descent
+faiss.Kmeans	cuvs.cluster.kmeans	-	or cuml.cluster.KMeans
+faiss.ProductQuantizer	cuvs.preprocessing.ProductQuantizer	-	-
+faiss.ScalarQuantizer	cuvs.preprocessing.ScalarQuantizer	-	-
+sklearn.metrics.pairwise_distances	cuvs.distance.pairwise_distance	-	also pylibraft.distance.pairwise_distance (low-level)
+crossfilter	cuxfilter	-	GPU cross-filtering dashboards (interactive 100M+ rows)
+datashader	cuxfilter	-	cuxfilter composes datashader+bokeh+panel
+holoviews	cuxfilter	-	dashboard composition (partial)
+bokeh	cuxfilter	-	cuxfilter wraps bokeh for charts
+mpi4py	raft_dask	-	additive: NCCL/UCX collective comms over dask.distributed (not a replacement for dask)

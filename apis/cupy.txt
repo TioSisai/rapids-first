@@ -1,0 +1,1066 @@
+cupy.ElementwiseKernel(...) - ElementwiseKernel(in_params, out_params, operation, name='kernel', reduce_dims=True, preamble='', no_return=False, return_tuple=False, **kwargs)
+cupy.RawKernel(...) - RawKernel(str code, str name, tuple options=(), str backend='nvrtc', bool translate_cucomplex=False, *, bool enable_cooperative_groups=False, jitify=None)
+cupy.RawKernel.compile(...) - RawKernel.compile(self, log_stream=None)
+cupy.RawModule(...) - RawModule(str code=None, *, str path=None, tuple options=(), str backend='nvrtc', bool translate_cucomplex=False, bool enable_cooperative_groups=False, name_expressions=None, jitify=None)
+cupy.RawModule.compile(...) - RawModule.compile(self, log_stream=None)
+cupy.RawModule.get_function(...) - RawModule.get_function(self, str name)
+cupy.RawModule.get_global(...) - RawModule.get_global(self, name)
+cupy.ReductionKernel(...) - ReductionKernel(str in_params, str out_params, map_expr, reduce_expr, post_map_expr, identity, name='reduce_kernel', reduce_type=None, reduce_dims=True, preamble='', options=())
+cupy.all(a, axis=None, out=None, keepdims=False) - Tests whether all array elements along a given axis evaluate to True.
+cupy.allclose(a, b, rtol=1e-05, atol=1e-08, equal_nan=False) - Returns True if two arrays are element-wise equal within a tolerance.
+cupy.alltrue(a, axis=None, out=None, keepdims=False) - Tests whether all array elements along a given axis evaluate to True.
+cupy.amax(a, axis=None, out=None, keepdims=False) - Returns the maximum of an array or the maximum along an axis.
+cupy.amin(a, axis=None, out=None, keepdims=False) - Returns the minimum of an array or the minimum along an axis.
+cupy.angle(z, deg=False) - Returns the angle of the complex argument.
+cupy.any(a, axis=None, out=None, keepdims=False) - Tests whether any array elements along a given axis evaluate to True.
+cupy.append(arr, values, axis=None) - Append values to the end of an array.
+cupy.apply_along_axis(func1d, axis, arr, *args, **kwargs) - Apply a function to 1-D slices along the given axis.
+cupy.apply_over_axes(func, a, axes) - Apply a function repeatedly over multiple axes.
+cupy.arange(start, stop=None, step=1, dtype=None) - Returns an array with evenly spaced values within a given interval.
+cupy.argmax(a, axis=None, dtype=None, out=None, keepdims=False) - Returns the indices of the maximum along an axis.
+cupy.argmin(a, axis=None, dtype=None, out=None, keepdims=False) - Returns the indices of the minimum along an axis.
+cupy.argpartition(a, kth, axis=-1) - Returns the indices that would partially sort an array.
+cupy.argsort(a, axis=-1, kind=None) - Returns the indices that would sort an array with a stable sorting.
+cupy.argwhere(a) - Return the indices of the elements that are non-zero.
+cupy.around(a, decimals=0, out=None) - Rounds to the given number of decimals.
+cupy.array(obj, dtype=None, copy=True, order='K', subok=False, ndmin=0, *, blocking=False) - Creates an array on the current device.
+cupy.array2string(a, *args, **kwargs) - Return a string representation of an array.
+cupy.array_equal(a1, a2, equal_nan=False) - Returns ``True`` if two arrays are element-wise exactly equal.
+cupy.array_equiv(a1, a2) - Returns ``True`` if all elements are equal or shape consistent,
+cupy.array_repr(arr, max_line_width=None, precision=None, suppress_small=None) - Returns the string representation of an array.
+cupy.array_split(ary, indices_or_sections, axis=0) - Splits an array into multiple sub arrays along a given axis.
+cupy.array_str(arr, max_line_width=None, precision=None, suppress_small=None) - Returns the string representation of the content of an array.
+cupy.asanyarray(a, dtype=None, order=None, *, copy=None, blocking=False) - Converts an object to array.
+cupy.asarray(a, dtype=None, order=None, *, copy=None, blocking=False) - Converts an object to array.
+cupy.asarray_chkfinite(a, dtype=None, order=None) - Converts the given input to an array,
+cupy.ascontiguousarray(a, dtype=None) - Returns a C-contiguous array.
+cupy.asfarray(a, dtype=<class 'numpy.float64'>) - Converts array elements to float type.
+cupy.asfortranarray(a, dtype=None) - Return an array laid out in Fortran order in memory.
+cupy.asnumpy(a, stream=None, order='C', out=None, *, blocking=True) - Returns an array on the host memory from an arbitrary source array.
+cupy.astype(x, dtype, /, *, copy=True) - Copies an array to a specified data type.
+cupy.atleast_1d(*arys) - Converts arrays to arrays with dimensions >= 1.
+cupy.atleast_2d(*arys) - Converts arrays to arrays with dimensions >= 2.
+cupy.atleast_3d(*arys) - Converts arrays to arrays with dimensions >= 3.
+cupy.average(a, axis=None, weights=None, returned=False, *, keepdims=False) - Returns the weighted average along an axis.
+cupy.bartlett(M) - Returns the Bartlett window.
+cupy.base_repr(number, base=2, padding=0) - Return a string representation of a number in the given base system.
+cupy.binary_repr(num, width=None) - Return the binary representation of the input number as a string.
+cupy.bincount(x, weights=None, minlength=None) - Count number of occurrences of each value in array of non-negative ints.
+cupy.blackman(M) - Returns the Blackman window.
+cupy.broadcast(...) - broadcast(*arrays)
+cupy.broadcast_arrays(*args) - Broadcasts given arrays.
+cupy.broadcast_to(array, shape) - Broadcast an array to a given shape.
+cupy.byte_bounds(a) - Returns pointers to the end-points of an array.
+cupy.c_
+cupy.can_cast(from_, to, casting='safe') - Returns True if cast between data types can occur according to the
+cupy.choose(a, choices, out=None, mode='raise')
+cupy.clear_memo(...) - clear_memo()
+cupy.clip(a, a_min, a_max, out=None) - Clips the values of an array to a given interval.
+cupy.column_stack(tup) - Stacks 1-D and 2-D arrays as columns into a 2-D array.
+cupy.common_type(*arrays) - Return a scalar type which is common to the input arrays.
+cupy.compress(condition, a, axis=None, out=None) - Returns selected slices of an array along given axis.
+cupy.concat(tup, axis=0, out=None, *, dtype=None, casting='same_kind') - Joins arrays along an axis.
+cupy.concatenate(tup, axis=0, out=None, *, dtype=None, casting='same_kind') - Joins arrays along an axis.
+cupy.convolve(a, v, mode='full') - Returns the discrete, linear convolution of two one-dimensional sequences.
+cupy.copy(a, order='K') - Creates a copy of a given array on the current device.
+cupy.copyto(dst, src, casting='same_kind', where=None) - Copies values from one array to another with broadcasting.
+cupy.corrcoef(a, y=None, rowvar=True, bias=None, ddof=None, *, dtype=None) - Returns the Pearson product-moment correlation coefficients of an array.
+cupy.correlate(a, v, mode='valid') - Returns the cross-correlation of two 1-dimensional sequences.
+cupy.count_nonzero(a, axis=None) - Counts the number of non-zero values in the array.
+cupy.cov(a, y=None, rowvar=True, bias=False, ddof=None, fweights=None, aweights=None, *, dtype=None) - Returns the covariance matrix of an array.
+cupy.cross(a, b, axisa=-1, axisb=-1, axisc=-1, axis=None) - Returns the cross product of two vectors.
+cupy.cublas.asum(x, out=None) - Computes the sum of the absolute of x.
+cupy.cublas.axpy(a, x, y) - Computes y += a * x.
+cupy.cublas.batched_gesv(a, b) - Solves multiple linear matrix equations using cublas<t>getr[fs]Batched().
+cupy.cublas.dgmm(side, a, x, out=None, incx=1) - Computes diag(x) @ a or a @ diag(x)
+cupy.cublas.dot(x, y, out=None) - Computes the dot product of x and y.
+cupy.cublas.dotc(x, y, out=None) - Computes the dot product of x.conj() and y.
+cupy.cublas.dotu(x, y, out=None) - Computes the dot product of x and y.
+cupy.cublas.geam(transa, transb, alpha, a, beta, b, out=None) - Computes alpha * op(a) + beta * op(b)
+cupy.cublas.gemm(transa, transb, a, b, out=None, alpha=1.0, beta=0.0) - Computes out = alpha * op(a) @ op(b) + beta * out
+cupy.cublas.gemv(transa, alpha, a, x, beta, y) - Computes y = alpha * op(a) @ x + beta * y
+cupy.cublas.ger(alpha, x, y, a) - Computes a += alpha * x @ y.T
+cupy.cublas.gerc(alpha, x, y, a) - Computes a += alpha * x @ y.T.conj()
+cupy.cublas.geru(alpha, x, y, a) - Computes a += alpha * x @ y.T
+cupy.cublas.get_batched_gesv_limit()
+cupy.cublas.iamax(x, out=None) - Finds the (smallest) index of the element with the maximum magnitude.
+cupy.cublas.iamin(x, out=None) - Finds the (smallest) index of the element with the minimum magnitude.
+cupy.cublas.nrm2(x, out=None) - Computes the Euclidean norm of vector x.
+cupy.cublas.sbmv(k, alpha, a, x, beta, y, lower=False) - Computes y = alpha*A @ x + beta * y
+cupy.cublas.scal(a, x) - Computes x *= a.
+cupy.cublas.set_batched_gesv_limit(limit)
+cupy.cublas.syrk(trans, a, out=None, alpha=1.0, beta=0.0, lower=False) - Computes out := alpha*op1(a)*op2(a) + beta*out
+cupy.cuda.BaseMemory(...) - Memory on a CUDA device.
+cupy.cuda.CFunctionAllocator(...) - CFunctionAllocator(intptr_t param, intptr_t malloc_func, intptr_t free_func, owner)
+cupy.cuda.CFunctionAllocator.malloc(...) - CFunctionAllocator.malloc(self, size_t size) -> MemoryPointer
+cupy.cuda.Device(...) - Device(device=None)
+cupy.cuda.Device.from_pci_bus_id(...) - Device.from_pci_bus_id(cls, pci_bus_id)
+cupy.cuda.Device.synchronize(...) - Device.synchronize(self)
+cupy.cuda.Device.use(...) - Device.use(self)
+cupy.cuda.Event(block=False, disable_timing=False, interprocess=False) - CUDA event, a synchronization point of CUDA streams.
+cupy.cuda.Event.done - Event.done(self)
+cupy.cuda.Event.record(self, stream=None) - Event.record(self, stream=None)
+cupy.cuda.Event.synchronize(self) - Event.synchronize(self)
+cupy.cuda.ExternalStream(ptr, device_id=-1) - CUDA stream not managed by CuPy.
+cupy.cuda.ExternalStream.add_callback(self, callback, arg) - _BaseStream.add_callback(self, callback, arg)
+cupy.cuda.ExternalStream.begin_capture(self, mode=None) - _BaseStream.begin_capture(self, mode=None)
+cupy.cuda.ExternalStream.done - _BaseStream.done(self)
+cupy.cuda.ExternalStream.end_capture(self) - _BaseStream.end_capture(self)
+cupy.cuda.ExternalStream.is_capturing(self) - _BaseStream.is_capturing(self)
+cupy.cuda.ExternalStream.is_non_blocking - _BaseStream.is_non_blocking(self)
+cupy.cuda.ExternalStream.launch_host_func(self, callback, arg) - _BaseStream.launch_host_func(self, callback, arg)
+cupy.cuda.ExternalStream.priority - _BaseStream.priority(self)
+cupy.cuda.ExternalStream.record(self, event=None) - _BaseStream.record(self, event=None)
+cupy.cuda.ExternalStream.synchronize(self) - _BaseStream.synchronize(self)
+cupy.cuda.ExternalStream.use(self) - _BaseStream.use(self)
+cupy.cuda.ExternalStream.wait_event(self, event) - _BaseStream.wait_event(self, event)
+cupy.cuda.Function(...) - Function(Module module, str funcname)
+cupy.cuda.Function.linear_launch(...) - Function.linear_launch(self, size_t size, args, size_t shared_mem=0, size_t block_max_size=128, stream=None, bool enable_cooperative_groups=False)
+cupy.cuda.Graph(...) - Graph(*args, **kwargs)
+cupy.cuda.Graph.debug_dot_str(...) - Graph.debug_dot_str(self, flags=0)
+cupy.cuda.Graph.launch(...) - Graph.launch(self, stream=None)
+cupy.cuda.Graph.upload(...) - Graph.upload(self, stream=None)
+cupy.cuda.ManagedMemory(...) - ManagedMemory(size_t size)
+cupy.cuda.ManagedMemory.advise(...) - ManagedMemory.advise(self, int advise, Device dev)
+cupy.cuda.ManagedMemory.prefetch(...) - ManagedMemory.prefetch(self, stream, *, int device_id=runtime.cudaInvalidDeviceId)
+cupy.cuda.Memory(...) - Memory(size_t size)
+cupy.cuda.MemoryAsync(...) - MemoryAsync(size_t size, stream)
+cupy.cuda.MemoryAsyncPool(...) - MemoryAsyncPool(pool_handles='current')
+cupy.cuda.MemoryAsyncPool.free_all_blocks(...) - MemoryAsyncPool.free_all_blocks(self, stream=None)
+cupy.cuda.MemoryAsyncPool.free_bytes(...) - MemoryAsyncPool.free_bytes(self) -> size_t
+cupy.cuda.MemoryAsyncPool.get_limit(...) - MemoryAsyncPool.get_limit(self) -> size_t
+cupy.cuda.MemoryAsyncPool.malloc(...) - MemoryAsyncPool.malloc(self, size_t size) -> MemoryPointer
+cupy.cuda.MemoryAsyncPool.n_free_blocks(...) - MemoryAsyncPool.n_free_blocks(self) -> size_t
+cupy.cuda.MemoryAsyncPool.set_limit(...) - MemoryAsyncPool.set_limit(self, size=None, fraction=None)
+cupy.cuda.MemoryAsyncPool.total_bytes(...) - MemoryAsyncPool.total_bytes(self) -> size_t
+cupy.cuda.MemoryAsyncPool.used_bytes(...) - MemoryAsyncPool.used_bytes(self) -> size_t
+cupy.cuda.MemoryHook() - Base class of hooks for Memory allocations.
+cupy.cuda.MemoryHook.alloc_postprocess(self, **kwargs) - MemoryHook.alloc_postprocess(self, **kwargs)
+cupy.cuda.MemoryHook.alloc_preprocess(self, **kwargs) - MemoryHook.alloc_preprocess(self, **kwargs)
+cupy.cuda.MemoryHook.free_postprocess(self, **kwargs) - MemoryHook.free_postprocess(self, **kwargs)
+cupy.cuda.MemoryHook.free_preprocess(self, **kwargs) - MemoryHook.free_preprocess(self, **kwargs)
+cupy.cuda.MemoryHook.malloc_postprocess(self, **kwargs) - MemoryHook.malloc_postprocess(self, **kwargs)
+cupy.cuda.MemoryHook.malloc_preprocess(self, **kwargs) - MemoryHook.malloc_preprocess(self, **kwargs)
+cupy.cuda.MemoryPointer(...) - MemoryPointer(BaseMemory mem, ptrdiff_t offset)
+cupy.cuda.MemoryPointer.copy_from(...) - MemoryPointer.copy_from(self, mem, size_t size)
+cupy.cuda.MemoryPointer.copy_from_async(...) - MemoryPointer.copy_from_async(self, mem, size_t size, stream=None)
+cupy.cuda.MemoryPointer.copy_from_device(...) - MemoryPointer.copy_from_device(self, MemoryPointer src, size_t size)
+cupy.cuda.MemoryPointer.copy_from_device_async(...) - MemoryPointer.copy_from_device_async(self, MemoryPointer src, size_t size, stream=None)
+cupy.cuda.MemoryPointer.copy_from_host(...) - MemoryPointer.copy_from_host(self, mem, size_t size)
+cupy.cuda.MemoryPointer.copy_from_host_async(...) - MemoryPointer.copy_from_host_async(self, mem, size_t size, stream=None)
+cupy.cuda.MemoryPointer.copy_to_host(...) - MemoryPointer.copy_to_host(self, mem, size_t size)
+cupy.cuda.MemoryPointer.copy_to_host_async(...) - MemoryPointer.copy_to_host_async(self, mem, size_t size, stream=None)
+cupy.cuda.MemoryPointer.memset(...) - MemoryPointer.memset(self, int value, size_t size)
+cupy.cuda.MemoryPointer.memset_async(...) - MemoryPointer.memset_async(self, int value, size_t size, stream=None)
+cupy.cuda.MemoryPool(...) - MemoryPool(allocator=None)
+cupy.cuda.MemoryPool.free_all_blocks(...) - MemoryPool.free_all_blocks(self, stream=None)
+cupy.cuda.MemoryPool.free_all_free(...) - MemoryPool.free_all_free(self)
+cupy.cuda.MemoryPool.free_bytes(...) - MemoryPool.free_bytes(self) -> size_t
+cupy.cuda.MemoryPool.get_limit(...) - MemoryPool.get_limit(self) -> size_t
+cupy.cuda.MemoryPool.malloc(...) - MemoryPool.malloc(self, size_t size) -> MemoryPointer
+cupy.cuda.MemoryPool.n_free_blocks(...) - MemoryPool.n_free_blocks(self) -> size_t
+cupy.cuda.MemoryPool.set_limit(...) - MemoryPool.set_limit(self, size=None, fraction=None)
+cupy.cuda.MemoryPool.total_bytes(...) - MemoryPool.total_bytes(self) -> size_t
+cupy.cuda.MemoryPool.used_bytes(...) - MemoryPool.used_bytes(self) -> size_t
+cupy.cuda.Module(...) - Module()
+cupy.cuda.Module.get_function(...) - Module.get_function(self, name)
+cupy.cuda.Module.get_global_var(...) - Module.get_global_var(self, name)
+cupy.cuda.Module.load(...) - Module.load(self, bytes cubin)
+cupy.cuda.Module.load_file(...) - Module.load_file(self, filename)
+cupy.cuda.PinnedMemory(size, flags=0) - Pinned memory allocation on host.
+cupy.cuda.PinnedMemoryPointer(...) - PinnedMemoryPointer(mem, ptrdiff_t offset)
+cupy.cuda.PinnedMemoryPointer.size(...) - PinnedMemoryPointer.size(self) -> size_t
+cupy.cuda.PinnedMemoryPool(...) - PinnedMemoryPool(allocator=_malloc)
+cupy.cuda.PinnedMemoryPool.free(...) - PinnedMemoryPool.free(self, intptr_t ptr, size_t size)
+cupy.cuda.PinnedMemoryPool.free_all_blocks(...) - PinnedMemoryPool.free_all_blocks(self)
+cupy.cuda.PinnedMemoryPool.malloc(...) - PinnedMemoryPool.malloc(self, size_t size) -> PinnedMemoryPointer
+cupy.cuda.PinnedMemoryPool.n_free_blocks(...) - PinnedMemoryPool.n_free_blocks(self)
+cupy.cuda.PythonFunctionAllocator(...) - PythonFunctionAllocator(malloc_func, free_func)
+cupy.cuda.PythonFunctionAllocator.malloc(...) - PythonFunctionAllocator.malloc(self, size_t size) -> MemoryPointer
+cupy.cuda.Stream(null=False, non_blocking=False, ptds=False, priority=None) - CUDA stream.
+cupy.cuda.Stream.add_callback(self, callback, arg) - _BaseStream.add_callback(self, callback, arg)
+cupy.cuda.Stream.begin_capture(self, mode=None) - _BaseStream.begin_capture(self, mode=None)
+cupy.cuda.Stream.done - _BaseStream.done(self)
+cupy.cuda.Stream.end_capture(self) - _BaseStream.end_capture(self)
+cupy.cuda.Stream.from_external(obj) - Stream.from_external(cls, obj)
+cupy.cuda.Stream.is_capturing(self) - _BaseStream.is_capturing(self)
+cupy.cuda.Stream.is_non_blocking - _BaseStream.is_non_blocking(self)
+cupy.cuda.Stream.launch_host_func(self, callback, arg) - _BaseStream.launch_host_func(self, callback, arg)
+cupy.cuda.Stream.priority - _BaseStream.priority(self)
+cupy.cuda.Stream.record(self, event=None) - _BaseStream.record(self, event=None)
+cupy.cuda.Stream.synchronize(self) - _BaseStream.synchronize(self)
+cupy.cuda.Stream.use(self) - _BaseStream.use(self)
+cupy.cuda.Stream.wait_event(self, event) - _BaseStream.wait_event(self, event)
+cupy.cuda.UnownedMemory(...) - UnownedMemory(intptr_t ptr, size_t size, owner, int device_id=-1)
+cupy.cuda.alloc(...) - alloc(size) -> MemoryPointer
+cupy.cuda.alloc_pinned_memory(...) - alloc_pinned_memory(size_t size) -> PinnedMemoryPointer
+cupy.cuda.compiler.CompileException(msg, source, name, options, backend='nvrtc') - Common base class for all non-exit exceptions.
+cupy.cuda.compiler.CompileException.add_note(...) - Exception.add_note(note) --
+cupy.cuda.compiler.CompileException.dump(self, f)
+cupy.cuda.compiler.CompileException.get_message(self)
+cupy.cuda.compiler.CompileException.with_traceback(...) - Exception.with_traceback(tb) --
+cupy.cuda.compiler.HIPCCException(...) - Common base class for all non-exit exceptions.
+cupy.cuda.compiler.HIPCCException.add_note(...) - Exception.add_note(note) --
+cupy.cuda.compiler.HIPCCException.with_traceback(...) - Exception.with_traceback(tb) --
+cupy.cuda.compiler.JitifyException(...) - Common base class for all non-exit exceptions.
+cupy.cuda.compiler.JitifyException.add_note(...) - Exception.add_note(note) --
+cupy.cuda.compiler.JitifyException.with_traceback(...) - Exception.with_traceback(tb) --
+cupy.cuda.compiler.NVCCException(...) - Common base class for all non-exit exceptions.
+cupy.cuda.compiler.NVCCException.add_note(...) - Exception.add_note(note) --
+cupy.cuda.compiler.NVCCException.with_traceback(...) - Exception.with_traceback(tb) --
+cupy.cuda.compiler.compile_using_hipcc(source, options, arch, log_stream=None)
+cupy.cuda.compiler.compile_using_nvcc(source, options=(), arch=None, filename='kern.cu', code_type='cubin', separate_compilation=False, log_stream=None)
+cupy.cuda.compiler.compile_using_nvrtc(source, options=(), arch=None, filename='kern.cu', name_expressions=None, log_stream=None, cache_in_memory=False, jitify=None, method=None)
+cupy.cuda.compiler.get_cache_dir()
+cupy.cuda.compiler.get_rocm_path()
+cupy.cuda.compiler.is_valid_kernel_name(name)
+cupy.cuda.cub.CUPY_CUB_ARGMAX
+cupy.cuda.cub.CUPY_CUB_ARGMIN
+cupy.cuda.cub.CUPY_CUB_CUMPROD
+cupy.cuda.cub.CUPY_CUB_CUMSUM
+cupy.cuda.cub.CUPY_CUB_MAX
+cupy.cuda.cub.CUPY_CUB_MIN
+cupy.cuda.cub.CUPY_CUB_PROD
+cupy.cuda.cub.CUPY_CUB_SUM
+cupy.cuda.cub.cub_histogram(...) - cub_histogram(_ndarray_base x, _ndarray_base y, bins)
+cupy.cuda.cub.cub_reduction(...) - cub_reduction(_ndarray_base arr, op, axis=None, dtype=None, _ndarray_base out=None, keepdims=False)
+cupy.cuda.cub.cub_scan(...) - cub_scan(_ndarray_base arr, op)
+cupy.cuda.cub.cupy_cub_op(*values) - Support for integer-based Flags
+cupy.cuda.cub.cupy_cub_op.as_integer_ratio(self, /) - Return a pair of integers, whose ratio is equal to the original int.
+cupy.cuda.cub.cupy_cub_op.bit_count(self, /) - Number of ones in the binary representation of the absolute value of self.
+cupy.cuda.cub.cupy_cub_op.bit_length(self, /) - Number of bits necessary to represent self in binary.
+cupy.cuda.cub.cupy_cub_op.conjugate(...) - Returns self, the complex conjugate of any int.
+cupy.cuda.cub.cupy_cub_op.from_bytes(bytes, byteorder='big', *, signed=False) - Return the integer represented by the given array of bytes.
+cupy.cuda.cub.cupy_cub_op.is_integer(self, /) - Returns True. Exists for duck type compatibility with float.is_integer.
+cupy.cuda.cub.cupy_cub_op.to_bytes(self, /, length=1, byteorder='big', *, signed=False) - Return an array of bytes representing an integer.
+cupy.cuda.cub.device_histogram(...) - device_histogram(_ndarray_base x, _ndarray_base y, bins)
+cupy.cuda.cub.device_reduce(...) - device_reduce(_ndarray_base x, op, tuple reduce_axis, tuple out_axis, out=None, bool keepdims=False)
+cupy.cuda.cub.device_scan(...) - device_scan(_ndarray_base x, op)
+cupy.cuda.cub.device_segmented_reduce(...) - device_segmented_reduce(_ndarray_base x, op, tuple reduce_axis, tuple out_axis, out=None, bool keepdims=False, Py_ssize_t contiguous_size=0)
+cupy.cuda.cub.get_build_version(...) - get_build_version()
+cupy.cuda.device.Device(...) - Device(device=None)
+cupy.cuda.device.Device.from_pci_bus_id(...) - Device.from_pci_bus_id(cls, pci_bus_id)
+cupy.cuda.device.Device.synchronize(...) - Device.synchronize(self)
+cupy.cuda.device.Device.use(...) - Device.use(self)
+cupy.cuda.device.Handle(...) - Handle(handle, destroy_func)
+cupy.cuda.device.from_pointer(...) - from_pointer(ptr)
+cupy.cuda.device.get_compute_capability(...) - get_compute_capability() -> str
+cupy.cuda.device.get_cublas_handle(...) - get_cublas_handle() -> intptr_t
+cupy.cuda.device.get_cusolver_handle(...) - get_cusolver_handle() -> intptr_t
+cupy.cuda.device.get_cusolver_sp_handle(...) - get_cusolver_sp_handle() -> intptr_t
+cupy.cuda.device.get_cusparse_handle(...) - get_cusparse_handle() -> intptr_t
+cupy.cuda.device.get_device_id(...) - get_device_id() -> int
+cupy.cuda.function.CIntptr(...) - CIntptr(intptr_t v)
+cupy.cuda.function.CNumpyArray(...) - CNumpyArray(v)
+cupy.cuda.function.CPointer(...) - CPointer(p=0)
+cupy.cuda.function.CUIntMax(...) - CUIntMax(uintmax_t v)
+cupy.cuda.function.Function(...) - Function(Module module, str funcname)
+cupy.cuda.function.Function.linear_launch(...) - Function.linear_launch(self, size_t size, args, size_t shared_mem=0, size_t block_max_size=128, stream=None, bool enable_cooperative_groups=False)
+cupy.cuda.function.LinkState(...) - LinkState()
+cupy.cuda.function.LinkState.add_ptr_data(...) - LinkState.add_ptr_data(self, bytes data, str name)
+cupy.cuda.function.LinkState.add_ptr_file(...) - LinkState.add_ptr_file(self, str path)
+cupy.cuda.function.LinkState.complete(...) - LinkState.complete(self) -> bytes
+cupy.cuda.function.Module(...) - Module()
+cupy.cuda.function.Module.get_function(...) - Module.get_function(self, name)
+cupy.cuda.function.Module.get_global_var(...) - Module.get_global_var(self, name)
+cupy.cuda.function.Module.load(...) - Module.load(self, bytes cubin)
+cupy.cuda.function.Module.load_file(...) - Module.load_file(self, filename)
+cupy.cuda.get_allocator(...) - get_allocator()
+cupy.cuda.get_cublas_handle(...) - get_cublas_handle() -> intptr_t
+cupy.cuda.get_cuda_path()
+cupy.cuda.get_current_stream(...) - get_current_stream(int device_id=-1)
+cupy.cuda.get_device_id(...) - get_device_id() -> int
+cupy.cuda.get_elapsed_time(...) - get_elapsed_time(start_event, end_event)
+cupy.cuda.get_hipcc_path()
+cupy.cuda.get_local_runtime_version() -> 'int' - Returns the version of the CUDA Runtime installed in the environment.
+cupy.cuda.get_nvcc_path()
+cupy.cuda.get_rocm_path()
+cupy.cuda.graph.Graph(...) - Graph(*args, **kwargs)
+cupy.cuda.graph.Graph.debug_dot_str(...) - Graph.debug_dot_str(self, flags=0)
+cupy.cuda.graph.Graph.launch(...) - Graph.launch(self, stream=None)
+cupy.cuda.graph.Graph.upload(...) - Graph.upload(self, stream=None)
+cupy.cuda.is_available()
+cupy.cuda.jitify.get_build_version(...) - get_build_version()
+cupy.cuda.jitify.get_cuda_path()
+cupy.cuda.jitify.get_cuda_version(...) - get_cuda_version() -> str
+cupy.cuda.jitify.jitify(...) - jitify(str code, tuple opt)
+cupy.cuda.malloc_async(...) - malloc_async(size_t size) -> MemoryPointer
+cupy.cuda.malloc_managed(...) - malloc_managed(size_t size) -> MemoryPointer
+cupy.cuda.memory.BaseMemory(...) - Memory on a CUDA device.
+cupy.cuda.memory.CFunctionAllocator(...) - CFunctionAllocator(intptr_t param, intptr_t malloc_func, intptr_t free_func, owner)
+cupy.cuda.memory.CFunctionAllocator.malloc(...) - CFunctionAllocator.malloc(self, size_t size) -> MemoryPointer
+cupy.cuda.memory.CFunctionAllocatorMemory(...) - CFunctionAllocatorMemory(size_t size, intptr_t param, intptr_t malloc_func, intptr_t free_func, int device_id)
+cupy.cuda.memory.ManagedMemory(...) - ManagedMemory(size_t size)
+cupy.cuda.memory.ManagedMemory.advise(...) - ManagedMemory.advise(self, int advise, Device dev)
+cupy.cuda.memory.ManagedMemory.prefetch(...) - ManagedMemory.prefetch(self, stream, *, int device_id=runtime.cudaInvalidDeviceId)
+cupy.cuda.memory.Memory(...) - Memory(size_t size)
+cupy.cuda.memory.MemoryAsync(...) - MemoryAsync(size_t size, stream)
+cupy.cuda.memory.MemoryAsyncPool(...) - MemoryAsyncPool(pool_handles='current')
+cupy.cuda.memory.MemoryAsyncPool.free_all_blocks(...) - MemoryAsyncPool.free_all_blocks(self, stream=None)
+cupy.cuda.memory.MemoryAsyncPool.free_bytes(...) - MemoryAsyncPool.free_bytes(self) -> size_t
+cupy.cuda.memory.MemoryAsyncPool.get_limit(...) - MemoryAsyncPool.get_limit(self) -> size_t
+cupy.cuda.memory.MemoryAsyncPool.malloc(...) - MemoryAsyncPool.malloc(self, size_t size) -> MemoryPointer
+cupy.cuda.memory.MemoryAsyncPool.n_free_blocks(...) - MemoryAsyncPool.n_free_blocks(self) -> size_t
+cupy.cuda.memory.MemoryAsyncPool.set_limit(...) - MemoryAsyncPool.set_limit(self, size=None, fraction=None)
+cupy.cuda.memory.MemoryAsyncPool.total_bytes(...) - MemoryAsyncPool.total_bytes(self) -> size_t
+cupy.cuda.memory.MemoryAsyncPool.used_bytes(...) - MemoryAsyncPool.used_bytes(self) -> size_t
+cupy.cuda.memory.MemoryPointer(...) - MemoryPointer(BaseMemory mem, ptrdiff_t offset)
+cupy.cuda.memory.MemoryPointer.copy_from(...) - MemoryPointer.copy_from(self, mem, size_t size)
+cupy.cuda.memory.MemoryPointer.copy_from_async(...) - MemoryPointer.copy_from_async(self, mem, size_t size, stream=None)
+cupy.cuda.memory.MemoryPointer.copy_from_device(...) - MemoryPointer.copy_from_device(self, MemoryPointer src, size_t size)
+cupy.cuda.memory.MemoryPointer.copy_from_device_async(...) - MemoryPointer.copy_from_device_async(self, MemoryPointer src, size_t size, stream=None)
+cupy.cuda.memory.MemoryPointer.copy_from_host(...) - MemoryPointer.copy_from_host(self, mem, size_t size)
+cupy.cuda.memory.MemoryPointer.copy_from_host_async(...) - MemoryPointer.copy_from_host_async(self, mem, size_t size, stream=None)
+cupy.cuda.memory.MemoryPointer.copy_to_host(...) - MemoryPointer.copy_to_host(self, mem, size_t size)
+cupy.cuda.memory.MemoryPointer.copy_to_host_async(...) - MemoryPointer.copy_to_host_async(self, mem, size_t size, stream=None)
+cupy.cuda.memory.MemoryPointer.memset(...) - MemoryPointer.memset(self, int value, size_t size)
+cupy.cuda.memory.MemoryPointer.memset_async(...) - MemoryPointer.memset_async(self, int value, size_t size, stream=None)
+cupy.cuda.memory.MemoryPool(...) - MemoryPool(allocator=None)
+cupy.cuda.memory.MemoryPool.free_all_blocks(...) - MemoryPool.free_all_blocks(self, stream=None)
+cupy.cuda.memory.MemoryPool.free_all_free(...) - MemoryPool.free_all_free(self)
+cupy.cuda.memory.MemoryPool.free_bytes(...) - MemoryPool.free_bytes(self) -> size_t
+cupy.cuda.memory.MemoryPool.get_limit(...) - MemoryPool.get_limit(self) -> size_t
+cupy.cuda.memory.MemoryPool.malloc(...) - MemoryPool.malloc(self, size_t size) -> MemoryPointer
+cupy.cuda.memory.MemoryPool.n_free_blocks(...) - MemoryPool.n_free_blocks(self) -> size_t
+cupy.cuda.memory.MemoryPool.set_limit(...) - MemoryPool.set_limit(self, size=None, fraction=None)
+cupy.cuda.memory.MemoryPool.total_bytes(...) - MemoryPool.total_bytes(self) -> size_t
+cupy.cuda.memory.MemoryPool.used_bytes(...) - MemoryPool.used_bytes(self) -> size_t
+cupy.cuda.memory.OutOfMemoryError(size, total, limit=0) - Out-of-memory error.
+cupy.cuda.memory.OutOfMemoryError.add_note(...) - Exception.add_note(note) --
+cupy.cuda.memory.OutOfMemoryError.with_traceback(...) - Exception.with_traceback(tb) --
+cupy.cuda.memory.PooledMemory(...) - PooledMemory(_Chunk chunk, pool)
+cupy.cuda.memory.PooledMemory.free(...) - PooledMemory.free(self)
+cupy.cuda.memory.PythonFunctionAllocator(...) - PythonFunctionAllocator(malloc_func, free_func)
+cupy.cuda.memory.PythonFunctionAllocator.malloc(...) - PythonFunctionAllocator.malloc(self, size_t size) -> MemoryPointer
+cupy.cuda.memory.PythonFunctionAllocatorMemory(...) - PythonFunctionAllocatorMemory(size_t size, malloc_func, free_func, int device_id)
+cupy.cuda.memory.SingleDeviceMemoryPool(...) - SingleDeviceMemoryPool(allocator=None)
+cupy.cuda.memory.SingleDeviceMemoryPool.free(...) - SingleDeviceMemoryPool.free(self, intptr_t ptr, size_t size)
+cupy.cuda.memory.SingleDeviceMemoryPool.free_all_blocks(...) - SingleDeviceMemoryPool.free_all_blocks(self, stream=None)
+cupy.cuda.memory.SingleDeviceMemoryPool.free_all_free(...) - SingleDeviceMemoryPool.free_all_free(self)
+cupy.cuda.memory.SingleDeviceMemoryPool.free_bytes(...) - SingleDeviceMemoryPool.free_bytes(self) -> size_t
+cupy.cuda.memory.SingleDeviceMemoryPool.get_limit(...) - SingleDeviceMemoryPool.get_limit(self) -> size_t
+cupy.cuda.memory.SingleDeviceMemoryPool.malloc(...) - SingleDeviceMemoryPool.malloc(self, size_t size) -> MemoryPointer
+cupy.cuda.memory.SingleDeviceMemoryPool.n_free_blocks(...) - SingleDeviceMemoryPool.n_free_blocks(self) -> size_t
+cupy.cuda.memory.SingleDeviceMemoryPool.set_limit(...) - SingleDeviceMemoryPool.set_limit(self, size=None, fraction=None)
+cupy.cuda.memory.SingleDeviceMemoryPool.total_bytes(...) - SingleDeviceMemoryPool.total_bytes(self) -> size_t
+cupy.cuda.memory.SingleDeviceMemoryPool.used_bytes(...) - SingleDeviceMemoryPool.used_bytes(self) -> size_t
+cupy.cuda.memory.SystemMemory(...) - SystemMemory(size_t size)
+cupy.cuda.memory.SystemMemory.advise(...) - SystemMemory.advise(self, int advise, Device dev)
+cupy.cuda.memory.SystemMemory.prefetch(...) - SystemMemory.prefetch(self, stream, *, int device_id=runtime.cudaInvalidDeviceId)
+cupy.cuda.memory.UnownedMemory(...) - UnownedMemory(intptr_t ptr, size_t size, owner, int device_id=-1)
+cupy.cuda.memory.alloc(...) - alloc(size) -> MemoryPointer
+cupy.cuda.memory.get_allocator(...) - get_allocator()
+cupy.cuda.memory.malloc_async(...) - malloc_async(size_t size) -> MemoryPointer
+cupy.cuda.memory.malloc_managed(...) - malloc_managed(size_t size) -> MemoryPointer
+cupy.cuda.memory.malloc_system(...) - malloc_system(size_t size) -> MemoryPointer
+cupy.cuda.memory.set_allocator(...) - set_allocator(allocator=None)
+cupy.cuda.memory_hook.MemoryHook() - Base class of hooks for Memory allocations.
+cupy.cuda.memory_hook.MemoryHook.alloc_postprocess(self, **kwargs) - MemoryHook.alloc_postprocess(self, **kwargs)
+cupy.cuda.memory_hook.MemoryHook.alloc_preprocess(self, **kwargs) - MemoryHook.alloc_preprocess(self, **kwargs)
+cupy.cuda.memory_hook.MemoryHook.free_postprocess(self, **kwargs) - MemoryHook.free_postprocess(self, **kwargs)
+cupy.cuda.memory_hook.MemoryHook.free_preprocess(self, **kwargs) - MemoryHook.free_preprocess(self, **kwargs)
+cupy.cuda.memory_hook.MemoryHook.malloc_postprocess(self, **kwargs) - MemoryHook.malloc_postprocess(self, **kwargs)
+cupy.cuda.memory_hook.MemoryHook.malloc_preprocess(self, **kwargs) - MemoryHook.malloc_preprocess(self, **kwargs)
+cupy.cuda.memory_hook.get_memory_hooks(...) - get_memory_hooks()
+cupy.cuda.memory_hooks.DebugPrintHook(file=<_io.TextIOWrapper name='<stdout>' mode='w' encoding='utf-8'>, flush=True) - Memory hook that prints debug information.
+cupy.cuda.memory_hooks.DebugPrintHook.alloc_postprocess(self, **kwargs) - MemoryHook.alloc_postprocess(self, **kwargs)
+cupy.cuda.memory_hooks.DebugPrintHook.alloc_preprocess(self, **kwargs) - MemoryHook.alloc_preprocess(self, **kwargs)
+cupy.cuda.memory_hooks.DebugPrintHook.free_postprocess(self, **kwargs) - MemoryHook.free_postprocess(self, **kwargs)
+cupy.cuda.memory_hooks.DebugPrintHook.free_preprocess(self, **kwargs) - MemoryHook.free_preprocess(self, **kwargs)
+cupy.cuda.memory_hooks.DebugPrintHook.malloc_postprocess(self, **kwargs) - MemoryHook.malloc_postprocess(self, **kwargs)
+cupy.cuda.memory_hooks.DebugPrintHook.malloc_preprocess(self, **kwargs) - MemoryHook.malloc_preprocess(self, **kwargs)
+cupy.cuda.memory_hooks.LineProfileHook(max_depth=0) - Code line CuPy memory profiler.
+cupy.cuda.memory_hooks.LineProfileHook.alloc_postprocess(self, **kwargs) - MemoryHook.alloc_postprocess(self, **kwargs)
+cupy.cuda.memory_hooks.LineProfileHook.alloc_preprocess(self, device_id, mem_size) - MemoryHook.alloc_preprocess(self, **kwargs)
+cupy.cuda.memory_hooks.LineProfileHook.free_postprocess(self, **kwargs) - MemoryHook.free_postprocess(self, **kwargs)
+cupy.cuda.memory_hooks.LineProfileHook.free_preprocess(self, **kwargs) - MemoryHook.free_preprocess(self, **kwargs)
+cupy.cuda.memory_hooks.LineProfileHook.malloc_postprocess(self, **kwargs) - MemoryHook.malloc_postprocess(self, **kwargs)
+cupy.cuda.memory_hooks.LineProfileHook.malloc_preprocess(self, device_id, size, mem_size) - MemoryHook.malloc_preprocess(self, **kwargs)
+cupy.cuda.memory_hooks.LineProfileHook.print_report(self, file=<_io.TextIOWrapper name='<stdout>' mode='w' encoding='utf-8'>) - Prints a report of line memory profiling.
+cupy.cuda.memory_hooks.debug_print.DebugPrintHook(file=<_io.TextIOWrapper name='<stdout>' mode='w' encoding='utf-8'>, flush=True) - Memory hook that prints debug information.
+cupy.cuda.memory_hooks.debug_print.DebugPrintHook.alloc_postprocess(self, **kwargs) - MemoryHook.alloc_postprocess(self, **kwargs)
+cupy.cuda.memory_hooks.debug_print.DebugPrintHook.alloc_preprocess(self, **kwargs) - MemoryHook.alloc_preprocess(self, **kwargs)
+cupy.cuda.memory_hooks.debug_print.DebugPrintHook.free_postprocess(self, **kwargs) - MemoryHook.free_postprocess(self, **kwargs)
+cupy.cuda.memory_hooks.debug_print.DebugPrintHook.free_preprocess(self, **kwargs) - MemoryHook.free_preprocess(self, **kwargs)
+cupy.cuda.memory_hooks.debug_print.DebugPrintHook.malloc_postprocess(self, **kwargs) - MemoryHook.malloc_postprocess(self, **kwargs)
+cupy.cuda.memory_hooks.debug_print.DebugPrintHook.malloc_preprocess(self, **kwargs) - MemoryHook.malloc_preprocess(self, **kwargs)
+cupy.cuda.memory_hooks.line_profile.LineProfileHook(max_depth=0) - Code line CuPy memory profiler.
+cupy.cuda.memory_hooks.line_profile.LineProfileHook.alloc_postprocess(self, **kwargs) - MemoryHook.alloc_postprocess(self, **kwargs)
+cupy.cuda.memory_hooks.line_profile.LineProfileHook.alloc_preprocess(self, device_id, mem_size) - MemoryHook.alloc_preprocess(self, **kwargs)
+cupy.cuda.memory_hooks.line_profile.LineProfileHook.free_postprocess(self, **kwargs) - MemoryHook.free_postprocess(self, **kwargs)
+cupy.cuda.memory_hooks.line_profile.LineProfileHook.free_preprocess(self, **kwargs) - MemoryHook.free_preprocess(self, **kwargs)
+cupy.cuda.memory_hooks.line_profile.LineProfileHook.malloc_postprocess(self, **kwargs) - MemoryHook.malloc_postprocess(self, **kwargs)
+cupy.cuda.memory_hooks.line_profile.LineProfileHook.malloc_preprocess(self, device_id, size, mem_size) - MemoryHook.malloc_preprocess(self, **kwargs)
+cupy.cuda.memory_hooks.line_profile.LineProfileHook.print_report(self, file=<_io.TextIOWrapper name='<stdout>' mode='w' encoding='utf-8'>) - Prints a report of line memory profiling.
+cupy.cuda.memory_hooks.line_profile.MemoryFrame(parent, stackframe) - A single stack frame along with sum of memory usage at the frame.
+cupy.cuda.memory_hooks.line_profile.MemoryFrame.humanized_bytes(self)
+cupy.cuda.memory_hooks.line_profile.StackFrame(obj) - Compatibility layer for outputs of traceback.extract_stack().
+cupy.cuda.pinned_memory.PinnedMemory(size, flags=0) - Pinned memory allocation on host.
+cupy.cuda.pinned_memory.PinnedMemoryPointer(...) - PinnedMemoryPointer(mem, ptrdiff_t offset)
+cupy.cuda.pinned_memory.PinnedMemoryPointer.size(...) - PinnedMemoryPointer.size(self) -> size_t
+cupy.cuda.pinned_memory.PinnedMemoryPool(...) - PinnedMemoryPool(allocator=_malloc)
+cupy.cuda.pinned_memory.PinnedMemoryPool.free(...) - PinnedMemoryPool.free(self, intptr_t ptr, size_t size)
+cupy.cuda.pinned_memory.PinnedMemoryPool.free_all_blocks(...) - PinnedMemoryPool.free_all_blocks(self)
+cupy.cuda.pinned_memory.PinnedMemoryPool.malloc(...) - PinnedMemoryPool.malloc(self, size_t size) -> PinnedMemoryPointer
+cupy.cuda.pinned_memory.PinnedMemoryPool.n_free_blocks(...) - PinnedMemoryPool.n_free_blocks(self)
+cupy.cuda.pinned_memory.PooledPinnedMemory(mem, pool) - Memory allocation for a memory pool.
+cupy.cuda.pinned_memory.PooledPinnedMemory.free(self) - PooledPinnedMemory.free(self)
+cupy.cuda.pinned_memory.alloc_pinned_memory(...) - alloc_pinned_memory(size_t size) -> PinnedMemoryPointer
+cupy.cuda.pinned_memory.is_memory_pinned(...) - is_memory_pinned(intptr_t data) -> bool
+cupy.cuda.pinned_memory.set_pinned_memory_allocator(...) - set_pinned_memory_allocator(allocator=None)
+cupy.cuda.profile() - Enable CUDA profiling during with statement.
+cupy.cuda.set_allocator(...) - set_allocator(allocator=None)
+cupy.cuda.set_pinned_memory_allocator(...) - set_pinned_memory_allocator(allocator=None)
+cupy.cuda.stream.Event(block=False, disable_timing=False, interprocess=False) - CUDA event, a synchronization point of CUDA streams.
+cupy.cuda.stream.Event.done - Event.done(self)
+cupy.cuda.stream.Event.record(self, stream=None) - Event.record(self, stream=None)
+cupy.cuda.stream.Event.synchronize(self) - Event.synchronize(self)
+cupy.cuda.stream.ExternalStream(ptr, device_id=-1) - CUDA stream not managed by CuPy.
+cupy.cuda.stream.ExternalStream.add_callback(self, callback, arg) - _BaseStream.add_callback(self, callback, arg)
+cupy.cuda.stream.ExternalStream.begin_capture(self, mode=None) - _BaseStream.begin_capture(self, mode=None)
+cupy.cuda.stream.ExternalStream.done - _BaseStream.done(self)
+cupy.cuda.stream.ExternalStream.end_capture(self) - _BaseStream.end_capture(self)
+cupy.cuda.stream.ExternalStream.is_capturing(self) - _BaseStream.is_capturing(self)
+cupy.cuda.stream.ExternalStream.is_non_blocking - _BaseStream.is_non_blocking(self)
+cupy.cuda.stream.ExternalStream.launch_host_func(self, callback, arg) - _BaseStream.launch_host_func(self, callback, arg)
+cupy.cuda.stream.ExternalStream.priority - _BaseStream.priority(self)
+cupy.cuda.stream.ExternalStream.record(self, event=None) - _BaseStream.record(self, event=None)
+cupy.cuda.stream.ExternalStream.synchronize(self) - _BaseStream.synchronize(self)
+cupy.cuda.stream.ExternalStream.use(self) - _BaseStream.use(self)
+cupy.cuda.stream.ExternalStream.wait_event(self, event) - _BaseStream.wait_event(self, event)
+cupy.cuda.stream.Stream(null=False, non_blocking=False, ptds=False, priority=None) - CUDA stream.
+cupy.cuda.stream.Stream.add_callback(self, callback, arg) - _BaseStream.add_callback(self, callback, arg)
+cupy.cuda.stream.Stream.begin_capture(self, mode=None) - _BaseStream.begin_capture(self, mode=None)
+cupy.cuda.stream.Stream.done - _BaseStream.done(self)
+cupy.cuda.stream.Stream.end_capture(self) - _BaseStream.end_capture(self)
+cupy.cuda.stream.Stream.from_external(obj) - Stream.from_external(cls, obj)
+cupy.cuda.stream.Stream.is_capturing(self) - _BaseStream.is_capturing(self)
+cupy.cuda.stream.Stream.is_non_blocking - _BaseStream.is_non_blocking(self)
+cupy.cuda.stream.Stream.launch_host_func(self, callback, arg) - _BaseStream.launch_host_func(self, callback, arg)
+cupy.cuda.stream.Stream.priority - _BaseStream.priority(self)
+cupy.cuda.stream.Stream.record(self, event=None) - _BaseStream.record(self, event=None)
+cupy.cuda.stream.Stream.synchronize(self) - _BaseStream.synchronize(self)
+cupy.cuda.stream.Stream.use(self) - _BaseStream.use(self)
+cupy.cuda.stream.Stream.wait_event(self, event) - _BaseStream.wait_event(self, event)
+cupy.cuda.stream.get_current_stream(...) - get_current_stream(int device_id=-1)
+cupy.cuda.stream.get_elapsed_time(...) - get_elapsed_time(start_event, end_event)
+cupy.cuda.texture.CUDAarray(...) - CUDAarray(ChannelFormatDescriptor desc, size_t width, size_t height=0, size_t depth=0, unsigned int flags=0)
+cupy.cuda.texture.CUDAarray.copy_from(...) - CUDAarray.copy_from(self, in_arr, stream=None)
+cupy.cuda.texture.CUDAarray.copy_to(...) - CUDAarray.copy_to(self, out_arr, stream=None)
+cupy.cuda.texture.ChannelFormatDescriptor(...) - ChannelFormatDescriptor(int x, int y, int z, int w, int f)
+cupy.cuda.texture.ChannelFormatDescriptor.get_channel_format(...) - ChannelFormatDescriptor.get_channel_format(self)
+cupy.cuda.texture.ResourceDescriptor(...) - ResourceDescriptor(int restype, CUDAarray cuArr=None, _ndarray_base arr=None, ChannelFormatDescriptor chDesc=None, size_t sizeInBytes=0, size_t width=0, size_t height=0, size_t pitchInBytes=0)
+cupy.cuda.texture.ResourceDescriptor.get_resource_desc(...) - ResourceDescriptor.get_resource_desc(self)
+cupy.cuda.texture.SurfaceObject(...) - SurfaceObject(ResourceDescriptor ResDesc)
+cupy.cuda.texture.TextureDescriptor(...) - TextureDescriptor(addressModes=None, int filterMode=0, int readMode=0, sRGB=None, borderColors=None, normalizedCoords=None, maxAnisotropy=None)
+cupy.cuda.texture.TextureDescriptor.get_texture_desc(...) - TextureDescriptor.get_texture_desc(self)
+cupy.cuda.texture.TextureObject(...) - TextureObject(ResourceDescriptor ResDesc, TextureDescriptor TexDesc)
+cupy.cuda.thrust.argsort(...) - argsort(dtype, intptr_t idx_start, intptr_t data_start, intptr_t keys_start, vector[ptrdiff_t] shape)
+cupy.cuda.thrust.get_build_version(...) - get_build_version()
+cupy.cuda.thrust.lexsort(...) - lexsort(dtype, intptr_t idx_start, intptr_t keys_start, size_t k, size_t n)
+cupy.cuda.thrust.sort(...) - sort(dtype, intptr_t data_start, intptr_t keys_start, vector[ptrdiff_t] shape)
+cupy.cuda.using_allocator(allocator=None) - Sets a thread-local allocator for GPU memory inside
+cupy.cumprod(a, axis=None, dtype=None, out=None) - Returns the cumulative product of an array along a given axis.
+cupy.cumproduct(a, axis=None, dtype=None, out=None)
+cupy.cumsum(a, axis=None, dtype=None, out=None) - Returns the cumulative sum of an array along a given axis.
+cupy.delete(arr, indices, axis=None) - Delete values from an array along the specified axis.
+cupy.diag(v, k=0) - Returns a diagonal or a diagonal array.
+cupy.diag_indices(n, ndim=2) - Return the indices to access the main diagonal of an array.
+cupy.diag_indices_from(arr) - Return the indices to access the main diagonal of an n-dimensional array.
+cupy.diagflat(v, k=0) - Creates a diagonal array from the flattened input.
+cupy.diagonal(a, offset=0, axis1=0, axis2=1) - Returns specified diagonals.
+cupy.diff(a, n=1, axis=-1, prepend=None, append=None) - Calculate the n-th discrete difference along the given axis.
+cupy.digitize(x, bins, right=False) - Finds the indices of the bins to which each value in input array belongs.
+cupy.disp(*args, **kwds)
+cupy.dot(a, b, out=None) - Returns a dot product of two arrays.
+cupy.dsplit(ary, indices_or_sections) - Splits an array into multiple sub arrays along the third axis.
+cupy.dstack(tup) - Stacks arrays along the third axis.
+cupy.ediff1d(arr, to_end=None, to_begin=None) - Calculates the difference between consecutive elements of an array.
+cupy.einsum(*operands, **kwargs) - einsum(subscripts, *operands, dtype=None, optimize=False)
+cupy.empty(shape: '_ShapeLike', dtype: 'DTypeLike' = <class 'float'>, order: '_OrderCF' = 'C') -> 'NDArray[Any]' - Returns an array without initializing the elements.
+cupy.empty_like(prototype: 'NDArray[Any]', dtype: 'DTypeLike | None' = None, order: '_OrderKACF' = 'K', subok: 'None' = None, shape: '_ShapeLike | None' = None) -> 'NDArray[Any]' - Returns a new array with same shape and dtype of a given array.
+cupy.expand_dims(a, axis) - Expands given arrays.
+cupy.extract(condition, a) - Return the elements of an array that satisfy some condition.
+cupy.eye(N: 'int', M: 'int | None' = None, k: 'int' = 0, dtype: 'DTypeLike' = <class 'float'>, order: '_OrderCF' = 'C') -> 'NDArray[Any]' - Returns a 2-D array with ones on the diagonals and zeros elsewhere.
+cupy.fft.config
+cupy.fft.fft(a, n=None, axis=-1, norm=None) - Compute the one-dimensional FFT.
+cupy.fft.fft2(a, s=None, axes=(-2, -1), norm=None) - Compute the two-dimensional FFT.
+cupy.fft.fftfreq(n, d=1.0) - Return the FFT sample frequencies.
+cupy.fft.fftn(a, s=None, axes=None, norm=None) - Compute the N-dimensional FFT.
+cupy.fft.fftshift(x, axes=None) - Shift the zero-frequency component to the center of the spectrum.
+cupy.fft.hfft(a, n=None, axis=-1, norm=None) - Compute the FFT of a signal that has Hermitian symmetry.
+cupy.fft.ifft(a, n=None, axis=-1, norm=None) - Compute the one-dimensional inverse FFT.
+cupy.fft.ifft2(a, s=None, axes=(-2, -1), norm=None) - Compute the two-dimensional inverse FFT.
+cupy.fft.ifftn(a, s=None, axes=None, norm=None) - Compute the N-dimensional inverse FFT.
+cupy.fft.ifftshift(x, axes=None) - The inverse of :meth:`fftshift`.
+cupy.fft.ihfft(a, n=None, axis=-1, norm=None) - Compute the FFT of a signal that has Hermitian symmetry.
+cupy.fft.irfft(a, n=None, axis=-1, norm=None) - Compute the one-dimensional inverse FFT for real input.
+cupy.fft.irfft2(a, s=None, axes=(-2, -1), norm=None) - Compute the two-dimensional inverse FFT for real input.
+cupy.fft.irfftn(a, s=None, axes=None, norm=None) - Compute the N-dimensional inverse FFT for real input.
+cupy.fft.rfft(a, n=None, axis=-1, norm=None) - Compute the one-dimensional FFT for real input.
+cupy.fft.rfft2(a, s=None, axes=(-2, -1), norm=None) - Compute the two-dimensional FFT for real input.
+cupy.fft.rfftfreq(n, d=1.0) - Return the FFT sample frequencies for real input.
+cupy.fft.rfftn(a, s=None, axes=None, norm=None) - Compute the N-dimensional FFT for real input.
+cupy.fill_diagonal(a, val, wrap=False) - Fills the main diagonal of the given array of any dimensionality.
+cupy.find_common_type(*args, **kwds)
+cupy.flatiter(a) - Flat iterator object to iterate over arrays.
+cupy.flatiter.base - A reference to the array that is iterated over.
+cupy.flatiter.copy(self) - Get a copy of the iterator as a 1-D array.
+cupy.flatnonzero(a) - Return indices that are non-zero in the flattened version of a.
+cupy.flip(a, axis=None) - Reverse the order of elements in an array along the given axis.
+cupy.fliplr(a) - Flip array in the left/right direction.
+cupy.flipud(a) - Flip array in the up/down direction.
+cupy.format_float_positional(x, *args, **kwargs) - Format a floating-point scalar as a decimal string in positional notation.
+cupy.format_float_scientific(x, *args, **kwargs) - Format a floating-point scalar as a decimal string in scientific notation.
+cupy.fromDlpack(...) - fromDlpack(dltensor) -> _ndarray_base
+cupy.from_dlpack(...) - from_dlpack(array, *, device=None, copy=None)
+cupy.frombuffer(*args, **kwargs) - Interpret a buffer as a 1-dimensional array.
+cupy.fromfile(*args, **kwargs) - Reads an array from a file.
+cupy.fromfunction(*args, **kwargs) - Construct an array by executing a function over each coordinate.
+cupy.fromiter(*args, **kwargs) - Create a new 1-dimensional array from an iterable object.
+cupy.fromstring(*args, **kwargs) - A new 1-D array initialized from text data in a string.
+cupy.full(shape: '_ShapeLike', fill_value: 'Any', dtype: 'DTypeLike | None' = None, order: '_OrderCF' = 'C') -> 'NDArray[Any]' - Returns a new array of given shape and dtype, filled with a given value.
+cupy.full_like(a: 'NDArray[Any]', fill_value: 'Any', dtype: 'DTypeLike | None' = None, order: '_OrderKACF' = 'K', subok: 'None' = None, shape: '_ShapeLike | None' = None) -> 'NDArray[Any]' - Returns a full array with same shape and dtype as a given array.
+cupy.fuse(...) - fuse(*args, **kwargs)
+cupy.genfromtxt(*args, **kwargs) - Load data from text file, with missing values handled as specified.
+cupy.get_array_module(*args) - Returns the array module for arguments.
+cupy.get_array_wrap(*args, **kwds)
+cupy.get_default_memory_pool() - Returns CuPy default memory pool for GPU memory.
+cupy.get_default_pinned_memory_pool() - Returns CuPy default memory pool for pinned memory.
+cupy.gradient(f, *varargs, axis=None, edge_order=1) - Return the gradient of an N-dimensional array.
+cupy.hamming(M) - Returns the Hamming window.
+cupy.hanning(M) - Returns the Hanning window.
+cupy.histogram(x, bins=10, range=None, density=False, weights=None) - Computes the histogram of a set of data.
+cupy.histogram2d(x, y, bins=10, range=None, weights=None, density=None) - Compute the bi-dimensional histogram of two data samples.
+cupy.histogramdd(sample, bins=10, range=None, weights=None, density=False) - Compute the multidimensional histogram of some data.
+cupy.hsplit(ary, indices_or_sections) - Splits an array into multiple sub arrays horizontally.
+cupy.hstack(tup, *, dtype=None, casting='same_kind') - Stacks arrays horizontally.
+cupy.identity(n: 'int', dtype: 'DTypeLike' = <class 'float'>) -> 'NDArray[Any]' - Returns a 2-D identity array.
+cupy.imag(val) - Returns the imaginary part of the elements of the array.
+cupy.in1d(ar1, ar2, assume_unique=False, invert=False) - Tests whether each element of a 1-D array is also present in a second
+cupy.indices(dimensions, dtype=<class 'int'>) - Returns an array representing the indices of a grid.
+cupy.inner(a, b) - Returns the inner product of two arrays.
+cupy.interp(x, xp, fp, left=None, right=None, period=None) - One-dimensional linear interpolation.
+cupy.intersect1d(arr1, arr2, assume_unique=False, return_indices=False) - Find the intersection of two arrays.
+cupy.is_available() - Return True if GPU execution is available.
+cupy.isclose(a, b, rtol=1e-05, atol=1e-08, equal_nan=False) - Returns a boolean array where two arrays are equal within a tolerance.
+cupy.iscomplex(x) - Returns a bool array, where True if input element is complex.
+cupy.iscomplexobj(x) - Check for a complex type or an array of complex numbers.
+cupy.isfortran(a) - Returns True if the array is Fortran contiguous but *not* C contiguous.
+cupy.isin(element, test_elements, assume_unique=False, invert=False) - Calculates element in ``test_elements``, broadcasting over ``element``
+cupy.isneginf(x, out=None) - Test element-wise for negative infinity, return result as bool array.
+cupy.isposinf(x, out=None) - Test element-wise for positive infinity, return result as bool array.
+cupy.isreal(x) - Returns a bool array, where True if input element is real.
+cupy.isrealobj(x) - Return True if x is a not complex type or an array of complex numbers.
+cupy.isscalar(element) - Returns True if the type of num is a scalar type.
+cupy.issctype(rep) - Determines whether the given object represents a scalar data-type.
+cupy.issubclass_(arg1, arg2)
+cupy.issubsctype(arg1, arg2) - Determine if the first argument is a subclass of the second argument.
+cupy.ix_(*args) - Construct an open mesh from multiple sequences.
+cupy.kaiser(M, beta) - Return the Kaiser window.
+cupy.kron(a, b) - Returns the kronecker product of two arrays.
+cupy.lexsort(keys) - Perform an indirect sort using an array of keys.
+cupy.lib.stride_tricks.as_strided(x, shape=None, strides=None) - Create a view into the array with the given shape and strides.
+cupy.lib.stride_tricks.sliding_window_view(x, window_shape, axis=None, *, subok=False, writeable=False) - Create a sliding window view into the array with the given window shape.
+cupy.linalg.cholesky(a) - Cholesky decomposition.
+cupy.linalg.cond(x, p=None) - Returns the condition number of a matrix.
+cupy.linalg.det(a) - Returns the determinant of an array.
+cupy.linalg.eig(a) - Return the eigenvalues and eigenvectors of a matrix.
+cupy.linalg.eigh(a, UPLO='L') - Return the eigenvalues and eigenvectors of a complex Hermitian
+cupy.linalg.eigvals(a) - Compute the eigenvalues of a matrix.
+cupy.linalg.eigvalsh(a, UPLO='L') - Compute the eigenvalues of a complex Hermitian or real symmetric matrix.
+cupy.linalg.inv(a) - Computes the inverse of a matrix.
+cupy.linalg.matrix_power(M, n) - Raise a square matrix to the (integer) power `n`.
+cupy.linalg.matrix_rank(M, tol=None) - Return matrix rank of array using SVD method
+cupy.linalg.norm(x, ord=None, axis=None, keepdims=False) - Returns one of matrix norms specified by ``ord`` parameter.
+cupy.linalg.pinv(a, rcond=1e-15) - Compute the Moore-Penrose pseudoinverse of a matrix.
+cupy.linalg.qr(a, mode='reduced') - QR decomposition.
+cupy.linalg.slogdet(a) - Returns sign and logarithm of the determinant of an array.
+cupy.linalg.solve(a, b) - Solves a linear matrix equation.
+cupy.linalg.svd(a, full_matrices=True, compute_uv=True) - Singular Value Decomposition.
+cupy.linalg.tensorinv(a, ind=2) - Computes the inverse of a tensor.
+cupy.linalg.tensorsolve(a, b, axes=None) - Solves tensor equations denoted by ``ax = b``.
+cupy.linspace(start, stop, num=50, endpoint=True, retstep=False, dtype=None, axis=0) - Returns an array with evenly-spaced values within a given interval.
+cupy.load(file, mmap_mode=None, allow_pickle=None) - Loads arrays or pickled objects from ``.npy``, ``.npz`` or pickled file.
+cupy.loadtxt(*args, **kwargs) - Load data from a text file.
+cupy.logspace(start, stop, num=50, endpoint=True, base=10.0, dtype=None, axis=0) - Returns an array with evenly-spaced values on a log-scale.
+cupy.mask_indices(n, mask_func, k=0) - Return the indices to access (n, n) arrays, given a masking function.
+cupy.matmul(*args, axes=None, axis=None, keepdims=False, casting='same_kind', dtype=None, signature=None, order='K', out=None) - matmul(x1, x2, /, out=None, \*\*kwargs)
+cupy.max(a, axis=None, out=None, keepdims=False) - Returns the maximum of an array or the maximum along an axis.
+cupy.may_share_memory(a, b, max_work=None)
+cupy.mean(a, axis=None, dtype=None, out=None, keepdims=False) - Returns the arithmetic mean along an axis.
+cupy.median(a, axis=None, out=None, overwrite_input=False, keepdims=False) - Compute the median along the specified axis.
+cupy.memoize(...) - memoize(bool for_each_device=False)
+cupy.meshgrid(*xi, **kwargs) - Return coordinate matrices from coordinate vectors.
+cupy.mgrid - Construct a multi-dimensional "meshgrid".
+cupy.min(a, axis=None, out=None, keepdims=False) - Returns the minimum of an array or the minimum along an axis.
+cupy.min_scalar_type(...) - min_scalar_type(a)
+cupy.moveaxis(a, source, destination) - Moves axes of an array to new positions.
+cupy.msort(a) - Returns a copy of an array sorted along the first axis.
+cupy.nan_to_num(x, copy=True, nan=0.0, posinf=None, neginf=None) - Replace NaN with zero and infinity with large finite numbers (default
+cupy.nanargmax(a, axis=None, dtype=None, out=None, keepdims=False) - Return the indices of the maximum values in the specified axis ignoring
+cupy.nanargmin(a, axis=None, dtype=None, out=None, keepdims=False) - Return the indices of the minimum values in the specified axis ignoring
+cupy.nancumprod(a, axis=None, dtype=None, out=None) - Returns the cumulative product of an array along a given axis treating
+cupy.nancumsum(a, axis=None, dtype=None, out=None) - Returns the cumulative sum of an array along a given axis treating Not a
+cupy.nanmax(a, axis=None, out=None, keepdims=False) - Returns the maximum of an array along an axis ignoring NaN.
+cupy.nanmean(a, axis=None, dtype=None, out=None, keepdims=False) - Returns the arithmetic mean along an axis ignoring NaN values.
+cupy.nanmedian(a, axis=None, out=None, overwrite_input=False, keepdims=False) - Compute the median along the specified axis, while ignoring NaNs.
+cupy.nanmin(a, axis=None, out=None, keepdims=False) - Returns the minimum of an array along an axis ignoring NaN.
+cupy.nanprod(a, axis=None, dtype=None, out=None, keepdims=False) - Returns the product of an array along given axes treating Not a Numbers
+cupy.nanstd(a, axis=None, dtype=None, out=None, ddof=0, keepdims=False) - Returns the standard deviation along an axis ignoring NaN values.
+cupy.nansum(a, axis=None, dtype=None, out=None, keepdims=False) - Returns the sum of an array along given axes treating Not a Numbers
+cupy.nanvar(a, axis=None, dtype=None, out=None, ddof=0, keepdims=False) - Returns the variance along an axis ignoring NaN values.
+cupy.ndarray(*args, _obj=None, _no_init=False, **kwargs) - __init__(shape, dtype=float, memptr=None, strides=None, order='C')
+cupy.ndarray.all(...) - _ndarray_base.all(self, axis=None, out=None, keepdims=False) -> _ndarray_base
+cupy.ndarray.any(...) - _ndarray_base.any(self, axis=None, out=None, keepdims=False) -> _ndarray_base
+cupy.ndarray.argmax(...) - _ndarray_base.argmax(self, axis=None, out=None, dtype=None, keepdims=False) -> _ndarray_base
+cupy.ndarray.argmin(...) - _ndarray_base.argmin(self, axis=None, out=None, dtype=None, keepdims=False) -> _ndarray_base
+cupy.ndarray.argpartition(...) - _ndarray_base.argpartition(self, kth, axis=-1) -> _ndarray_base
+cupy.ndarray.argsort(...) - _ndarray_base.argsort(self, axis=-1, kind=None) -> _ndarray_base
+cupy.ndarray.astype(...) - _ndarray_base.astype(self, dtype, order='K', casting=None, subok=None, copy=True) -> _ndarray_base
+cupy.ndarray.choose(...) - _ndarray_base.choose(self, choices, out=None, mode='raise')
+cupy.ndarray.clip(...) - _ndarray_base.clip(self, min=None, max=None, out=None) -> _ndarray_base
+cupy.ndarray.compress(...) - _ndarray_base.compress(self, condition, axis=None, out=None) -> _ndarray_base
+cupy.ndarray.conj(...) - _ndarray_base.conj(self) -> _ndarray_base
+cupy.ndarray.conjugate(...) - _ndarray_base.conjugate(self) -> _ndarray_base
+cupy.ndarray.copy(...) - _ndarray_base.copy(self, order='C') -> _ndarray_base
+cupy.ndarray.cumprod(...) - _ndarray_base.cumprod(self, axis=None, dtype=None, out=None) -> _ndarray_base
+cupy.ndarray.cumsum(...) - _ndarray_base.cumsum(self, axis=None, dtype=None, out=None) -> _ndarray_base
+cupy.ndarray.diagonal(...) - _ndarray_base.diagonal(self, offset=0, axis1=0, axis2=1) -> _ndarray_base
+cupy.ndarray.dot(...) - _ndarray_base.dot(self, _ndarray_base b, _ndarray_base out=None)
+cupy.ndarray.dump(...) - _ndarray_base.dump(self, file)
+cupy.ndarray.dumps(...) - _ndarray_base.dumps(self) -> bytes
+cupy.ndarray.fill(...) - _ndarray_base.fill(self, value)
+cupy.ndarray.flatten(...) - _ndarray_base.flatten(self, order='C') -> _ndarray_base
+cupy.ndarray.get(...) - _ndarray_base.get(self, stream=None, order='C', out=None, blocking=True)
+cupy.ndarray.item(...) - _ndarray_base.item(self)
+cupy.ndarray.max(...) - _ndarray_base.max(self, axis=None, out=None, keepdims=False) -> _ndarray_base
+cupy.ndarray.mdspan(...) - _ndarray_base.mdspan(self, *, index_type, allow_unsafe=False)
+cupy.ndarray.mean(...) - _ndarray_base.mean(self, axis=None, dtype=None, out=None, keepdims=False) -> _ndarray_base
+cupy.ndarray.min(...) - _ndarray_base.min(self, axis=None, out=None, keepdims=False) -> _ndarray_base
+cupy.ndarray.nonzero(...) - _ndarray_base.nonzero(self) -> tuple
+cupy.ndarray.partition(...) - _ndarray_base.partition(self, kth, int axis=-1)
+cupy.ndarray.prod(...) - _ndarray_base.prod(self, axis=None, dtype=None, out=None, keepdims=None) -> _ndarray_base
+cupy.ndarray.ptp(...) - _ndarray_base.ptp(self, axis=None, out=None, keepdims=False) -> _ndarray_base
+cupy.ndarray.put(...) - _ndarray_base.put(self, indices, values, mode='wrap')
+cupy.ndarray.ravel(...) - _ndarray_base.ravel(self, order='C') -> _ndarray_base
+cupy.ndarray.reduced_view(...) - _ndarray_base.reduced_view(self, dtype=None) -> _ndarray_base
+cupy.ndarray.repeat(...) - _ndarray_base.repeat(self, repeats, axis=None)
+cupy.ndarray.reshape(...) - _ndarray_base.reshape(self, *shape, order='C')
+cupy.ndarray.round(...) - _ndarray_base.round(self, decimals=0, out=None) -> _ndarray_base
+cupy.ndarray.scatter_add(...) - _ndarray_base.scatter_add(self, slices, value)
+cupy.ndarray.scatter_max(...) - _ndarray_base.scatter_max(self, slices, value)
+cupy.ndarray.scatter_min(...) - _ndarray_base.scatter_min(self, slices, value)
+cupy.ndarray.searchsorted(...) - _ndarray_base.searchsorted(self, v, side='left', sorter=None)
+cupy.ndarray.set(...) - _ndarray_base.set(self, arr, stream=None)
+cupy.ndarray.sort(...) - _ndarray_base.sort(self, int axis=-1, kind=None)
+cupy.ndarray.squeeze(...) - _ndarray_base.squeeze(self, axis=None) -> _ndarray_base
+cupy.ndarray.std(...) - _ndarray_base.std(self, axis=None, dtype=None, out=None, ddof=0, keepdims=False) -> _ndarray_base
+cupy.ndarray.sum(...) - _ndarray_base.sum(self, axis=None, dtype=None, out=None, keepdims=False) -> _ndarray_base
+cupy.ndarray.swapaxes(...) - _ndarray_base.swapaxes(self, Py_ssize_t axis1, Py_ssize_t axis2) -> _ndarray_base
+cupy.ndarray.take(...) - _ndarray_base.take(self, indices, axis=None, out=None) -> _ndarray_base
+cupy.ndarray.toDlpack(...) - _ndarray_base.toDlpack(self)
+cupy.ndarray.tobytes(...) - _ndarray_base.tobytes(self, order='C') -> bytes
+cupy.ndarray.tofile(...) - _ndarray_base.tofile(self, fid, sep='', format='%s')
+cupy.ndarray.tolist(...) - _ndarray_base.tolist(self)
+cupy.ndarray.trace(...) - _ndarray_base.trace(self, offset=0, axis1=0, axis2=1, dtype=None, out=None) -> _ndarray_base
+cupy.ndarray.transpose(...) - _ndarray_base.transpose(self, *axes)
+cupy.ndarray.var(...) - _ndarray_base.var(self, axis=None, dtype=None, out=None, ddof=0, keepdims=False) -> _ndarray_base
+cupy.ndarray.view(self, dtype=None, type=None) - ndarray.view(self, dtype=None, type=None)
+cupy.ndim(a) - Returns the number of dimensions of an array.
+cupy.nonzero(a) - Return the indices of the elements that are non-zero.
+cupy.obj2sctype(rep, default=None) - Return the scalar dtype or NumPy equivalent of Python type of an object.
+cupy.ogrid - Construct a multi-dimensional "meshgrid".
+cupy.ones(shape: '_ShapeLike', dtype: 'DTypeLike' = <class 'float'>, order: '_OrderCF' = 'C') -> 'NDArray[Any]' - Returns a new array of given shape and dtype, filled with ones.
+cupy.ones_like(a: 'NDArray[Any]', dtype: 'DTypeLike | None' = None, order: '_OrderKACF' = 'K', subok: 'None' = None, shape: '_ShapeLike | None' = None) -> 'NDArray[Any]' - Returns an array of ones with same shape and dtype as a given array.
+cupy.outer(a, b, out=None) - Returns the outer product of two vectors.
+cupy.packbits(a, axis=None, bitorder='big') - Packs the elements of a binary-valued array into bits in a uint8 array.
+cupy.pad(array, pad_width, mode='constant', **kwargs) - Pads an array with specified widths and values.
+cupy.partition(a, kth, axis=-1) - Returns a partitioned copy of an array.
+cupy.percentile(a, q, axis=None, out=None, overwrite_input=False, method='linear', keepdims=False, *, interpolation=None) - Computes the q-th percentile of the data along the specified axis.
+cupy.permute_dims(a, axes=None) - Permutes the dimensions of an array.
+cupy.piecewise(x, condlist, funclist) - Evaluate a piecewise-defined function.
+cupy.place(arr, mask, vals) - Change elements of an array based on conditional and input values.
+cupy.poly(seq_of_zeros) - Computes the coefficients of a polynomial with the given roots sequence.
+cupy.poly1d(...) - poly1d(c_or_r, r=False, variable=None)
+cupy.poly1d.deriv(...) - poly1d.deriv(self, m=1)
+cupy.poly1d.get(...) - poly1d.get(self, stream=None)
+cupy.poly1d.integ(...) - poly1d.integ(self, m=1, k=0)
+cupy.poly1d.set(...) - poly1d.set(self, polyin, stream=None)
+cupy.polyadd(a1, a2) - Computes the sum of two polynomials.
+cupy.polyfit(x, y, deg, rcond=None, full=False, w=None, cov=False) - Returns the least squares fit of polynomial of degree deg
+cupy.polymul(a1, a2) - Computes the product of two polynomials.
+cupy.polynomial.polynomial.polycompanion(c) - Computes the companion matrix of c.
+cupy.polynomial.polynomial.polyval(x, c, tensor=True) - Evaluate a polynomial at points x.
+cupy.polynomial.polynomial.polyvalfromroots(x, r, tensor=True) - Evaluate a polynomial specified by its roots at points x.
+cupy.polynomial.polynomial.polyvander(x, deg) - Computes the Vandermonde matrix of given degree.
+cupy.polynomial.polyutils.as_series(alist, trim=True) - Returns argument as a list of 1-d arrays.
+cupy.polynomial.polyutils.trimcoef(c, tol=0) - Removes small trailing coefficients from a polynomial.
+cupy.polynomial.polyutils.trimseq(seq) - Removes small polynomial series coefficients.
+cupy.polysub(a1, a2) - Computes the difference of two polynomials.
+cupy.polyval(p, x) - Evaluates a polynomial at specific values.
+cupy.prod(a, axis=None, dtype=None, out=None, keepdims=False) - Returns the product of an array along given axes.
+cupy.product(a, axis=None, dtype=None, out=None, keepdims=False)
+cupy.ptp(a, axis=None, out=None, keepdims=False) - Returns the range of values (maximum - minimum) along an axis.
+cupy.put(a, ind, v, mode='wrap') - Replaces specified elements of an array with given values.
+cupy.put_along_axis(arr, indices, values, axis) - Put values into the destination array by matching 1d index and data slices.
+cupy.putmask(a, mask, values) - Changes elements of an array inplace, based on a conditional mask and
+cupy.quantile(a, q, axis=None, out=None, overwrite_input=False, method='linear', keepdims=False, *, interpolation=None) - Computes the q-th quantile of the data along the specified axis.
+cupy.r_
+cupy.random.BitGenerator(seed=None) - Generic BitGenerator.
+cupy.random.BitGenerator.random_raw(self, size=None, output=True) - BitGenerator.random_raw(self, size=None, output=True)
+cupy.random.MRG32k3a(seed=None, *, size=-1) - BitGenerator that uses cuRAND MRG32k3a device generator.
+cupy.random.MRG32k3a.random_raw(self, size=None, output=True) - _cuRANDGenerator.random_raw(self, size=None, output=True)
+cupy.random.MRG32k3a.state(self) - _cuRANDGenerator.state(self)
+cupy.random.Philox4x3210(seed=None, *, size=-1) - BitGenerator that uses cuRAND Philox4x3210 device generator.
+cupy.random.Philox4x3210.random_raw(self, size=None, output=True) - _cuRANDGenerator.random_raw(self, size=None, output=True)
+cupy.random.Philox4x3210.state(self) - _cuRANDGenerator.state(self)
+cupy.random.RandomState(seed=None, method=None) - Portable container of a pseudo-random number generator.
+cupy.random.RandomState.beta(self, a, b, size=None, dtype=<class 'float'>) - Returns an array of samples drawn from the beta distribution.
+cupy.random.RandomState.binomial(self, n, p, size=None, dtype=<class 'int'>) - Returns an array of samples drawn from the binomial distribution.
+cupy.random.RandomState.chisquare(self, df, size=None, dtype=<class 'float'>) - Returns an array of samples drawn from the chi-square distribution.
+cupy.random.RandomState.choice(self, a, size=None, replace=True, p=None) - Returns an array of random values from a given 1-D array.
+cupy.random.RandomState.dirichlet(self, alpha, size=None, dtype=<class 'float'>) - Returns an array of samples drawn from the dirichlet distribution.
+cupy.random.RandomState.exponential(self, scale=1.0, size=None, dtype=<class 'float'>) - Returns an array of samples drawn from a exponential distribution.
+cupy.random.RandomState.f(self, dfnum, dfden, size=None, dtype=<class 'float'>) - Returns an array of samples drawn from the f distribution.
+cupy.random.RandomState.gamma(self, shape, scale=1.0, size=None, dtype=<class 'float'>) - Returns an array of samples drawn from a gamma distribution.
+cupy.random.RandomState.geometric(self, p, size=None, dtype='l') - Returns an array of samples drawn from the geometric distribution.
+cupy.random.RandomState.gumbel(self, loc=0.0, scale=1.0, size=None, dtype=<class 'float'>) - Returns an array of samples drawn from a Gumbel distribution.
+cupy.random.RandomState.hypergeometric(self, ngood, nbad, nsample, size=None, dtype='l') - Returns an array of samples drawn from the hypergeometric distribution.
+cupy.random.RandomState.laplace(self, loc=0.0, scale=1.0, size=None, dtype=<class 'float'>) - Returns an array of samples drawn from the laplace distribution.
+cupy.random.RandomState.logistic(self, loc=0.0, scale=1.0, size=None, dtype=<class 'float'>) - Returns an array of samples drawn from the logistic distribution.
+cupy.random.RandomState.lognormal(self, mean=0.0, sigma=1.0, size=None, dtype=<class 'float'>) - Returns an array of samples drawn from a log normal distribution.
+cupy.random.RandomState.logseries(self, p, size=None, dtype='l') - Returns an array of samples drawn from a log series distribution.
+cupy.random.RandomState.multivariate_normal(self, mean, cov, size=None, check_valid='ignore', tol=1e-08, method='cholesky', dtype=<class 'float'>) - Returns an array of samples drawn from the multivariate normal
+cupy.random.RandomState.negative_binomial(self, n, p, size=None, dtype=<class 'int'>) - Returns an array of samples drawn from the negative binomial distribution.
+cupy.random.RandomState.noncentral_chisquare(self, df, nonc, size=None, dtype=<class 'float'>) - Returns an array of samples drawn from the noncentral chi-square
+cupy.random.RandomState.noncentral_f(self, dfnum, dfden, nonc, size=None, dtype=<class 'float'>) - Returns an array of samples drawn from the noncentral F distribution.
+cupy.random.RandomState.normal(self, loc=0.0, scale=1.0, size=None, dtype=<class 'float'>) - Returns an array of normally distributed samples.
+cupy.random.RandomState.pareto(self, a, size=None, dtype=<class 'float'>) - Returns an array of samples drawn from the pareto II distribution.
+cupy.random.RandomState.permutation(self, a) - Returns a permuted range or a permutation of an array.
+cupy.random.RandomState.poisson(self, lam=1.0, size=None, dtype='l') - Returns an array of samples drawn from the poisson distribution.
+cupy.random.RandomState.power(self, a, size=None, dtype=<class 'float'>) - Returns an array of samples drawn from the power distribution.
+cupy.random.RandomState.rand(self, *size, **kwarg) - Returns uniform random values over the interval ``[0, 1)``.
+cupy.random.RandomState.randint(self, low, high=None, size=None, dtype=<class 'int'>) - Returns a scalar or an array of integer values over ``[low, high)``.
+cupy.random.RandomState.randn(self, *size, **kwarg) - Returns an array of standard normal random values.
+cupy.random.RandomState.random_sample(self, size=None, dtype=<class 'float'>) - Returns an array of random values over the interval ``[0, 1)``.
+cupy.random.RandomState.rayleigh(self, scale=1.0, size=None, dtype=<class 'float'>) - Returns an array of samples drawn from a rayleigh distribution.
+cupy.random.RandomState.seed(self, seed=None) - Resets the state of the random number generator with a seed.
+cupy.random.RandomState.shuffle(self, a) - Returns a shuffled array.
+cupy.random.RandomState.standard_cauchy(self, size=None, dtype=<class 'float'>) - Returns an array of samples drawn from the standard cauchy distribution.
+cupy.random.RandomState.standard_exponential(self, size=None, dtype=<class 'float'>) - Returns an array of samples drawn from the standard exp distribution.
+cupy.random.RandomState.standard_gamma(self, shape, size=None, dtype=<class 'float'>) - Returns an array of samples drawn from a standard gamma distribution.
+cupy.random.RandomState.standard_normal(self, size=None, dtype=<class 'float'>) - Returns samples drawn from the standard normal distribution.
+cupy.random.RandomState.standard_t(self, df, size=None, dtype=<class 'float'>) - Returns an array of samples drawn from the standard t distribution.
+cupy.random.RandomState.tomaxint(self, size=None) - Draws integers between 0 and max integer inclusive.
+cupy.random.RandomState.triangular(self, left, mode, right, size=None, dtype=<class 'float'>) - Returns an array of samples drawn from the triangular distribution.
+cupy.random.RandomState.uniform(self, low=0.0, high=1.0, size=None, dtype=<class 'float'>) - Returns an array of uniformly-distributed samples over an interval.
+cupy.random.RandomState.vonmises(self, mu, kappa, size=None, dtype=<class 'float'>) - Returns an array of samples drawn from the von Mises distribution.
+cupy.random.RandomState.wald(self, mean, scale, size=None, dtype=<class 'float'>) - Returns an array of samples drawn from the Wald distribution.
+cupy.random.RandomState.weibull(self, a, size=None, dtype=<class 'float'>) - Returns an array of samples drawn from the weibull distribution.
+cupy.random.RandomState.zipf(self, a, size=None, dtype=<class 'int'>) - Returns an array of samples drawn from the Zipf distribution.
+cupy.random.XORWOW(seed=None, *, size=-1) - BitGenerator that uses cuRAND XORWOW device generator.
+cupy.random.XORWOW.random_raw(self, size=None, output=True) - _cuRANDGenerator.random_raw(self, size=None, output=True)
+cupy.random.XORWOW.state(self) - _cuRANDGenerator.state(self)
+cupy.random.beta(a, b, size=None, dtype=<class 'float'>) - Beta distribution.
+cupy.random.binomial(n, p, size=None, dtype=<class 'int'>) - Binomial distribution.
+cupy.random.bytes(length) - Returns random bytes.
+cupy.random.chisquare(df, size=None, dtype=<class 'float'>) - Chi-square distribution.
+cupy.random.choice(a, size=None, replace=True, p=None) - Returns an array of random values from a given 1-D array.
+cupy.random.default_rng(seed=None) - Construct a new Generator with the default BitGenerator (XORWOW).
+cupy.random.dirichlet(alpha, size=None, dtype=<class 'float'>) - Dirichlet distribution.
+cupy.random.exponential(scale, size=None, dtype=<class 'float'>) - Exponential distribution.
+cupy.random.f(dfnum, dfden, size=None, dtype=<class 'float'>) - F distribution.
+cupy.random.gamma(shape, scale=1.0, size=None, dtype=<class 'float'>) - Gamma distribution.
+cupy.random.geometric(p, size=None, dtype='l') - Geometric distribution.
+cupy.random.get_random_state() - Gets the state of the random number generator for the current device.
+cupy.random.gumbel(loc=0.0, scale=1.0, size=None, dtype=<class 'float'>) - Returns an array of samples drawn from a Gumbel distribution.
+cupy.random.hypergeometric(ngood, nbad, nsample, size=None, dtype='l') - hypergeometric distribution.
+cupy.random.laplace(loc=0.0, scale=1.0, size=None, dtype=<class 'float'>) - Laplace distribution.
+cupy.random.logistic(loc=0.0, scale=1.0, size=None, dtype=<class 'float'>) - Logistic distribution.
+cupy.random.lognormal(mean=0.0, sigma=1.0, size=None, dtype=<class 'float'>) - Returns an array of samples drawn from a log normal distribution.
+cupy.random.logseries(p, size=None, dtype='l') - Log series distribution.
+cupy.random.multinomial(n, pvals, size=None) - Returns an array from multinomial distribution.
+cupy.random.multivariate_normal(mean, cov, size=None, check_valid='ignore', tol=1e-08, method='cholesky', dtype=<class 'float'>) - Multivariate normal distribution.
+cupy.random.negative_binomial(n, p, size=None, dtype=<class 'int'>) - Negative binomial distribution.
+cupy.random.noncentral_chisquare(df, nonc, size=None, dtype=<class 'float'>) - Noncentral chisquare distribution.
+cupy.random.noncentral_f(dfnum, dfden, nonc, size=None, dtype=<class 'float'>) - Noncentral F distribution.
+cupy.random.normal(loc=0.0, scale=1.0, size=None, dtype=<class 'float'>) - Returns an array of normally distributed samples.
+cupy.random.pareto(a, size=None, dtype=<class 'float'>) - Pareto II or Lomax distribution.
+cupy.random.permutation(a) - Returns a permuted range or a permutation of an array.
+cupy.random.poisson(lam=1.0, size=None, dtype='l') - Poisson distribution.
+cupy.random.power(a, size=None, dtype=<class 'float'>) - Power distribution.
+cupy.random.rand(*size, **kwarg) - Returns an array of uniform random values over the interval ``[0, 1)``.
+cupy.random.randint(low, high=None, size=None, dtype='l') - Returns a scalar or an array of integer values over ``[low, high)``.
+cupy.random.randn(*size, **kwarg) - Returns an array of standard normal random values.
+cupy.random.random(size=None, dtype=<class 'float'>) - Returns an array of random values over the interval ``[0, 1)``.
+cupy.random.random_integers(low, high=None, size=None) - Return a scalar or an array of integer values over ``[low, high]``
+cupy.random.random_sample(size=None, dtype=<class 'float'>) - Returns an array of random values over the interval ``[0, 1)``.
+cupy.random.ranf(size=None, dtype=<class 'float'>) - Returns an array of random values over the interval ``[0, 1)``.
+cupy.random.rayleigh(scale=1.0, size=None, dtype=<class 'float'>) - Rayleigh distribution.
+cupy.random.reset_states()
+cupy.random.sample(size=None, dtype=<class 'float'>) - Returns an array of random values over the interval ``[0, 1)``.
+cupy.random.seed(seed=None) - Resets the state of the random number generator with a seed.
+cupy.random.set_random_state(rs) - Sets the state of the random number generator for the current device.
+cupy.random.shuffle(a) - Shuffles an array.
+cupy.random.standard_cauchy(size=None, dtype=<class 'float'>) - Standard cauchy distribution.
+cupy.random.standard_exponential(size=None, dtype=<class 'float'>) - Standard exponential distribution.
+cupy.random.standard_gamma(shape, size=None, dtype=<class 'float'>) - Standard gamma distribution.
+cupy.random.standard_normal(size=None, dtype=<class 'float'>) - Returns an array of samples drawn from the standard normal distribution.
+cupy.random.standard_t(df, size=None, dtype=<class 'float'>) - Standard Student's t distribution.
+cupy.random.triangular(left, mode, right, size=None, dtype=<class 'float'>) - Triangular distribution.
+cupy.random.uniform(low=0.0, high=1.0, size=None, dtype=<class 'float'>) - Returns an array of uniformly-distributed samples over an interval.
+cupy.random.vonmises(mu, kappa, size=None, dtype=<class 'float'>) - von Mises distribution.
+cupy.random.wald(mean, scale, size=None, dtype=<class 'float'>) - Wald distribution.
+cupy.random.weibull(a, size=None, dtype=<class 'float'>) - weibull distribution.
+cupy.random.zipf(a, size=None, dtype=<class 'int'>) - Zipf distribution.
+cupy.ravel(a, order='C') - Returns a flattened array.
+cupy.ravel_multi_index(multi_index, dims, mode='wrap', order='C') - Converts a tuple of index arrays into an array of flat indices, applying
+cupy.real(val) - Returns the real part of the elements of the array.
+cupy.real_if_close(a, tol=100) - If input is complex with all imaginary parts close to zero, return real
+cupy.repeat(a, repeats, axis=None) - Repeat arrays along an axis.
+cupy.require(a, dtype=None, requirements=None) - Return an array which satisfies the requirements.
+cupy.reshape(a, newshape, order='C') - Returns an array with new shape and same elements.
+cupy.resize(a, new_shape) - Return a new array with the specified shape.
+cupy.result_type(*arrays_and_dtypes) - Returns the type that results from applying the NumPy type promotion
+cupy.roll(a, shift, axis=None) - Roll array elements along a given axis.
+cupy.rollaxis(a, axis, start=0) - Moves the specified axis backwards to the given place.
+cupy.roots(p) - Computes the roots of a polynomial with given coefficients.
+cupy.rot90(a, k=1, axes=(0, 1)) - Rotate an array by 90 degrees in the plane specified by axes.
+cupy.round(a, decimals=0, out=None)
+cupy.round_(a, decimals=0, out=None)
+cupy.row_stack(tup, *, dtype=None, casting='same_kind')
+cupy.safe_eval(*args, **kwds)
+cupy.save(file, arr, allow_pickle=None) - Saves an array to a binary file in ``.npy`` format.
+cupy.savetxt(fname, X, *args, **kwargs) - Save an array to a text file.
+cupy.savez(file, *args, **kwds) - Saves one or more arrays into a file in uncompressed ``.npz`` format.
+cupy.savez_compressed(file, *args, **kwds) - Saves one or more arrays into a file in compressed ``.npz`` format.
+cupy.sctype2char(sctype) - Return the string representation of a scalar dtype.
+cupy.searchsorted(a, v, side='left', sorter=None) - Finds indices where elements should be inserted to maintain order.
+cupy.select(condlist, choicelist, default=0) - Return an array drawn from elements in choicelist, depending on conditions.
+cupy.set_string_function(*args, **kwds)
+cupy.setdiff1d(ar1, ar2, assume_unique=False) - Find the set difference of two arrays. It returns unique
+cupy.setxor1d(ar1, ar2, assume_unique=False) - Find the set exclusive-or of two arrays.
+cupy.shape(a) - Returns the shape of an array
+cupy.shares_memory(a, b, max_work=None)
+cupy.show_config(*, _full=False) - Prints the current runtime configuration to standard output.
+cupy.size(...) - size(_ndarray_base a, axis=None) -> Py_ssize_t
+cupy.sometrue(a, axis=None, out=None, keepdims=False) - Tests whether any array elements along a given axis evaluate to True.
+cupy.sort(a, axis=-1, kind=None) - Returns a sorted copy of an array with a stable sorting algorithm.
+cupy.sort_complex(a) - Sort a complex array using the real part first,
+cupy.split(ary, indices_or_sections, axis=0) - Splits an array into multiple sub arrays along a given axis.
+cupy.squeeze(a, axis=None) - Removes size-one axes from the shape of an array.
+cupy.stack(tup, axis=0, out=None, *, dtype=None, casting='same_kind') - Stacks arrays along a new axis.
+cupy.std(a, axis=None, dtype=None, out=None, ddof=0, keepdims=False) - Returns the standard deviation along an axis.
+cupy.sum(a, axis=None, dtype=None, out=None, keepdims=False) - Returns the sum of an array along given axes.
+cupy.swapaxes(a, axis1, axis2) - Swaps the two axes.
+cupy.take(a, indices, axis=None, out=None) - Takes elements of an array at specified indices along an axis.
+cupy.take_along_axis(a, indices, axis) - Take values from the input array by matching 1d index and data slices.
+cupy.tensordot(a, b, axes=2) - Returns the tensor dot product of two arrays along specified axes.
+cupy.testing.AssertFunctionIsCalled(*args, times_called=1, **kwargs) - A handy wrapper for unittest.mock to check if a function is called.
+cupy.testing.NumpyAliasBasicTestBase(methodName='runTest') - A class whose instances are single test cases.
+cupy.testing.NumpyAliasBasicTestBase.addClassCleanup(function, /, *args, **kwargs) - Same as addCleanup, except the cleanup items are called even if
+cupy.testing.NumpyAliasBasicTestBase.addCleanup(self, function, /, *args, **kwargs) - Add a function, with arguments, to be called when the test is
+cupy.testing.NumpyAliasBasicTestBase.addTypeEqualityFunc(self, typeobj, function) - Add a type specific assertEqual style function to compare a type.
+cupy.testing.NumpyAliasBasicTestBase.assertAlmostEqual(self, first, second, places=None, msg=None, delta=None) - Fail if the two objects are unequal as determined by their
+cupy.testing.NumpyAliasBasicTestBase.assertCountEqual(self, first, second, msg=None) - Asserts that two iterables have the same elements, the same number of
+cupy.testing.NumpyAliasBasicTestBase.assertDictEqual(self, d1, d2, msg=None)
+cupy.testing.NumpyAliasBasicTestBase.assertEqual(self, first, second, msg=None) - Fail if the two objects are unequal as determined by the '=='
+cupy.testing.NumpyAliasBasicTestBase.assertFalse(self, expr, msg=None) - Check that the expression is false.
+cupy.testing.NumpyAliasBasicTestBase.assertGreater(self, a, b, msg=None) - Just like self.assertTrue(a > b), but with a nicer default message.
+cupy.testing.NumpyAliasBasicTestBase.assertGreaterEqual(self, a, b, msg=None) - Just like self.assertTrue(a >= b), but with a nicer default message.
+cupy.testing.NumpyAliasBasicTestBase.assertIn(self, member, container, msg=None) - Just like self.assertTrue(a in b), but with a nicer default message.
+cupy.testing.NumpyAliasBasicTestBase.assertIs(self, expr1, expr2, msg=None) - Just like self.assertTrue(a is b), but with a nicer default message.
+cupy.testing.NumpyAliasBasicTestBase.assertIsInstance(self, obj, cls, msg=None) - Same as self.assertTrue(isinstance(obj, cls)), with a nicer
+cupy.testing.NumpyAliasBasicTestBase.assertIsNone(self, obj, msg=None) - Same as self.assertTrue(obj is None), with a nicer default message.
+cupy.testing.NumpyAliasBasicTestBase.assertIsNot(self, expr1, expr2, msg=None) - Just like self.assertTrue(a is not b), but with a nicer default message.
+cupy.testing.NumpyAliasBasicTestBase.assertIsNotNone(self, obj, msg=None) - Included for symmetry with assertIsNone.
+cupy.testing.NumpyAliasBasicTestBase.assertLess(self, a, b, msg=None) - Just like self.assertTrue(a < b), but with a nicer default message.
+cupy.testing.NumpyAliasBasicTestBase.assertLessEqual(self, a, b, msg=None) - Just like self.assertTrue(a <= b), but with a nicer default message.
+cupy.testing.NumpyAliasBasicTestBase.assertListEqual(self, list1, list2, msg=None) - A list-specific equality assertion.
+cupy.testing.NumpyAliasBasicTestBase.assertLogs(self, logger=None, level=None) - Fail unless a log message of level *level* or higher is emitted
+cupy.testing.NumpyAliasBasicTestBase.assertMultiLineEqual(self, first, second, msg=None) - Assert that two multi-line strings are equal.
+cupy.testing.NumpyAliasBasicTestBase.assertNoLogs(self, logger=None, level=None) - Fail unless no log messages of level *level* or higher are emitted
+cupy.testing.NumpyAliasBasicTestBase.assertNotAlmostEqual(self, first, second, places=None, msg=None, delta=None) - Fail if the two objects are equal as determined by their
+cupy.testing.NumpyAliasBasicTestBase.assertNotEqual(self, first, second, msg=None) - Fail if the two objects are equal as determined by the '!='
+cupy.testing.NumpyAliasBasicTestBase.assertNotIn(self, member, container, msg=None) - Just like self.assertTrue(a not in b), but with a nicer default message.
+cupy.testing.NumpyAliasBasicTestBase.assertNotIsInstance(self, obj, cls, msg=None) - Included for symmetry with assertIsInstance.
+cupy.testing.NumpyAliasBasicTestBase.assertNotRegex(self, text, unexpected_regex, msg=None) - Fail the test if the text matches the regular expression.
+cupy.testing.NumpyAliasBasicTestBase.assertRaises(self, expected_exception, *args, **kwargs) - Fail unless an exception of class expected_exception is raised
+cupy.testing.NumpyAliasBasicTestBase.assertRaisesRegex(self, expected_exception, expected_regex, *args, **kwargs) - Asserts that the message in a raised exception matches a regex.
+cupy.testing.NumpyAliasBasicTestBase.assertRegex(self, text, expected_regex, msg=None) - Fail the test unless the text matches the regular expression.
+cupy.testing.NumpyAliasBasicTestBase.assertSequenceEqual(self, seq1, seq2, msg=None, seq_type=None) - An equality assertion for ordered sequences (like lists and tuples).
+cupy.testing.NumpyAliasBasicTestBase.assertSetEqual(self, set1, set2, msg=None) - A set-specific equality assertion.
+cupy.testing.NumpyAliasBasicTestBase.assertTrue(self, expr, msg=None) - Check that the expression is true.
+cupy.testing.NumpyAliasBasicTestBase.assertTupleEqual(self, tuple1, tuple2, msg=None) - A tuple-specific equality assertion.
+cupy.testing.NumpyAliasBasicTestBase.assertWarns(self, expected_warning, *args, **kwargs) - Fail unless a warning of class warnClass is triggered
+cupy.testing.NumpyAliasBasicTestBase.assertWarnsRegex(self, expected_warning, expected_regex, *args, **kwargs) - Asserts that the message in a triggered warning matches a regexp.
+cupy.testing.NumpyAliasBasicTestBase.countTestCases(self)
+cupy.testing.NumpyAliasBasicTestBase.cupy_func
+cupy.testing.NumpyAliasBasicTestBase.debug(self) - Run the test without collecting errors in a TestResult
+cupy.testing.NumpyAliasBasicTestBase.defaultTestResult(self)
+cupy.testing.NumpyAliasBasicTestBase.doClassCleanups() - Execute all class cleanup functions. Normally called for you after
+cupy.testing.NumpyAliasBasicTestBase.doCleanups(self) - Execute all cleanup functions. Normally called for you after
+cupy.testing.NumpyAliasBasicTestBase.enterClassContext(cm) - Same as enterContext, but class-wide.
+cupy.testing.NumpyAliasBasicTestBase.enterContext(self, cm) - Enters the supplied context manager.
+cupy.testing.NumpyAliasBasicTestBase.fail(self, msg=None) - Fail immediately, with the given message.
+cupy.testing.NumpyAliasBasicTestBase.failureException(...) - Assertion failed.
+cupy.testing.NumpyAliasBasicTestBase.func
+cupy.testing.NumpyAliasBasicTestBase.id(self)
+cupy.testing.NumpyAliasBasicTestBase.numpy_func
+cupy.testing.NumpyAliasBasicTestBase.run(self, result=None)
+cupy.testing.NumpyAliasBasicTestBase.setUp(self) - Hook method for setting up the test fixture before exercising it.
+cupy.testing.NumpyAliasBasicTestBase.setUpClass() - Hook method for setting up class fixture before running tests in the class.
+cupy.testing.NumpyAliasBasicTestBase.shortDescription(self) - Returns a one-line description of the test, or None if no
+cupy.testing.NumpyAliasBasicTestBase.skipTest(self, reason) - Skip this test.
+cupy.testing.NumpyAliasBasicTestBase.subTest(self, msg=<object object at 0x7cc32c57aea0>, **params) - Return a context manager that will return the enclosed block
+cupy.testing.NumpyAliasBasicTestBase.tearDown(self) - Hook method for deconstructing the test fixture after testing it.
+cupy.testing.NumpyAliasBasicTestBase.tearDownClass() - Hook method for deconstructing the class fixture after running all tests in the class.
+cupy.testing.NumpyAliasBasicTestBase.test_argspec(self)
+cupy.testing.NumpyAliasBasicTestBase.test_docstring(self)
+cupy.testing.NumpyAliasValuesTestBase(methodName='runTest') - A class whose instances are single test cases.
+cupy.testing.NumpyAliasValuesTestBase.addClassCleanup(function, /, *args, **kwargs) - Same as addCleanup, except the cleanup items are called even if
+cupy.testing.NumpyAliasValuesTestBase.addCleanup(self, function, /, *args, **kwargs) - Add a function, with arguments, to be called when the test is
+cupy.testing.NumpyAliasValuesTestBase.addTypeEqualityFunc(self, typeobj, function) - Add a type specific assertEqual style function to compare a type.
+cupy.testing.NumpyAliasValuesTestBase.assertAlmostEqual(self, first, second, places=None, msg=None, delta=None) - Fail if the two objects are unequal as determined by their
+cupy.testing.NumpyAliasValuesTestBase.assertCountEqual(self, first, second, msg=None) - Asserts that two iterables have the same elements, the same number of
+cupy.testing.NumpyAliasValuesTestBase.assertDictEqual(self, d1, d2, msg=None)
+cupy.testing.NumpyAliasValuesTestBase.assertEqual(self, first, second, msg=None) - Fail if the two objects are unequal as determined by the '=='
+cupy.testing.NumpyAliasValuesTestBase.assertFalse(self, expr, msg=None) - Check that the expression is false.
+cupy.testing.NumpyAliasValuesTestBase.assertGreater(self, a, b, msg=None) - Just like self.assertTrue(a > b), but with a nicer default message.
+cupy.testing.NumpyAliasValuesTestBase.assertGreaterEqual(self, a, b, msg=None) - Just like self.assertTrue(a >= b), but with a nicer default message.
+cupy.testing.NumpyAliasValuesTestBase.assertIn(self, member, container, msg=None) - Just like self.assertTrue(a in b), but with a nicer default message.
+cupy.testing.NumpyAliasValuesTestBase.assertIs(self, expr1, expr2, msg=None) - Just like self.assertTrue(a is b), but with a nicer default message.
+cupy.testing.NumpyAliasValuesTestBase.assertIsInstance(self, obj, cls, msg=None) - Same as self.assertTrue(isinstance(obj, cls)), with a nicer
+cupy.testing.NumpyAliasValuesTestBase.assertIsNone(self, obj, msg=None) - Same as self.assertTrue(obj is None), with a nicer default message.
+cupy.testing.NumpyAliasValuesTestBase.assertIsNot(self, expr1, expr2, msg=None) - Just like self.assertTrue(a is not b), but with a nicer default message.
+cupy.testing.NumpyAliasValuesTestBase.assertIsNotNone(self, obj, msg=None) - Included for symmetry with assertIsNone.
+cupy.testing.NumpyAliasValuesTestBase.assertLess(self, a, b, msg=None) - Just like self.assertTrue(a < b), but with a nicer default message.
+cupy.testing.NumpyAliasValuesTestBase.assertLessEqual(self, a, b, msg=None) - Just like self.assertTrue(a <= b), but with a nicer default message.
+cupy.testing.NumpyAliasValuesTestBase.assertListEqual(self, list1, list2, msg=None) - A list-specific equality assertion.
+cupy.testing.NumpyAliasValuesTestBase.assertLogs(self, logger=None, level=None) - Fail unless a log message of level *level* or higher is emitted
+cupy.testing.NumpyAliasValuesTestBase.assertMultiLineEqual(self, first, second, msg=None) - Assert that two multi-line strings are equal.
+cupy.testing.NumpyAliasValuesTestBase.assertNoLogs(self, logger=None, level=None) - Fail unless no log messages of level *level* or higher are emitted
+cupy.testing.NumpyAliasValuesTestBase.assertNotAlmostEqual(self, first, second, places=None, msg=None, delta=None) - Fail if the two objects are equal as determined by their
+cupy.testing.NumpyAliasValuesTestBase.assertNotEqual(self, first, second, msg=None) - Fail if the two objects are equal as determined by the '!='
+cupy.testing.NumpyAliasValuesTestBase.assertNotIn(self, member, container, msg=None) - Just like self.assertTrue(a not in b), but with a nicer default message.
+cupy.testing.NumpyAliasValuesTestBase.assertNotIsInstance(self, obj, cls, msg=None) - Included for symmetry with assertIsInstance.
+cupy.testing.NumpyAliasValuesTestBase.assertNotRegex(self, text, unexpected_regex, msg=None) - Fail the test if the text matches the regular expression.
+cupy.testing.NumpyAliasValuesTestBase.assertRaises(self, expected_exception, *args, **kwargs) - Fail unless an exception of class expected_exception is raised
+cupy.testing.NumpyAliasValuesTestBase.assertRaisesRegex(self, expected_exception, expected_regex, *args, **kwargs) - Asserts that the message in a raised exception matches a regex.
+cupy.testing.NumpyAliasValuesTestBase.assertRegex(self, text, expected_regex, msg=None) - Fail the test unless the text matches the regular expression.
+cupy.testing.NumpyAliasValuesTestBase.assertSequenceEqual(self, seq1, seq2, msg=None, seq_type=None) - An equality assertion for ordered sequences (like lists and tuples).
+cupy.testing.NumpyAliasValuesTestBase.assertSetEqual(self, set1, set2, msg=None) - A set-specific equality assertion.
+cupy.testing.NumpyAliasValuesTestBase.assertTrue(self, expr, msg=None) - Check that the expression is true.
+cupy.testing.NumpyAliasValuesTestBase.assertTupleEqual(self, tuple1, tuple2, msg=None) - A tuple-specific equality assertion.
+cupy.testing.NumpyAliasValuesTestBase.assertWarns(self, expected_warning, *args, **kwargs) - Fail unless a warning of class warnClass is triggered
+cupy.testing.NumpyAliasValuesTestBase.assertWarnsRegex(self, expected_warning, expected_regex, *args, **kwargs) - Asserts that the message in a triggered warning matches a regexp.
+cupy.testing.NumpyAliasValuesTestBase.countTestCases(self)
+cupy.testing.NumpyAliasValuesTestBase.cupy_func
+cupy.testing.NumpyAliasValuesTestBase.debug(self) - Run the test without collecting errors in a TestResult
+cupy.testing.NumpyAliasValuesTestBase.defaultTestResult(self)
+cupy.testing.NumpyAliasValuesTestBase.doClassCleanups() - Execute all class cleanup functions. Normally called for you after
+cupy.testing.NumpyAliasValuesTestBase.doCleanups(self) - Execute all cleanup functions. Normally called for you after
+cupy.testing.NumpyAliasValuesTestBase.enterClassContext(cm) - Same as enterContext, but class-wide.
+cupy.testing.NumpyAliasValuesTestBase.enterContext(self, cm) - Enters the supplied context manager.
+cupy.testing.NumpyAliasValuesTestBase.fail(self, msg=None) - Fail immediately, with the given message.
+cupy.testing.NumpyAliasValuesTestBase.failureException(...) - Assertion failed.
+cupy.testing.NumpyAliasValuesTestBase.func
+cupy.testing.NumpyAliasValuesTestBase.id(self)
+cupy.testing.NumpyAliasValuesTestBase.numpy_func
+cupy.testing.NumpyAliasValuesTestBase.run(self, result=None)
+cupy.testing.NumpyAliasValuesTestBase.setUp(self) - Hook method for setting up the test fixture before exercising it.
+cupy.testing.NumpyAliasValuesTestBase.setUpClass() - Hook method for setting up class fixture before running tests in the class.
+cupy.testing.NumpyAliasValuesTestBase.shortDescription(self) - Returns a one-line description of the test, or None if no
+cupy.testing.NumpyAliasValuesTestBase.skipTest(self, reason) - Skip this test.
+cupy.testing.NumpyAliasValuesTestBase.subTest(self, msg=<object object at 0x7cc32c57aea0>, **params) - Return a context manager that will return the enclosed block
+cupy.testing.NumpyAliasValuesTestBase.tearDown(self) - Hook method for deconstructing the test fixture after testing it.
+cupy.testing.NumpyAliasValuesTestBase.tearDownClass() - Hook method for deconstructing the class fixture after running all tests in the class.
+cupy.testing.NumpyAliasValuesTestBase.test_values(self)
+cupy.testing.assert_allclose(actual, desired, rtol=1e-07, atol=0, equal_nan=True, err_msg='', verbose=True, *, strict=False) - Raises an AssertionError if objects are not equal up to desired tolerance.
+cupy.testing.assert_array_almost_equal(actual, desired, decimal=6, err_msg='', verbose=True) - Raises an AssertionError if objects are not equal up to desired precision.
+cupy.testing.assert_array_almost_equal_nulp(x, y, nulp=1) - Compare two arrays relatively to their spacing.
+cupy.testing.assert_array_equal(actual, desired, err_msg='', verbose=True, *, strict=False, strides_check=False) - Raises an AssertionError if two array_like objects are not equal.
+cupy.testing.assert_array_less(x, y, err_msg='', verbose=True, *, strict=False) - Raises an AssertionError if array_like objects are not ordered by less than.
+cupy.testing.assert_array_list_equal(xlist, ylist, err_msg='', verbose=True) - Compares lists of arrays pairwise with ``assert_array_equal``.
+cupy.testing.assert_array_max_ulp(a, b, maxulp=1, dtype=None) - Check that all items of arrays differ in at most N Units in the Last Place.
+cupy.testing.assert_warns(expected)
+cupy.testing.fix_random() - Decorator that fixes random numbers in a test.
+cupy.testing.for_CF_orders(name='order') - Decorator that checks the fixture with orders 'C' and 'F'.
+cupy.testing.for_all_dtypes(name='dtype', no_float16=False, no_bool=False, no_complex=False) - Decorator that checks the fixture with all dtypes.
+cupy.testing.for_all_dtypes_combination(names=('dtyes',), no_float16=False, no_bool=False, full=None, no_complex=False) - Decorator that checks the fixture with a product set of all dtypes.
+cupy.testing.for_complex_dtypes(name='dtype') - Decorator that checks the fixture with complex dtypes.
+cupy.testing.for_contiguous_axes(name='axis') - Decorator for parametrizing tests with possible contiguous axes.
+cupy.testing.for_dtypes(dtypes, name='dtype') - Decorator for parameterized dtype test.
+cupy.testing.for_dtypes_combination(types, names=('dtype',), full=None) - Decorator that checks the fixture with a product set of dtypes.
+cupy.testing.for_float_dtypes(name='dtype', no_float16=False) - Decorator that checks the fixture with float dtypes.
+cupy.testing.for_int_dtypes(name='dtype', no_bool=False) - Decorator that checks the fixture with integer and optionally bool dtypes.
+cupy.testing.for_int_dtypes_combination(names=('dtype',), no_bool=False, full=None) - Decorator for parameterized test w.r.t. the product set of int and boolean.
+cupy.testing.for_orders(orders, name='order') - Decorator to parameterize tests with order.
+cupy.testing.for_signed_dtypes(name='dtype') - Decorator that checks the fixture with signed dtypes.
+cupy.testing.for_signed_dtypes_combination(names=('dtype',), full=None) - Decorator for parameterized test w.r.t. the product set of signed dtypes.
+cupy.testing.for_unsigned_dtypes(name='dtype') - Decorator that checks the fixture with unsigned dtypes.
+cupy.testing.for_unsigned_dtypes_combination(names=('dtype',), full=None) - Decorator for parameterized test w.r.t. the product set of unsigned dtypes.
+cupy.testing.generate_matrix(shape, xp=<module 'cupy' from '/home/zhangshi/miniconda3/envs/audioal/lib/python3.12/site-packages/cupy/__init__.py'>, dtype=<class 'numpy.float32'>, *, singular_values=None) - Returns a matrix with specified singular values.
+cupy.testing.generate_seed()
+cupy.testing.installed(*specifiers: 'str') -> 'bool' - Returns True if the current environment satisfies the specified
+cupy.testing.multi_gpu(gpu_num) - Decorator to indicate number of GPUs required to run the test.
+cupy.testing.numpy_cupy_allclose(rtol=1e-07, atol=0, err_msg='', verbose=True, name='xp', type_check=True, accept_error=False, sp_name=None, scipy_name=None, contiguous_check=True, *, _check_sparse_format=True) - Decorator that checks NumPy results and CuPy ones are close.
+cupy.testing.numpy_cupy_array_almost_equal(decimal=6, err_msg='', verbose=True, name='xp', type_check=True, accept_error=False, sp_name=None, scipy_name=None) - Decorator that checks NumPy results and CuPy ones are almost equal.
+cupy.testing.numpy_cupy_array_almost_equal_nulp(nulp=1, name='xp', type_check=True, accept_error=False, sp_name=None, scipy_name=None) - Decorator that checks results of NumPy and CuPy are equal w.r.t. spacing.
+cupy.testing.numpy_cupy_array_equal(err_msg='', verbose=True, name='xp', type_check=True, accept_error=False, sp_name=None, scipy_name=None, strides_check=False) - Decorator that checks NumPy results and CuPy ones are equal.
+cupy.testing.numpy_cupy_array_less(err_msg='', verbose=True, name='xp', type_check=True, accept_error=False, sp_name=None, scipy_name=None) - Decorator that checks the CuPy result is less than NumPy result.
+cupy.testing.numpy_cupy_array_list_equal(err_msg='', verbose=True, name='xp', sp_name=None, scipy_name=None) - Decorator that checks the resulting lists of NumPy and CuPy's one are equal.
+cupy.testing.numpy_cupy_array_max_ulp(maxulp=1, dtype=None, name='xp', type_check=True, accept_error=False, sp_name=None, scipy_name=None) - Decorator that checks results of NumPy and CuPy ones are equal w.r.t. ulp.
+cupy.testing.numpy_cupy_equal(name='xp', sp_name=None, scipy_name=None) - Decorator that checks NumPy results are equal to CuPy ones.
+cupy.testing.numpy_cupy_raises(name='xp', sp_name=None, scipy_name=None, accept_error=<class 'Exception'>) - Decorator that checks the NumPy and CuPy throw same errors.
+cupy.testing.numpy_satisfies(version_range: 'str') -> 'bool' - Returns True if numpy version satisfies the specified criteria.
+cupy.testing.parameterize(*params, **kwargs) - Generates test classes with given sets of additional attributes
+cupy.testing.product(parameter)
+cupy.testing.product_dict(*parameters)
+cupy.testing.shaped_arange(shape, xp=<module 'cupy' from '/home/zhangshi/miniconda3/envs/audioal/lib/python3.12/site-packages/cupy/__init__.py'>, dtype=<class 'numpy.float32'>, order='C') - Returns an array with given shape, array module, and dtype.
+cupy.testing.shaped_linspace(start, stop, shape, xp=<module 'cupy' from '/home/zhangshi/miniconda3/envs/audioal/lib/python3.12/site-packages/cupy/__init__.py'>, dtype=<class 'numpy.float32'>) - Returns an array with given shape, array module, and dtype.
+cupy.testing.shaped_random(shape, xp=<module 'cupy' from '/home/zhangshi/miniconda3/envs/audioal/lib/python3.12/site-packages/cupy/__init__.py'>, dtype=<class 'numpy.float32'>, scale=10, seed=0, order='C') - Returns an array filled with random values.
+cupy.testing.shaped_reverse_arange(shape, xp=<module 'cupy' from '/home/zhangshi/miniconda3/envs/audioal/lib/python3.12/site-packages/cupy/__init__.py'>, dtype=<class 'numpy.float32'>) - Returns an array filled with decreasing numbers.
+cupy.testing.shaped_sparse_random(shape, sp=None, dtype=<class 'numpy.float32'>, density=0.01, format='coo', seed=0) - Returns an array filled with random values.
+cupy.testing.slow(*args, **kwargs)
+cupy.testing.with_requires(*requirements: 'str') -> 'Callable[[Callable], Callable]' - Run a test case only when given requirements are satisfied.
+cupy.tile(A, reps) - Construct an array by repeating A the number of times given by reps.
+cupy.trace(a, offset=0, axis1=0, axis2=1, dtype=None, out=None) - Returns the sum along the diagonals of an array.
+cupy.transpose(a, axes=None) - Permutes the dimensions of an array.
+cupy.trapezoid(y, x=None, dx=1.0, axis=-1) - Integrate along the given axis using the composite trapezoidal rule.
+cupy.trapz(y, x=None, dx=1.0, axis=-1) - Integrate along the given axis using the composite trapezoidal rule.
+cupy.tri(N, M=None, k=0, dtype=<class 'float'>) - Creates an array with ones at and below the given diagonal.
+cupy.tril(m, k=0) - Returns a lower triangle of an array.
+cupy.tril_indices(n, k=0, m=None) - Returns the indices of the lower triangular matrix.
+cupy.tril_indices_from(arr, k=0) - Returns the indices for the lower-triangle of arr.
+cupy.trim_zeros(filt, trim='fb') - Trim the leading and/or trailing zeros from a 1-D array or sequence.
+cupy.triu(m, k=0) - Returns an upper triangle of an array.
+cupy.triu_indices(n, k=0, m=None) - Returns the indices of the upper triangular matrix.
+cupy.triu_indices_from(arr, k=0) - Returns indices for the upper-triangle of arr.
+cupy.typing.NDArray(*args, **kwargs) - __init__(shape, dtype=float, memptr=None, strides=None, order='C')
+cupy.ufunc(...) - ufunc(name, nin, nout, _Ops ops, preamble='', loop_prep='', doc='', default_casting=None, _Ops out_ops=None, *, cutensor_op=None, scatter_op=None)
+cupy.ufunc.accumulate(...) - ufunc.accumulate(self, array, axis=0, dtype=None, out=None)
+cupy.ufunc.at(...) - ufunc.at(self, a, indices, b=None)
+cupy.ufunc.outer(...) - ufunc.outer(self, A, B, **kwargs)
+cupy.ufunc.reduce(...) - ufunc.reduce(self, array, axis=0, dtype=None, out=None, keepdims=False)
+cupy.ufunc.reduceat(...) - ufunc.reduceat(self, array, indices, axis=0, dtype=None, out=None)
+cupy.union1d(arr1, arr2) - Find the union of two arrays.
+cupy.unique(ar, return_index=False, return_inverse=False, return_counts=False, axis=None, *, equal_nan=True) - Find the unique elements of an array.
+cupy.unique_all(x) - Find the unique elements of an array, and counts, inverse and indices.
+cupy.unique_counts(x) - Find the unique elements and counts of an input array `x`.
+cupy.unique_inverse(x) - Find the unique elements of `x` and indices to reconstruct `x`.
+cupy.unique_values(x) - Returns the unique elements of an input array `x`.
+cupy.unpackbits(a, axis=None, bitorder='big') - Unpacks elements of a uint8 array into a binary-valued output array.
+cupy.unravel_index(indices, dims, order='C') - Converts array of flat indices into a tuple of coordinate arrays.
+cupy.unwrap(p, discont=None, axis=-1, *, period=6.283185307179586) - Unwrap by taking the complement of large deltas w.r.t. the period.
+cupy.vander(x, N=None, increasing=False) - Returns a Vandermonde matrix.
+cupy.var(a, axis=None, dtype=None, out=None, ddof=0, keepdims=False) - Returns the variance along an axis.
+cupy.vdot(a, b) - Returns the dot product of two vectors.
+cupy.vectorize(pyfunc, otypes=None, doc=None, excluded=None, cache=False, signature=None) - Generalized function class.
+cupy.vsplit(ary, indices_or_sections) - Splits an array into multiple sub arrays along the first axis.
+cupy.vstack(tup, *, dtype=None, casting='same_kind') - Stacks arrays vertically.
+cupy.where(condition, x=None, y=None) - Return elements, either from x or y, depending on condition.
+cupy.who(vardict=None) - Print the CuPy arrays in the given dictionary.
+cupy.zeros(shape: '_ShapeLike', dtype: 'DTypeLike' = <class 'float'>, order: '_OrderCF' = 'C') -> 'NDArray[Any]' - Returns a new array of given shape and dtype, filled with zeros.
+cupy.zeros_like(a: 'NDArray[Any]', dtype: 'DTypeLike | None' = None, order: '_OrderKACF' = 'K', subok: 'None' = None, shape: '_ShapeLike | None' = None) -> 'NDArray[Any]' - Returns an array of zeros with same shape and dtype as a given array.
