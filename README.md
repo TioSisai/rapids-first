@@ -111,17 +111,21 @@ If the table above already matches your environment, the shipped `apis/` is usab
 
 ### How to regenerate
 
-From the skill root, in a Python environment that has RAPIDS installed and CUDA visible:
-
 ```bash
-# Regenerate all 12 packages (default)
-python fetch_rapids_apis.py
+# 1. Activate the Python environment that has RAPIDS installed
+conda activate <your-rapids-env>            # conda
+# source /path/to/venv/bin/activate         # venv
+
+# 2. Run the script via its absolute path (Claude Code, user-level install)
+python ~/.claude/skills/rapids-first/fetch_rapids_apis.py
+# Project-level install:  python /path/to/your/project/.claude/skills/rapids-first/fetch_rapids_apis.py
+# For Codex:              replace `.claude` with `.agents`
 
 # Regenerate specific packages only
-python fetch_rapids_apis.py --packages cudf cuml
+python ~/.claude/skills/rapids-first/fetch_rapids_apis.py --packages cudf cuml
 
 # Write to a different output root
-python fetch_rapids_apis.py --output-dir /tmp/rapids-apis
+python ~/.claude/skills/rapids-first/fetch_rapids_apis.py --output-dir /tmp/rapids-apis
 ```
 
 Each run rewrites `apis/<pkg>.txt` deterministically (entries sorted by qualname), so a `git diff` immediately surfaces API-surface changes — a quick way to audit RAPIDS upgrades.

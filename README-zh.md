@@ -111,17 +111,21 @@ mv rapids-first/skills/rapids-first .agents/skills/rapids-first
 
 ### 如何重新生成
 
-在已安装 RAPIDS 且 CUDA 可见的 Python 环境中,从 skill 根目录运行:
-
 ```bash
-# 默认抓取全部 12 个包
-python fetch_rapids_apis.py
+# 1. 激活已装好 RAPIDS 的 Python 环境
+conda activate <your-rapids-env>            # conda
+# source /path/to/venv/bin/activate         # venv
+
+# 2. 用脚本的绝对路径调用(Claude Code 用户级安装)
+python ~/.claude/skills/rapids-first/fetch_rapids_apis.py
+# 项目级安装:python /path/to/your/project/.claude/skills/rapids-first/fetch_rapids_apis.py
+# Codex:    将 `.claude` 替换成 `.agents`
 
 # 只抓取指定包
-python fetch_rapids_apis.py --packages cudf cuml
+python ~/.claude/skills/rapids-first/fetch_rapids_apis.py --packages cudf cuml
 
 # 输出到其他根目录
-python fetch_rapids_apis.py --output-dir /tmp/rapids-apis
+python ~/.claude/skills/rapids-first/fetch_rapids_apis.py --output-dir /tmp/rapids-apis
 ```
 
 脚本每次运行都会以确定性方式重写 `apis/<pkg>.txt`(条目按 qualname 字典序排序),`git diff` 可立即看出 API 表面变化 —— 用于审计 RAPIDS 升级很方便。
