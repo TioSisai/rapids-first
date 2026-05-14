@@ -1,6 +1,7 @@
 ---
 name: rapids-first
-description: Prefer the RAPIDS stack for GPU acceleration. Use this skill if and only if the user's request explicitly contains "rapids-first". It covers all "writing Python code" scenarios: rewriting existing CPU code, implementing new features/algorithms, creating new scripts (ETL/training/inference/batch processing), adding new tests, fixing bugs — by default, prefer RAPIDS APIs (cupy / cudf / cuml / cugraph / cucim / cupyx.scipy / cuvs / dask-cudf / nx-cugraph, etc.) as substitutes for the corresponding numpy / pandas / scikit-learn / scipy / networkx / scikit-image / faiss / umap / hdbscan / dask.dataframe; and preferentially adopt the "zero-code" acceleration mechanisms provided by RAPIDS (cudf.pandas, cuml.accel, nx-cugraph backend, dask-cudf backend), only manually modifying imports when zero-code does not apply. Whenever scenarios involve RAPIDS, GPU dataframes, GPU scikit-learn, GPU vector search, GPU graph algorithms, etc., as long as the user mentions rapids-first, this skill must be used.
+description: >-
+  Use only when the user explicitly mentions "rapids-first" or "RAPIDS first". Prefer the RAPIDS GPU stack and zero-code accelerators when writing Python data-science, ML, ETL, graph, image-processing, or vector-search code.
 ---
 
 # RAPIDS-first
