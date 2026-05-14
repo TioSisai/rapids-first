@@ -13,7 +13,7 @@ This skill activates **only when the user includes `rapids-first` in their reque
 - **Precise API targeting**: each RAPIDS package ships a flat-file API index under `apis/<pkg>.txt`, so a single `ripgrep` call recovers the exact signature and one-line docstring — no guessing from memory (cuML vs. sklearn frequently differ on parameter order, defaults, and `output_type`).
 - **GPU data lifecycle discipline**: minimize `.to_pandas()` / `.get()` round-trips, avoid `cupy ↔ numpy` mixing, and prefer `cudf.read_*` so I/O lands directly on GPU.
 
-See [SKILL.md](./SKILL.md) for the full workflow, API search recipes, and "what not to do" guardrails.
+See [SKILL.md](./skills/rapids-first/SKILL.md) for the full workflow, API search recipes, and "what not to do" guardrails.
 
 ## Requirements
 
@@ -22,39 +22,52 @@ See [SKILL.md](./SKILL.md) for the full workflow, API search recipes, and "what 
 
 ## Installation
 
-The skill is a self-contained directory. Place it under the host CLI's skills root.
+The actual skill payload lives at `skills/rapids-first/` inside this repository.
 
-### Claude Code
+### Recommended: GitHub CLI
+
+If you have the [GitHub CLI](https://cli.github.com/) with the `skill` subcommand available, it handles the `skills/<name>/` subdirectory automatically:
+
+```bash
+# Claude Code
+gh skill install TioSisai/rapids-first rapids-first --agent claude-code --scope user
+
+# Codex
+gh skill install TioSisai/rapids-first rapids-first --agent codex --scope user
+```
+
+### Manual: git clone
+
+#### Claude Code
 
 User-level (available across all projects):
 
 ```bash
-git clone https://github.com/TioSisai/rapids-first.git ~/.claude/skills/rapids-first
+git clone https://github.com/TioSisai/rapids-first.git
+mv rapids-first/skills/rapids-first ~/.claude/skills/rapids-first
 ```
 
 Project-level (scoped to the current project):
 
 ```bash
-git clone https://github.com/TioSisai/rapids-first.git .claude/skills/rapids-first
+git clone https://github.com/TioSisai/rapids-first.git
+mv rapids-first/skills/rapids-first .claude/skills/rapids-first
 ```
 
-### Codex
+#### Codex
 
 User-level:
 
 ```bash
-git clone https://github.com/TioSisai/rapids-first.git ~/.codex/skills/rapids-first
+git clone https://github.com/TioSisai/rapids-first.git
+mv rapids-first/skills/rapids-first ~/.agents/skills/rapids-first
 ```
 
-Codex discovers skills under `~/.codex/skills/<skill-name>/SKILL.md` the same way Claude Code does.
-
-### Shared install (one copy, both CLIs)
-
-If you maintain a single working copy and want both CLIs to pick it up:
+Project-level:
 
 ```bash
-ln -s /absolute/path/to/rapids-first ~/.claude/skills/rapids-first
-ln -s /absolute/path/to/rapids-first ~/.codex/skills/rapids-first
+git clone https://github.com/TioSisai/rapids-first.git
+mv rapids-first/skills/rapids-first .agents/skills/rapids-first
 ```
 
 ### Usage

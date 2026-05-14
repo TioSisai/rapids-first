@@ -13,7 +13,7 @@
 - **API 精准命中**:每个 RAPIDS 包都附带一份平铺的 API 索引 `apis/<pkg>.txt`,一次 `ripgrep` 即拿到精确签名与首行 docstring —— 不靠记忆瞎写(cuML 与 sklearn 在参数顺序、默认值、`output_type` 等处常有差异)。
 - **GPU 数据生命周期纪律**:尽量减少 `.to_pandas()` / `.get()` 往返,避免 `cupy ↔ numpy` 混用,优先用 `cudf.read_*` 让 I/O 直接落到 GPU。
 
-完整工作流、API 检索范例与「不要做的事」清单见 [SKILL.md](./SKILL.md)。
+完整工作流、API 检索范例与「不要做的事」清单见 [SKILL.md](./skills/rapids-first/SKILL.md)。
 
 ## 依赖
 
@@ -22,39 +22,52 @@
 
 ## 安装
 
-本 skill 是一个自包含的目录,放到所在 CLI 的 skills 根目录下即可。
+本仓库的真正 skill 内容位于 `skills/rapids-first/` 子目录。
 
-### Claude Code
+### 推荐:GitHub CLI
+
+如果本地装有 [GitHub CLI](https://cli.github.com/) 且支持 `skill` 子命令,它会自动处理 `skills/<name>/` 子目录:
+
+```bash
+# Claude Code
+gh skill install TioSisai/rapids-first rapids-first --agent claude-code --scope user
+
+# Codex
+gh skill install TioSisai/rapids-first rapids-first --agent codex --scope user
+```
+
+### 备选:git clone
+
+#### Claude Code
 
 用户级(跨所有项目可用):
 
 ```bash
-git clone https://github.com/TioSisai/rapids-first.git ~/.claude/skills/rapids-first
+git clone https://github.com/TioSisai/rapids-first.git
+mv rapids-first/skills/rapids-first ~/.claude/skills/rapids-first
 ```
 
 项目级(仅作用于当前项目):
 
 ```bash
-git clone https://github.com/TioSisai/rapids-first.git .claude/skills/rapids-first
+git clone https://github.com/TioSisai/rapids-first.git
+mv rapids-first/skills/rapids-first .claude/skills/rapids-first
 ```
 
-### Codex
+#### Codex
 
 用户级:
 
 ```bash
-git clone https://github.com/TioSisai/rapids-first.git ~/.codex/skills/rapids-first
+git clone https://github.com/TioSisai/rapids-first.git
+mv rapids-first/skills/rapids-first ~/.agents/skills/rapids-first
 ```
 
-Codex 与 Claude Code 一样,会从 `~/.codex/skills/<skill-name>/SKILL.md` 发现 skill。
-
-### 共享安装(一份副本,两个 CLI 共用)
-
-如果你想保留单一工作副本并让两个 CLI 都识别:
+项目级:
 
 ```bash
-ln -s /absolute/path/to/rapids-first ~/.claude/skills/rapids-first
-ln -s /absolute/path/to/rapids-first ~/.codex/skills/rapids-first
+git clone https://github.com/TioSisai/rapids-first.git
+mv rapids-first/skills/rapids-first .agents/skills/rapids-first
 ```
 
 ### 触发方式
