@@ -7,7 +7,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [0.1.0] - 2026-05-14
+## [26.02] - 2026-05-14
 
 Initial public release of **rapids-first** — a skill for Claude Code and Codex
 that steers Python code generation toward the RAPIDS GPU stack, automatically
@@ -71,4 +71,4 @@ Pre-built `apis/<pkg>.txt` files were captured against:
 Regenerate with `python <skill-dir>/fetch_rapids_apis.py` when upgrading
 RAPIDS or when local versions diverge from the table above.
 
-[0.1.0]: https://github.com/TioSisai/rapids-first/releases/tag/v0.1.0
+[26.02]: https://github.com/TioSisai/rapids-first/releases/tag/v26.02

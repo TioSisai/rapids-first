@@ -7,7 +7,7 @@
 格式参照 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.1.0/),
 版本号遵循 [语义化版本](https://semver.org/lang/zh-CN/spec/v2.0.0.html)。
 
-## [0.1.0] - 2026-05-14
+## [26.02] - 2026-05-14
 
 **rapids-first** 首个公开发布版本 —— 一个适用于 Claude Code 与 Codex 的 skill,
 将 Python 代码生成主动引向 RAPIDS GPU 栈,自动选择 `cupy`、`cudf`、`cuml`、
@@ -64,4 +64,4 @@
 升级 RAPIDS 或本地版本与上表不一致时,用
 `python <skill-dir>/fetch_rapids_apis.py` 重新生成。
 
-[0.1.0]: https://github.com/TioSisai/rapids-first/releases/tag/v0.1.0
+[26.02]: https://github.com/TioSisai/rapids-first/releases/tag/v26.02
