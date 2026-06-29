@@ -108,7 +108,7 @@ cudf.CategoricalIndex.transpose(self) -> 'Self' - Return the transpose, which is
 cudf.CategoricalIndex.union(self, other, sort: 'bool | None' = None) -> 'Index' - Form the union of two Index objects.
 cudf.CategoricalIndex.unique(self, level: 'int | None' = None) -> 'Self'
 cudf.CategoricalIndex.values - Return a CuPy representation of the DataFrame.
-cudf.CategoricalIndex.values_host - Return a NumPy representation of the data.
+cudf.CategoricalIndex.values_host - Return a numpy representation of the data.
 cudf.CategoricalIndex.where(self, cond, other=None, inplace: 'bool' = False) -> 'Self' - Replace values where the condition is False.
 cudf.DataFrame(data=None, index=None, columns=None, dtype=None, copy=None, nan_as_null=<no_default>) - A GPU Dataframe object.
 cudf.DataFrame.T - Transpose index and columns.
@@ -134,7 +134,7 @@ cudf.DataFrame.columns - Returns a tuple of columns
 cudf.DataFrame.convert_dtypes(self, infer_objects: 'bool' = True, convert_string: 'bool' = True, convert_integer: 'bool' = True, convert_boolean: 'bool' = True, convert_floating: 'bool' = True, dtype_backend=None) -> 'Self' - Convert columns to the best possible nullable dtypes.
 cudf.DataFrame.copy(self, deep: 'bool' = True) -> 'Self' - Make a copy of this object's indices and data.
 cudf.DataFrame.corr(self, method='pearson', min_periods=None, numeric_only: 'bool' = False) - Compute the correlation matrix of a DataFrame.
-cudf.DataFrame.count(self, axis=0, numeric_only=False) - Count ``non-NA`` cells for each column or row.
+cudf.DataFrame.count(self, axis: 'Axis' = 0, numeric_only: 'bool' = False) -> 'Series' - Count ``non-NA`` cells for each column or row.
 cudf.DataFrame.cov(self, min_periods=None, ddof: 'int' = 1, numeric_only: 'bool' = False) - Compute the covariance matrix of a DataFrame.
 cudf.DataFrame.cummax(self, axis: 'Axis | None' = None, skipna: 'bool' = True, *args, **kwargs) - Return cumulative max of the IndexedFrame.
 cudf.DataFrame.cummin(self, axis: 'Axis | None' = None, skipna: 'bool' = True, *args, **kwargs) - Return cumulative min of the IndexedFrame.
@@ -419,11 +419,12 @@ cudf.DatetimeIndex.union(self, other, sort: 'bool | None' = None) -> 'Index' - F
 cudf.DatetimeIndex.unique(self, level: 'int | None' = None) -> 'Self'
 cudf.DatetimeIndex.unit
 cudf.DatetimeIndex.values - Return a CuPy representation of the DataFrame.
-cudf.DatetimeIndex.values_host - Return a NumPy representation of the data.
+cudf.DatetimeIndex.values_host - Return a numpy representation of the data.
 cudf.DatetimeIndex.weekday - The day of the week with Monday=0, Sunday=6.
 cudf.DatetimeIndex.where(self, cond, other=None, inplace: 'bool' = False) -> 'Self' - Replace values where the condition is False.
 cudf.DatetimeIndex.year - The year of the datetime.
 cudf.Decimal128Dtype(precision: 'int', scale: 'int' = 0) -> 'None' - Type to represent a ``decimal128`` data.
+cudf.Decimal128Dtype.PA_TYPE(precision, scale=0) - decimal128(int precision, int scale=0) -> DataType
 cudf.Decimal128Dtype.construct_array_type() -> 'type_t[ExtensionArray]' - Return the array type associated with this dtype.
 cudf.Decimal128Dtype.construct_from_string(string: 'str') -> 'Self' - Construct this type from a string.
 cudf.Decimal128Dtype.deserialize(header: 'dict', frames: 'list') -> 'Self' - Generate an object from a serialized representation.
@@ -442,9 +443,10 @@ cudf.Decimal128Dtype.precision - The decimal precision, in number of decimal dig
 cudf.Decimal128Dtype.scale - The decimal scale (an integer).
 cudf.Decimal128Dtype.serialize(self) -> 'tuple[dict, list]' - Generate an equivalent serializable representation of an object.
 cudf.Decimal128Dtype.str
-cudf.Decimal128Dtype.to_arrow(self) -> 'pa.Decimal128Type' - Return the equivalent ``pyarrow`` dtype.
+cudf.Decimal128Dtype.to_arrow(self) -> 'pa.Decimal128Type | pa.Decimal32Type | pa.Decimal64Type' - Return the equivalent ``pyarrow`` dtype.
 cudf.Decimal128Dtype.type - The scalar type for the array, e.g. ``int``
 cudf.Decimal32Dtype(precision: 'int', scale: 'int' = 0) -> 'None' - Type to represent a ``decimal32`` data.
+cudf.Decimal32Dtype.PA_TYPE(precision, scale=0) - decimal32(int precision, int scale=0) -> DataType
 cudf.Decimal32Dtype.construct_array_type() -> 'type_t[ExtensionArray]' - Return the array type associated with this dtype.
 cudf.Decimal32Dtype.construct_from_string(string: 'str') -> 'Self' - Construct this type from a string.
 cudf.Decimal32Dtype.deserialize(header: 'dict', frames: 'list') -> 'Self' - Generate an object from a serialized representation.
@@ -463,9 +465,10 @@ cudf.Decimal32Dtype.precision - The decimal precision, in number of decimal digi
 cudf.Decimal32Dtype.scale - The decimal scale (an integer).
 cudf.Decimal32Dtype.serialize(self) -> 'tuple[dict, list]' - Generate an equivalent serializable representation of an object.
 cudf.Decimal32Dtype.str
-cudf.Decimal32Dtype.to_arrow(self) -> 'pa.Decimal128Type' - Return the equivalent ``pyarrow`` dtype.
+cudf.Decimal32Dtype.to_arrow(self) -> 'pa.Decimal128Type | pa.Decimal32Type | pa.Decimal64Type' - Return the equivalent ``pyarrow`` dtype.
 cudf.Decimal32Dtype.type - The scalar type for the array, e.g. ``int``
 cudf.Decimal64Dtype(precision: 'int', scale: 'int' = 0) -> 'None' - Type to represent a ``decimal64`` data.
+cudf.Decimal64Dtype.PA_TYPE(precision, scale=0) - decimal64(int precision, int scale=0) -> DataType
 cudf.Decimal64Dtype.construct_array_type() -> 'type_t[ExtensionArray]' - Return the array type associated with this dtype.
 cudf.Decimal64Dtype.construct_from_string(string: 'str') -> 'Self' - Construct this type from a string.
 cudf.Decimal64Dtype.deserialize(header: 'dict', frames: 'list') -> 'Self' - Generate an object from a serialized representation.
@@ -484,7 +487,7 @@ cudf.Decimal64Dtype.precision - The decimal precision, in number of decimal digi
 cudf.Decimal64Dtype.scale - The decimal scale (an integer).
 cudf.Decimal64Dtype.serialize(self) -> 'tuple[dict, list]' - Generate an equivalent serializable representation of an object.
 cudf.Decimal64Dtype.str
-cudf.Decimal64Dtype.to_arrow(self) -> 'pa.Decimal128Type' - Return the equivalent ``pyarrow`` dtype.
+cudf.Decimal64Dtype.to_arrow(self) -> 'pa.Decimal128Type | pa.Decimal32Type | pa.Decimal64Type' - Return the equivalent ``pyarrow`` dtype.
 cudf.Decimal64Dtype.type - The scalar type for the array, e.g. ``int``
 cudf.Grouper(key=None, level=None, freq=None, closed=None, label=None)
 cudf.Index(*args, **kwargs) -> 'Self' - Immutable sequence used for indexing and alignment.
@@ -565,7 +568,7 @@ cudf.Index.transpose(self) -> 'Self' - Return the transpose, which is by definit
 cudf.Index.union(self, other, sort: 'bool | None' = None) -> 'Index' - Form the union of two Index objects.
 cudf.Index.unique(self, level: 'int | None' = None) -> 'Self'
 cudf.Index.values - Return a CuPy representation of the DataFrame.
-cudf.Index.values_host - Return a NumPy representation of the data.
+cudf.Index.values_host - Return a numpy representation of the data.
 cudf.Index.where(self, cond, other=None, inplace: 'bool' = False) -> 'Self' - Replace values where the condition is False.
 cudf.IntervalDtype(subtype: 'None | Dtype' = None, closed: "Literal['left', 'right', 'neither', 'both', None]" = 'right') -> 'None' - A data type for Interval data.
 cudf.IntervalDtype.construct_array_type() -> 'type_t[ExtensionArray]' - Return the array type associated with this dtype.
@@ -575,8 +578,8 @@ cudf.IntervalDtype.device_deserialize(header, frames) - Perform device-side dese
 cudf.IntervalDtype.device_serialize(self) - Serialize data and metadata associated with device memory.
 cudf.IntervalDtype.empty(self, shape: 'Shape') -> 'ExtensionArray' - Construct an ExtensionArray of this dtype with the given shape.
 cudf.IntervalDtype.fields - Returns an ordered dict of column name and dtype key-value.
-cudf.IntervalDtype.from_arrow(typ: 'ArrowIntervalType') -> 'Self' - Convert a ``pyarrow.StructType`` to ``StructDtype``.
-cudf.IntervalDtype.from_struct_dtype(obj) -> 'Self'
+cudf.IntervalDtype.from_arrow(typ: 'ArrowIntervalType') -> 'Self'
+cudf.IntervalDtype.from_interval_dtype(obj) -> 'Self'
 cudf.IntervalDtype.host_deserialize(header, frames) - Perform device-side deserialization tasks.
 cudf.IntervalDtype.host_serialize(self) - Serialize data and metadata associated with host memory.
 cudf.IntervalDtype.is_dtype(dtype: 'object') -> 'bool' - Check if we match 'dtype'.
@@ -585,7 +588,7 @@ cudf.IntervalDtype.na_value - Default NA value to use for this type.
 cudf.IntervalDtype.names - Ordered list of field names, or None if there are no fields.
 cudf.IntervalDtype.serialize(self) -> 'tuple[dict, list]' - Generate an equivalent serializable representation of an object.
 cudf.IntervalDtype.subtype
-cudf.IntervalDtype.to_arrow(self) -> 'ArrowIntervalType' - Convert a ``StructDtype`` to a ``pyarrow.StructType``.
+cudf.IntervalDtype.to_arrow(self) -> 'ArrowIntervalType'
 cudf.IntervalDtype.to_pandas(self) -> 'pd.IntervalDtype'
 cudf.IntervalDtype.type - The scalar type for the array, e.g. ``int``
 cudf.IntervalIndex(data, closed: "Literal['left', 'right', 'neither', 'both'] | None" = None, dtype=None, copy: 'bool' = False, name=None, verify_integrity: 'bool' = True, nan_as_null=<no_default>) - Immutable index of intervals that are closed on the same side.
@@ -682,7 +685,7 @@ cudf.IntervalIndex.transpose(self) -> 'Self' - Return the transpose, which is by
 cudf.IntervalIndex.union(self, other, sort: 'bool | None' = None) -> 'Index' - Form the union of two Index objects.
 cudf.IntervalIndex.unique(self, level: 'int | None' = None) -> 'Self'
 cudf.IntervalIndex.values - Return a CuPy representation of the DataFrame.
-cudf.IntervalIndex.values_host - Return a NumPy representation of the data.
+cudf.IntervalIndex.values_host - Return a numpy representation of the data.
 cudf.IntervalIndex.where(self, cond, other=None, inplace: 'bool' = False) -> 'Self' - Replace values where the condition is False.
 cudf.ListDtype(element_type: 'Dtype') -> 'None' - Type to represent list data.
 cudf.ListDtype.construct_array_type() -> 'type_t[ExtensionArray]' - Return the array type associated with this dtype.
@@ -692,6 +695,7 @@ cudf.ListDtype.device_deserialize(header, frames) - Perform device-side deserial
 cudf.ListDtype.device_serialize(self) - Serialize data and metadata associated with device memory.
 cudf.ListDtype.empty(self, shape: 'Shape') -> 'ExtensionArray' - Construct an ExtensionArray of this dtype with the given shape.
 cudf.ListDtype.from_arrow(typ: 'pa.ListType') -> 'Self' - Creates a ``ListDtype`` from ``pyarrow.ListType``.
+cudf.ListDtype.from_list_dtype(obj) -> 'Self'
 cudf.ListDtype.host_deserialize(header, frames) - Perform device-side deserialization tasks.
 cudf.ListDtype.host_serialize(self) - Serialize data and metadata associated with host memory.
 cudf.ListDtype.is_dtype(dtype: 'object') -> 'bool' - Check if we match 'dtype'.
@@ -1046,7 +1050,7 @@ cudf.Series.update(self, other) - Modify Series in place using values from passe
 cudf.Series.valid_count - Number of non-null values
 cudf.Series.value_counts(self, normalize=False, sort=True, ascending=False, bins=None, dropna=True) - Return a Series containing counts of unique values.
 cudf.Series.values - Return a CuPy representation of the DataFrame.
-cudf.Series.values_host - Return a NumPy representation of the data.
+cudf.Series.values_host - Return a numpy representation of the data.
 cudf.Series.var(self, axis=<no_default>, skipna: 'bool' = True, ddof: 'int' = 1, numeric_only: 'bool' = False, **kwargs) - Return unbiased variance of the DataFrame.
 cudf.Series.where(self, cond, other=None, inplace: 'bool' = False, axis=None, level=None) -> 'Self | None' - Replace values where the condition is False.
 cudf.StructDtype(fields: 'dict[str, Dtype]') -> 'None' - Type to represent a struct data.
@@ -1166,7 +1170,7 @@ cudf.TimedeltaIndex.union(self, other, sort: 'bool | None' = None) -> 'Index' - 
 cudf.TimedeltaIndex.unique(self, level: 'int | None' = None) -> 'Self'
 cudf.TimedeltaIndex.unit
 cudf.TimedeltaIndex.values - Return a CuPy representation of the DataFrame.
-cudf.TimedeltaIndex.values_host - Return a NumPy representation of the data.
+cudf.TimedeltaIndex.values_host - Return a numpy representation of the data.
 cudf.TimedeltaIndex.where(self, cond, other=None, inplace: 'bool' = False) -> 'Self' - Replace values where the condition is False.
 cudf.api.extensions.accessor.DataFrame(data=None, index=None, columns=None, dtype=None, copy=None, nan_as_null=<no_default>) - A GPU Dataframe object.
 cudf.api.extensions.accessor.DataFrame.T - Transpose index and columns.
@@ -1192,7 +1196,7 @@ cudf.api.extensions.accessor.DataFrame.columns - Returns a tuple of columns
 cudf.api.extensions.accessor.DataFrame.convert_dtypes(self, infer_objects: 'bool' = True, convert_string: 'bool' = True, convert_integer: 'bool' = True, convert_boolean: 'bool' = True, convert_floating: 'bool' = True, dtype_backend=None) -> 'Self' - Convert columns to the best possible nullable dtypes.
 cudf.api.extensions.accessor.DataFrame.copy(self, deep: 'bool' = True) -> 'Self' - Make a copy of this object's indices and data.
 cudf.api.extensions.accessor.DataFrame.corr(self, method='pearson', min_periods=None, numeric_only: 'bool' = False) - Compute the correlation matrix of a DataFrame.
-cudf.api.extensions.accessor.DataFrame.count(self, axis=0, numeric_only=False) - Count ``non-NA`` cells for each column or row.
+cudf.api.extensions.accessor.DataFrame.count(self, axis: 'Axis' = 0, numeric_only: 'bool' = False) -> 'Series' - Count ``non-NA`` cells for each column or row.
 cudf.api.extensions.accessor.DataFrame.cov(self, min_periods=None, ddof: 'int' = 1, numeric_only: 'bool' = False) - Compute the covariance matrix of a DataFrame.
 cudf.api.extensions.accessor.DataFrame.cummax(self, axis: 'Axis | None' = None, skipna: 'bool' = True, *args, **kwargs) - Return cumulative max of the IndexedFrame.
 cudf.api.extensions.accessor.DataFrame.cummin(self, axis: 'Axis | None' = None, skipna: 'bool' = True, *args, **kwargs) - Return cumulative min of the IndexedFrame.
@@ -1430,7 +1434,7 @@ cudf.api.extensions.accessor.Index.transpose(self) -> 'Self' - Return the transp
 cudf.api.extensions.accessor.Index.union(self, other, sort: 'bool | None' = None) -> 'Index' - Form the union of two Index objects.
 cudf.api.extensions.accessor.Index.unique(self, level: 'int | None' = None) -> 'Self'
 cudf.api.extensions.accessor.Index.values - Return a CuPy representation of the DataFrame.
-cudf.api.extensions.accessor.Index.values_host - Return a NumPy representation of the data.
+cudf.api.extensions.accessor.Index.values_host - Return a numpy representation of the data.
 cudf.api.extensions.accessor.Index.where(self, cond, other=None, inplace: 'bool' = False) -> 'Self' - Replace values where the condition is False.
 cudf.api.extensions.accessor.Series(data=None, index=None, dtype: 'Dtype | None' = None, name=None, copy=False, nan_as_null=<no_default>) - One-dimensional GPU array (including time series).
 cudf.api.extensions.accessor.Series.T - Return the transpose, which is by definition self.
@@ -1604,7 +1608,7 @@ cudf.api.extensions.accessor.Series.update(self, other) - Modify Series in place
 cudf.api.extensions.accessor.Series.valid_count - Number of non-null values
 cudf.api.extensions.accessor.Series.value_counts(self, normalize=False, sort=True, ascending=False, bins=None, dropna=True) - Return a Series containing counts of unique values.
 cudf.api.extensions.accessor.Series.values - Return a CuPy representation of the DataFrame.
-cudf.api.extensions.accessor.Series.values_host - Return a NumPy representation of the data.
+cudf.api.extensions.accessor.Series.values_host - Return a numpy representation of the data.
 cudf.api.extensions.accessor.Series.var(self, axis=<no_default>, skipna: 'bool' = True, ddof: 'int' = 1, numeric_only: 'bool' = False, **kwargs) - Return unbiased variance of the DataFrame.
 cudf.api.extensions.accessor.Series.where(self, cond, other=None, inplace: 'bool' = False, axis=None, level=None) -> 'Self | None' - Replace values where the condition is False.
 cudf.api.extensions.accessor.docfmt_partial(**kwargs)
@@ -1692,7 +1696,7 @@ cudf.io.avro.DataFrame.columns - Returns a tuple of columns
 cudf.io.avro.DataFrame.convert_dtypes(self, infer_objects: 'bool' = True, convert_string: 'bool' = True, convert_integer: 'bool' = True, convert_boolean: 'bool' = True, convert_floating: 'bool' = True, dtype_backend=None) -> 'Self' - Convert columns to the best possible nullable dtypes.
 cudf.io.avro.DataFrame.copy(self, deep: 'bool' = True) -> 'Self' - Make a copy of this object's indices and data.
 cudf.io.avro.DataFrame.corr(self, method='pearson', min_periods=None, numeric_only: 'bool' = False) - Compute the correlation matrix of a DataFrame.
-cudf.io.avro.DataFrame.count(self, axis=0, numeric_only=False) - Count ``non-NA`` cells for each column or row.
+cudf.io.avro.DataFrame.count(self, axis: 'Axis' = 0, numeric_only: 'bool' = False) -> 'Series' - Count ``non-NA`` cells for each column or row.
 cudf.io.avro.DataFrame.cov(self, min_periods=None, ddof: 'int' = 1, numeric_only: 'bool' = False) - Compute the covariance matrix of a DataFrame.
 cudf.io.avro.DataFrame.cummax(self, axis: 'Axis | None' = None, skipna: 'bool' = True, *args, **kwargs) - Return cumulative max of the IndexedFrame.
 cudf.io.avro.DataFrame.cummin(self, axis: 'Axis | None' = None, skipna: 'bool' = True, *args, **kwargs) - Return cumulative min of the IndexedFrame.
@@ -1963,7 +1967,7 @@ cudf.io.csv.CategoricalIndex.transpose(self) -> 'Self' - Return the transpose, w
 cudf.io.csv.CategoricalIndex.union(self, other, sort: 'bool | None' = None) -> 'Index' - Form the union of two Index objects.
 cudf.io.csv.CategoricalIndex.unique(self, level: 'int | None' = None) -> 'Self'
 cudf.io.csv.CategoricalIndex.values - Return a CuPy representation of the DataFrame.
-cudf.io.csv.CategoricalIndex.values_host - Return a NumPy representation of the data.
+cudf.io.csv.CategoricalIndex.values_host - Return a numpy representation of the data.
 cudf.io.csv.CategoricalIndex.where(self, cond, other=None, inplace: 'bool' = False) -> 'Self' - Replace values where the condition is False.
 cudf.io.csv.DataFrame(data=None, index=None, columns=None, dtype=None, copy=None, nan_as_null=<no_default>) - A GPU Dataframe object.
 cudf.io.csv.DataFrame.T - Transpose index and columns.
@@ -1989,7 +1993,7 @@ cudf.io.csv.DataFrame.columns - Returns a tuple of columns
 cudf.io.csv.DataFrame.convert_dtypes(self, infer_objects: 'bool' = True, convert_string: 'bool' = True, convert_integer: 'bool' = True, convert_boolean: 'bool' = True, convert_floating: 'bool' = True, dtype_backend=None) -> 'Self' - Convert columns to the best possible nullable dtypes.
 cudf.io.csv.DataFrame.copy(self, deep: 'bool' = True) -> 'Self' - Make a copy of this object's indices and data.
 cudf.io.csv.DataFrame.corr(self, method='pearson', min_periods=None, numeric_only: 'bool' = False) - Compute the correlation matrix of a DataFrame.
-cudf.io.csv.DataFrame.count(self, axis=0, numeric_only=False) - Count ``non-NA`` cells for each column or row.
+cudf.io.csv.DataFrame.count(self, axis: 'Axis' = 0, numeric_only: 'bool' = False) -> 'Series' - Count ``non-NA`` cells for each column or row.
 cudf.io.csv.DataFrame.cov(self, min_periods=None, ddof: 'int' = 1, numeric_only: 'bool' = False) - Compute the covariance matrix of a DataFrame.
 cudf.io.csv.DataFrame.cummax(self, axis: 'Axis | None' = None, skipna: 'bool' = True, *args, **kwargs) - Return cumulative max of the IndexedFrame.
 cudf.io.csv.DataFrame.cummin(self, axis: 'Axis | None' = None, skipna: 'bool' = True, *args, **kwargs) - Return cumulative min of the IndexedFrame.
@@ -2157,6 +2161,7 @@ cudf.io.csv.ListDtype.device_deserialize(header, frames) - Perform device-side d
 cudf.io.csv.ListDtype.device_serialize(self) - Serialize data and metadata associated with device memory.
 cudf.io.csv.ListDtype.empty(self, shape: 'Shape') -> 'ExtensionArray' - Construct an ExtensionArray of this dtype with the given shape.
 cudf.io.csv.ListDtype.from_arrow(typ: 'pa.ListType') -> 'Self' - Creates a ``ListDtype`` from ``pyarrow.ListType``.
+cudf.io.csv.ListDtype.from_list_dtype(obj) -> 'Self'
 cudf.io.csv.ListDtype.host_deserialize(header, frames) - Perform device-side deserialization tasks.
 cudf.io.csv.ListDtype.host_serialize(self) - Serialize data and metadata associated with host memory.
 cudf.io.csv.ListDtype.is_dtype(dtype: 'object') -> 'bool' - Check if we match 'dtype'.
@@ -2187,7 +2192,7 @@ cudf.io.csv.StructDtype.to_arrow(self) -> 'pa.StructType' - Convert a ``StructDt
 cudf.io.csv.StructDtype.type - The scalar type for the array, e.g. ``int``
 cudf.io.csv.access_columns(*objs: 'Any', **kwargs: 'Any') -> '_AccessColumnsStack' - Context manager to access multiple columns simultaneously.
 cudf.io.csv.cudf_dtype(arbitrary: 'Any') -> 'DtypeObj' - Return the cuDF-supported dtype corresponding to `arbitrary`.
-cudf.io.csv.dtype_to_pylibcudf_type(dtype) -> 'plc.DataType'
+cudf.io.csv.dtype_to_pylibcudf_type(dtype: 'DtypeObj') -> 'plc.DataType'
 cudf.io.csv.get_option(name: 'str') -> 'Any' - Get the value of option.
 cudf.io.csv.is_scalar(val) - Return True if given object is scalar.
 cudf.io.csv.read_csv(filepath_or_buffer, sep: 'str' = ',', delimiter: 'str | None' = None, header='infer', names=None, index_col=None, usecols=None, prefix=None, mangle_dupe_cols: 'bool' = True, dtype=None, true_values=None, false_values=None, skipinitialspace: 'bool' = False, skiprows: 'int' = 0, skipfooter: 'int' = 0, nrows: 'int | None' = None, na_values=None, keep_default_na: 'bool' = True, na_filter: 'bool' = True, skip_blank_lines: 'bool' = True, parse_dates=None, dayfirst: 'bool' = False, compression='infer', thousands: 'str | None' = None, decimal: 'str' = '.', lineterminator: 'str' = '\n', quotechar: 'str' = '"', quoting: 'int' = 0, doublequote: 'bool' = True, comment: 'str | None' = None, delim_whitespace: 'bool' = False, byte_range: 'list[int] | tuple[int, int] | None' = None, storage_options=None, bytes_per_thread: 'int | None' = None) -> 'DataFrame' - Load a comma-separated-values (CSV) dataset into a DataFrame
@@ -2205,7 +2210,7 @@ cudf.io.dlpack.ColumnAccessor.keys(self) - D.keys() -> a set-like object providi
 cudf.io.dlpack.ColumnAccessor.level_names
 cudf.io.dlpack.ColumnAccessor.name
 cudf.io.dlpack.ColumnAccessor.nlevels
-cudf.io.dlpack.ColumnAccessor.pop(self, key, default=<object object at 0x7cc32c5781d0>) - D.pop(k[,d]) -> v, remove specified key and return the corresponding value.
+cudf.io.dlpack.ColumnAccessor.pop(self, key, default=<object object at 0x76e3fff181d0>) - D.pop(k[,d]) -> v, remove specified key and return the corresponding value.
 cudf.io.dlpack.ColumnAccessor.popitem(self) - D.popitem() -> (k, v), remove and return some (key, value) pair
 cudf.io.dlpack.ColumnAccessor.rename_levels(self, mapper: 'Mapping[Hashable, Hashable] | Callable', level: 'int | None' = None) -> 'Self' - Rename the specified levels of the given ColumnAccessor
 cudf.io.dlpack.ColumnAccessor.select_by_index(self, index: 'Any') -> 'Self' - Return a ColumnAccessor composed of the columns
@@ -2217,8 +2222,8 @@ cudf.io.dlpack.ColumnAccessor.update(self, other=(), /, **kwds) - D.update([E, ]
 cudf.io.dlpack.ColumnAccessor.values(self) - D.values() -> an object providing a view on D's values
 cudf.io.dlpack.ColumnBase(*args: 'Any', **kwargs: 'Any') -> 'None' - A ColumnBase stores columnar data in device memory.
 cudf.io.dlpack.ColumnBase.access(self, **kwargs: 'Any') -> '_ColumnAccessContext' - Context manager for controlled buffer access.
-cudf.io.dlpack.ColumnBase.all(self, skipna: 'bool' = True) -> 'bool'
-cudf.io.dlpack.ColumnBase.any(self, skipna: 'bool' = True) -> 'bool'
+cudf.io.dlpack.ColumnBase.all(self, skipna: 'bool' = True, min_count: 'int' = 0, **kwargs: 'Any') -> 'ScalarLike'
+cudf.io.dlpack.ColumnBase.any(self, skipna: 'bool' = True, min_count: 'int' = 0, **kwargs: 'Any') -> 'ScalarLike'
 cudf.io.dlpack.ColumnBase.append(self, other: 'ColumnBase') -> 'ColumnBase'
 cudf.io.dlpack.ColumnBase.apply_boolean_mask(self, mask: 'ColumnBase') -> 'ColumnBase'
 cudf.io.dlpack.ColumnBase.argsort(self, ascending: 'bool' = True, na_position: "Literal['first', 'last']" = 'last') -> 'NumericalColumn'
@@ -2226,26 +2231,25 @@ cudf.io.dlpack.ColumnBase.as_categorical_column(self, dtype: 'CategoricalDtype')
 cudf.io.dlpack.ColumnBase.as_datetime_column(self, dtype: 'np.dtype') -> 'DatetimeColumn'
 cudf.io.dlpack.ColumnBase.as_decimal_column(self, dtype: 'DecimalDtype') -> 'DecimalBaseColumn'
 cudf.io.dlpack.ColumnBase.as_interval_column(self, dtype: 'IntervalDtype') -> 'IntervalColumn'
-cudf.io.dlpack.ColumnBase.as_mask(self) -> 'Buffer' - Convert booleans to bitmask
+cudf.io.dlpack.ColumnBase.as_mask(self) -> 'tuple[Buffer, int]' - Convert booleans to bitmask
 cudf.io.dlpack.ColumnBase.as_numerical_column(self, dtype: 'np.dtype') -> 'NumericalColumn'
 cudf.io.dlpack.ColumnBase.as_string_column(self, dtype: 'DtypeObj') -> 'StringColumn'
 cudf.io.dlpack.ColumnBase.as_timedelta_column(self, dtype: 'np.dtype') -> 'TimeDeltaColumn'
 cudf.io.dlpack.ColumnBase.astype(self, dtype: 'DtypeObj', copy: 'bool | None' = False) -> 'ColumnBase'
 cudf.io.dlpack.ColumnBase.can_cast_safely(self, to_dtype: 'DtypeObj') -> 'bool'
 cudf.io.dlpack.ColumnBase.cast(self, dtype: 'DtypeObj') -> 'ColumnBase'
-cudf.io.dlpack.ColumnBase.children
 cudf.io.dlpack.ColumnBase.clip(self, lo: 'ScalarLike', hi: 'ScalarLike') -> 'Self'
 cudf.io.dlpack.ColumnBase.contains(self, other: 'ColumnBase') -> 'ColumnBase' - Check whether column contains multiple values.
 cudf.io.dlpack.ColumnBase.copy(self, deep: 'bool' = True) -> 'Self' - Makes a copy of the Column.
 cudf.io.dlpack.ColumnBase.copy_if_else(self, other: 'Self | plc.Scalar', boolean_mask: 'NumericalColumn') -> 'Self'
-cudf.io.dlpack.ColumnBase.data - Get data buffer from pylibcudf column.
+cudf.io.dlpack.ColumnBase.create(col: 'plc.Column', dtype: 'DtypeObj', validate: 'bool' = True) -> 'ColumnBase' - Create a Column from a pylibcudf.Column with an explicit cudf dtype.
 cudf.io.dlpack.ColumnBase.deserialize(header: 'dict', frames: 'list') -> 'ColumnBase' - Generate an object from a serialized representation.
 cudf.io.dlpack.ColumnBase.device_deserialize(header, frames) - Perform device-side deserialization tasks.
 cudf.io.dlpack.ColumnBase.device_serialize(self) - Serialize data and metadata associated with device memory.
 cudf.io.dlpack.ColumnBase.distinct_count(self, dropna: 'bool' = True) -> 'int' - Get the (null-aware) number of distinct values in this column.
 cudf.io.dlpack.ColumnBase.dropna(self) -> 'Self'
 cudf.io.dlpack.ColumnBase.dtype
-cudf.io.dlpack.ColumnBase.element_indexing(self, index: 'int') -> 'ScalarLike' - Default implementation for indexing to an element
+cudf.io.dlpack.ColumnBase.element_indexing(self, index: 'int') -> 'ScalarLike' - Access an element from the column at the given index.
 cudf.io.dlpack.ColumnBase.equals(self, other: 'ColumnBase', check_dtypes: 'bool' = False) -> 'bool'
 cudf.io.dlpack.ColumnBase.fillna(self, fill_value: 'ScalarLike | ColumnLike', method: "Literal['ffill', 'bfill', None]" = None) -> 'Self' - Fill null values with ``value``.
 cudf.io.dlpack.ColumnBase.find_and_replace(self, to_replace: 'ColumnBase | list', replacement: 'ColumnBase | list', all_nan: 'bool' = False) -> 'Self'
@@ -2254,6 +2258,7 @@ cudf.io.dlpack.ColumnBase.find_last_value(self, value: 'ScalarLike') -> 'int' - 
 cudf.io.dlpack.ColumnBase.from_arrow(array: 'pa.Array | pa.ChunkedArray') -> 'ColumnBase' - Convert PyArrow Array/ChunkedArray to column
 cudf.io.dlpack.ColumnBase.from_cuda_array_interface(arbitrary: 'Any') -> 'ColumnBase' - Create a Column from an object implementing the CUDA array interface.
 cudf.io.dlpack.ColumnBase.from_pylibcudf(col: 'plc.Column') -> 'ColumnBase' - Create a Column from a pylibcudf.Column.
+cudf.io.dlpack.ColumnBase.from_range(rng: 'range') -> 'ColumnBase' - Create a Column from a range object.
 cudf.io.dlpack.ColumnBase.has_nulls(self, include_nan: 'bool' = False) -> 'bool' - Check if column has null values.
 cudf.io.dlpack.ColumnBase.host_deserialize(header, frames) - Perform device-side deserialization tasks.
 cudf.io.dlpack.ColumnBase.host_serialize(self) - Serialize data and metadata associated with host memory.
@@ -2265,33 +2270,27 @@ cudf.io.dlpack.ColumnBase.isin(self, values: 'Sequence') -> 'ColumnBase' - Check
 cudf.io.dlpack.ColumnBase.isnan(self) -> 'ColumnBase' - Identify NaN values in a Column.
 cudf.io.dlpack.ColumnBase.isnull(self) -> 'ColumnBase' - Identify missing values in a Column.
 cudf.io.dlpack.ColumnBase.label_bins(self, *, left_edge: 'Self', left_inclusive: 'bool', right_edge: 'Self', right_inclusive: 'bool') -> 'NumericalColumn'
-cudf.io.dlpack.ColumnBase.mask - Get mask buffer from pylibcudf column.
-cudf.io.dlpack.ColumnBase.max(self, skipna: 'bool' = True, min_count: 'int' = 0, *args: 'Any', **kwargs: 'Any') - Compute max of column values.
-cudf.io.dlpack.ColumnBase.min(self, skipna: 'bool' = True, min_count: 'int' = 0, *args: 'Any', **kwargs: 'Any') - Compute min of column values.
+cudf.io.dlpack.ColumnBase.max(self, skipna: 'bool' = True, min_count: 'int' = 0, **kwargs: 'Any') - Private method for reduction operations. Called by mixin-generated methods.
+cudf.io.dlpack.ColumnBase.min(self, skipna: 'bool' = True, min_count: 'int' = 0, **kwargs: 'Any') - Private method for reduction operations. Called by mixin-generated methods.
 cudf.io.dlpack.ColumnBase.minmax(self) -> 'tuple[ScalarLike, ScalarLike]'
 cudf.io.dlpack.ColumnBase.nans_to_nulls(self: 'Self') -> 'Self' - Convert NaN to NA.
 cudf.io.dlpack.ColumnBase.notnan(self) -> 'ColumnBase' - Identify non-NaN values in a Column.
 cudf.io.dlpack.ColumnBase.notnull(self) -> 'ColumnBase' - Identify non-missing values in a Column.
-cudf.io.dlpack.ColumnBase.null_count
-cudf.io.dlpack.ColumnBase.nullable
-cudf.io.dlpack.ColumnBase.offset
 cudf.io.dlpack.ColumnBase.one_hot_encode(self, categories: 'ColumnBase') -> 'Generator[ColumnBase]'
 cudf.io.dlpack.ColumnBase.quantile(self, q: 'np.ndarray', interpolation: 'str', exact: 'bool', return_scalar: 'bool') -> 'ColumnBase'
 cudf.io.dlpack.ColumnBase.rank(self, *, method: 'plc.aggregation.RankMethod', column_order: 'plc.types.Order', null_handling: 'plc.types.NullPolicy', null_precedence: 'plc.types.NullOrder', pct: 'bool') -> 'Self'
-cudf.io.dlpack.ColumnBase.reduce(self, reduction_op: 'str', **kwargs: 'Any') -> 'ScalarLike'
 cudf.io.dlpack.ColumnBase.repeat(self, repeats: 'int') -> 'Self'
 cudf.io.dlpack.ColumnBase.replace(self, values_to_replace: 'Self', replacement_values: 'Self') -> 'Self'
-cudf.io.dlpack.ColumnBase.scan(self, scan_op: 'str', inclusive: 'bool', **kwargs: 'Any') -> 'Self'
 cudf.io.dlpack.ColumnBase.searchsorted(self, value: 'ColumnBase', side: "Literal['left', 'right']" = 'left', ascending: 'bool' = True, na_position: "Literal['first', 'last']" = 'last') -> 'Self'
 cudf.io.dlpack.ColumnBase.serialize(self) -> 'tuple[dict, list]' - Serialize column to header dict and frames list.
-cudf.io.dlpack.ColumnBase.set_mask(self, mask: 'Buffer | None') -> 'Self' - Replaces the mask buffer of the column and returns a new column.
+cudf.io.dlpack.ColumnBase.set_mask(self, mask: 'Buffer | None', null_count: 'int') -> 'Self' - Replaces the mask buffer of the column and returns a new column.
 cudf.io.dlpack.ColumnBase.shift(self, offset: 'int', fill_value: 'ScalarLike') -> 'Self'
-cudf.io.dlpack.ColumnBase.size
 cudf.io.dlpack.ColumnBase.slice(self, start: 'int', stop: 'int', stride: 'int | None' = None) -> 'Self'
 cudf.io.dlpack.ColumnBase.sort_values(self: 'Self', ascending: 'bool' = True, na_position: "Literal['first', 'last']" = 'last') -> 'Self'
 cudf.io.dlpack.ColumnBase.split_by_offsets(self, offsets: 'list[int]') -> 'Generator[Self, None, None]'
 cudf.io.dlpack.ColumnBase.take(self, indices: 'ColumnBase', *, nullify: 'bool' = False, check_bounds: 'bool' = True) -> 'Self' - Return Column by taking values from the corresponding *indices*.
 cudf.io.dlpack.ColumnBase.to_arrow(self) -> 'pa.Array'
+cudf.io.dlpack.ColumnBase.to_numpy(self) -> 'np.ndarray' - Convert the Column to a NumPy array.
 cudf.io.dlpack.ColumnBase.to_pandas(self, *, nullable: 'bool' = False, arrow_type: 'bool' = False) -> 'pd.Index' - Convert object to pandas type.
 cudf.io.dlpack.ColumnBase.to_pylibcudf(self) -> 'plc.Column' - Convert this Column to a pylibcudf.Column.
 cudf.io.dlpack.ColumnBase.unary_operator(self, unaryop: 'str') -> 'ColumnBase'
@@ -2323,7 +2322,7 @@ cudf.io.dlpack.DataFrame.columns - Returns a tuple of columns
 cudf.io.dlpack.DataFrame.convert_dtypes(self, infer_objects: 'bool' = True, convert_string: 'bool' = True, convert_integer: 'bool' = True, convert_boolean: 'bool' = True, convert_floating: 'bool' = True, dtype_backend=None) -> 'Self' - Convert columns to the best possible nullable dtypes.
 cudf.io.dlpack.DataFrame.copy(self, deep: 'bool' = True) -> 'Self' - Make a copy of this object's indices and data.
 cudf.io.dlpack.DataFrame.corr(self, method='pearson', min_periods=None, numeric_only: 'bool' = False) - Compute the correlation matrix of a DataFrame.
-cudf.io.dlpack.DataFrame.count(self, axis=0, numeric_only=False) - Count ``non-NA`` cells for each column or row.
+cudf.io.dlpack.DataFrame.count(self, axis: 'Axis' = 0, numeric_only: 'bool' = False) -> 'Series' - Count ``non-NA`` cells for each column or row.
 cudf.io.dlpack.DataFrame.cov(self, min_periods=None, ddof: 'int' = 1, numeric_only: 'bool' = False) - Compute the covariance matrix of a DataFrame.
 cudf.io.dlpack.DataFrame.cummax(self, axis: 'Axis | None' = None, skipna: 'bool' = True, *args, **kwargs) - Return cumulative max of the IndexedFrame.
 cudf.io.dlpack.DataFrame.cummin(self, axis: 'Axis | None' = None, skipna: 'bool' = True, *args, **kwargs) - Return cumulative min of the IndexedFrame.
@@ -2655,9 +2654,10 @@ cudf.io.dlpack.Series.update(self, other) - Modify Series in place using values 
 cudf.io.dlpack.Series.valid_count - Number of non-null values
 cudf.io.dlpack.Series.value_counts(self, normalize=False, sort=True, ascending=False, bins=None, dropna=True) - Return a Series containing counts of unique values.
 cudf.io.dlpack.Series.values - Return a CuPy representation of the DataFrame.
-cudf.io.dlpack.Series.values_host - Return a NumPy representation of the data.
+cudf.io.dlpack.Series.values_host - Return a numpy representation of the data.
 cudf.io.dlpack.Series.var(self, axis=<no_default>, skipna: 'bool' = True, ddof: 'int' = 1, numeric_only: 'bool' = False, **kwargs) - Return unbiased variance of the DataFrame.
 cudf.io.dlpack.Series.where(self, cond, other=None, inplace: 'bool' = False, axis=None, level=None) -> 'Self | None' - Replace values where the condition is False.
+cudf.io.dlpack.dtype_from_pylibcudf_column(col: 'plc.Column') -> 'DtypeObj'
 cudf.io.dlpack.from_dlpack(pycapsule_obj) -> 'Series | DataFrame' - Converts from a DLPack tensor to a cuDF object.
 cudf.io.feather.DataFrame(data=None, index=None, columns=None, dtype=None, copy=None, nan_as_null=<no_default>) - A GPU Dataframe object.
 cudf.io.feather.DataFrame.T - Transpose index and columns.
@@ -2683,7 +2683,7 @@ cudf.io.feather.DataFrame.columns - Returns a tuple of columns
 cudf.io.feather.DataFrame.convert_dtypes(self, infer_objects: 'bool' = True, convert_string: 'bool' = True, convert_integer: 'bool' = True, convert_boolean: 'bool' = True, convert_floating: 'bool' = True, dtype_backend=None) -> 'Self' - Convert columns to the best possible nullable dtypes.
 cudf.io.feather.DataFrame.copy(self, deep: 'bool' = True) -> 'Self' - Make a copy of this object's indices and data.
 cudf.io.feather.DataFrame.corr(self, method='pearson', min_periods=None, numeric_only: 'bool' = False) - Compute the correlation matrix of a DataFrame.
-cudf.io.feather.DataFrame.count(self, axis=0, numeric_only=False) - Count ``non-NA`` cells for each column or row.
+cudf.io.feather.DataFrame.count(self, axis: 'Axis' = 0, numeric_only: 'bool' = False) -> 'Series' - Count ``non-NA`` cells for each column or row.
 cudf.io.feather.DataFrame.cov(self, min_periods=None, ddof: 'int' = 1, numeric_only: 'bool' = False) - Compute the covariance matrix of a DataFrame.
 cudf.io.feather.DataFrame.cummax(self, axis: 'Axis | None' = None, skipna: 'bool' = True, *args, **kwargs) - Return cumulative max of the IndexedFrame.
 cudf.io.feather.DataFrame.cummin(self, axis: 'Axis | None' = None, skipna: 'bool' = True, *args, **kwargs) - Return cumulative min of the IndexedFrame.
@@ -2869,90 +2869,6 @@ cudf.io.json.CategoricalDtype.serialize(self) - Generate an equivalent serializa
 cudf.io.json.CategoricalDtype.str
 cudf.io.json.CategoricalDtype.to_pandas(self) -> 'pd.CategoricalDtype' - Convert a ``cudf.CategoricalDtype`` to ``pandas.CategoricalDtype``
 cudf.io.json.CategoricalDtype.type - The scalar type for the array, e.g. ``int``
-cudf.io.json.ColumnBase(*args: 'Any', **kwargs: 'Any') -> 'None' - A ColumnBase stores columnar data in device memory.
-cudf.io.json.ColumnBase.access(self, **kwargs: 'Any') -> '_ColumnAccessContext' - Context manager for controlled buffer access.
-cudf.io.json.ColumnBase.all(self, skipna: 'bool' = True) -> 'bool'
-cudf.io.json.ColumnBase.any(self, skipna: 'bool' = True) -> 'bool'
-cudf.io.json.ColumnBase.append(self, other: 'ColumnBase') -> 'ColumnBase'
-cudf.io.json.ColumnBase.apply_boolean_mask(self, mask: 'ColumnBase') -> 'ColumnBase'
-cudf.io.json.ColumnBase.argsort(self, ascending: 'bool' = True, na_position: "Literal['first', 'last']" = 'last') -> 'NumericalColumn'
-cudf.io.json.ColumnBase.as_categorical_column(self, dtype: 'CategoricalDtype') -> 'CategoricalColumn'
-cudf.io.json.ColumnBase.as_datetime_column(self, dtype: 'np.dtype') -> 'DatetimeColumn'
-cudf.io.json.ColumnBase.as_decimal_column(self, dtype: 'DecimalDtype') -> 'DecimalBaseColumn'
-cudf.io.json.ColumnBase.as_interval_column(self, dtype: 'IntervalDtype') -> 'IntervalColumn'
-cudf.io.json.ColumnBase.as_mask(self) -> 'Buffer' - Convert booleans to bitmask
-cudf.io.json.ColumnBase.as_numerical_column(self, dtype: 'np.dtype') -> 'NumericalColumn'
-cudf.io.json.ColumnBase.as_string_column(self, dtype: 'DtypeObj') -> 'StringColumn'
-cudf.io.json.ColumnBase.as_timedelta_column(self, dtype: 'np.dtype') -> 'TimeDeltaColumn'
-cudf.io.json.ColumnBase.astype(self, dtype: 'DtypeObj', copy: 'bool | None' = False) -> 'ColumnBase'
-cudf.io.json.ColumnBase.can_cast_safely(self, to_dtype: 'DtypeObj') -> 'bool'
-cudf.io.json.ColumnBase.cast(self, dtype: 'DtypeObj') -> 'ColumnBase'
-cudf.io.json.ColumnBase.children
-cudf.io.json.ColumnBase.clip(self, lo: 'ScalarLike', hi: 'ScalarLike') -> 'Self'
-cudf.io.json.ColumnBase.contains(self, other: 'ColumnBase') -> 'ColumnBase' - Check whether column contains multiple values.
-cudf.io.json.ColumnBase.copy(self, deep: 'bool' = True) -> 'Self' - Makes a copy of the Column.
-cudf.io.json.ColumnBase.copy_if_else(self, other: 'Self | plc.Scalar', boolean_mask: 'NumericalColumn') -> 'Self'
-cudf.io.json.ColumnBase.data - Get data buffer from pylibcudf column.
-cudf.io.json.ColumnBase.deserialize(header: 'dict', frames: 'list') -> 'ColumnBase' - Generate an object from a serialized representation.
-cudf.io.json.ColumnBase.device_deserialize(header, frames) - Perform device-side deserialization tasks.
-cudf.io.json.ColumnBase.device_serialize(self) - Serialize data and metadata associated with device memory.
-cudf.io.json.ColumnBase.distinct_count(self, dropna: 'bool' = True) -> 'int' - Get the (null-aware) number of distinct values in this column.
-cudf.io.json.ColumnBase.dropna(self) -> 'Self'
-cudf.io.json.ColumnBase.dtype
-cudf.io.json.ColumnBase.element_indexing(self, index: 'int') -> 'ScalarLike' - Default implementation for indexing to an element
-cudf.io.json.ColumnBase.equals(self, other: 'ColumnBase', check_dtypes: 'bool' = False) -> 'bool'
-cudf.io.json.ColumnBase.fillna(self, fill_value: 'ScalarLike | ColumnLike', method: "Literal['ffill', 'bfill', None]" = None) -> 'Self' - Fill null values with ``value``.
-cudf.io.json.ColumnBase.find_and_replace(self, to_replace: 'ColumnBase | list', replacement: 'ColumnBase | list', all_nan: 'bool' = False) -> 'Self'
-cudf.io.json.ColumnBase.find_first_value(self, value: 'ScalarLike') -> 'int' - Return index of first value that matches
-cudf.io.json.ColumnBase.find_last_value(self, value: 'ScalarLike') -> 'int' - Return index of last value that matches
-cudf.io.json.ColumnBase.from_arrow(array: 'pa.Array | pa.ChunkedArray') -> 'ColumnBase' - Convert PyArrow Array/ChunkedArray to column
-cudf.io.json.ColumnBase.from_cuda_array_interface(arbitrary: 'Any') -> 'ColumnBase' - Create a Column from an object implementing the CUDA array interface.
-cudf.io.json.ColumnBase.from_pylibcudf(col: 'plc.Column') -> 'ColumnBase' - Create a Column from a pylibcudf.Column.
-cudf.io.json.ColumnBase.has_nulls(self, include_nan: 'bool' = False) -> 'bool' - Check if column has null values.
-cudf.io.json.ColumnBase.host_deserialize(header, frames) - Perform device-side deserialization tasks.
-cudf.io.json.ColumnBase.host_serialize(self) - Serialize data and metadata associated with host memory.
-cudf.io.json.ColumnBase.indices_of(self, value: 'ScalarLike') -> 'NumericalColumn' - Find locations of value in the column
-cudf.io.json.ColumnBase.interpolate(self, index: 'Index') -> 'ColumnBase'
-cudf.io.json.ColumnBase.is_unique
-cudf.io.json.ColumnBase.is_valid(self) -> 'ColumnBase' - Identify non-null values
-cudf.io.json.ColumnBase.isin(self, values: 'Sequence') -> 'ColumnBase' - Check whether values are contained in the Column.
-cudf.io.json.ColumnBase.isnan(self) -> 'ColumnBase' - Identify NaN values in a Column.
-cudf.io.json.ColumnBase.isnull(self) -> 'ColumnBase' - Identify missing values in a Column.
-cudf.io.json.ColumnBase.label_bins(self, *, left_edge: 'Self', left_inclusive: 'bool', right_edge: 'Self', right_inclusive: 'bool') -> 'NumericalColumn'
-cudf.io.json.ColumnBase.mask - Get mask buffer from pylibcudf column.
-cudf.io.json.ColumnBase.max(self, skipna: 'bool' = True, min_count: 'int' = 0, *args: 'Any', **kwargs: 'Any') - Compute max of column values.
-cudf.io.json.ColumnBase.min(self, skipna: 'bool' = True, min_count: 'int' = 0, *args: 'Any', **kwargs: 'Any') - Compute min of column values.
-cudf.io.json.ColumnBase.minmax(self) -> 'tuple[ScalarLike, ScalarLike]'
-cudf.io.json.ColumnBase.nans_to_nulls(self: 'Self') -> 'Self' - Convert NaN to NA.
-cudf.io.json.ColumnBase.notnan(self) -> 'ColumnBase' - Identify non-NaN values in a Column.
-cudf.io.json.ColumnBase.notnull(self) -> 'ColumnBase' - Identify non-missing values in a Column.
-cudf.io.json.ColumnBase.null_count
-cudf.io.json.ColumnBase.nullable
-cudf.io.json.ColumnBase.offset
-cudf.io.json.ColumnBase.one_hot_encode(self, categories: 'ColumnBase') -> 'Generator[ColumnBase]'
-cudf.io.json.ColumnBase.quantile(self, q: 'np.ndarray', interpolation: 'str', exact: 'bool', return_scalar: 'bool') -> 'ColumnBase'
-cudf.io.json.ColumnBase.rank(self, *, method: 'plc.aggregation.RankMethod', column_order: 'plc.types.Order', null_handling: 'plc.types.NullPolicy', null_precedence: 'plc.types.NullOrder', pct: 'bool') -> 'Self'
-cudf.io.json.ColumnBase.reduce(self, reduction_op: 'str', **kwargs: 'Any') -> 'ScalarLike'
-cudf.io.json.ColumnBase.repeat(self, repeats: 'int') -> 'Self'
-cudf.io.json.ColumnBase.replace(self, values_to_replace: 'Self', replacement_values: 'Self') -> 'Self'
-cudf.io.json.ColumnBase.scan(self, scan_op: 'str', inclusive: 'bool', **kwargs: 'Any') -> 'Self'
-cudf.io.json.ColumnBase.searchsorted(self, value: 'ColumnBase', side: "Literal['left', 'right']" = 'left', ascending: 'bool' = True, na_position: "Literal['first', 'last']" = 'last') -> 'Self'
-cudf.io.json.ColumnBase.serialize(self) -> 'tuple[dict, list]' - Serialize column to header dict and frames list.
-cudf.io.json.ColumnBase.set_mask(self, mask: 'Buffer | None') -> 'Self' - Replaces the mask buffer of the column and returns a new column.
-cudf.io.json.ColumnBase.shift(self, offset: 'int', fill_value: 'ScalarLike') -> 'Self'
-cudf.io.json.ColumnBase.size
-cudf.io.json.ColumnBase.slice(self, start: 'int', stop: 'int', stride: 'int | None' = None) -> 'Self'
-cudf.io.json.ColumnBase.sort_values(self: 'Self', ascending: 'bool' = True, na_position: "Literal['first', 'last']" = 'last') -> 'Self'
-cudf.io.json.ColumnBase.split_by_offsets(self, offsets: 'list[int]') -> 'Generator[Self, None, None]'
-cudf.io.json.ColumnBase.take(self, indices: 'ColumnBase', *, nullify: 'bool' = False, check_bounds: 'bool' = True) -> 'Self' - Return Column by taking values from the corresponding *indices*.
-cudf.io.json.ColumnBase.to_arrow(self) -> 'pa.Array'
-cudf.io.json.ColumnBase.to_pandas(self, *, nullable: 'bool' = False, arrow_type: 'bool' = False) -> 'pd.Index' - Convert object to pandas type.
-cudf.io.json.ColumnBase.to_pylibcudf(self) -> 'plc.Column' - Convert this Column to a pylibcudf.Column.
-cudf.io.json.ColumnBase.unary_operator(self, unaryop: 'str') -> 'ColumnBase'
-cudf.io.json.ColumnBase.unique(self) -> 'Self' - Get unique values in the data
-cudf.io.json.ColumnBase.values - Return a CuPy representation of the Column.
-cudf.io.json.ColumnBase.values_host - Return a numpy representation of the Column.
-cudf.io.json.ColumnBase.where(self, cond: 'ColumnBase', other: 'ScalarLike | ColumnBase', inplace: 'bool') -> 'ColumnBase'
 cudf.io.json.DataFrame(data=None, index=None, columns=None, dtype=None, copy=None, nan_as_null=<no_default>) - A GPU Dataframe object.
 cudf.io.json.DataFrame.T - Transpose index and columns.
 cudf.io.json.DataFrame.abs(self) - Return a Series/DataFrame with absolute numeric value of each element.
@@ -2977,7 +2893,7 @@ cudf.io.json.DataFrame.columns - Returns a tuple of columns
 cudf.io.json.DataFrame.convert_dtypes(self, infer_objects: 'bool' = True, convert_string: 'bool' = True, convert_integer: 'bool' = True, convert_boolean: 'bool' = True, convert_floating: 'bool' = True, dtype_backend=None) -> 'Self' - Convert columns to the best possible nullable dtypes.
 cudf.io.json.DataFrame.copy(self, deep: 'bool' = True) -> 'Self' - Make a copy of this object's indices and data.
 cudf.io.json.DataFrame.corr(self, method='pearson', min_periods=None, numeric_only: 'bool' = False) - Compute the correlation matrix of a DataFrame.
-cudf.io.json.DataFrame.count(self, axis=0, numeric_only=False) - Count ``non-NA`` cells for each column or row.
+cudf.io.json.DataFrame.count(self, axis: 'Axis' = 0, numeric_only: 'bool' = False) -> 'Series' - Count ``non-NA`` cells for each column or row.
 cudf.io.json.DataFrame.cov(self, min_periods=None, ddof: 'int' = 1, numeric_only: 'bool' = False) - Compute the covariance matrix of a DataFrame.
 cudf.io.json.DataFrame.cummax(self, axis: 'Axis | None' = None, skipna: 'bool' = True, *args, **kwargs) - Return cumulative max of the IndexedFrame.
 cudf.io.json.DataFrame.cummin(self, axis: 'Axis | None' = None, skipna: 'bool' = True, *args, **kwargs) - Return cumulative min of the IndexedFrame.
@@ -3145,6 +3061,7 @@ cudf.io.json.ListDtype.device_deserialize(header, frames) - Perform device-side 
 cudf.io.json.ListDtype.device_serialize(self) - Serialize data and metadata associated with device memory.
 cudf.io.json.ListDtype.empty(self, shape: 'Shape') -> 'ExtensionArray' - Construct an ExtensionArray of this dtype with the given shape.
 cudf.io.json.ListDtype.from_arrow(typ: 'pa.ListType') -> 'Self' - Creates a ``ListDtype`` from ``pyarrow.ListType``.
+cudf.io.json.ListDtype.from_list_dtype(obj) -> 'Self'
 cudf.io.json.ListDtype.host_deserialize(header, frames) - Perform device-side deserialization tasks.
 cudf.io.json.ListDtype.host_serialize(self) - Serialize data and metadata associated with host memory.
 cudf.io.json.ListDtype.is_dtype(dtype: 'object') -> 'bool' - Check if we match 'dtype'.
@@ -3326,7 +3243,7 @@ cudf.io.json.Series.update(self, other) - Modify Series in place using values fr
 cudf.io.json.Series.valid_count - Number of non-null values
 cudf.io.json.Series.value_counts(self, normalize=False, sort=True, ascending=False, bins=None, dropna=True) - Return a Series containing counts of unique values.
 cudf.io.json.Series.values - Return a CuPy representation of the DataFrame.
-cudf.io.json.Series.values_host - Return a NumPy representation of the data.
+cudf.io.json.Series.values_host - Return a numpy representation of the data.
 cudf.io.json.Series.var(self, axis=<no_default>, skipna: 'bool' = True, ddof: 'int' = 1, numeric_only: 'bool' = False, **kwargs) - Return unbiased variance of the DataFrame.
 cudf.io.json.Series.where(self, cond, other=None, inplace: 'bool' = False, axis=None, level=None) -> 'Self | None' - Replace values where the condition is False.
 cudf.io.json.StructDtype(fields: 'dict[str, Dtype]') -> 'None' - Type to represent a struct data.
@@ -3350,7 +3267,7 @@ cudf.io.json.StructDtype.to_arrow(self) -> 'pa.StructType' - Convert a ``StructD
 cudf.io.json.StructDtype.type - The scalar type for the array, e.g. ``int``
 cudf.io.json.access_columns(*objs: 'Any', **kwargs: 'Any') -> '_AccessColumnsStack' - Context manager to access multiple columns simultaneously.
 cudf.io.json.cudf_dtype(arbitrary: 'Any') -> 'DtypeObj' - Return the cuDF-supported dtype corresponding to `arbitrary`.
-cudf.io.json.dtype_to_pylibcudf_type(dtype) -> 'plc.DataType'
+cudf.io.json.dtype_to_pylibcudf_type(dtype: 'DtypeObj') -> 'plc.DataType'
 cudf.io.json.get_option(name: 'str') -> 'Any' - Get the value of option.
 cudf.io.json.read_json(path_or_buf, engine: "Literal['auto', 'pandas', 'cudf']" = 'auto', orient=None, dtype=None, lines: 'bool' = False, compression: "Literal['bz2', 'gzip', 'infer', 'snappy', 'zip', 'zstd'] | None" = 'infer', byte_range: 'None | list[int]' = None, keep_quotes: 'bool' = False, storage_options=None, mixed_types_as_string: 'bool' = False, prune_columns: 'bool' = False, on_bad_lines: "Literal['error', 'recover']" = 'error', *args, **kwargs) -> 'DataFrame' - Load a JSON dataset into a DataFrame
 cudf.io.json.to_json(cudf_val: 'DataFrame | Series', path_or_buf=None, compression: "Literal['gzip', 'snappy', 'zstd'] | None" = None, engine: "Literal['auto', 'pandas', 'cudf']" = 'auto', orient=None, storage_options=None, *args, **kwargs) - Convert the cuDF object to a JSON string.
@@ -3465,7 +3382,7 @@ cudf.io.orc.CategoricalIndex.transpose(self) -> 'Self' - Return the transpose, w
 cudf.io.orc.CategoricalIndex.union(self, other, sort: 'bool | None' = None) -> 'Index' - Form the union of two Index objects.
 cudf.io.orc.CategoricalIndex.unique(self, level: 'int | None' = None) -> 'Self'
 cudf.io.orc.CategoricalIndex.values - Return a CuPy representation of the DataFrame.
-cudf.io.orc.CategoricalIndex.values_host - Return a NumPy representation of the data.
+cudf.io.orc.CategoricalIndex.values_host - Return a numpy representation of the data.
 cudf.io.orc.CategoricalIndex.where(self, cond, other=None, inplace: 'bool' = False) -> 'Self' - Replace values where the condition is False.
 cudf.io.orc.DataFrame(data=None, index=None, columns=None, dtype=None, copy=None, nan_as_null=<no_default>) - A GPU Dataframe object.
 cudf.io.orc.DataFrame.T - Transpose index and columns.
@@ -3491,7 +3408,7 @@ cudf.io.orc.DataFrame.columns - Returns a tuple of columns
 cudf.io.orc.DataFrame.convert_dtypes(self, infer_objects: 'bool' = True, convert_string: 'bool' = True, convert_integer: 'bool' = True, convert_boolean: 'bool' = True, convert_floating: 'bool' = True, dtype_backend=None) -> 'Self' - Convert columns to the best possible nullable dtypes.
 cudf.io.orc.DataFrame.copy(self, deep: 'bool' = True) -> 'Self' - Make a copy of this object's indices and data.
 cudf.io.orc.DataFrame.corr(self, method='pearson', min_periods=None, numeric_only: 'bool' = False) - Compute the correlation matrix of a DataFrame.
-cudf.io.orc.DataFrame.count(self, axis=0, numeric_only=False) - Count ``non-NA`` cells for each column or row.
+cudf.io.orc.DataFrame.count(self, axis: 'Axis' = 0, numeric_only: 'bool' = False) -> 'Series' - Count ``non-NA`` cells for each column or row.
 cudf.io.orc.DataFrame.cov(self, min_periods=None, ddof: 'int' = 1, numeric_only: 'bool' = False) - Compute the covariance matrix of a DataFrame.
 cudf.io.orc.DataFrame.cummax(self, axis: 'Axis | None' = None, skipna: 'bool' = True, *args, **kwargs) - Return cumulative max of the IndexedFrame.
 cudf.io.orc.DataFrame.cummin(self, axis: 'Axis | None' = None, skipna: 'bool' = True, *args, **kwargs) - Return cumulative min of the IndexedFrame.
@@ -3659,6 +3576,7 @@ cudf.io.orc.ListDtype.device_deserialize(header, frames) - Perform device-side d
 cudf.io.orc.ListDtype.device_serialize(self) - Serialize data and metadata associated with device memory.
 cudf.io.orc.ListDtype.empty(self, shape: 'Shape') -> 'ExtensionArray' - Construct an ExtensionArray of this dtype with the given shape.
 cudf.io.orc.ListDtype.from_arrow(typ: 'pa.ListType') -> 'Self' - Creates a ``ListDtype`` from ``pyarrow.ListType``.
+cudf.io.orc.ListDtype.from_list_dtype(obj) -> 'Self'
 cudf.io.orc.ListDtype.host_deserialize(header, frames) - Perform device-side deserialization tasks.
 cudf.io.orc.ListDtype.host_serialize(self) - Serialize data and metadata associated with host memory.
 cudf.io.orc.ListDtype.is_dtype(dtype: 'object') -> 'bool' - Check if we match 'dtype'.
@@ -3866,8 +3784,8 @@ cudf.io.orc.StructDtype.type - The scalar type for the array, e.g. ``int``
 cudf.io.orc.access_columns(*objs: 'Any', **kwargs: 'Any') -> '_AccessColumnsStack' - Context manager to access multiple columns simultaneously.
 cudf.io.orc.column_empty(row_count: 'int', dtype: 'DtypeObj' = dtype('O')) -> 'ColumnBase' - Allocate a new column with the given row_count and dtype.
 cudf.io.orc.cudf_dtype(arbitrary: 'Any') -> 'DtypeObj' - Return the cuDF-supported dtype corresponding to `arbitrary`.
-cudf.io.orc.cudf_dtype_from_pa_type(typ: 'pa.DataType') -> 'DtypeObj' - Given a cuDF pyarrow dtype, converts it into the equivalent
-cudf.io.orc.dtype_to_pylibcudf_type(dtype) -> 'plc.DataType'
+cudf.io.orc.cudf_dtype_from_pa_type(typ: 'pa.DataType') -> 'DtypeObj' - Given a pyarrow dtype, converts it into the equivalent cudf dtype.
+cudf.io.orc.dtype_to_pylibcudf_type(dtype: 'DtypeObj') -> 'plc.DataType'
 cudf.io.orc.is_list_like(obj) - Return `True` if the given `obj` is list-like (list, tuple, Series...).
 cudf.io.orc.is_supported_read_orc(compression: "Literal['SNAPPY', 'ZLIB', 'ZSTD', 'LZ4', 'NONE']") -> 'bool' - Check if the compression type is supported for reading ORC files.
 cudf.io.orc.is_supported_write_orc(compression: "Literal['SNAPPY', 'ZLIB', 'ZSTD', 'LZ4', 'NONE']") -> 'bool' - Check if the compression type is supported for writing ORC files.
@@ -3897,8 +3815,8 @@ cudf.io.parquet.CategoricalDtype.to_pandas(self) -> 'pd.CategoricalDtype' - Conv
 cudf.io.parquet.CategoricalDtype.type - The scalar type for the array, e.g. ``int``
 cudf.io.parquet.ColumnBase(*args: 'Any', **kwargs: 'Any') -> 'None' - A ColumnBase stores columnar data in device memory.
 cudf.io.parquet.ColumnBase.access(self, **kwargs: 'Any') -> '_ColumnAccessContext' - Context manager for controlled buffer access.
-cudf.io.parquet.ColumnBase.all(self, skipna: 'bool' = True) -> 'bool'
-cudf.io.parquet.ColumnBase.any(self, skipna: 'bool' = True) -> 'bool'
+cudf.io.parquet.ColumnBase.all(self, skipna: 'bool' = True, min_count: 'int' = 0, **kwargs: 'Any') -> 'ScalarLike'
+cudf.io.parquet.ColumnBase.any(self, skipna: 'bool' = True, min_count: 'int' = 0, **kwargs: 'Any') -> 'ScalarLike'
 cudf.io.parquet.ColumnBase.append(self, other: 'ColumnBase') -> 'ColumnBase'
 cudf.io.parquet.ColumnBase.apply_boolean_mask(self, mask: 'ColumnBase') -> 'ColumnBase'
 cudf.io.parquet.ColumnBase.argsort(self, ascending: 'bool' = True, na_position: "Literal['first', 'last']" = 'last') -> 'NumericalColumn'
@@ -3906,26 +3824,25 @@ cudf.io.parquet.ColumnBase.as_categorical_column(self, dtype: 'CategoricalDtype'
 cudf.io.parquet.ColumnBase.as_datetime_column(self, dtype: 'np.dtype') -> 'DatetimeColumn'
 cudf.io.parquet.ColumnBase.as_decimal_column(self, dtype: 'DecimalDtype') -> 'DecimalBaseColumn'
 cudf.io.parquet.ColumnBase.as_interval_column(self, dtype: 'IntervalDtype') -> 'IntervalColumn'
-cudf.io.parquet.ColumnBase.as_mask(self) -> 'Buffer' - Convert booleans to bitmask
+cudf.io.parquet.ColumnBase.as_mask(self) -> 'tuple[Buffer, int]' - Convert booleans to bitmask
 cudf.io.parquet.ColumnBase.as_numerical_column(self, dtype: 'np.dtype') -> 'NumericalColumn'
 cudf.io.parquet.ColumnBase.as_string_column(self, dtype: 'DtypeObj') -> 'StringColumn'
 cudf.io.parquet.ColumnBase.as_timedelta_column(self, dtype: 'np.dtype') -> 'TimeDeltaColumn'
 cudf.io.parquet.ColumnBase.astype(self, dtype: 'DtypeObj', copy: 'bool | None' = False) -> 'ColumnBase'
 cudf.io.parquet.ColumnBase.can_cast_safely(self, to_dtype: 'DtypeObj') -> 'bool'
 cudf.io.parquet.ColumnBase.cast(self, dtype: 'DtypeObj') -> 'ColumnBase'
-cudf.io.parquet.ColumnBase.children
 cudf.io.parquet.ColumnBase.clip(self, lo: 'ScalarLike', hi: 'ScalarLike') -> 'Self'
 cudf.io.parquet.ColumnBase.contains(self, other: 'ColumnBase') -> 'ColumnBase' - Check whether column contains multiple values.
 cudf.io.parquet.ColumnBase.copy(self, deep: 'bool' = True) -> 'Self' - Makes a copy of the Column.
 cudf.io.parquet.ColumnBase.copy_if_else(self, other: 'Self | plc.Scalar', boolean_mask: 'NumericalColumn') -> 'Self'
-cudf.io.parquet.ColumnBase.data - Get data buffer from pylibcudf column.
+cudf.io.parquet.ColumnBase.create(col: 'plc.Column', dtype: 'DtypeObj', validate: 'bool' = True) -> 'ColumnBase' - Create a Column from a pylibcudf.Column with an explicit cudf dtype.
 cudf.io.parquet.ColumnBase.deserialize(header: 'dict', frames: 'list') -> 'ColumnBase' - Generate an object from a serialized representation.
 cudf.io.parquet.ColumnBase.device_deserialize(header, frames) - Perform device-side deserialization tasks.
 cudf.io.parquet.ColumnBase.device_serialize(self) - Serialize data and metadata associated with device memory.
 cudf.io.parquet.ColumnBase.distinct_count(self, dropna: 'bool' = True) -> 'int' - Get the (null-aware) number of distinct values in this column.
 cudf.io.parquet.ColumnBase.dropna(self) -> 'Self'
 cudf.io.parquet.ColumnBase.dtype
-cudf.io.parquet.ColumnBase.element_indexing(self, index: 'int') -> 'ScalarLike' - Default implementation for indexing to an element
+cudf.io.parquet.ColumnBase.element_indexing(self, index: 'int') -> 'ScalarLike' - Access an element from the column at the given index.
 cudf.io.parquet.ColumnBase.equals(self, other: 'ColumnBase', check_dtypes: 'bool' = False) -> 'bool'
 cudf.io.parquet.ColumnBase.fillna(self, fill_value: 'ScalarLike | ColumnLike', method: "Literal['ffill', 'bfill', None]" = None) -> 'Self' - Fill null values with ``value``.
 cudf.io.parquet.ColumnBase.find_and_replace(self, to_replace: 'ColumnBase | list', replacement: 'ColumnBase | list', all_nan: 'bool' = False) -> 'Self'
@@ -3934,6 +3851,7 @@ cudf.io.parquet.ColumnBase.find_last_value(self, value: 'ScalarLike') -> 'int' -
 cudf.io.parquet.ColumnBase.from_arrow(array: 'pa.Array | pa.ChunkedArray') -> 'ColumnBase' - Convert PyArrow Array/ChunkedArray to column
 cudf.io.parquet.ColumnBase.from_cuda_array_interface(arbitrary: 'Any') -> 'ColumnBase' - Create a Column from an object implementing the CUDA array interface.
 cudf.io.parquet.ColumnBase.from_pylibcudf(col: 'plc.Column') -> 'ColumnBase' - Create a Column from a pylibcudf.Column.
+cudf.io.parquet.ColumnBase.from_range(rng: 'range') -> 'ColumnBase' - Create a Column from a range object.
 cudf.io.parquet.ColumnBase.has_nulls(self, include_nan: 'bool' = False) -> 'bool' - Check if column has null values.
 cudf.io.parquet.ColumnBase.host_deserialize(header, frames) - Perform device-side deserialization tasks.
 cudf.io.parquet.ColumnBase.host_serialize(self) - Serialize data and metadata associated with host memory.
@@ -3945,33 +3863,27 @@ cudf.io.parquet.ColumnBase.isin(self, values: 'Sequence') -> 'ColumnBase' - Chec
 cudf.io.parquet.ColumnBase.isnan(self) -> 'ColumnBase' - Identify NaN values in a Column.
 cudf.io.parquet.ColumnBase.isnull(self) -> 'ColumnBase' - Identify missing values in a Column.
 cudf.io.parquet.ColumnBase.label_bins(self, *, left_edge: 'Self', left_inclusive: 'bool', right_edge: 'Self', right_inclusive: 'bool') -> 'NumericalColumn'
-cudf.io.parquet.ColumnBase.mask - Get mask buffer from pylibcudf column.
-cudf.io.parquet.ColumnBase.max(self, skipna: 'bool' = True, min_count: 'int' = 0, *args: 'Any', **kwargs: 'Any') - Compute max of column values.
-cudf.io.parquet.ColumnBase.min(self, skipna: 'bool' = True, min_count: 'int' = 0, *args: 'Any', **kwargs: 'Any') - Compute min of column values.
+cudf.io.parquet.ColumnBase.max(self, skipna: 'bool' = True, min_count: 'int' = 0, **kwargs: 'Any') - Private method for reduction operations. Called by mixin-generated methods.
+cudf.io.parquet.ColumnBase.min(self, skipna: 'bool' = True, min_count: 'int' = 0, **kwargs: 'Any') - Private method for reduction operations. Called by mixin-generated methods.
 cudf.io.parquet.ColumnBase.minmax(self) -> 'tuple[ScalarLike, ScalarLike]'
 cudf.io.parquet.ColumnBase.nans_to_nulls(self: 'Self') -> 'Self' - Convert NaN to NA.
 cudf.io.parquet.ColumnBase.notnan(self) -> 'ColumnBase' - Identify non-NaN values in a Column.
 cudf.io.parquet.ColumnBase.notnull(self) -> 'ColumnBase' - Identify non-missing values in a Column.
-cudf.io.parquet.ColumnBase.null_count
-cudf.io.parquet.ColumnBase.nullable
-cudf.io.parquet.ColumnBase.offset
 cudf.io.parquet.ColumnBase.one_hot_encode(self, categories: 'ColumnBase') -> 'Generator[ColumnBase]'
 cudf.io.parquet.ColumnBase.quantile(self, q: 'np.ndarray', interpolation: 'str', exact: 'bool', return_scalar: 'bool') -> 'ColumnBase'
 cudf.io.parquet.ColumnBase.rank(self, *, method: 'plc.aggregation.RankMethod', column_order: 'plc.types.Order', null_handling: 'plc.types.NullPolicy', null_precedence: 'plc.types.NullOrder', pct: 'bool') -> 'Self'
-cudf.io.parquet.ColumnBase.reduce(self, reduction_op: 'str', **kwargs: 'Any') -> 'ScalarLike'
 cudf.io.parquet.ColumnBase.repeat(self, repeats: 'int') -> 'Self'
 cudf.io.parquet.ColumnBase.replace(self, values_to_replace: 'Self', replacement_values: 'Self') -> 'Self'
-cudf.io.parquet.ColumnBase.scan(self, scan_op: 'str', inclusive: 'bool', **kwargs: 'Any') -> 'Self'
 cudf.io.parquet.ColumnBase.searchsorted(self, value: 'ColumnBase', side: "Literal['left', 'right']" = 'left', ascending: 'bool' = True, na_position: "Literal['first', 'last']" = 'last') -> 'Self'
 cudf.io.parquet.ColumnBase.serialize(self) -> 'tuple[dict, list]' - Serialize column to header dict and frames list.
-cudf.io.parquet.ColumnBase.set_mask(self, mask: 'Buffer | None') -> 'Self' - Replaces the mask buffer of the column and returns a new column.
+cudf.io.parquet.ColumnBase.set_mask(self, mask: 'Buffer | None', null_count: 'int') -> 'Self' - Replaces the mask buffer of the column and returns a new column.
 cudf.io.parquet.ColumnBase.shift(self, offset: 'int', fill_value: 'ScalarLike') -> 'Self'
-cudf.io.parquet.ColumnBase.size
 cudf.io.parquet.ColumnBase.slice(self, start: 'int', stop: 'int', stride: 'int | None' = None) -> 'Self'
 cudf.io.parquet.ColumnBase.sort_values(self: 'Self', ascending: 'bool' = True, na_position: "Literal['first', 'last']" = 'last') -> 'Self'
 cudf.io.parquet.ColumnBase.split_by_offsets(self, offsets: 'list[int]') -> 'Generator[Self, None, None]'
 cudf.io.parquet.ColumnBase.take(self, indices: 'ColumnBase', *, nullify: 'bool' = False, check_bounds: 'bool' = True) -> 'Self' - Return Column by taking values from the corresponding *indices*.
 cudf.io.parquet.ColumnBase.to_arrow(self) -> 'pa.Array'
+cudf.io.parquet.ColumnBase.to_numpy(self) -> 'np.ndarray' - Convert the Column to a NumPy array.
 cudf.io.parquet.ColumnBase.to_pandas(self, *, nullable: 'bool' = False, arrow_type: 'bool' = False) -> 'pd.Index' - Convert object to pandas type.
 cudf.io.parquet.ColumnBase.to_pylibcudf(self) -> 'plc.Column' - Convert this Column to a pylibcudf.Column.
 cudf.io.parquet.ColumnBase.unary_operator(self, unaryop: 'str') -> 'ColumnBase'
@@ -4003,7 +3915,7 @@ cudf.io.parquet.DataFrame.columns - Returns a tuple of columns
 cudf.io.parquet.DataFrame.convert_dtypes(self, infer_objects: 'bool' = True, convert_string: 'bool' = True, convert_integer: 'bool' = True, convert_boolean: 'bool' = True, convert_floating: 'bool' = True, dtype_backend=None) -> 'Self' - Convert columns to the best possible nullable dtypes.
 cudf.io.parquet.DataFrame.copy(self, deep: 'bool' = True) -> 'Self' - Make a copy of this object's indices and data.
 cudf.io.parquet.DataFrame.corr(self, method='pearson', min_periods=None, numeric_only: 'bool' = False) - Compute the correlation matrix of a DataFrame.
-cudf.io.parquet.DataFrame.count(self, axis=0, numeric_only=False) - Count ``non-NA`` cells for each column or row.
+cudf.io.parquet.DataFrame.count(self, axis: 'Axis' = 0, numeric_only: 'bool' = False) -> 'Series' - Count ``non-NA`` cells for each column or row.
 cudf.io.parquet.DataFrame.cov(self, min_periods=None, ddof: 'int' = 1, numeric_only: 'bool' = False) - Compute the covariance matrix of a DataFrame.
 cudf.io.parquet.DataFrame.cummax(self, axis: 'Axis | None' = None, skipna: 'bool' = True, *args, **kwargs) - Return cumulative max of the IndexedFrame.
 cudf.io.parquet.DataFrame.cummin(self, axis: 'Axis | None' = None, skipna: 'bool' = True, *args, **kwargs) - Return cumulative min of the IndexedFrame.
@@ -4183,7 +4095,7 @@ cudf.io.parquet.DecimalDtype.precision - The decimal precision, in number of dec
 cudf.io.parquet.DecimalDtype.scale - The decimal scale (an integer).
 cudf.io.parquet.DecimalDtype.serialize(self) -> 'tuple[dict, list]' - Generate an equivalent serializable representation of an object.
 cudf.io.parquet.DecimalDtype.str
-cudf.io.parquet.DecimalDtype.to_arrow(self) -> 'pa.Decimal128Type' - Return the equivalent ``pyarrow`` dtype.
+cudf.io.parquet.DecimalDtype.to_arrow(self) -> 'pa.Decimal128Type | pa.Decimal32Type | pa.Decimal64Type' - Return the equivalent ``pyarrow`` dtype.
 cudf.io.parquet.DecimalDtype.type - The scalar type for the array, e.g. ``int``
 cudf.io.parquet.Index(*args, **kwargs) -> 'Self' - Immutable sequence used for indexing and alignment.
 cudf.io.parquet.Index.T - Return the transpose, which is by definition self.
@@ -4263,7 +4175,7 @@ cudf.io.parquet.Index.transpose(self) -> 'Self' - Return the transpose, which is
 cudf.io.parquet.Index.union(self, other, sort: 'bool | None' = None) -> 'Index' - Form the union of two Index objects.
 cudf.io.parquet.Index.unique(self, level: 'int | None' = None) -> 'Self'
 cudf.io.parquet.Index.values - Return a CuPy representation of the DataFrame.
-cudf.io.parquet.Index.values_host - Return a NumPy representation of the data.
+cudf.io.parquet.Index.values_host - Return a numpy representation of the data.
 cudf.io.parquet.Index.where(self, cond, other=None, inplace: 'bool' = False) -> 'Self' - Replace values where the condition is False.
 cudf.io.parquet.ListDtype(element_type: 'Dtype') -> 'None' - Type to represent list data.
 cudf.io.parquet.ListDtype.construct_array_type() -> 'type_t[ExtensionArray]' - Return the array type associated with this dtype.
@@ -4273,6 +4185,7 @@ cudf.io.parquet.ListDtype.device_deserialize(header, frames) - Perform device-si
 cudf.io.parquet.ListDtype.device_serialize(self) - Serialize data and metadata associated with device memory.
 cudf.io.parquet.ListDtype.empty(self, shape: 'Shape') -> 'ExtensionArray' - Construct an ExtensionArray of this dtype with the given shape.
 cudf.io.parquet.ListDtype.from_arrow(typ: 'pa.ListType') -> 'Self' - Creates a ``ListDtype`` from ``pyarrow.ListType``.
+cudf.io.parquet.ListDtype.from_list_dtype(obj) -> 'Self'
 cudf.io.parquet.ListDtype.host_deserialize(header, frames) - Perform device-side deserialization tasks.
 cudf.io.parquet.ListDtype.host_serialize(self) - Serialize data and metadata associated with host memory.
 cudf.io.parquet.ListDtype.is_dtype(dtype: 'object') -> 'bool' - Check if we match 'dtype'.
@@ -4481,7 +4394,7 @@ cudf.io.parquet.StructDtype.serialize(self) -> 'tuple[dict, list]' - Generate an
 cudf.io.parquet.StructDtype.to_arrow(self) -> 'pa.StructType' - Convert a ``StructDtype`` to a ``pyarrow.StructType``.
 cudf.io.parquet.StructDtype.type - The scalar type for the array, e.g. ``int``
 cudf.io.parquet.access_columns(*objs: 'Any', **kwargs: 'Any') -> '_AccessColumnsStack' - Context manager to access multiple columns simultaneously.
-cudf.io.parquet.as_column(arbitrary: 'Any', nan_as_null: 'bool | None' = None, dtype: 'Dtype | None' = None, length: 'int | None' = None) -> 'ColumnBase' - Create a Column from an arbitrary object
+cudf.io.parquet.as_column(arbitrary: 'Any', nan_as_null: 'bool | None' = None, dtype: 'DtypeObj | None' = None, length: 'int | None' = None) -> 'ColumnBase' - Create a Column from an arbitrary object.
 cudf.io.parquet.column_empty(row_count: 'int', dtype: 'DtypeObj' = dtype('O')) -> 'ColumnBase' - Allocate a new column with the given row_count and dtype.
 cudf.io.parquet.concat(objs, axis=0, join='outer', ignore_index=False, keys=None, levels=None, names=None, verify_integrity=False, sort=None) - Concatenate DataFrames, Series, or Indices row-wise.
 cudf.io.parquet.get_option(name: 'str') -> 'Any' - Get the value of option.
@@ -4491,7 +4404,7 @@ cudf.io.parquet.is_supported_write_parquet(compression: "Literal['SNAPPY', 'GZIP
 cudf.io.parquet.make_expr(col: 'str', op: 'str', val: 'Any') -> 'plc_expr.Expression'
 cudf.io.parquet.make_literal(v: 'Any') -> 'plc_expr.Literal'
 cudf.io.parquet.merge_parquet_filemetadata(filemetadata_list: 'list') -> 'np.ndarray' - Merge multiple parquet metadata blobs
-cudf.io.parquet.read_parquet(filepath_or_buffer, engine='cudf', columns=None, storage_options=None, filesystem=None, filters=None, row_groups=None, use_pandas_metadata=True, categorical_partitions=True, bytes_per_thread=None, dataset_kwargs=None, nrows=None, skip_rows=None, allow_mismatched_pq_schemas=False, ignore_missing_columns=True, *args, **kwargs) - Load a Parquet dataset into a DataFrame
+cudf.io.parquet.read_parquet(filepath_or_buffer, engine='cudf', columns=None, storage_options=None, filesystem=None, filters=None, row_groups=None, use_pandas_metadata=True, categorical_partitions=True, bytes_per_thread=None, dataset_kwargs=None, nrows=None, skip_rows=None, allow_mismatched_pq_schemas=False, ignore_missing_columns=True, case_sensitive_names=True, *args, **kwargs) - Load a Parquet dataset into a DataFrame
 cudf.io.parquet.read_parquet_metadata(filepath_or_buffer) -> 'tuple[int, int, Sequence[Hashable], int, Sequence[dict[str, int]]]' - Read metadata and schema of a list of Parquet files
 cudf.io.parquet.to_parquet(df, path, engine='cudf', compression: "Literal['snappy', 'ZSTD', 'ZLIB', 'LZ4', None]" = 'snappy', index: 'bool | None' = None, partition_cols=None, partition_file_name=None, partition_offsets=None, statistics: "Literal['ROWGROUP', 'PAGE', 'COLUMN', 'NONE']" = 'ROWGROUP', metadata_file_path: 'str | None' = None, int96_timestamps: 'bool' = False, row_group_size_bytes: 'int | None' = None, row_group_size_rows: 'int | None' = None, max_page_size_bytes: 'int | None' = None, max_page_size_rows: 'int | None' = None, max_dictionary_size: 'int | None' = None, storage_options=None, return_metadata: 'bool' = False, force_nullable_schema: 'bool' = False, header_version: "Literal['1.0', '2.0']" = '1.0', use_dictionary: 'bool' = True, skip_compression: 'set[Hashable] | None' = None, column_encoding: "dict[Hashable, Literal['PLAIN', 'DICTIONARY', 'DELTA_BINARY_PACKED', 'DELTA_LENGTH_BYTE_ARRAY', 'DELTA_BYTE_ARRAY', 'BYTE_STREAM_SPLIT', 'USE_DEFAULT']] | None" = None, column_type_length: 'dict | None' = None, output_as_binary: 'set[Hashable] | None' = None, store_schema=False, page_level_compression: 'bool' = False, *args, **kwargs) - Write a DataFrame to the parquet format.
 cudf.io.parquet.translate_filters_to_ast(filters: 'list[list[tuple[str, str, Any]]]') -> 'plc_expr.Expression' - Convert a filter expression in Disjunctive Normal Form (DNF) to a pylibcudf AST.
@@ -4503,7 +4416,7 @@ cudf.io.read_hdf(path_or_buf, *args, **kwargs) - Read from the store, close it i
 cudf.io.read_json(path_or_buf, engine: "Literal['auto', 'pandas', 'cudf']" = 'auto', orient=None, dtype=None, lines: 'bool' = False, compression: "Literal['bz2', 'gzip', 'infer', 'snappy', 'zip', 'zstd'] | None" = 'infer', byte_range: 'None | list[int]' = None, keep_quotes: 'bool' = False, storage_options=None, mixed_types_as_string: 'bool' = False, prune_columns: 'bool' = False, on_bad_lines: "Literal['error', 'recover']" = 'error', *args, **kwargs) -> 'DataFrame' - Load a JSON dataset into a DataFrame
 cudf.io.read_orc(filepath_or_buffer, engine='cudf', columns=None, filters=None, stripes=None, skiprows: 'int | None' = None, num_rows: 'int | None' = None, use_index: 'bool' = True, timestamp_type=None, storage_options=None, bytes_per_thread=None) - Load an ORC dataset into a DataFrame
 cudf.io.read_orc_metadata(path) - Read an ORC file's metadata and schema
-cudf.io.read_parquet(filepath_or_buffer, engine='cudf', columns=None, storage_options=None, filesystem=None, filters=None, row_groups=None, use_pandas_metadata=True, categorical_partitions=True, bytes_per_thread=None, dataset_kwargs=None, nrows=None, skip_rows=None, allow_mismatched_pq_schemas=False, ignore_missing_columns=True, *args, **kwargs) - Load a Parquet dataset into a DataFrame
+cudf.io.read_parquet(filepath_or_buffer, engine='cudf', columns=None, storage_options=None, filesystem=None, filters=None, row_groups=None, use_pandas_metadata=True, categorical_partitions=True, bytes_per_thread=None, dataset_kwargs=None, nrows=None, skip_rows=None, allow_mismatched_pq_schemas=False, ignore_missing_columns=True, case_sensitive_names=True, *args, **kwargs) - Load a Parquet dataset into a DataFrame
 cudf.io.read_parquet_metadata(filepath_or_buffer) -> 'tuple[int, int, Sequence[Hashable], int, Sequence[dict[str, int]]]' - Read metadata and schema of a list of Parquet files
 cudf.io.read_text(filepath_or_buffer, delimiter=None, byte_range=None, strip_delimiters=False, compression=None, compression_offsets=None, storage_options=None) -> cudf.core.series.Series - Configuration object for a text Datasource
 cudf.io.text.Series(data=None, index=None, dtype: 'Dtype | None' = None, name=None, copy=False, nan_as_null=<no_default>) - One-dimensional GPU array (including time series).
@@ -4678,7 +4591,7 @@ cudf.io.text.Series.update(self, other) - Modify Series in place using values fr
 cudf.io.text.Series.valid_count - Number of non-null values
 cudf.io.text.Series.value_counts(self, normalize=False, sort=True, ascending=False, bins=None, dropna=True) - Return a Series containing counts of unique values.
 cudf.io.text.Series.values - Return a CuPy representation of the DataFrame.
-cudf.io.text.Series.values_host - Return a NumPy representation of the data.
+cudf.io.text.Series.values_host - Return a numpy representation of the data.
 cudf.io.text.Series.var(self, axis=<no_default>, skipna: 'bool' = True, ddof: 'int' = 1, numeric_only: 'bool' = False, **kwargs) - Return unbiased variance of the DataFrame.
 cudf.io.text.Series.where(self, cond, other=None, inplace: 'bool' = False, axis=None, level=None) -> 'Self | None' - Replace values where the condition is False.
 cudf.io.text.read_text(filepath_or_buffer, delimiter=None, byte_range=None, strip_delimiters=False, compression=None, compression_offsets=None, storage_options=None) -> cudf.core.series.Series - Configuration object for a text Datasource
@@ -4713,61 +4626,60 @@ cudf.pandas.fast_slow_proxy.NotImplementedFallbackError.with_traceback(...) - Ex
 cudf.pandas.fast_slow_proxy.OOMFallbackError(...) - Raises when cuDF produces a MemoryError or an rmm.RMMError
 cudf.pandas.fast_slow_proxy.OOMFallbackError.add_note(...) - Exception.add_note(note) --
 cudf.pandas.fast_slow_proxy.OOMFallbackError.with_traceback(...) - Exception.with_traceback(tb) --
-cudf.pandas.fast_slow_proxy.ProxyNDarrayBase(arr) - ndarray(shape, dtype=float, buffer=None, offset=0,
-cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.all(...) - a.all(axis=None, out=None, keepdims=False, *, where=True)
-cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.any(...) - a.any(axis=None, out=None, keepdims=False, *, where=True)
-cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.argmax(...) - a.argmax(axis=None, out=None, *, keepdims=False)
-cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.argmin(...) - a.argmin(axis=None, out=None, *, keepdims=False)
-cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.argpartition(...) - a.argpartition(kth, axis=-1, kind='introselect', order=None)
-cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.argsort(...) - a.argsort(axis=-1, kind=None, order=None)
-cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.astype(...) - a.astype(dtype, order='K', casting='unsafe', subok=True, copy=True)
-cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.byteswap(...) - a.byteswap(inplace=False)
-cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.choose(...) - a.choose(choices, out=None, mode='raise')
-cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.clip(...) - a.clip(min=None, max=None, out=None, **kwargs)
-cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.compress(...) - a.compress(condition, axis=None, out=None)
-cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.conj(...) - a.conj()
-cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.conjugate(...) - a.conjugate()
-cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.copy(...) - a.copy(order='C')
-cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.cumprod(...) - a.cumprod(axis=None, dtype=None, out=None)
-cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.cumsum(...) - a.cumsum(axis=None, dtype=None, out=None)
-cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.diagonal(...) - a.diagonal(offset=0, axis1=0, axis2=1)
-cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.dot(...)
-cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.dump(...) - a.dump(file)
-cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.dumps(...) - a.dumps()
-cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.fill(...) - a.fill(value)
-cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.flatten(...) - a.flatten(order='C')
-cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.getfield(...) - a.getfield(dtype, offset=0)
-cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.item(...) - a.item(*args)
-cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.max(...) - a.max(axis=None, out=None, keepdims=False, initial=<no value>, where=True)
-cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.mean(...) - a.mean(axis=None, dtype=None, out=None, keepdims=False, *, where=True)
-cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.min(...) - a.min(axis=None, out=None, keepdims=False, initial=<no value>, where=True)
-cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.nonzero(...) - a.nonzero()
-cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.partition(...) - a.partition(kth, axis=-1, kind='introselect', order=None)
-cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.prod(...) - a.prod(axis=None, dtype=None, out=None, keepdims=False,
-cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.put(...) - a.put(indices, values, mode='raise')
-cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.ravel(...) - a.ravel([order])
-cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.repeat(...) - a.repeat(repeats, axis=None)
-cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.reshape(...) - a.reshape(shape, /, *, order='C', copy=None)
-cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.resize(...) - a.resize(new_shape, refcheck=True)
-cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.round(...) - a.round(decimals=0, out=None)
-cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.searchsorted(...) - a.searchsorted(v, side='left', sorter=None)
-cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.setfield(...) - a.setfield(val, dtype, offset=0)
-cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.setflags(...) - a.setflags(write=None, align=None, uic=None)
-cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.sort(...) - a.sort(axis=-1, kind=None, order=None)
-cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.squeeze(...) - a.squeeze(axis=None)
-cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.std(...) - a.std(axis=None, dtype=None, out=None, ddof=0, keepdims=False, *, where=True)
-cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.sum(...) - a.sum(axis=None, dtype=None, out=None, keepdims=False, initial=0, where=True)
-cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.swapaxes(...) - a.swapaxes(axis1, axis2)
-cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.take(...) - a.take(indices, axis=None, out=None, mode='raise')
-cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.to_device(...)
-cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.tobytes(...) - a.tobytes(order='C')
-cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.tofile(...) - a.tofile(fid, sep="", format="%s")
-cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.tolist(...) - a.tolist()
-cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.tostring(...) - a.tostring(order='C')
-cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.trace(...) - a.trace(offset=0, axis1=0, axis2=1, dtype=None, out=None)
-cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.transpose(...) - a.transpose(*axes)
-cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.var(...) - a.var(axis=None, dtype=None, out=None, ddof=0, keepdims=False, *, where=True)
-cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.view(...) - a.view([dtype][, type])
+cudf.pandas.fast_slow_proxy.ProxyNDarrayBase(arr) - ndarray(shape, dtype=float, buffer=None, offset=0, strides=None, order=None)
+cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.all(self, /, axis=None, out=None, keepdims=False, *, where=True) - a.all(axis=None, out=None, *, keepdims=<no value>, where=<no value>)
+cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.any(self, /, axis=None, out=None, keepdims=False, *, where=True) - a.any(axis=None, out=None, *, keepdims=<no value>, where=<no value>)
+cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.argmax(self, /, axis=None, out=None, *, keepdims=False) - a.argmax(axis=None, out=None, *, keepdims=False)
+cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.argmin(self, /, axis=None, out=None, *, keepdims=False) - a.argmin(axis=None, out=None, *, keepdims=False)
+cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.argpartition(self, kth, /, axis=-1, kind='introselect', order=None) - a.argpartition(kth, axis=-1, kind='introselect', order=None)
+cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.argsort(self, /, axis=-1, kind=None, order=None, *, stable=None) - a.argsort(axis=-1, kind=None, order=None, *, stable=None)
+cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.astype(self, /, dtype, order='K', casting='unsafe', subok=True, copy=True) - a.astype(dtype, order='K', casting='unsafe', subok=True, copy=True)
+cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.byteswap(self, /, inplace=False) - a.byteswap(inplace=False)
+cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.choose(self, /, choices, out=None, mode='raise') - a.choose(choices, out=None, mode='raise')
+cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.clip(self, /, min=None, max=None, out=None, **kwargs) - a.clip(min=<no value>, max=<no value>, out=None, **kwargs)
+cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.compress(self, /, condition, axis=None, out=None) - a.compress(condition, axis=None, out=None)
+cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.conj(self, /) - a.conj()
+cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.conjugate(self, /) - a.conjugate()
+cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.copy(self, /, order='C') - a.copy(order='C')
+cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.cumprod(self, /, axis=None, dtype=None, out=None) - a.cumprod(axis=None, dtype=None, out=None)
+cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.cumsum(self, /, axis=None, dtype=None, out=None) - a.cumsum(axis=None, dtype=None, out=None)
+cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.diagonal(self, /, offset=0, axis1=0, axis2=1) - a.diagonal(offset=0, axis1=0, axis2=1)
+cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.dot(self, other, /, out=None) - a.dot(other, /, out=None)
+cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.dump(self, /, file) - a.dump(file)
+cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.dumps(self, /) - a.dumps()
+cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.fill(self, /, value) - a.fill(value)
+cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.flatten(self, /, order='C') - a.flatten(order='C')
+cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.getfield(self, /, dtype, offset=0) - a.getfield(dtype, offset=0)
+cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.item(self, /, *args) - a.item(*args)
+cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.max(self, /, axis=None, out=None, **kwargs) - a.max(axis=None, out=None, *, keepdims=<no value>, initial=<no value>, where=<no value>)
+cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.mean(self, /, axis=None, dtype=None, out=None, **kwargs) - a.mean(axis=None, dtype=None, out=None, *, keepdims=<no value>, where=<no value>)
+cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.min(self, /, axis=None, out=None, **kwargs) - a.min(axis=None, out=None, *, keepdims=<no value>, initial=<no value>, where=<no value>)
+cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.nonzero(self, /) - a.nonzero()
+cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.partition(self, kth, /, axis=-1, kind='introselect', order=None) - a.partition(kth, axis=-1, kind='introselect', order=None)
+cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.prod(self, /, axis=None, dtype=None, out=None, **kwargs) - a.prod(axis=None, dtype=None, out=None, *, keepdims=<no value>, initial=<no value>, where=<no value>)
+cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.put(self, indices, values, /, mode='raise') - a.put(indices, values, mode='raise')
+cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.ravel(self, /, order='C') - a.ravel(order='C')
+cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.repeat(self, repeats, /, axis=None) - a.repeat(repeats, axis=None)
+cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.reshape(self, /, *shape, order='C', copy=None) - a.reshape(shape, /, *, order='C', copy=None)
+cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.resize(self, /, *new_shape, refcheck=True) - a.resize(new_shape, /, *, refcheck=True)
+cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.round(self, /, decimals=0, out=None) - a.round(decimals=0, out=None)
+cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.searchsorted(self, v, /, side='left', sorter=None) - a.searchsorted(v, side='left', sorter=None)
+cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.setfield(self, val, /, dtype, offset=0) - a.setfield(val, dtype, offset=0)
+cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.setflags(self, /, *, write=None, align=None, uic=None) - a.setflags(write=None, align=None, uic=None)
+cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.sort(self, /, axis=-1, kind=None, order=None, *, stable=None) - a.sort(axis=-1, kind=None, order=None, *, stable=None)
+cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.squeeze(self, /, axis=None) - a.squeeze(axis=None)
+cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.std(self, /, axis=None, dtype=None, out=None, ddof=0, **kwargs) - a.std(axis=None, dtype=None, out=None, ddof=0, *, keepdims=<no value>, where=<no value>, mean=<no value>)
+cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.sum(self, /, axis=None, dtype=None, out=None, **kwargs) - a.sum(axis=None, dtype=None, out=None, *, keepdims=<no value>, initial=<no value>, where=<no value>)
+cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.swapaxes(self, axis1, axis2, /) - a.swapaxes(axis1, axis2, /)
+cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.take(self, indices, /, axis=None, out=None, mode='raise') - a.take(indices, axis=None, out=None, mode='raise')
+cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.to_device(self, device, /, *, stream=None) - a.to_device(device, /, *, stream=None)
+cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.tobytes(self, /, order='C') - a.tobytes(order='C')
+cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.tofile(self, fid, /, sep='', format='%s') - a.tofile(fid, /, sep='', format='%s')
+cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.tolist(self, /) - a.tolist()
+cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.trace(self, /, offset=0, axis1=0, axis2=1, dtype=None, out=None) - a.trace(offset=0, axis1=0, axis2=1, dtype=None, out=None)
+cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.transpose(self, /, *axes) - a.transpose(*axes)
+cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.var(self, /, axis=None, dtype=None, out=None, ddof=0, **kwargs) - a.var(axis=None, dtype=None, out=None, ddof=0, *, keepdims=<no value>, where=<no value>, mean=<no value>)
+cudf.pandas.fast_slow_proxy.ProxyNDarrayBase.view(self, /, *args, **kwargs) - a.view([dtype][, type])
 cudf.pandas.fast_slow_proxy.TypeFallbackError(...) - Raises when cuDF produces a TypeError
 cudf.pandas.fast_slow_proxy.TypeFallbackError.add_note(...) - Exception.add_note(note) --
 cudf.pandas.fast_slow_proxy.TypeFallbackError.with_traceback(...) - Exception.with_traceback(tb) --
@@ -4869,61 +4781,60 @@ cudf.pandas.profiler.Profiler.print_per_line_stats(self)
 cudf.pandas.profiler.format_cpu_functions_used(cpu_funcs)
 cudf.pandas.profiler.lines_with_profiling(lines, print_function_profile=False) - Inject profiling code into the given lines of code.
 cudf.pandas.profiler.load_stats(file_name)
-cudf.pandas.proxy_base.ProxyNDarrayBase(arr) - ndarray(shape, dtype=float, buffer=None, offset=0,
-cudf.pandas.proxy_base.ProxyNDarrayBase.all(...) - a.all(axis=None, out=None, keepdims=False, *, where=True)
-cudf.pandas.proxy_base.ProxyNDarrayBase.any(...) - a.any(axis=None, out=None, keepdims=False, *, where=True)
-cudf.pandas.proxy_base.ProxyNDarrayBase.argmax(...) - a.argmax(axis=None, out=None, *, keepdims=False)
-cudf.pandas.proxy_base.ProxyNDarrayBase.argmin(...) - a.argmin(axis=None, out=None, *, keepdims=False)
-cudf.pandas.proxy_base.ProxyNDarrayBase.argpartition(...) - a.argpartition(kth, axis=-1, kind='introselect', order=None)
-cudf.pandas.proxy_base.ProxyNDarrayBase.argsort(...) - a.argsort(axis=-1, kind=None, order=None)
-cudf.pandas.proxy_base.ProxyNDarrayBase.astype(...) - a.astype(dtype, order='K', casting='unsafe', subok=True, copy=True)
-cudf.pandas.proxy_base.ProxyNDarrayBase.byteswap(...) - a.byteswap(inplace=False)
-cudf.pandas.proxy_base.ProxyNDarrayBase.choose(...) - a.choose(choices, out=None, mode='raise')
-cudf.pandas.proxy_base.ProxyNDarrayBase.clip(...) - a.clip(min=None, max=None, out=None, **kwargs)
-cudf.pandas.proxy_base.ProxyNDarrayBase.compress(...) - a.compress(condition, axis=None, out=None)
-cudf.pandas.proxy_base.ProxyNDarrayBase.conj(...) - a.conj()
-cudf.pandas.proxy_base.ProxyNDarrayBase.conjugate(...) - a.conjugate()
-cudf.pandas.proxy_base.ProxyNDarrayBase.copy(...) - a.copy(order='C')
-cudf.pandas.proxy_base.ProxyNDarrayBase.cumprod(...) - a.cumprod(axis=None, dtype=None, out=None)
-cudf.pandas.proxy_base.ProxyNDarrayBase.cumsum(...) - a.cumsum(axis=None, dtype=None, out=None)
-cudf.pandas.proxy_base.ProxyNDarrayBase.diagonal(...) - a.diagonal(offset=0, axis1=0, axis2=1)
-cudf.pandas.proxy_base.ProxyNDarrayBase.dot(...)
-cudf.pandas.proxy_base.ProxyNDarrayBase.dump(...) - a.dump(file)
-cudf.pandas.proxy_base.ProxyNDarrayBase.dumps(...) - a.dumps()
-cudf.pandas.proxy_base.ProxyNDarrayBase.fill(...) - a.fill(value)
-cudf.pandas.proxy_base.ProxyNDarrayBase.flatten(...) - a.flatten(order='C')
-cudf.pandas.proxy_base.ProxyNDarrayBase.getfield(...) - a.getfield(dtype, offset=0)
-cudf.pandas.proxy_base.ProxyNDarrayBase.item(...) - a.item(*args)
-cudf.pandas.proxy_base.ProxyNDarrayBase.max(...) - a.max(axis=None, out=None, keepdims=False, initial=<no value>, where=True)
-cudf.pandas.proxy_base.ProxyNDarrayBase.mean(...) - a.mean(axis=None, dtype=None, out=None, keepdims=False, *, where=True)
-cudf.pandas.proxy_base.ProxyNDarrayBase.min(...) - a.min(axis=None, out=None, keepdims=False, initial=<no value>, where=True)
-cudf.pandas.proxy_base.ProxyNDarrayBase.nonzero(...) - a.nonzero()
-cudf.pandas.proxy_base.ProxyNDarrayBase.partition(...) - a.partition(kth, axis=-1, kind='introselect', order=None)
-cudf.pandas.proxy_base.ProxyNDarrayBase.prod(...) - a.prod(axis=None, dtype=None, out=None, keepdims=False,
-cudf.pandas.proxy_base.ProxyNDarrayBase.put(...) - a.put(indices, values, mode='raise')
-cudf.pandas.proxy_base.ProxyNDarrayBase.ravel(...) - a.ravel([order])
-cudf.pandas.proxy_base.ProxyNDarrayBase.repeat(...) - a.repeat(repeats, axis=None)
-cudf.pandas.proxy_base.ProxyNDarrayBase.reshape(...) - a.reshape(shape, /, *, order='C', copy=None)
-cudf.pandas.proxy_base.ProxyNDarrayBase.resize(...) - a.resize(new_shape, refcheck=True)
-cudf.pandas.proxy_base.ProxyNDarrayBase.round(...) - a.round(decimals=0, out=None)
-cudf.pandas.proxy_base.ProxyNDarrayBase.searchsorted(...) - a.searchsorted(v, side='left', sorter=None)
-cudf.pandas.proxy_base.ProxyNDarrayBase.setfield(...) - a.setfield(val, dtype, offset=0)
-cudf.pandas.proxy_base.ProxyNDarrayBase.setflags(...) - a.setflags(write=None, align=None, uic=None)
-cudf.pandas.proxy_base.ProxyNDarrayBase.sort(...) - a.sort(axis=-1, kind=None, order=None)
-cudf.pandas.proxy_base.ProxyNDarrayBase.squeeze(...) - a.squeeze(axis=None)
-cudf.pandas.proxy_base.ProxyNDarrayBase.std(...) - a.std(axis=None, dtype=None, out=None, ddof=0, keepdims=False, *, where=True)
-cudf.pandas.proxy_base.ProxyNDarrayBase.sum(...) - a.sum(axis=None, dtype=None, out=None, keepdims=False, initial=0, where=True)
-cudf.pandas.proxy_base.ProxyNDarrayBase.swapaxes(...) - a.swapaxes(axis1, axis2)
-cudf.pandas.proxy_base.ProxyNDarrayBase.take(...) - a.take(indices, axis=None, out=None, mode='raise')
-cudf.pandas.proxy_base.ProxyNDarrayBase.to_device(...)
-cudf.pandas.proxy_base.ProxyNDarrayBase.tobytes(...) - a.tobytes(order='C')
-cudf.pandas.proxy_base.ProxyNDarrayBase.tofile(...) - a.tofile(fid, sep="", format="%s")
-cudf.pandas.proxy_base.ProxyNDarrayBase.tolist(...) - a.tolist()
-cudf.pandas.proxy_base.ProxyNDarrayBase.tostring(...) - a.tostring(order='C')
-cudf.pandas.proxy_base.ProxyNDarrayBase.trace(...) - a.trace(offset=0, axis1=0, axis2=1, dtype=None, out=None)
-cudf.pandas.proxy_base.ProxyNDarrayBase.transpose(...) - a.transpose(*axes)
-cudf.pandas.proxy_base.ProxyNDarrayBase.var(...) - a.var(axis=None, dtype=None, out=None, ddof=0, keepdims=False, *, where=True)
-cudf.pandas.proxy_base.ProxyNDarrayBase.view(...) - a.view([dtype][, type])
+cudf.pandas.proxy_base.ProxyNDarrayBase(arr) - ndarray(shape, dtype=float, buffer=None, offset=0, strides=None, order=None)
+cudf.pandas.proxy_base.ProxyNDarrayBase.all(self, /, axis=None, out=None, keepdims=False, *, where=True) - a.all(axis=None, out=None, *, keepdims=<no value>, where=<no value>)
+cudf.pandas.proxy_base.ProxyNDarrayBase.any(self, /, axis=None, out=None, keepdims=False, *, where=True) - a.any(axis=None, out=None, *, keepdims=<no value>, where=<no value>)
+cudf.pandas.proxy_base.ProxyNDarrayBase.argmax(self, /, axis=None, out=None, *, keepdims=False) - a.argmax(axis=None, out=None, *, keepdims=False)
+cudf.pandas.proxy_base.ProxyNDarrayBase.argmin(self, /, axis=None, out=None, *, keepdims=False) - a.argmin(axis=None, out=None, *, keepdims=False)
+cudf.pandas.proxy_base.ProxyNDarrayBase.argpartition(self, kth, /, axis=-1, kind='introselect', order=None) - a.argpartition(kth, axis=-1, kind='introselect', order=None)
+cudf.pandas.proxy_base.ProxyNDarrayBase.argsort(self, /, axis=-1, kind=None, order=None, *, stable=None) - a.argsort(axis=-1, kind=None, order=None, *, stable=None)
+cudf.pandas.proxy_base.ProxyNDarrayBase.astype(self, /, dtype, order='K', casting='unsafe', subok=True, copy=True) - a.astype(dtype, order='K', casting='unsafe', subok=True, copy=True)
+cudf.pandas.proxy_base.ProxyNDarrayBase.byteswap(self, /, inplace=False) - a.byteswap(inplace=False)
+cudf.pandas.proxy_base.ProxyNDarrayBase.choose(self, /, choices, out=None, mode='raise') - a.choose(choices, out=None, mode='raise')
+cudf.pandas.proxy_base.ProxyNDarrayBase.clip(self, /, min=None, max=None, out=None, **kwargs) - a.clip(min=<no value>, max=<no value>, out=None, **kwargs)
+cudf.pandas.proxy_base.ProxyNDarrayBase.compress(self, /, condition, axis=None, out=None) - a.compress(condition, axis=None, out=None)
+cudf.pandas.proxy_base.ProxyNDarrayBase.conj(self, /) - a.conj()
+cudf.pandas.proxy_base.ProxyNDarrayBase.conjugate(self, /) - a.conjugate()
+cudf.pandas.proxy_base.ProxyNDarrayBase.copy(self, /, order='C') - a.copy(order='C')
+cudf.pandas.proxy_base.ProxyNDarrayBase.cumprod(self, /, axis=None, dtype=None, out=None) - a.cumprod(axis=None, dtype=None, out=None)
+cudf.pandas.proxy_base.ProxyNDarrayBase.cumsum(self, /, axis=None, dtype=None, out=None) - a.cumsum(axis=None, dtype=None, out=None)
+cudf.pandas.proxy_base.ProxyNDarrayBase.diagonal(self, /, offset=0, axis1=0, axis2=1) - a.diagonal(offset=0, axis1=0, axis2=1)
+cudf.pandas.proxy_base.ProxyNDarrayBase.dot(self, other, /, out=None) - a.dot(other, /, out=None)
+cudf.pandas.proxy_base.ProxyNDarrayBase.dump(self, /, file) - a.dump(file)
+cudf.pandas.proxy_base.ProxyNDarrayBase.dumps(self, /) - a.dumps()
+cudf.pandas.proxy_base.ProxyNDarrayBase.fill(self, /, value) - a.fill(value)
+cudf.pandas.proxy_base.ProxyNDarrayBase.flatten(self, /, order='C') - a.flatten(order='C')
+cudf.pandas.proxy_base.ProxyNDarrayBase.getfield(self, /, dtype, offset=0) - a.getfield(dtype, offset=0)
+cudf.pandas.proxy_base.ProxyNDarrayBase.item(self, /, *args) - a.item(*args)
+cudf.pandas.proxy_base.ProxyNDarrayBase.max(self, /, axis=None, out=None, **kwargs) - a.max(axis=None, out=None, *, keepdims=<no value>, initial=<no value>, where=<no value>)
+cudf.pandas.proxy_base.ProxyNDarrayBase.mean(self, /, axis=None, dtype=None, out=None, **kwargs) - a.mean(axis=None, dtype=None, out=None, *, keepdims=<no value>, where=<no value>)
+cudf.pandas.proxy_base.ProxyNDarrayBase.min(self, /, axis=None, out=None, **kwargs) - a.min(axis=None, out=None, *, keepdims=<no value>, initial=<no value>, where=<no value>)
+cudf.pandas.proxy_base.ProxyNDarrayBase.nonzero(self, /) - a.nonzero()
+cudf.pandas.proxy_base.ProxyNDarrayBase.partition(self, kth, /, axis=-1, kind='introselect', order=None) - a.partition(kth, axis=-1, kind='introselect', order=None)
+cudf.pandas.proxy_base.ProxyNDarrayBase.prod(self, /, axis=None, dtype=None, out=None, **kwargs) - a.prod(axis=None, dtype=None, out=None, *, keepdims=<no value>, initial=<no value>, where=<no value>)
+cudf.pandas.proxy_base.ProxyNDarrayBase.put(self, indices, values, /, mode='raise') - a.put(indices, values, mode='raise')
+cudf.pandas.proxy_base.ProxyNDarrayBase.ravel(self, /, order='C') - a.ravel(order='C')
+cudf.pandas.proxy_base.ProxyNDarrayBase.repeat(self, repeats, /, axis=None) - a.repeat(repeats, axis=None)
+cudf.pandas.proxy_base.ProxyNDarrayBase.reshape(self, /, *shape, order='C', copy=None) - a.reshape(shape, /, *, order='C', copy=None)
+cudf.pandas.proxy_base.ProxyNDarrayBase.resize(self, /, *new_shape, refcheck=True) - a.resize(new_shape, /, *, refcheck=True)
+cudf.pandas.proxy_base.ProxyNDarrayBase.round(self, /, decimals=0, out=None) - a.round(decimals=0, out=None)
+cudf.pandas.proxy_base.ProxyNDarrayBase.searchsorted(self, v, /, side='left', sorter=None) - a.searchsorted(v, side='left', sorter=None)
+cudf.pandas.proxy_base.ProxyNDarrayBase.setfield(self, val, /, dtype, offset=0) - a.setfield(val, dtype, offset=0)
+cudf.pandas.proxy_base.ProxyNDarrayBase.setflags(self, /, *, write=None, align=None, uic=None) - a.setflags(write=None, align=None, uic=None)
+cudf.pandas.proxy_base.ProxyNDarrayBase.sort(self, /, axis=-1, kind=None, order=None, *, stable=None) - a.sort(axis=-1, kind=None, order=None, *, stable=None)
+cudf.pandas.proxy_base.ProxyNDarrayBase.squeeze(self, /, axis=None) - a.squeeze(axis=None)
+cudf.pandas.proxy_base.ProxyNDarrayBase.std(self, /, axis=None, dtype=None, out=None, ddof=0, **kwargs) - a.std(axis=None, dtype=None, out=None, ddof=0, *, keepdims=<no value>, where=<no value>, mean=<no value>)
+cudf.pandas.proxy_base.ProxyNDarrayBase.sum(self, /, axis=None, dtype=None, out=None, **kwargs) - a.sum(axis=None, dtype=None, out=None, *, keepdims=<no value>, initial=<no value>, where=<no value>)
+cudf.pandas.proxy_base.ProxyNDarrayBase.swapaxes(self, axis1, axis2, /) - a.swapaxes(axis1, axis2, /)
+cudf.pandas.proxy_base.ProxyNDarrayBase.take(self, indices, /, axis=None, out=None, mode='raise') - a.take(indices, axis=None, out=None, mode='raise')
+cudf.pandas.proxy_base.ProxyNDarrayBase.to_device(self, device, /, *, stream=None) - a.to_device(device, /, *, stream=None)
+cudf.pandas.proxy_base.ProxyNDarrayBase.tobytes(self, /, order='C') - a.tobytes(order='C')
+cudf.pandas.proxy_base.ProxyNDarrayBase.tofile(self, fid, /, sep='', format='%s') - a.tofile(fid, /, sep='', format='%s')
+cudf.pandas.proxy_base.ProxyNDarrayBase.tolist(self, /) - a.tolist()
+cudf.pandas.proxy_base.ProxyNDarrayBase.trace(self, /, offset=0, axis1=0, axis2=1, dtype=None, out=None) - a.trace(offset=0, axis1=0, axis2=1, dtype=None, out=None)
+cudf.pandas.proxy_base.ProxyNDarrayBase.transpose(self, /, *axes) - a.transpose(*axes)
+cudf.pandas.proxy_base.ProxyNDarrayBase.var(self, /, axis=None, dtype=None, out=None, ddof=0, **kwargs) - a.var(axis=None, dtype=None, out=None, ddof=0, *, keepdims=<no value>, where=<no value>, mean=<no value>)
+cudf.pandas.proxy_base.ProxyNDarrayBase.view(self, /, *args, **kwargs) - a.view([dtype][, type])
 cudf.pivot(data: 'DataFrame', columns=None, index=<no_default>, values=<no_default>) -> 'DataFrame' - Return reshaped DataFrame organized by the given index and column values.
 cudf.pivot_table(data: 'DataFrame', values=None, index=None, columns=None, aggfunc='mean', fill_value=None, margins=False, dropna=None, margins_name='All', observed=False, sort=True) - Create a spreadsheet-style pivot table as a DataFrame.
 cudf.read_avro(filepath_or_buffer, columns=None, skiprows=None, num_rows=None, storage_options=None) - Load an Avro dataset into a DataFrame
@@ -4932,7 +4843,7 @@ cudf.read_feather(path, *args, **kwargs) - Load an feather object from the file 
 cudf.read_hdf(path_or_buf, *args, **kwargs) - Read from the store, close it if we opened it.
 cudf.read_json(path_or_buf, engine: "Literal['auto', 'pandas', 'cudf']" = 'auto', orient=None, dtype=None, lines: 'bool' = False, compression: "Literal['bz2', 'gzip', 'infer', 'snappy', 'zip', 'zstd'] | None" = 'infer', byte_range: 'None | list[int]' = None, keep_quotes: 'bool' = False, storage_options=None, mixed_types_as_string: 'bool' = False, prune_columns: 'bool' = False, on_bad_lines: "Literal['error', 'recover']" = 'error', *args, **kwargs) -> 'DataFrame' - Load a JSON dataset into a DataFrame
 cudf.read_orc(filepath_or_buffer, engine='cudf', columns=None, filters=None, stripes=None, skiprows: 'int | None' = None, num_rows: 'int | None' = None, use_index: 'bool' = True, timestamp_type=None, storage_options=None, bytes_per_thread=None) - Load an ORC dataset into a DataFrame
-cudf.read_parquet(filepath_or_buffer, engine='cudf', columns=None, storage_options=None, filesystem=None, filters=None, row_groups=None, use_pandas_metadata=True, categorical_partitions=True, bytes_per_thread=None, dataset_kwargs=None, nrows=None, skip_rows=None, allow_mismatched_pq_schemas=False, ignore_missing_columns=True, *args, **kwargs) - Load a Parquet dataset into a DataFrame
+cudf.read_parquet(filepath_or_buffer, engine='cudf', columns=None, storage_options=None, filesystem=None, filters=None, row_groups=None, use_pandas_metadata=True, categorical_partitions=True, bytes_per_thread=None, dataset_kwargs=None, nrows=None, skip_rows=None, allow_mismatched_pq_schemas=False, ignore_missing_columns=True, case_sensitive_names=True, *args, **kwargs) - Load a Parquet dataset into a DataFrame
 cudf.read_text(filepath_or_buffer, delimiter=None, byte_range=None, strip_delimiters=False, compression=None, compression_offsets=None, storage_options=None) -> cudf.core.series.Series - Configuration object for a text Datasource
 cudf.register_dataframe_accessor(name) - Extends `cudf.DataFrame` with custom defined accessor
 cudf.register_index_accessor(name) - Extends `cudf.Index` with custom defined accessor
@@ -4975,7 +4886,7 @@ cudf.testing.testing.assert_index_equal(left, right, exact='equiv', check_names:
 cudf.testing.testing.assert_neq(left, right, **kwargs) - Assert that two cudf-like things are not equal.
 cudf.testing.testing.assert_series_equal(left, right, check_dtype=True, check_index_type='equiv', check_series_type=True, check_names=True, check_exact=False, check_datetimelike_compat=False, check_categorical=True, check_category_order=True, rtol=1e-05, atol=1e-08, obj='Series') - Check that left and right Series are equal
 cudf.testing.testing.dtype_can_compare_equal_to_other(dtype)
-cudf.testing.testing.is_dtype_obj_numeric(dtype: 'DtypeObj', include_decimal: 'bool' = True) -> 'bool' - Like is_numeric_dtype but does not introspect argument.
+cudf.testing.testing.is_dtype_obj_numeric(dtype: 'DtypeObj', include_decimal: 'bool' = True) -> 'bool' - Check whether the provided dtype object is a numeric type.
 cudf.testing.testing.null_safe_scalar_equals(left, right)
 cudf.testing.testing.raise_assert_detail(obj, message, left, right, diff=None)
 cudf.to_datetime(arg, errors: "Literal['raise', 'coerce', 'warn', 'ignore']" = 'raise', dayfirst: 'bool' = False, yearfirst: 'bool' = False, utc: 'bool' = False, format: 'str | None' = None, exact: 'bool' = True, unit: 'str' = 'ns', infer_datetime_format: 'bool' = True, origin='unix', cache: 'bool' = True) - Convert argument to datetime.
@@ -4987,33 +4898,23 @@ cudf.utils.docutils.doc_apply(doc) - Set `__doc__` attribute of `func` to `doc`.
 cudf.utils.docutils.docfmt(**kwargs) - Format docstring.
 cudf.utils.docutils.docfmt_partial(**kwargs)
 cudf.utils.dtypes.can_convert_to_column(obj) - This function checks if the given `obj`
-cudf.utils.dtypes.cudf_dtype_from_pa_type(typ: 'pa.DataType') -> 'DtypeObj' - Given a cuDF pyarrow dtype, converts it into the equivalent
+cudf.utils.dtypes.cudf_dtype_from_pa_type(typ: 'pa.DataType') -> 'DtypeObj' - Given a pyarrow dtype, converts it into the equivalent cudf dtype.
 cudf.utils.dtypes.cudf_dtype_to_pa_type(dtype: 'DtypeObj') -> 'pa.DataType' - Given a cudf pandas dtype, converts it into the equivalent cuDF
 cudf.utils.dtypes.dtype_from_pylibcudf_column(col: 'plc.Column') -> 'DtypeObj'
-cudf.utils.dtypes.dtype_to_pandas_arrowdtype(dtype) -> 'pd.ArrowDtype'
+cudf.utils.dtypes.dtype_to_pandas_arrowdtype(dtype: 'DtypeObj') -> 'pd.ArrowDtype'
 cudf.utils.dtypes.dtype_to_pandas_nullable_extension_type(dtype) -> 'DtypeObj'
-cudf.utils.dtypes.dtype_to_pylibcudf_type(dtype) -> 'plc.DataType'
+cudf.utils.dtypes.dtype_to_pylibcudf_type(dtype: 'DtypeObj') -> 'plc.DataType'
 cudf.utils.dtypes.find_common_type(dtypes: 'Iterable[DtypeObj]') -> 'DtypeObj | None' - Wrapper over np.result_type to handle cudf specific types.
+cudf.utils.dtypes.get_compatible_timezone(dtype: 'pd.DatetimeTZDtype') -> 'pd.DatetimeTZDtype' - Convert dtype.tz object to zoneinfo object if possible.
 cudf.utils.dtypes.get_dtype_of_same_kind(source_dtype: 'DtypeObj', target_dtype: 'DtypeObj') - Given a dtype, return a dtype of the same kind.
 cudf.utils.dtypes.get_dtype_of_same_type(lhs_dtype: 'DtypeObj', rhs_dtype: 'DtypeObj') - Given two dtypes, checks if `lhs_dtype` translates to same libcudf
 cudf.utils.dtypes.is_column_like(obj) - This function checks if the given `obj`
-cudf.utils.dtypes.is_dtype_obj_categorical(obj)
-cudf.utils.dtypes.is_dtype_obj_decimal(obj) - Check whether an array-like or dtype is of the decimal dtype.
-cudf.utils.dtypes.is_dtype_obj_decimal128(obj)
-cudf.utils.dtypes.is_dtype_obj_decimal32(obj)
-cudf.utils.dtypes.is_dtype_obj_decimal64(obj)
-cudf.utils.dtypes.is_dtype_obj_interval(obj)
-cudf.utils.dtypes.is_dtype_obj_list(obj) - Check whether an array-like or dtype is of the list dtype.
-cudf.utils.dtypes.is_dtype_obj_numeric(dtype: 'DtypeObj', include_decimal: 'bool' = True) -> 'bool' - Like is_numeric_dtype but does not introspect argument.
-cudf.utils.dtypes.is_dtype_obj_string(obj) - Check whether the provided array or dtype is of the string dtype.
-cudf.utils.dtypes.is_dtype_obj_struct(obj) - Check whether an array-like or dtype is of the struct dtype.
 cudf.utils.dtypes.is_mixed_with_object_dtype(lhs, rhs)
 cudf.utils.dtypes.is_pandas_nullable_extension_dtype(dtype_to_check: 'Any') -> 'TypeGuard[pd.core.dtypes.base.ExtensionDtype]'
 cudf.utils.dtypes.is_pandas_nullable_numpy_dtype(dtype_to_check) -> 'bool'
 cudf.utils.dtypes.min_signed_type(x: 'int', min_size: 'int' = 8) -> 'np.dtype' - Return the smallest *signed* integer dtype
 cudf.utils.dtypes.min_unsigned_type(x: 'int', min_size: 'int' = 8) -> 'np.dtype' - Return the smallest *unsigned* integer dtype
-cudf.utils.dtypes.pyarrow_dtype_to_cudf_dtype(dtype: 'pd.ArrowDtype') -> 'DtypeObj' - Given a pandas ArrowDtype, converts it into the equivalent cudf pandas
-cudf.utils.hash_vocab_utils.hash_vocab(vocab_path, output_path, unk_tok='[UNK]', first_token='[CLS]', sep_token='[SEP]') - Write the vocab vocabulary hashtable to the output_path
+cudf.utils.dtypes.pyarrow_dtype_to_cudf_dtype(dtype: 'pd.ArrowDtype') -> 'DtypeObj' - Convert a pandas.ArrowDtype to a default cuDF dtype.
 cudf.utils.ioutils.buffer_write_lines(buf, lines) - Appends lines to a buffer.
 cudf.utils.ioutils.cudf_dtype_to_pa_type(dtype: 'DtypeObj') -> 'pa.DataType' - Given a cudf pandas dtype, converts it into the equivalent cuDF
 cudf.utils.ioutils.docfmt_partial(**kwargs)
@@ -5026,7 +4927,6 @@ cudf.utils.ioutils.is_file_like(obj) - Check if the object is a file-like object
 cudf.utils.ioutils.is_fsspec_open_file(file_obj)
 cudf.utils.ioutils.is_list_like(obj) - Return `True` if the given `obj` is list-like (list, tuple, Series...).
 cudf.utils.ioutils.is_url(url) - Check if a string is a valid URL to a network location.
-cudf.utils.ioutils.recursively_update_struct_names(dtype: 'DtypeObj', child_names: 'Mapping[Any, Any]') -> 'DtypeObj' - Update dtype's field names (namely StructDtype) recursively with child_names.
 cudf.utils.ioutils.stringify_pathlike(pathlike) - Convert any object that implements the fspath protocol
 cudf.utils.performance_tracking.get_memory_records() -> 'dict[str, rmm.statistics.ProfilerRecords.MemoryRecord]' - Get the memory records from the memory profiling
 cudf.utils.performance_tracking.get_option(name: 'str') -> 'Any' - Get the value of option.
@@ -5034,13 +4934,12 @@ cudf.utils.performance_tracking.print_memory_report(file=<_io.TextIOWrapper name
 cudf.utils.queryutils.QuerySyntaxError(...) - Inappropriate argument value (of correct type).
 cudf.utils.queryutils.QuerySyntaxError.add_note(...) - Exception.add_note(note) --
 cudf.utils.queryutils.QuerySyntaxError.with_traceback(...) - Exception.with_traceback(tb) --
-cudf.utils.queryutils.as_column(arbitrary: 'Any', nan_as_null: 'bool | None' = None, dtype: 'Dtype | None' = None, length: 'int | None' = None) -> 'ColumnBase' - Create a Column from an arbitrary object
+cudf.utils.queryutils.as_column(arbitrary: 'Any', nan_as_null: 'bool | None' = None, dtype: 'DtypeObj | None' = None, length: 'int | None' = None) -> 'ColumnBase' - Create a Column from an arbitrary object.
 cudf.utils.queryutils.extract_col(df, col) - Extract column from dataframe `df` with their name `col`.
 cudf.utils.queryutils.query_builder(info, funcid) - Function builder for the query expression
 cudf.utils.queryutils.query_compile(expr) - Compile the query expression.
 cudf.utils.queryutils.query_execute(df, expr, callenv) - Compile & execute the query expression
 cudf.utils.queryutils.query_parser(text) - The query expression parser.
-cudf.utils.scalar.maybe_nested_pa_scalar_to_py(pa_scalar: 'pa.Scalar') -> 'Any' - Convert a valid, "nested" pyarrow scalar to a Python object.
 cudf.utils.scalar.pa_scalar_to_plc_scalar(pa_scalar: 'pa.Scalar') -> 'plc.Scalar' - Cached conversion from a pyarrow.Scalar to pylibcudf.Scalar.
 cudf.utils.temporal.infer_format(element: 'str', **kwargs) -> 'str' - Infers datetime format from a string, also takes cares for `ms` and `ns`
 cudf.utils.utils.is_na_like(obj: 'Any') -> 'bool' - Check if `obj` is a cudf NA value,

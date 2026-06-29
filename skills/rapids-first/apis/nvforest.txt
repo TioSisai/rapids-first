@@ -1,0 +1,63 @@
+nvforest.CPUForestInferenceClassifier(*, treelite_model: treelite.model.Model, handle: Optional[pylibraft.common.handle.Handle] = None, layout: str = 'depth_first', default_chunk_size: Optional[int] = None, align_bytes: Optional[int] = None, precision: Optional[str] = None) - Mixin class that provides the optimize method for ForestInference classes.
+nvforest.CPUForestInferenceClassifier.align_bytes
+nvforest.CPUForestInferenceClassifier.apply(self, X: Union[numpy.ndarray, ForwardRef('cupy.ndarray')], *, chunk_size: Optional[int] = None) -> Union[numpy.ndarray, ForwardRef('cupy.ndarray')] - Output the ID of the leaf node for each tree.
+nvforest.CPUForestInferenceClassifier.default_chunk_size
+nvforest.CPUForestInferenceClassifier.device_id
+nvforest.CPUForestInferenceClassifier.get_class_assignment(self, raw_out: Union[numpy.ndarray, ForwardRef('cupy.ndarray')], threshold: Optional[float] = None) -> Union[numpy.ndarray, ForwardRef('cupy.ndarray')]
+nvforest.CPUForestInferenceClassifier.is_classifier
+nvforest.CPUForestInferenceClassifier.layout
+nvforest.CPUForestInferenceClassifier.num_features
+nvforest.CPUForestInferenceClassifier.num_outputs
+nvforest.CPUForestInferenceClassifier.num_trees
+nvforest.CPUForestInferenceClassifier.optimize(self, *, data=None, batch_size: int = 1024, unique_batches: int = 10, timeout: float = 0.2, predict_method: str = 'predict', max_chunk_size: Optional[int] = None, seed: int = 0) -> Self - Find the optimal layout and chunk size for this model.
+nvforest.CPUForestInferenceClassifier.precision
+nvforest.CPUForestInferenceClassifier.predict(self, X: Union[numpy.ndarray, ForwardRef('cupy.ndarray')], *, chunk_size: Optional[int] = None, threshold: Optional[float] = None) -> Union[numpy.ndarray, ForwardRef('cupy.ndarray')] - Predict the class for each row.
+nvforest.CPUForestInferenceClassifier.predict_per_tree(self, X: Union[numpy.ndarray, ForwardRef('cupy.ndarray')], *, chunk_size: Optional[int] = None) -> Union[numpy.ndarray, ForwardRef('cupy.ndarray')] - Output prediction of each tree.
+nvforest.CPUForestInferenceClassifier.predict_proba(self, X: Union[numpy.ndarray, ForwardRef('cupy.ndarray')], *, chunk_size: Optional[int] = None) -> Union[numpy.ndarray, ForwardRef('cupy.ndarray')] - Predict the class probabilities for each row in X.
+nvforest.CPUForestInferenceRegressor(*, treelite_model: treelite.model.Model, handle: Optional[pylibraft.common.handle.Handle] = None, layout: str = 'depth_first', default_chunk_size: Optional[int] = None, align_bytes: Optional[int] = None, precision: Optional[str] = None) - Mixin class that provides the optimize method for ForestInference classes.
+nvforest.CPUForestInferenceRegressor.align_bytes
+nvforest.CPUForestInferenceRegressor.apply(self, X: Union[numpy.ndarray, ForwardRef('cupy.ndarray')], *, chunk_size: Optional[int] = None) -> Union[numpy.ndarray, ForwardRef('cupy.ndarray')] - Output the ID of the leaf node for each tree.
+nvforest.CPUForestInferenceRegressor.default_chunk_size
+nvforest.CPUForestInferenceRegressor.device_id
+nvforest.CPUForestInferenceRegressor.is_classifier
+nvforest.CPUForestInferenceRegressor.layout
+nvforest.CPUForestInferenceRegressor.num_features
+nvforest.CPUForestInferenceRegressor.num_outputs
+nvforest.CPUForestInferenceRegressor.num_trees
+nvforest.CPUForestInferenceRegressor.optimize(self, *, data=None, batch_size: int = 1024, unique_batches: int = 10, timeout: float = 0.2, predict_method: str = 'predict', max_chunk_size: Optional[int] = None, seed: int = 0) -> Self - Find the optimal layout and chunk size for this model.
+nvforest.CPUForestInferenceRegressor.precision
+nvforest.CPUForestInferenceRegressor.predict(self, X: Union[numpy.ndarray, ForwardRef('cupy.ndarray')], *, chunk_size: Optional[int] = None) -> Union[numpy.ndarray, ForwardRef('cupy.ndarray')] - Predict the output for each row.
+nvforest.CPUForestInferenceRegressor.predict_per_tree(self, X: Union[numpy.ndarray, ForwardRef('cupy.ndarray')], *, chunk_size: Optional[int] = None) -> Union[numpy.ndarray, ForwardRef('cupy.ndarray')] - Output prediction of each tree.
+nvforest.GPUForestInferenceClassifier(*, treelite_model: treelite.model.Model, handle: Optional[pylibraft.common.handle.Handle] = None, layout: str = 'depth_first', default_chunk_size: Optional[int] = None, align_bytes: Optional[int] = None, precision: Optional[str] = None, device_id: int) - Mixin class that provides the optimize method for ForestInference classes.
+nvforest.GPUForestInferenceClassifier.align_bytes
+nvforest.GPUForestInferenceClassifier.apply(self, X: Union[numpy.ndarray, ForwardRef('cupy.ndarray')], *, chunk_size: Optional[int] = None) -> Union[numpy.ndarray, ForwardRef('cupy.ndarray')] - Output the ID of the leaf node for each tree.
+nvforest.GPUForestInferenceClassifier.default_chunk_size
+nvforest.GPUForestInferenceClassifier.device_id
+nvforest.GPUForestInferenceClassifier.get_class_assignment(self, raw_out: Union[numpy.ndarray, ForwardRef('cupy.ndarray')], threshold: Optional[float] = None) -> Union[numpy.ndarray, ForwardRef('cupy.ndarray')]
+nvforest.GPUForestInferenceClassifier.is_classifier
+nvforest.GPUForestInferenceClassifier.layout
+nvforest.GPUForestInferenceClassifier.num_features
+nvforest.GPUForestInferenceClassifier.num_outputs
+nvforest.GPUForestInferenceClassifier.num_trees
+nvforest.GPUForestInferenceClassifier.optimize(self, *, data=None, batch_size: int = 1024, unique_batches: int = 10, timeout: float = 0.2, predict_method: str = 'predict', max_chunk_size: Optional[int] = None, seed: int = 0) -> Self - Find the optimal layout and chunk size for this model.
+nvforest.GPUForestInferenceClassifier.precision
+nvforest.GPUForestInferenceClassifier.predict(self, X: Union[numpy.ndarray, ForwardRef('cupy.ndarray')], *, chunk_size: Optional[int] = None, threshold: Optional[float] = None) -> Union[numpy.ndarray, ForwardRef('cupy.ndarray')] - Predict the class for each row.
+nvforest.GPUForestInferenceClassifier.predict_per_tree(self, X: Union[numpy.ndarray, ForwardRef('cupy.ndarray')], *, chunk_size: Optional[int] = None) -> Union[numpy.ndarray, ForwardRef('cupy.ndarray')] - Output prediction of each tree.
+nvforest.GPUForestInferenceClassifier.predict_proba(self, X: Union[numpy.ndarray, ForwardRef('cupy.ndarray')], *, chunk_size: Optional[int] = None) -> Union[numpy.ndarray, ForwardRef('cupy.ndarray')] - Predict the class probabilities for each row in X.
+nvforest.GPUForestInferenceRegressor(*, treelite_model: treelite.model.Model, handle: Optional[pylibraft.common.handle.Handle] = None, layout: str = 'depth_first', default_chunk_size: Optional[int] = None, align_bytes: Optional[int] = None, precision: Optional[str] = None, device_id: int) - Mixin class that provides the optimize method for ForestInference classes.
+nvforest.GPUForestInferenceRegressor.align_bytes
+nvforest.GPUForestInferenceRegressor.apply(self, X: Union[numpy.ndarray, ForwardRef('cupy.ndarray')], *, chunk_size: Optional[int] = None) -> Union[numpy.ndarray, ForwardRef('cupy.ndarray')] - Output the ID of the leaf node for each tree.
+nvforest.GPUForestInferenceRegressor.default_chunk_size
+nvforest.GPUForestInferenceRegressor.device_id
+nvforest.GPUForestInferenceRegressor.is_classifier
+nvforest.GPUForestInferenceRegressor.layout
+nvforest.GPUForestInferenceRegressor.num_features
+nvforest.GPUForestInferenceRegressor.num_outputs
+nvforest.GPUForestInferenceRegressor.num_trees
+nvforest.GPUForestInferenceRegressor.optimize(self, *, data=None, batch_size: int = 1024, unique_batches: int = 10, timeout: float = 0.2, predict_method: str = 'predict', max_chunk_size: Optional[int] = None, seed: int = 0) -> Self - Find the optimal layout and chunk size for this model.
+nvforest.GPUForestInferenceRegressor.precision
+nvforest.GPUForestInferenceRegressor.predict(self, X: Union[numpy.ndarray, ForwardRef('cupy.ndarray')], *, chunk_size: Optional[int] = None) -> Union[numpy.ndarray, ForwardRef('cupy.ndarray')] - Predict the output for each row.
+nvforest.GPUForestInferenceRegressor.predict_per_tree(self, X: Union[numpy.ndarray, ForwardRef('cupy.ndarray')], *, chunk_size: Optional[int] = None) -> Union[numpy.ndarray, ForwardRef('cupy.ndarray')] - Output prediction of each tree.
+nvforest.load_from_sklearn(skl_model: Any, *, device: str = 'auto', layout: str = 'depth_first', default_chunk_size: Optional[int] = None, align_bytes: Optional[int] = None, precision: Optional[str] = None, device_id: Optional[int] = None, handle: Optional[pylibraft.common.handle.Handle] = None) -> nvforest._base.ForestInference - Load a Scikit-Learn forest model to nvForest
+nvforest.load_from_treelite_model(tl_model: treelite.model.Model, *, device: str = 'auto', layout: str = 'depth_first', default_chunk_size: Optional[int] = None, align_bytes: Optional[int] = None, precision: Optional[str] = None, device_id: Optional[int] = None, handle: Optional[pylibraft.common.handle.Handle] = None) -> nvforest._base.ForestInference - Load a Treelite forest model to nvForest
+nvforest.load_model(model_file: Union[str, pathlib.Path], *, model_type: Optional[str] = None, device: str = 'auto', layout: str = 'depth_first', default_chunk_size: Optional[int] = None, align_bytes: Optional[int] = None, precision: Optional[str] = None, device_id: Optional[int] = None, handle: Optional[pylibraft.common.handle.Handle] = None) -> nvforest._base.ForestInference - Load a model into nvForest from a serialized model file.

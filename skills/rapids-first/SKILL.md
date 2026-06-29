@@ -15,7 +15,7 @@ Enable this skill if and only if the user's request explicitly contains `rapids-
 Once rapids-first is enabled, **all "writing Python code" subtasks** are handled according to the RAPIDS-first principle, not limited to rewriting existing CPU code:
 
 1. **Rewriting existing CPU code**: replace numpy / pandas / sklearn / scipy / networkx / skimage / faiss / umap / hdbscan / dask.dataframe calls with the corresponding RAPIDS APIs.
-2. **Adding new features / implementing new algorithms**: when writing implementations from scratch, prefer RAPIDS APIs as the foundation rather than numpy / scipy / sklearn. Example: for matrix decomposition → directly choose `cuml.decomposition` over `sklearn.decomposition`; for nearest neighbors → directly choose `cuvs.neighbors` / `cuml.neighbors` over `faiss` / `sklearn.neighbors`.
+2. **Adding new features / implementing new algorithms**: when writing implementations from scratch, prefer RAPIDS APIs as the foundation rather than numpy / scipy / sklearn. Example: for matrix decomposition → directly choose `cuml.decomposition` over `sklearn.decomposition`; for nearest neighbors → directly choose `cuvs.neighbors` / `cuml.neighbors` over `faiss` / `sklearn.neighbors`; for inference on an already-trained tree model (XGBoost / LightGBM / RandomForest) → directly choose `nvforest` over the framework's native `predict`.
 3. **Creating new scripts (ETL / training / inference / batch processing)**: use `cudf.read_*` / `dask_cudf.read_*` for data loading, `cupy` for matrix computation, `cudf` + `cuml.preprocessing` for feature engineering, `cuml` / `cugraph` for model training, `cucim.skimage` / `cupyx.scipy.ndimage` for image processing.
 4. **Adding new tests**: use RAPIDS as much as possible for test data generation and assertion comparison (`cudf.testing` / `cuml.testing`, etc.); let numpy / pandas appear only for RAPIDS↔CPU numerical comparisons, with a one-shot conversion at the boundary.
 5. **Fixing bugs**: even when just fixing a single numpy function call, if a suitable RAPIDS equivalent exists in the context, replace it in passing.
@@ -47,7 +47,8 @@ ${SKILL_DIR}/
     ├── cucim.txt                  # cuCIM (replaces scikit-image / openslide)
     ├── pylibraft.txt              # RAFT primitives
     ├── raft_dask.txt              # RAFT-Dask communication layer
-    └── cuvs.txt                   # cuVS (replaces faiss and other vector search)
+    ├── cuvs.txt                   # cuVS (replaces faiss and other vector search)
+    └── nvforest.txt               # nvForest (GPU/CPU forest inference; successor to cuML FIL)
 ```
 
 `${SKILL_DIR}` is the directory containing this `SKILL.md` — typically `~/.claude/skills/rapids-first` (user-level) or `.claude/skills/rapids-first` (project-level), with `.claude` replaced by `.agents` for Codex. Export it once before the first `rg`:
@@ -194,6 +195,23 @@ cuvs.neighbors.cagra.search(search_params, index, queries, k, ...) - ...
 ```
 
 Rewrite per the signatures: `build` builds the index, `search` queries k-nearest neighbors. CAGRA is cuVS's flagship GPU graph index.
+
+### Example 5: Accelerate XGBoost / LightGBM / RandomForest inference (rewrite scenario)
+
+nvForest runs *inference* for already-trained tree models on GPU (and CPU); it does **not** train. It is the standalone successor to cuML's Forest Inference Library — `cuml.fil` / `cuml.ForestInference` is deprecated in RAPIDS 26.06 in favor of `nvforest`, so route forest *prediction* here while keeping training in XGBoost / LightGBM / `cuml.ensemble`.
+
+```
+$ rg -P '^(xgboost|lightgbm)\t' "$SKILL_DIR/cpu-rapids-cuda-mapping.tsv"
+xgboost	nvforest	-	forest INFERENCE only (no training): load_model(path, model_type='xgboost_ubj'/...) -> .predict()/.predict_proba(); ...
+lightgbm	nvforest	-	forest INFERENCE only: load_model(path, model_type='lightgbm') -> .predict(); ...
+
+$ rg '^nvforest\.load' "$SKILL_DIR/apis/nvforest.txt"
+nvforest.load_from_sklearn(skl_model, *, device='auto', ...) -> nvforest._base.ForestInference - Load a Scikit-Learn forest model to nvForest
+nvforest.load_from_treelite_model(tl_model, *, device='auto', ...) -> nvforest._base.ForestInference - Load a Treelite forest model to nvForest
+nvforest.load_model(model_file, *, model_type=None, device='auto', ...) -> nvforest._base.ForestInference - Load a model into nvForest from a serialized model file.
+```
+
+Pick the loader that matches where the model comes from — `load_model` for a serialized XGBoost / LightGBM file (set `model_type`, e.g. `'xgboost_ubj'` / `'xgboost_json'` / `'lightgbm'`), `load_from_sklearn` for an in-memory scikit-learn / cuML forest, `load_from_treelite_model` for a Treelite handle — then call `.predict()` / `.predict_proba()` / `.apply()` on the returned object. Pass `device='gpu'` to force GPU (default `'auto'` falls back to CPU when no GPU is present); `X` may be a `numpy.ndarray` or `cupy.ndarray`.
 
 ## When RAPIDS Has No Corresponding Implementation
 

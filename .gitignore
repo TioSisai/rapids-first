@@ -1,0 +1,8 @@
+# cuFile / GPUDirect Storage log emitted when importing cudf / cucim / pylibraft
+# (e.g. while running skills/rapids-first/fetch_rapids_apis.py). Never commit it.
+cufile.log
+**/cufile.log
+
+# Python caches
+__pycache__/
+*.py[cod]

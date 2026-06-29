@@ -1,4 +1,11 @@
 cupyx.GeneralizedUFunc(func, signature, *, name=None, doc=None, supports_batched=False, supports_out=False, signatures=None, try_fastcall_func=None) - Creates a Generalized Universal Function by wrapping a user
+cupyx.cusolver.check_availability(...) - check_availability(name)
+cupyx.cusolver.csrlsvqr(...) - csrlsvqr(A, b, tol=0, reorder=1)
+cupyx.cusolver.gels(...) - gels(a, b)
+cupyx.cusolver.gesv(...) - gesv(a, b)
+cupyx.cusolver.gesvda(...) - gesvda(a, compute_uv=True)
+cupyx.cusolver.gesvdj(...) - gesvdj(a, full_matrices=True, compute_uv=True, overwrite_a=False)
+cupyx.cusolver.syevj(...) - syevj(a, UPLO='L', with_eigen_vector=True)
 cupyx.cusparse.BaseDescriptor(descriptor, get=None, destroyer=None)
 cupyx.cusparse.DnMatDescriptor(descriptor, get=None, destroyer=None)
 cupyx.cusparse.DnMatDescriptor.create(a)
@@ -46,6 +53,7 @@ cupyx.cusparse.dense2csr(x) - Converts a dense matrix in CSR format.
 cupyx.cusparse.denseToSparse(x, format='csr') - Converts a dense matrix into a CSR, CSC or COO format.
 cupyx.cusparse.getVersion() -> 'int'
 cupyx.cusparse.sparseToDense(x, out=None) - Converts sparse matrix to a dense matrix.
+cupyx.cusparse.spgeam(a, b, alpha=1, beta=1) - Sparse matrix addition using the Generic API: C = alpha*A + beta*B.
 cupyx.cusparse.spgemm(a, b, alpha=1) - Matrix-matrix product for CSR-matrix.
 cupyx.cusparse.spmm(a, b, c=None, alpha=1, beta=0, transa=False, transb=False) - Multiplication of sparse matrix and dense matrix.
 cupyx.cusparse.spmv(a, x, y=None, alpha=1, beta=0, transa=False) - Multiplication of sparse matrix and dense vector.
@@ -75,6 +83,7 @@ cupyx.distributed.array.DistributedArray.argpartition(self, *args, **kwargs) - N
 cupyx.distributed.array.DistributedArray.argsort(self, *args, **kwargs) - Not supported.
 cupyx.distributed.array.DistributedArray.astype(self, *args, **kwargs) - Not supported.
 cupyx.distributed.array.DistributedArray.base - Not supported.
+cupyx.distributed.array.DistributedArray.byteswap(...) - _ndarray_base.byteswap(self, inplace=False) -> _ndarray_base
 cupyx.distributed.array.DistributedArray.change_mode(self, mode: '_modes.Mode') -> 'DistributedArray' - Return a view or a copy in the given mode.
 cupyx.distributed.array.DistributedArray.choose(self, *args, **kwargs) - Not supported.
 cupyx.distributed.array.DistributedArray.clip(self, *args, **kwargs) - Not supported.
@@ -100,8 +109,9 @@ cupyx.distributed.array.DistributedArray.get(self, stream=None, order='C', out=N
 cupyx.distributed.array.DistributedArray.imag - Not supported.
 cupyx.distributed.array.DistributedArray.index_map - Indices for the chunks that devices with designated IDs own.
 cupyx.distributed.array.DistributedArray.item(self, *args, **kwargs) - Not supported.
+cupyx.distributed.array.DistributedArray.mT - Not supported.
 cupyx.distributed.array.DistributedArray.max(self, axis=None, out=None, keepdims=False) - Return the maximum along a given axis.
-cupyx.distributed.array.DistributedArray.mdspan(...) - _ndarray_base.mdspan(self, *, index_type, allow_unsafe=False)
+cupyx.distributed.array.DistributedArray.mdspan(self, *args, **kwargs) - Not supported.
 cupyx.distributed.array.DistributedArray.mean(self, *args, **kwargs) - Not supported.
 cupyx.distributed.array.DistributedArray.min(self, axis=None, out=None, keepdims=False) - Return the minimum along a given axis.
 cupyx.distributed.array.DistributedArray.mode - Describe how overlaps of the chunks are interpreted.
@@ -447,7 +457,7 @@ cupyx.scipy.linalg.lu_factor(a, overwrite_a=False, check_finite=True) - LU decom
 cupyx.scipy.linalg.lu_solve(lu_and_piv, b, trans=0, overwrite_b=False, check_finite=True) - Solve an equation system, ``a * x = b``, given the LU factorization of ``a``
 cupyx.scipy.linalg.solve_triangular(a, b, trans=0, lower=False, unit_diagonal=False, overwrite_b=False, check_finite=False) - Solve the equation a x = b for x, assuming a is a triangular matrix.
 cupyx.scipy.linalg.toeplitz(c, r=None) - Construct a Toeplitz matrix.
-cupyx.scipy.ndimage.affine_transform(input, matrix, offset=0.0, output_shape=None, output=None, order=3, mode='constant', cval=0.0, prefilter=True, *, texture_memory=False) - Apply an affine transformation.
+cupyx.scipy.ndimage.affine_transform(input, matrix, offset=0.0, output_shape=None, output=None, order=3, mode='constant', cval=0.0, prefilter=True, *, texture_memory=False, float64_coords=False) - Apply an affine transformation.
 cupyx.scipy.ndimage.binary_closing(input, structure=None, iterations=1, output=None, origin=0, mask=None, border_value=0, brute_force=False, *, axes=None) - Multidimensional binary closing with the given structuring element.
 cupyx.scipy.ndimage.binary_dilation(input, structure=None, iterations=1, mask=None, output=None, border_value=0, origin=0, brute_force=False, *, axes=None) - Multidimensional binary dilation with the given structuring element.
 cupyx.scipy.ndimage.binary_erosion(input, structure=None, iterations=1, mask=None, output=None, border_value=0, origin=0, brute_force=False, *, axes=None) - Multidimensional binary erosion with a given structuring element.
@@ -745,7 +755,7 @@ cupyx.scipy.signal.zpk2tf(z, p, k) - Return polynomial transfer function represe
 cupyx.scipy.sparse.bmat(blocks, format=None, dtype=None) - Builds a sparse matrix from sparse sub-blocks
 cupyx.scipy.sparse.coo_matrix(arg1, shape=None, dtype=None, copy=False) - COOrdinate format sparse matrix.
 cupyx.scipy.sparse.coo_matrix.A - Dense ndarray representation of this matrix.
-cupyx.scipy.sparse.coo_matrix.H
+cupyx.scipy.sparse.coo_matrix.H - Hermitian (conjugate) transpose of this matrix.
 cupyx.scipy.sparse.coo_matrix.T
 cupyx.scipy.sparse.coo_matrix.arcsin(self) - Elementwise arcsin.
 cupyx.scipy.sparse.coo_matrix.arcsinh(self) - Elementwise arcsinh.
@@ -770,9 +780,10 @@ cupyx.scipy.sparse.coo_matrix.floor(self) - Elementwise floor.
 cupyx.scipy.sparse.coo_matrix.get(self, stream=None) - Returns a copy of the array on host memory.
 cupyx.scipy.sparse.coo_matrix.getH(self)
 cupyx.scipy.sparse.coo_matrix.get_shape(self) - Returns the shape of the matrix.
-cupyx.scipy.sparse.coo_matrix.getformat(self)
-cupyx.scipy.sparse.coo_matrix.getmaxprint(self)
+cupyx.scipy.sparse.coo_matrix.getformat(self) - Return the format of this matrix (e.g., ``'csr'``).
+cupyx.scipy.sparse.coo_matrix.getmaxprint(self) - Return the maximum number of stored values shown in ``__str__``.
 cupyx.scipy.sparse.coo_matrix.getnnz(self, axis=None) - Returns the number of stored values, including explicit zeros.
+cupyx.scipy.sparse.coo_matrix.imag
 cupyx.scipy.sparse.coo_matrix.log1p(self) - Elementwise log1p.
 cupyx.scipy.sparse.coo_matrix.maximum(self, other)
 cupyx.scipy.sparse.coo_matrix.mean(self, axis=None, dtype=None, out=None) - Compute the arithmetic mean along the specified axis.
@@ -782,9 +793,10 @@ cupyx.scipy.sparse.coo_matrix.ndim
 cupyx.scipy.sparse.coo_matrix.nnz
 cupyx.scipy.sparse.coo_matrix.power(self, n, dtype=None) - Elementwise power function.
 cupyx.scipy.sparse.coo_matrix.rad2deg(self) - Elementwise rad2deg.
+cupyx.scipy.sparse.coo_matrix.real
 cupyx.scipy.sparse.coo_matrix.reshape(self, *shape, order='C') - Gives a new shape to a sparse matrix without changing its data.
 cupyx.scipy.sparse.coo_matrix.rint(self) - Elementwise rint.
-cupyx.scipy.sparse.coo_matrix.set_shape(self, shape)
+cupyx.scipy.sparse.coo_matrix.set_shape(self, shape) - Set the shape of the matrix in-place.
 cupyx.scipy.sparse.coo_matrix.setdiag(self, values, k=0) - Set diagonal or off-diagonal elements of the array.
 cupyx.scipy.sparse.coo_matrix.shape
 cupyx.scipy.sparse.coo_matrix.sign(self) - Elementwise sign.
@@ -805,11 +817,12 @@ cupyx.scipy.sparse.coo_matrix.todense(self, order=None, out=None) - Return a den
 cupyx.scipy.sparse.coo_matrix.todia(self, copy=False) - Convert this matrix to sparse DIAgonal format.
 cupyx.scipy.sparse.coo_matrix.todok(self, copy=False) - Convert this matrix to Dictionary Of Keys format.
 cupyx.scipy.sparse.coo_matrix.tolil(self, copy=False) - Convert this matrix to LInked List format.
+cupyx.scipy.sparse.coo_matrix.trace(self, offset=0) - Returns the sum along diagonals of the sparse matrix.
 cupyx.scipy.sparse.coo_matrix.transpose(self, axes=None, copy=False) - Returns a transpose matrix.
 cupyx.scipy.sparse.coo_matrix.trunc(self) - Elementwise trunc.
 cupyx.scipy.sparse.csc_matrix(arg1, shape=None, dtype=None, copy=False) - Compressed Sparse Column matrix.
 cupyx.scipy.sparse.csc_matrix.A - Dense ndarray representation of this matrix.
-cupyx.scipy.sparse.csc_matrix.H
+cupyx.scipy.sparse.csc_matrix.H - Hermitian (conjugate) transpose of this matrix.
 cupyx.scipy.sparse.csc_matrix.T
 cupyx.scipy.sparse.csc_matrix.arcsin(self) - Elementwise arcsin.
 cupyx.scipy.sparse.csc_matrix.arcsinh(self) - Elementwise arcsinh.
@@ -837,12 +850,13 @@ cupyx.scipy.sparse.csc_matrix.get(self, stream=None) - Returns a copy of the arr
 cupyx.scipy.sparse.csc_matrix.getH(self)
 cupyx.scipy.sparse.csc_matrix.get_shape(self) - Returns the shape of the matrix.
 cupyx.scipy.sparse.csc_matrix.getcol(self, i) - Returns a copy of column i of the matrix, as a (m x 1)
-cupyx.scipy.sparse.csc_matrix.getformat(self)
-cupyx.scipy.sparse.csc_matrix.getmaxprint(self)
+cupyx.scipy.sparse.csc_matrix.getformat(self) - Return the format of this matrix (e.g., ``'csr'``).
+cupyx.scipy.sparse.csc_matrix.getmaxprint(self) - Return the maximum number of stored values shown in ``__str__``.
 cupyx.scipy.sparse.csc_matrix.getnnz(self, axis=None) - Returns the number of stored values, including explicit zeros.
 cupyx.scipy.sparse.csc_matrix.getrow(self, i) - Returns a copy of row i of the matrix, as a (1 x n)
 cupyx.scipy.sparse.csc_matrix.has_canonical_format - Determine whether the matrix has sorted indices and no duplicates.
 cupyx.scipy.sparse.csc_matrix.has_sorted_indices - Determine whether the matrix has sorted indices.
+cupyx.scipy.sparse.csc_matrix.imag
 cupyx.scipy.sparse.csc_matrix.log1p(self) - Elementwise log1p.
 cupyx.scipy.sparse.csc_matrix.max(self, axis=None, out=None, *, explicit=False) - Returns the maximum of the matrix or maximum along an axis.
 cupyx.scipy.sparse.csc_matrix.maximum(self, other)
@@ -854,9 +868,10 @@ cupyx.scipy.sparse.csc_matrix.ndim
 cupyx.scipy.sparse.csc_matrix.nnz
 cupyx.scipy.sparse.csc_matrix.power(self, n, dtype=None) - Elementwise power function.
 cupyx.scipy.sparse.csc_matrix.rad2deg(self) - Elementwise rad2deg.
+cupyx.scipy.sparse.csc_matrix.real
 cupyx.scipy.sparse.csc_matrix.reshape(self, *shape, order='C') - Gives a new shape to a sparse matrix without changing its data.
 cupyx.scipy.sparse.csc_matrix.rint(self) - Elementwise rint.
-cupyx.scipy.sparse.csc_matrix.set_shape(self, shape)
+cupyx.scipy.sparse.csc_matrix.set_shape(self, shape) - Set the shape of the matrix in-place.
 cupyx.scipy.sparse.csc_matrix.setdiag(self, values, k=0) - Set diagonal or off-diagonal elements of the array.
 cupyx.scipy.sparse.csc_matrix.shape
 cupyx.scipy.sparse.csc_matrix.sign(self) - Elementwise sign.
@@ -879,12 +894,13 @@ cupyx.scipy.sparse.csc_matrix.todense(self, order=None, out=None) - Return a den
 cupyx.scipy.sparse.csc_matrix.todia(self, copy=False) - Convert this matrix to sparse DIAgonal format.
 cupyx.scipy.sparse.csc_matrix.todok(self, copy=False) - Convert this matrix to Dictionary Of Keys format.
 cupyx.scipy.sparse.csc_matrix.tolil(self, copy=False) - Convert this matrix to LInked List format.
+cupyx.scipy.sparse.csc_matrix.trace(self, offset=0) - Returns the sum along diagonals of the sparse matrix.
 cupyx.scipy.sparse.csc_matrix.transpose(self, axes=None, copy=False) - Returns a transpose matrix.
 cupyx.scipy.sparse.csc_matrix.trunc(self) - Elementwise trunc.
 cupyx.scipy.sparse.csgraph.connected_components(csgraph, directed=True, connection='weak', return_labels=True) - Analyzes the connected components of a sparse graph
 cupyx.scipy.sparse.csr_matrix(arg1, shape=None, dtype=None, copy=False) - Compressed Sparse Row matrix.
 cupyx.scipy.sparse.csr_matrix.A - Dense ndarray representation of this matrix.
-cupyx.scipy.sparse.csr_matrix.H
+cupyx.scipy.sparse.csr_matrix.H - Hermitian (conjugate) transpose of this matrix.
 cupyx.scipy.sparse.csr_matrix.T
 cupyx.scipy.sparse.csr_matrix.arcsin(self) - Elementwise arcsin.
 cupyx.scipy.sparse.csr_matrix.arcsinh(self) - Elementwise arcsinh.
@@ -905,19 +921,20 @@ cupyx.scipy.sparse.csr_matrix.device - CUDA device on which this array resides.
 cupyx.scipy.sparse.csr_matrix.diagonal(self, k=0) - Returns the k-th diagonal of the matrix.
 cupyx.scipy.sparse.csr_matrix.dot(self, other) - Ordinary dot product
 cupyx.scipy.sparse.csr_matrix.dtype - Data type of the matrix.
-cupyx.scipy.sparse.csr_matrix.eliminate_zeros(self) - Removes zero entories in place.
+cupyx.scipy.sparse.csr_matrix.eliminate_zeros(self) - Removes zero entries in place.
 cupyx.scipy.sparse.csr_matrix.expm1(self) - Elementwise expm1.
 cupyx.scipy.sparse.csr_matrix.floor(self) - Elementwise floor.
 cupyx.scipy.sparse.csr_matrix.get(self, stream=None) - Returns a copy of the array on host memory.
 cupyx.scipy.sparse.csr_matrix.getH(self)
 cupyx.scipy.sparse.csr_matrix.get_shape(self) - Returns the shape of the matrix.
 cupyx.scipy.sparse.csr_matrix.getcol(self, i) - Returns a copy of column i of the matrix, as a (m x 1)
-cupyx.scipy.sparse.csr_matrix.getformat(self)
-cupyx.scipy.sparse.csr_matrix.getmaxprint(self)
+cupyx.scipy.sparse.csr_matrix.getformat(self) - Return the format of this matrix (e.g., ``'csr'``).
+cupyx.scipy.sparse.csr_matrix.getmaxprint(self) - Return the maximum number of stored values shown in ``__str__``.
 cupyx.scipy.sparse.csr_matrix.getnnz(self, axis=None) - Returns the number of stored values, including explicit zeros.
 cupyx.scipy.sparse.csr_matrix.getrow(self, i) - Returns a copy of row i of the matrix, as a (1 x n)
 cupyx.scipy.sparse.csr_matrix.has_canonical_format - Determine whether the matrix has sorted indices and no duplicates.
 cupyx.scipy.sparse.csr_matrix.has_sorted_indices - Determine whether the matrix has sorted indices.
+cupyx.scipy.sparse.csr_matrix.imag
 cupyx.scipy.sparse.csr_matrix.log1p(self) - Elementwise log1p.
 cupyx.scipy.sparse.csr_matrix.max(self, axis=None, out=None, *, explicit=False) - Returns the maximum of the matrix or maximum along an axis.
 cupyx.scipy.sparse.csr_matrix.maximum(self, other)
@@ -929,9 +946,10 @@ cupyx.scipy.sparse.csr_matrix.ndim
 cupyx.scipy.sparse.csr_matrix.nnz
 cupyx.scipy.sparse.csr_matrix.power(self, n, dtype=None) - Elementwise power function.
 cupyx.scipy.sparse.csr_matrix.rad2deg(self) - Elementwise rad2deg.
+cupyx.scipy.sparse.csr_matrix.real
 cupyx.scipy.sparse.csr_matrix.reshape(self, *shape, order='C') - Gives a new shape to a sparse matrix without changing its data.
 cupyx.scipy.sparse.csr_matrix.rint(self) - Elementwise rint.
-cupyx.scipy.sparse.csr_matrix.set_shape(self, shape)
+cupyx.scipy.sparse.csr_matrix.set_shape(self, shape) - Set the shape of the matrix in-place.
 cupyx.scipy.sparse.csr_matrix.setdiag(self, values, k=0) - Set diagonal or off-diagonal elements of the array.
 cupyx.scipy.sparse.csr_matrix.shape
 cupyx.scipy.sparse.csr_matrix.sign(self) - Elementwise sign.
@@ -954,11 +972,12 @@ cupyx.scipy.sparse.csr_matrix.todense(self, order=None, out=None) - Return a den
 cupyx.scipy.sparse.csr_matrix.todia(self, copy=False) - Convert this matrix to sparse DIAgonal format.
 cupyx.scipy.sparse.csr_matrix.todok(self, copy=False) - Convert this matrix to Dictionary Of Keys format.
 cupyx.scipy.sparse.csr_matrix.tolil(self, copy=False) - Convert this matrix to LInked List format.
+cupyx.scipy.sparse.csr_matrix.trace(self, offset=0) - Returns the sum along diagonals of the sparse matrix.
 cupyx.scipy.sparse.csr_matrix.transpose(self, axes=None, copy=False) - Returns a transpose matrix.
 cupyx.scipy.sparse.csr_matrix.trunc(self) - Elementwise trunc.
 cupyx.scipy.sparse.dia_matrix(arg1, shape=None, dtype=None, copy=False) - Sparse matrix with DIAgonal storage.
 cupyx.scipy.sparse.dia_matrix.A - Dense ndarray representation of this matrix.
-cupyx.scipy.sparse.dia_matrix.H
+cupyx.scipy.sparse.dia_matrix.H - Hermitian (conjugate) transpose of this matrix.
 cupyx.scipy.sparse.dia_matrix.T
 cupyx.scipy.sparse.dia_matrix.arcsin(self) - Elementwise arcsin.
 cupyx.scipy.sparse.dia_matrix.arcsinh(self) - Elementwise arcsinh.
@@ -982,9 +1001,10 @@ cupyx.scipy.sparse.dia_matrix.floor(self) - Elementwise floor.
 cupyx.scipy.sparse.dia_matrix.get(self, stream=None) - Returns a copy of the array on host memory.
 cupyx.scipy.sparse.dia_matrix.getH(self)
 cupyx.scipy.sparse.dia_matrix.get_shape(self) - Returns the shape of the matrix.
-cupyx.scipy.sparse.dia_matrix.getformat(self)
-cupyx.scipy.sparse.dia_matrix.getmaxprint(self)
+cupyx.scipy.sparse.dia_matrix.getformat(self) - Return the format of this matrix (e.g., ``'csr'``).
+cupyx.scipy.sparse.dia_matrix.getmaxprint(self) - Return the maximum number of stored values shown in ``__str__``.
 cupyx.scipy.sparse.dia_matrix.getnnz(self, axis=None) - Returns the number of stored values, including explicit zeros.
+cupyx.scipy.sparse.dia_matrix.imag
 cupyx.scipy.sparse.dia_matrix.log1p(self) - Elementwise log1p.
 cupyx.scipy.sparse.dia_matrix.maximum(self, other)
 cupyx.scipy.sparse.dia_matrix.mean(self, axis=None, dtype=None, out=None) - Compute the arithmetic mean along the specified axis.
@@ -994,9 +1014,10 @@ cupyx.scipy.sparse.dia_matrix.ndim
 cupyx.scipy.sparse.dia_matrix.nnz
 cupyx.scipy.sparse.dia_matrix.power(self, n, dtype=None) - Elementwise power function.
 cupyx.scipy.sparse.dia_matrix.rad2deg(self) - Elementwise rad2deg.
+cupyx.scipy.sparse.dia_matrix.real
 cupyx.scipy.sparse.dia_matrix.reshape(self, *shape, order='C') - Gives a new shape to a sparse matrix without changing its data.
 cupyx.scipy.sparse.dia_matrix.rint(self) - Elementwise rint.
-cupyx.scipy.sparse.dia_matrix.set_shape(self, shape)
+cupyx.scipy.sparse.dia_matrix.set_shape(self, shape) - Set the shape of the matrix in-place.
 cupyx.scipy.sparse.dia_matrix.setdiag(self, values, k=0) - Set diagonal or off-diagonal elements of the array.
 cupyx.scipy.sparse.dia_matrix.shape
 cupyx.scipy.sparse.dia_matrix.sign(self) - Elementwise sign.
@@ -1013,9 +1034,10 @@ cupyx.scipy.sparse.dia_matrix.tocoo(self, copy=False) - Convert this matrix to C
 cupyx.scipy.sparse.dia_matrix.tocsc(self, copy=False) - Converts the matrix to Compressed Sparse Column format.
 cupyx.scipy.sparse.dia_matrix.tocsr(self, copy=False) - Converts the matrix to Compressed Sparse Row format.
 cupyx.scipy.sparse.dia_matrix.todense(self, order=None, out=None) - Return a dense matrix representation of this matrix.
-cupyx.scipy.sparse.dia_matrix.todia(self, copy=False) - Convert this matrix to sparse DIAgonal format.
+cupyx.scipy.sparse.dia_matrix.todia(self, copy=False) - Return this object unchanged (already in DIA format).
 cupyx.scipy.sparse.dia_matrix.todok(self, copy=False) - Convert this matrix to Dictionary Of Keys format.
 cupyx.scipy.sparse.dia_matrix.tolil(self, copy=False) - Convert this matrix to LInked List format.
+cupyx.scipy.sparse.dia_matrix.trace(self, offset=0) - Returns the sum along diagonals of the sparse matrix.
 cupyx.scipy.sparse.dia_matrix.transpose(self, axes=None, copy=False) - Reverses the dimensions of the sparse matrix.
 cupyx.scipy.sparse.dia_matrix.trunc(self) - Elementwise trunc.
 cupyx.scipy.sparse.diags(diagonals, offsets=0, shape=None, format=None, dtype=None) - Construct a sparse matrix from diagonals.
@@ -1044,6 +1066,7 @@ cupyx.scipy.sparse.linalg.LinearOperator.transpose(self) - Transpose this linear
 cupyx.scipy.sparse.linalg.SuperLU(obj)
 cupyx.scipy.sparse.linalg.SuperLU.solve(self, rhs, trans='N') - Solves linear system of equations with one or several right-hand sides.
 cupyx.scipy.sparse.linalg.aslinearoperator(A) - Return `A` as a LinearOperator.
+cupyx.scipy.sparse.linalg.bicgstab(A, b, x0=None, *, rtol=1e-05, atol=0.0, maxiter=None, M=None, callback=None) - Uses BIConjugate Gradient STABilized iteration to solve ``Ax = b``.
 cupyx.scipy.sparse.linalg.cg(A, b, x0=None, *, rtol=1e-05, atol=0.0, maxiter=None, M=None, callback=None) - Uses Conjugate Gradient iteration to solve ``Ax = b``.
 cupyx.scipy.sparse.linalg.cgs(A, b, x0=None, *, rtol=1e-05, atol=0.0, maxiter=None, M=None, callback=None) - Use Conjugate Gradient Squared iteration to solve ``Ax = b``.
 cupyx.scipy.sparse.linalg.eigsh(a, k=6, *, which='LM', v0=None, ncv=None, maxiter=None, tol=0, return_eigenvectors=True) - Find ``k`` eigenvalues and eigenvectors of the real symmetric square
@@ -1064,7 +1087,7 @@ cupyx.scipy.sparse.random(m, n, density=0.01, format='coo', dtype=None, random_s
 cupyx.scipy.sparse.spdiags(data, diags, m, n, format=None) - Creates a sparse matrix from diagonals.
 cupyx.scipy.sparse.spmatrix(maxprint=50) - Base class of all sparse matrixes.
 cupyx.scipy.sparse.spmatrix.A - Dense ndarray representation of this matrix.
-cupyx.scipy.sparse.spmatrix.H
+cupyx.scipy.sparse.spmatrix.H - Hermitian (conjugate) transpose of this matrix.
 cupyx.scipy.sparse.spmatrix.T
 cupyx.scipy.sparse.spmatrix.asformat(self, format) - Return this matrix in a given sparse format.
 cupyx.scipy.sparse.spmatrix.asfptype(self) - Upcasts matrix to a floating point format.
@@ -1079,8 +1102,8 @@ cupyx.scipy.sparse.spmatrix.dot(self, other) - Ordinary dot product
 cupyx.scipy.sparse.spmatrix.get(self, stream=None) - Return a copy of the array on host memory.
 cupyx.scipy.sparse.spmatrix.getH(self)
 cupyx.scipy.sparse.spmatrix.get_shape(self)
-cupyx.scipy.sparse.spmatrix.getformat(self)
-cupyx.scipy.sparse.spmatrix.getmaxprint(self)
+cupyx.scipy.sparse.spmatrix.getformat(self) - Return the format of this matrix (e.g., ``'csr'``).
+cupyx.scipy.sparse.spmatrix.getmaxprint(self) - Return the maximum number of stored values shown in ``__str__``.
 cupyx.scipy.sparse.spmatrix.getnnz(self, axis=None) - Number of stored values, including explicit zeros.
 cupyx.scipy.sparse.spmatrix.maximum(self, other)
 cupyx.scipy.sparse.spmatrix.mean(self, axis=None, dtype=None, out=None) - Compute the arithmetic mean along the specified axis.
@@ -1090,7 +1113,7 @@ cupyx.scipy.sparse.spmatrix.ndim
 cupyx.scipy.sparse.spmatrix.nnz
 cupyx.scipy.sparse.spmatrix.power(self, n, dtype=None)
 cupyx.scipy.sparse.spmatrix.reshape(self, *shape, order='C') - Gives a new shape to a sparse matrix without changing its data.
-cupyx.scipy.sparse.spmatrix.set_shape(self, shape)
+cupyx.scipy.sparse.spmatrix.set_shape(self, shape) - Set the shape of the matrix in-place.
 cupyx.scipy.sparse.spmatrix.setdiag(self, values, k=0) - Set diagonal or off-diagonal elements of the array.
 cupyx.scipy.sparse.spmatrix.shape
 cupyx.scipy.sparse.spmatrix.size
@@ -1104,6 +1127,7 @@ cupyx.scipy.sparse.spmatrix.todense(self, order=None, out=None) - Return a dense
 cupyx.scipy.sparse.spmatrix.todia(self, copy=False) - Convert this matrix to sparse DIAgonal format.
 cupyx.scipy.sparse.spmatrix.todok(self, copy=False) - Convert this matrix to Dictionary Of Keys format.
 cupyx.scipy.sparse.spmatrix.tolil(self, copy=False) - Convert this matrix to LInked List format.
+cupyx.scipy.sparse.spmatrix.trace(self, offset=0) - Returns the sum along diagonals of the sparse matrix.
 cupyx.scipy.sparse.spmatrix.transpose(self, axes=None, copy=False) - Reverses the dimensions of the sparse matrix.
 cupyx.scipy.sparse.tril(A, k=0, format=None) - Returns the lower triangular portion of a matrix in sparse format
 cupyx.scipy.sparse.triu(A, k=0, format=None) - Returns the upper triangular portion of a matrix in sparse format

@@ -46,9 +46,6 @@ pylibraft.common.device_ndarray.device_ndarray.empty(shape, dtype=<class 'numpy.
 pylibraft.common.device_ndarray.device_ndarray.f_contiguous - Is the current device_ndarray laid out in column-major format?
 pylibraft.common.device_ndarray.device_ndarray.shape - Shape of the current device_ndarray instance
 pylibraft.common.device_ndarray.device_ndarray.strides - Strides of the current device_ndarray instance
-pylibraft.common.handle.CudaRuntimeError(extraMsg=None) - Unspecified run-time error.
-pylibraft.common.handle.CudaRuntimeError.add_note(...) - Exception.add_note(note) --
-pylibraft.common.handle.CudaRuntimeError.with_traceback(...) - Exception.with_traceback(tb) --
 pylibraft.common.handle.DeviceResources(...) - DeviceResources is a lightweight python wrapper around the corresponding
 pylibraft.common.handle.DeviceResources.getHandle(self) - DeviceResources.getHandle(self)
 pylibraft.common.handle.DeviceResources.sync(self) - DeviceResources.sync(self)
@@ -66,7 +63,7 @@ pylibraft.common.input_validation.do_shapes_match(*cais)
 pylibraft.common.input_validation.is_c_contiguous(cai) - Checks whether an array is C contiguous.
 pylibraft.common.interruptible.cuda_interruptible() - cuda_interruptible()
 pylibraft.common.interruptible.cuda_yield() - cuda_yield()
-pylibraft.common.interruptible.synchronize(stream: 'Stream') - synchronize(Stream stream: Stream)
+pylibraft.common.interruptible.synchronize(stream) - synchronize(stream)
 pylibraft.common.mdspan.DeviceResources(...) - DeviceResources is a lightweight python wrapper around the corresponding
 pylibraft.common.mdspan.DeviceResources.getHandle(self) - DeviceResources.getHandle(self)
 pylibraft.common.mdspan.DeviceResources.sync(self) - DeviceResources.sync(self)
@@ -113,3 +110,24 @@ pylibraft.sparse.linalg.lanczos.device_ndarray.f_contiguous - Is the current dev
 pylibraft.sparse.linalg.lanczos.device_ndarray.shape - Shape of the current device_ndarray instance
 pylibraft.sparse.linalg.lanczos.device_ndarray.strides - Strides of the current device_ndarray instance
 pylibraft.sparse.linalg.lanczos.eigsh(A, k=6, which='LM', v0=None, ncv=None, maxiter=None, tol=0, seed=None, handle=None) - eigsh(A, k=6, which='LM', v0=None, ncv=None, maxiter=None, tol=0, seed=None, handle=None)
+pylibraft.sparse.linalg.svds(A, k=6, n_oversamples=10, n_power_iters=2, seed=None, return_singular_vectors=True, handle=None) - svds(A, k=6, n_oversamples=10, n_power_iters=2, seed=None, return_singular_vectors=True, handle=None)
+pylibraft.sparse.linalg.svds.Handle(...) - Handle is a lightweight python wrapper around the corresponding
+pylibraft.sparse.linalg.svds.Handle.getHandle(self) - DeviceResources.getHandle(self)
+pylibraft.sparse.linalg.svds.Handle.sync(self) - DeviceResources.sync(self)
+pylibraft.sparse.linalg.svds.auto_sync_handle(f) - auto_sync_handle(f)
+pylibraft.sparse.linalg.svds.cai_wrapper(cai_arr) - Simple wrapper around a CUDA array interface object to reduce
+pylibraft.sparse.linalg.svds.cai_wrapper.c_contiguous - Returns whether the underlying array interface has
+pylibraft.sparse.linalg.svds.cai_wrapper.data - Returns the data pointer of the underlying array interface
+pylibraft.sparse.linalg.svds.cai_wrapper.dtype - Returns the dtype of the underlying array interface
+pylibraft.sparse.linalg.svds.cai_wrapper.f_contiguous - Returns whether the underlying array interface has
+pylibraft.sparse.linalg.svds.cai_wrapper.shape - Returns the shape of the underlying array interface
+pylibraft.sparse.linalg.svds.cai_wrapper.validate_shape_dtype(self, expected_dims=None, expected_dtype=None) - Checks to see if the shape, dtype, and strides match expectations
+pylibraft.sparse.linalg.svds.device_ndarray(np_ndarray) - pylibraft.common.device_ndarray is meant to be a very lightweight
+pylibraft.sparse.linalg.svds.device_ndarray.c_contiguous - Is the current device_ndarray laid out in row-major format?
+pylibraft.sparse.linalg.svds.device_ndarray.copy_to_host(self) - Returns a new numpy.ndarray object on host with the current contents of
+pylibraft.sparse.linalg.svds.device_ndarray.dtype - Datatype of the current device_ndarray instance
+pylibraft.sparse.linalg.svds.device_ndarray.empty(shape, dtype=<class 'numpy.float32'>, order='C') - Return a new device_ndarray of given shape and type, without
+pylibraft.sparse.linalg.svds.device_ndarray.f_contiguous - Is the current device_ndarray laid out in column-major format?
+pylibraft.sparse.linalg.svds.device_ndarray.shape - Shape of the current device_ndarray instance
+pylibraft.sparse.linalg.svds.device_ndarray.strides - Strides of the current device_ndarray instance
+pylibraft.sparse.linalg.svds.svds(A, k=6, n_oversamples=10, n_power_iters=2, seed=None, return_singular_vectors=True, handle=None) - svds(A, k=6, n_oversamples=10, n_power_iters=2, seed=None, return_singular_vectors=True, handle=None)

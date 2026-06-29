@@ -1151,7 +1151,7 @@ cuxfilter.charts.datashader.custom_extensions.holoviews_datashader.InteractiveDa
 cuxfilter.charts.datashader.custom_extensions.holoviews_datashader.dynspread(*, max_px, threshold, how, shape, dynamic, group, input_ranges, link_inputs, streams, name) - datashader has a pending change to support internally converting
 cuxfilter.charts.datashader.custom_extensions.holoviews_datashader.dynspread.get_overlay_bounds(overlay) - Returns the extents if all the elements of an overlay agree on
 cuxfilter.charts.datashader.custom_extensions.holoviews_datashader.dynspread.get_overlay_label(overlay, default_label='') - Returns a label if all the elements of an overlay agree on a
-cuxfilter.charts.datashader.custom_extensions.holoviews_datashader.dynspread.instance(**params) - Create and return an instance of this class.
+cuxfilter.charts.datashader.custom_extensions.holoviews_datashader.dynspread.instance(**params) -> 'Self' - Create and return an instance of this class.
 cuxfilter.charts.datashader.custom_extensions.holoviews_datashader.dynspread.process_element(self, element, key, **params) - The process_element method allows a single element to be
 cuxfilter.charts.datashader.custom_extensions.holoviews_datashader.dynspread.search(element, pattern) - Helper method that returns a list of elements that match the
 cuxfilter.charts.datashader.custom_extensions.holoviews_datashader.dynspread.uint8_to_uint32(img)

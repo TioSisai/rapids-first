@@ -23,7 +23,7 @@ Prompt:
 
 > Rewrite this pandas preprocessing script with `rapids-first`.
 
-Before — **0.87 s** (mean of 5 runs, after a warmup pass):
+Before — **0.85 s** (mean of 5 runs, after a warmup pass):
 
 ```python
 import pandas as pd
@@ -33,7 +33,7 @@ df["x"] = df["a"] / df["b"]
 out = df.groupby("user_id")["x"].mean()
 ```
 
-After — **0.05 s** (mean of 5 runs, after a warmup pass) — **~17× faster**:
+After — **0.06 s** (mean of 5 runs, after a warmup pass) — **~15× faster**:
 
 ```python
 import cudf
@@ -49,7 +49,7 @@ Three things to notice:
 - **No mid-stream device round-trips.** Per the skill's GPU-data-lifecycle rule, the result stays in GPU memory; we don't call `.to_pandas()` until the consumer actually needs CPU data.
 - **Zero-code alternative.** For an existing script you'd rather not touch at all, run it as `python -m cudf.pandas script.py` — the skill picks this path automatically when the user wants "make existing code run faster" instead of "show me explicit RAPIDS imports".
 
-Reproduce locally (10M rows, ~2M unique `user_id`, RTX 4060 Ti, cudf 26.02.01, pandas 2.3.3):
+Reproduce locally (10M rows, ~2M unique `user_id`, RTX 4060 Ti, cudf 26.06.00, pandas 2.3.3):
 
 ```python
 # gen_events.py — generate ~130 MB events.parquet in $TMPDIR
@@ -65,8 +65,20 @@ pd.DataFrame({
 
 ## Requirements
 
-- [**RAPIDS**](https://rapids.ai/) — the GPU data-science stack this skill steers toward (`cupy`, `cudf`, `cuml`, `cugraph`, `cucim`, `cuvs`, `nx-cugraph`, `dask-cudf`, `cuxfilter`, `pylibraft`, `raft-dask`). A CUDA-capable NVIDIA GPU and matching CUDA driver are required for the underlying libraries to import.
+- [**RAPIDS**](https://rapids.ai/) — the GPU data-science stack this skill steers toward (`cupy`, `cudf`, `cuml`, `cugraph`, `cucim`, `cuvs`, `nvforest`, `nx-cugraph`, `dask-cudf`, `cuxfilter`, `pylibraft`, `raft-dask`). A CUDA-capable NVIDIA GPU is required for the underlying libraries to import. The pre-built API index targets **RAPIDS 26.06 on CUDA 13** (`cu13` wheels, NVIDIA driver ≥ 580.65.06), but the skill works against any recent RAPIDS install.
 - [**ripgrep (`rg`)**](https://github.com/BurntSushi/ripgrep) — used throughout the skill's standard workflow to recover exact API signatures from `apis/<pkg>.txt` in a single grep.
+
+Installing RAPIDS itself (the environment the shipped index was captured against — CUDA 13 / `cu13` wheels):
+
+```bash
+pip install --extra-index-url=https://pypi.nvidia.com \
+    "cudf-cu13==26.6.*" "dask-cudf-cu13==26.6.*" "cuml-cu13==26.6.*" \
+    "cugraph-cu13==26.6.*" "nx-cugraph-cu13==26.6.*" "cuxfilter-cu13==26.6.*" \
+    "cucim-cu13==26.6.*" "pylibraft-cu13==26.6.*" "raft-dask-cu13==26.6.*" \
+    "cuvs-cu13==26.6.*" "nvforest-cu13==26.6.*"
+```
+
+For CUDA 12, swap each `-cu13` suffix for `-cu12`. See the [RAPIDS install guide](https://docs.rapids.ai/install/) for conda / Docker and the official release selector.
 
 ## Installation
 
@@ -133,19 +145,20 @@ The pre-built `apis/<pkg>.txt` files in this repository were generated against t
 | Component    | Version             |
 |--------------|---------------------|
 | Python       | 3.12.13             |
-| CUDA runtime | 12.9                |
-| cupy         | 14.0.1              |
+| CUDA runtime | 13.2                |
+| cupy         | 14.1.1              |
 | cupyx        | (ships with cupy)   |
-| cudf         | 26.02.01            |
-| dask_cudf    | 26.02.01            |
-| cuml         | 26.02.000           |
-| cugraph      | 26.02.00            |
-| nx_cugraph   | 26.02.000           |
-| cuxfilter    | 26.02.000           |
-| cucim        | 26.02.01            |
-| pylibraft    | 26.02.00            |
-| raft_dask    | 26.02.00            |
-| cuvs         | 26.02.000           |
+| cudf         | 26.06.00            |
+| dask_cudf    | 26.06.00            |
+| cuml         | 26.06.00            |
+| cugraph      | 26.06.00            |
+| nx_cugraph   | 26.06.00            |
+| cuxfilter    | 26.06.00            |
+| cucim        | 26.06.00            |
+| pylibraft    | 26.06.00            |
+| raft_dask    | 26.06.00            |
+| cuvs         | 26.06.00            |
+| nvforest     | 26.06.00            |
 
 ### When to regenerate
 

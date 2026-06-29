@@ -7,6 +7,69 @@
 格式参照 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.1.0/),
 版本号遵循 [语义化版本](https://semver.org/lang/zh-CN/spec/v2.0.0.html)。
 
+## [26.06] - 2026-06-29
+
+面向 **RAPIDS 26.06** + **CUDA 13**(`cu13` wheels)的刷新。仓库内置的 API 索引
+基于真实的 `26.06.00` 环境重新生成,RAPIDS 26.06 新增的独立森林推理库
+**nvForest** 也纳入了 skill 引导的技术栈。
+
+### 新增
+
+- **nvForest 覆盖。** `nvforest` 是独立的 GPU/CPU 森林*推理*库,取代 cuML 的
+  Forest Inference Library(FIL):
+  - `apis/nvforest.txt` —— `load_model` / `load_from_sklearn` /
+    `load_from_treelite_model` 以及
+    `{CPU,GPU}ForestInference{Classifier,Regressor}` 类(`.predict` /
+    `.predict_proba` / `.apply` / `.optimize`)的平铺索引。
+  - `cpu-rapids-cuda-mapping.tsv` —— 新增 `xgboost`、`lightgbm`、`treelite`
+    以及已弃用的 `cuml.ForestInference` 到 `nvforest` 的映射行。
+  - `SKILL.md` —— 新增 **Example 5**(加速 XGBoost / LightGBM / RandomForest
+    推理),并在场景清单与目录结构中补充森林推理说明。
+  - `fetch_rapids_apis.py` —— `nvforest` 加入默认抓取列表(现共 **13** 个包),
+    其内部 `detail` / `benchmark` 子树被跳过。
+- **`.gitignore`** —— 忽略 import cudf / cucim / pylibraft 时 cuFile / GPUDirect
+  Storage 生成的 `cufile.log`,使重新生成索引不再污染工作区。
+
+### 变更
+
+- **重新生成全部 13 个包的 `apis/<pkg>.txt`**,基于 RAPIDS `26.06.00`
+  (CuPy `14.1.1`),捕获新的 API 表面 —— 例如 cuVS 新增 `cuvs.preprocessing.pca`,
+  `cuml.accel` 覆盖更多预处理 estimator。
+- **README / CHANGELOG 的环境表**更新为 26.06 / CUDA 13.2 / CuPy 14.1.1 环境,
+  并加入 `nvforest 26.06.00`;README 还补充了 `cu13` 的 pip 安装命令与 CUDA 13
+  的最低驱动要求(≥ 580.65.06)。
+- **Quick demo 数字**在 RAPIDS 26.06 上重新测量(pandas `0.85 秒` →
+  cudf `0.06 秒`,约 15×;RTX 4060 Ti,cudf 26.06.00,pandas 2.3.3)。
+
+### 说明
+
+- `cuml.fil` / `cuml.ForestInference`(FIL)在 **RAPIDS 26.06 中已弃用**,
+  推荐改用 `nvforest`;它仍可 import,但新的森林推理代码应以 `nvforest` 为目标。
+- 零代码加速器的激活方式在 26.06 **保持不变**:`cudf.pandas`、`cuml.accel`
+  (含 `CUML_ACCEL_ENABLED=1`)、`nx-cugraph`(`NX_CUGRAPH_AUTOCONFIG=True`)
+  以及 `dask-cudf` backend 均沿用 26.02 时期的语法。
+
+### 抓取环境
+
+仓库内置的 `apis/<pkg>.txt` 基于以下环境重新生成:
+
+| 组件         | 版本                |
+|--------------|---------------------|
+| Python       | 3.12.13             |
+| CUDA runtime | 13.2                |
+| cupy         | 14.1.1              |
+| cudf         | 26.06.00            |
+| dask_cudf    | 26.06.00            |
+| cuml         | 26.06.00            |
+| cugraph      | 26.06.00            |
+| nx_cugraph   | 26.06.00            |
+| cuxfilter    | 26.06.00            |
+| cucim        | 26.06.00            |
+| pylibraft    | 26.06.00            |
+| raft_dask    | 26.06.00            |
+| cuvs         | 26.06.00            |
+| nvforest     | 26.06.00            |
+
 ## [26.02] - 2026-05-14
 
 **rapids-first** 首个公开发布版本 —— 一个适用于 Claude Code 与 Codex 的 skill,
@@ -64,4 +127,5 @@
 升级 RAPIDS 或本地版本与上表不一致时,用
 `python <skill-dir>/fetch_rapids_apis.py` 重新生成。
 
+[26.06]: https://github.com/TioSisai/rapids-first/releases/tag/v26.06
 [26.02]: https://github.com/TioSisai/rapids-first/releases/tag/v26.02

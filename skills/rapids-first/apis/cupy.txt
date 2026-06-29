@@ -171,7 +171,6 @@ cupy.cuda.PinnedMemory(size, flags=0) - Pinned memory allocation on host.
 cupy.cuda.PinnedMemoryPointer(...) - PinnedMemoryPointer(mem, ptrdiff_t offset)
 cupy.cuda.PinnedMemoryPointer.size(...) - PinnedMemoryPointer.size(self) -> size_t
 cupy.cuda.PinnedMemoryPool(...) - PinnedMemoryPool(allocator=_malloc)
-cupy.cuda.PinnedMemoryPool.free(...) - PinnedMemoryPool.free(self, intptr_t ptr, size_t size)
 cupy.cuda.PinnedMemoryPool.free_all_blocks(...) - PinnedMemoryPool.free_all_blocks(self)
 cupy.cuda.PinnedMemoryPool.malloc(...) - PinnedMemoryPool.malloc(self, size_t size) -> PinnedMemoryPointer
 cupy.cuda.PinnedMemoryPool.n_free_blocks(...) - PinnedMemoryPool.n_free_blocks(self)
@@ -211,8 +210,6 @@ cupy.cuda.compiler.NVCCException.with_traceback(...) - Exception.with_traceback(
 cupy.cuda.compiler.compile_using_hipcc(source, options, arch, log_stream=None)
 cupy.cuda.compiler.compile_using_nvcc(source, options=(), arch=None, filename='kern.cu', code_type='cubin', separate_compilation=False, log_stream=None)
 cupy.cuda.compiler.compile_using_nvrtc(source, options=(), arch=None, filename='kern.cu', name_expressions=None, log_stream=None, cache_in_memory=False, jitify=None, method=None)
-cupy.cuda.compiler.get_cache_dir()
-cupy.cuda.compiler.get_rocm_path()
 cupy.cuda.compiler.is_valid_kernel_name(name)
 cupy.cuda.cub.CUPY_CUB_ARGMAX
 cupy.cuda.cub.CUPY_CUB_ARGMIN
@@ -238,6 +235,36 @@ cupy.cuda.cub.device_reduce(...) - device_reduce(_ndarray_base x, op, tuple redu
 cupy.cuda.cub.device_scan(...) - device_scan(_ndarray_base x, op)
 cupy.cuda.cub.device_segmented_reduce(...) - device_segmented_reduce(_ndarray_base x, op, tuple reduce_axis, tuple out_axis, out=None, bool keepdims=False, Py_ssize_t contiguous_size=0)
 cupy.cuda.cub.get_build_version(...) - get_build_version()
+cupy.cuda.cufft.CuFFTError(result) - Unspecified run-time error.
+cupy.cuda.cufft.CuFFTError.add_note(...) - Exception.add_note(note) --
+cupy.cuda.cufft.CuFFTError.with_traceback(...) - Exception.with_traceback(tb) --
+cupy.cuda.cufft.Plan1d(...) - Plan1d(int nx, int fft_type, int batch, devices=None, *, out=None, intptr_t prealloc_plan=0)
+cupy.cuda.cufft.Plan1d.check_output_array(...) - Plan1d.check_output_array(self, a, out)
+cupy.cuda.cufft.Plan1d.fft(...) - Plan1d.fft(self, a, out, direction)
+cupy.cuda.cufft.Plan1d.get_output_array(...) - Plan1d.get_output_array(self, a)
+cupy.cuda.cufft.PlanNd(...) - PlanNd(shape, inembed, int istride, int idist, onembed, int ostride, int odist, int fft_type, int batch, str order, int last_axis, last_size, intptr_t prealloc_plan=0, *)
+cupy.cuda.cufft.PlanNd.check_output_array(...) - PlanNd.check_output_array(self, a, out)
+cupy.cuda.cufft.PlanNd.fft(...) - PlanNd.fft(self, a, out, direction)
+cupy.cuda.cufft.PlanNd.get_output_array(...) - PlanNd.get_output_array(self, a, order='C')
+cupy.cuda.cufft.XtExec(...) - XtExec(intptr_t plan, intptr_t idata, intptr_t odata, int direction)
+cupy.cuda.cufft.XtPlanNd(...) - XtPlanNd(shape, inembed, long long istride, long long idist, idtype, onembed, long long ostride, long long odist, odtype, long long batch, edtype, str order, *, int last_axis, last_size, intptr_t prealloc_plan=0)
+cupy.cuda.cufft.XtPlanNd.fft(...) - XtPlanNd.fft(self, a, out, direction)
+cupy.cuda.cufft.XtPlanNd.get_output_array(...) - XtPlanNd.get_output_array(self, a, order='C')
+cupy.cuda.cufft.check_result(...) - check_result(int result) -> void
+cupy.cuda.cufft.create(...) - create() -> intptr_t
+cupy.cuda.cufft.execC2C(...) - execC2C(intptr_t plan, intptr_t idata, intptr_t odata, int direction)
+cupy.cuda.cufft.execC2R(...) - execC2R(intptr_t plan, intptr_t idata, intptr_t odata)
+cupy.cuda.cufft.execD2Z(...) - execD2Z(intptr_t plan, intptr_t idata, intptr_t odata)
+cupy.cuda.cufft.execR2C(...) - execR2C(intptr_t plan, intptr_t idata, intptr_t odata)
+cupy.cuda.cufft.execZ2D(...) - execZ2D(intptr_t plan, intptr_t idata, intptr_t odata)
+cupy.cuda.cufft.execZ2Z(...) - execZ2Z(intptr_t plan, intptr_t idata, intptr_t odata, int direction)
+cupy.cuda.cufft.getVersion(...) - getVersion() -> int
+cupy.cuda.cufft.get_current_plan(...) - get_current_plan()
+cupy.cuda.cufft.multi_gpu_execC2C(...) - multi_gpu_execC2C(intptr_t plan, intptr_t idata, intptr_t odata, int direction)
+cupy.cuda.cufft.multi_gpu_execZ2Z(...) - multi_gpu_execZ2Z(intptr_t plan, intptr_t idata, intptr_t odata, int direction)
+cupy.cuda.cufft.setAutoAllocation(...) - setAutoAllocation(intptr_t plan, int autoAllocate) -> int
+cupy.cuda.cufft.setCallback(...) - setCallback(intptr_t plan, int cb_type, bool is_load, intptr_t aux_arr=0) -> intptr_t
+cupy.cuda.cufft.setJITCallback(...) - setJITCallback(intptr_t plan, str callback_name, bytes callback, int callback_type, intptr_t caller_info) -> int
 cupy.cuda.device.Device(...) - Device(device=None)
 cupy.cuda.device.Device.from_pci_bus_id(...) - Device.from_pci_bus_id(cls, pci_bus_id)
 cupy.cuda.device.Device.synchronize(...) - Device.synchronize(self)
@@ -249,6 +276,7 @@ cupy.cuda.device.get_cublas_handle(...) - get_cublas_handle() -> intptr_t
 cupy.cuda.device.get_cusolver_handle(...) - get_cusolver_handle() -> intptr_t
 cupy.cuda.device.get_cusolver_sp_handle(...) - get_cusolver_sp_handle() -> intptr_t
 cupy.cuda.device.get_cusparse_handle(...) - get_cusparse_handle() -> intptr_t
+cupy.cuda.device.get_cutensor_handle(...) - get_cutensor_handle()
 cupy.cuda.device.get_device_id(...) - get_device_id() -> int
 cupy.cuda.function.CIntptr(...) - CIntptr(intptr_t v)
 cupy.cuda.function.CNumpyArray(...) - CNumpyArray(v)
@@ -281,7 +309,6 @@ cupy.cuda.graph.Graph.launch(...) - Graph.launch(self, stream=None)
 cupy.cuda.graph.Graph.upload(...) - Graph.upload(self, stream=None)
 cupy.cuda.is_available()
 cupy.cuda.jitify.get_build_version(...) - get_build_version()
-cupy.cuda.jitify.get_cuda_path()
 cupy.cuda.jitify.get_cuda_version(...) - get_cuda_version() -> str
 cupy.cuda.jitify.jitify(...) - jitify(str code, tuple opt)
 cupy.cuda.malloc_async(...) - malloc_async(size_t size) -> MemoryPointer
@@ -334,7 +361,6 @@ cupy.cuda.memory.PythonFunctionAllocator(...) - PythonFunctionAllocator(malloc_f
 cupy.cuda.memory.PythonFunctionAllocator.malloc(...) - PythonFunctionAllocator.malloc(self, size_t size) -> MemoryPointer
 cupy.cuda.memory.PythonFunctionAllocatorMemory(...) - PythonFunctionAllocatorMemory(size_t size, malloc_func, free_func, int device_id)
 cupy.cuda.memory.SingleDeviceMemoryPool(...) - SingleDeviceMemoryPool(allocator=None)
-cupy.cuda.memory.SingleDeviceMemoryPool.free(...) - SingleDeviceMemoryPool.free(self, intptr_t ptr, size_t size)
 cupy.cuda.memory.SingleDeviceMemoryPool.free_all_blocks(...) - SingleDeviceMemoryPool.free_all_blocks(self, stream=None)
 cupy.cuda.memory.SingleDeviceMemoryPool.free_all_free(...) - SingleDeviceMemoryPool.free_all_free(self)
 cupy.cuda.memory.SingleDeviceMemoryPool.free_bytes(...) - SingleDeviceMemoryPool.free_bytes(self) -> size_t
@@ -399,7 +425,6 @@ cupy.cuda.pinned_memory.PinnedMemory(size, flags=0) - Pinned memory allocation o
 cupy.cuda.pinned_memory.PinnedMemoryPointer(...) - PinnedMemoryPointer(mem, ptrdiff_t offset)
 cupy.cuda.pinned_memory.PinnedMemoryPointer.size(...) - PinnedMemoryPointer.size(self) -> size_t
 cupy.cuda.pinned_memory.PinnedMemoryPool(...) - PinnedMemoryPool(allocator=_malloc)
-cupy.cuda.pinned_memory.PinnedMemoryPool.free(...) - PinnedMemoryPool.free(self, intptr_t ptr, size_t size)
 cupy.cuda.pinned_memory.PinnedMemoryPool.free_all_blocks(...) - PinnedMemoryPool.free_all_blocks(self)
 cupy.cuda.pinned_memory.PinnedMemoryPool.malloc(...) - PinnedMemoryPool.malloc(self, size_t size) -> PinnedMemoryPointer
 cupy.cuda.pinned_memory.PinnedMemoryPool.n_free_blocks(...) - PinnedMemoryPool.n_free_blocks(self)
@@ -564,14 +589,18 @@ cupy.lib.stride_tricks.as_strided(x, shape=None, strides=None) - Create a view i
 cupy.lib.stride_tricks.sliding_window_view(x, window_shape, axis=None, *, subok=False, writeable=False) - Create a sliding window view into the array with the given window shape.
 cupy.linalg.cholesky(a) - Cholesky decomposition.
 cupy.linalg.cond(x, p=None) - Returns the condition number of a matrix.
+cupy.linalg.cross(x1, x2, /, *, axis=-1) - Returns the cross product of 3-element vectors.
 cupy.linalg.det(a) - Returns the determinant of an array.
 cupy.linalg.eig(a) - Return the eigenvalues and eigenvectors of a matrix.
 cupy.linalg.eigh(a, UPLO='L') - Return the eigenvalues and eigenvectors of a complex Hermitian
 cupy.linalg.eigvals(a) - Compute the eigenvalues of a matrix.
 cupy.linalg.eigvalsh(a, UPLO='L') - Compute the eigenvalues of a complex Hermitian or real symmetric matrix.
 cupy.linalg.inv(a) - Computes the inverse of a matrix.
+cupy.linalg.lstsq(a, b, rcond=None) - Return the least-squares solution to a linear matrix equation.
+cupy.linalg.matmul(*args, axes=None, axis=None, keepdims=False, casting='same_kind', dtype=None, signature=None, order='K', out=None) - matmul(x1, x2, /, out=None, \*\*kwargs)
 cupy.linalg.matrix_power(M, n) - Raise a square matrix to the (integer) power `n`.
 cupy.linalg.matrix_rank(M, tol=None) - Return matrix rank of array using SVD method
+cupy.linalg.matrix_transpose(a) - Transposes the innermost 2 dimensions of ndarray
 cupy.linalg.norm(x, ord=None, axis=None, keepdims=False) - Returns one of matrix norms specified by ``ord`` parameter.
 cupy.linalg.pinv(a, rcond=1e-15) - Compute the Moore-Penrose pseudoinverse of a matrix.
 cupy.linalg.qr(a, mode='reduced') - QR decomposition.
@@ -584,8 +613,10 @@ cupy.linspace(start, stop, num=50, endpoint=True, retstep=False, dtype=None, axi
 cupy.load(file, mmap_mode=None, allow_pickle=None) - Loads arrays or pickled objects from ``.npy``, ``.npz`` or pickled file.
 cupy.loadtxt(*args, **kwargs) - Load data from a text file.
 cupy.logspace(start, stop, num=50, endpoint=True, base=10.0, dtype=None, axis=0) - Returns an array with evenly-spaced values on a log-scale.
+cupy.make_aligned_dtype(...) - make_aligned_dtype(dtype, *, int alignment=-1, bool recurse=True)
 cupy.mask_indices(n, mask_func, k=0) - Return the indices to access (n, n) arrays, given a masking function.
 cupy.matmul(*args, axes=None, axis=None, keepdims=False, casting='same_kind', dtype=None, signature=None, order='K', out=None) - matmul(x1, x2, /, out=None, \*\*kwargs)
+cupy.matrix_transpose(x, /) - Transposes a matrix (or a stack of matrices) ``x``.
 cupy.max(a, axis=None, out=None, keepdims=False) - Returns the maximum of an array or the maximum along an axis.
 cupy.may_share_memory(a, b, max_work=None)
 cupy.mean(a, axis=None, dtype=None, out=None, keepdims=False) - Returns the arithmetic mean along an axis.
@@ -618,6 +649,7 @@ cupy.ndarray.argmin(...) - _ndarray_base.argmin(self, axis=None, out=None, dtype
 cupy.ndarray.argpartition(...) - _ndarray_base.argpartition(self, kth, axis=-1) -> _ndarray_base
 cupy.ndarray.argsort(...) - _ndarray_base.argsort(self, axis=-1, kind=None) -> _ndarray_base
 cupy.ndarray.astype(...) - _ndarray_base.astype(self, dtype, order='K', casting=None, subok=None, copy=True) -> _ndarray_base
+cupy.ndarray.byteswap(...) - _ndarray_base.byteswap(self, inplace=False) -> _ndarray_base
 cupy.ndarray.choose(...) - _ndarray_base.choose(self, choices, out=None, mode='raise')
 cupy.ndarray.clip(...) - _ndarray_base.clip(self, min=None, max=None, out=None) -> _ndarray_base
 cupy.ndarray.compress(...) - _ndarray_base.compress(self, condition, axis=None, out=None) -> _ndarray_base
@@ -913,7 +945,7 @@ cupy.testing.NumpyAliasBasicTestBase.setUp(self) - Hook method for setting up th
 cupy.testing.NumpyAliasBasicTestBase.setUpClass() - Hook method for setting up class fixture before running tests in the class.
 cupy.testing.NumpyAliasBasicTestBase.shortDescription(self) - Returns a one-line description of the test, or None if no
 cupy.testing.NumpyAliasBasicTestBase.skipTest(self, reason) - Skip this test.
-cupy.testing.NumpyAliasBasicTestBase.subTest(self, msg=<object object at 0x7cc32c57aea0>, **params) - Return a context manager that will return the enclosed block
+cupy.testing.NumpyAliasBasicTestBase.subTest(self, msg=<object object at 0x76e3fff1ae50>, **params) - Return a context manager that will return the enclosed block
 cupy.testing.NumpyAliasBasicTestBase.tearDown(self) - Hook method for deconstructing the test fixture after testing it.
 cupy.testing.NumpyAliasBasicTestBase.tearDownClass() - Hook method for deconstructing the class fixture after running all tests in the class.
 cupy.testing.NumpyAliasBasicTestBase.test_argspec(self)
@@ -973,7 +1005,7 @@ cupy.testing.NumpyAliasValuesTestBase.setUp(self) - Hook method for setting up t
 cupy.testing.NumpyAliasValuesTestBase.setUpClass() - Hook method for setting up class fixture before running tests in the class.
 cupy.testing.NumpyAliasValuesTestBase.shortDescription(self) - Returns a one-line description of the test, or None if no
 cupy.testing.NumpyAliasValuesTestBase.skipTest(self, reason) - Skip this test.
-cupy.testing.NumpyAliasValuesTestBase.subTest(self, msg=<object object at 0x7cc32c57aea0>, **params) - Return a context manager that will return the enclosed block
+cupy.testing.NumpyAliasValuesTestBase.subTest(self, msg=<object object at 0x76e3fff1ae50>, **params) - Return a context manager that will return the enclosed block
 cupy.testing.NumpyAliasValuesTestBase.tearDown(self) - Hook method for deconstructing the test fixture after testing it.
 cupy.testing.NumpyAliasValuesTestBase.tearDownClass() - Hook method for deconstructing the class fixture after running all tests in the class.
 cupy.testing.NumpyAliasValuesTestBase.test_values(self)

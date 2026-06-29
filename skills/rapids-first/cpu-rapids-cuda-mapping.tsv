@@ -40,6 +40,10 @@ sklearn.model_selection	cuml.model_selection	cuml.accel	train_test_split
 umap	cuml.manifold.UMAP	cuml.accel	standalone umap-learn -> cuML
 hdbscan	cuml.cluster.HDBSCAN	cuml.accel	standalone hdbscan -> cuML
 statsmodels.tsa	cuml.tsa	-	ARIMA, AutoARIMA, Holt-Winters
+xgboost	nvforest	-	forest INFERENCE only (no training): load_model(path, model_type='xgboost_ubj'/'xgboost_json'/'xgboost_legacy') -> .predict()/.predict_proba(); pass device='gpu'; successor to deprecated cuML FIL
+lightgbm	nvforest	-	forest INFERENCE only: load_model(path, model_type='lightgbm') -> .predict(); training stays in lightgbm
+treelite	nvforest	-	Treelite is nvforest's model-exchange format; load_from_treelite_model(tl_model, device='auto'/'gpu'/'cpu') -> ForestInference
+cuml.ForestInference	nvforest	-	cuML FIL (cuml.fil / cuml.ForestInference) is DEPRECATED in 26.06 -> migrate to standalone nvforest; load_from_sklearn(rf) also accelerates a trained sklearn/cuML RandomForest at inference
 networkx	nx_cugraph	nx-cugraph-backend	zero-code via env `NX_CUGRAPH_AUTOCONFIG=True` (NetworkX backend dispatch, requires NetworkX >= 3.2); per-call: `nx.func(G, backend='cugraph')`
 networkx.algorithms.centrality	cugraph.centrality	nx-cugraph-backend	betweenness/eigenvector/Katz/degree
 networkx.algorithms.community	cugraph.community	nx-cugraph-backend	Louvain, Leiden, ECG, triangle count

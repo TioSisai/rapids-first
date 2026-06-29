@@ -1266,14 +1266,14 @@ nx_cugraph.diamond_graph(create_using=None) - Returns the Diamond graph
 nx_cugraph.dijkstra_path(G, source, target, weight='weight', *, dtype=None) - Returns the shortest weighted path from source to target in G.
 nx_cugraph.dijkstra_path_length(G, source, target, weight='weight', *, dtype=None) - Returns the shortest weighted path length in G from source to target.
 nx_cugraph.dodecahedral_graph(create_using=None) - Returns the Platonic Dodecahedral graph.
-nx_cugraph.drawing.forceatlas2_layout(G, pos=None, *, max_iter=100, jitter_tolerance=1.0, scaling_ratio=2.0, gravity=1.0, distributed_action=False, strong_gravity=False, node_mass=None, node_size=None, weight=None, dissuade_hubs=None, linlog=False, seed=None, dim=2, store_pos_as=None, dtype=None) - Position nodes using the ForceAtlas2 force-directed layout algorithm.
-nx_cugraph.drawing.layout.forceatlas2_layout(G, pos=None, *, max_iter=100, jitter_tolerance=1.0, scaling_ratio=2.0, gravity=1.0, distributed_action=False, strong_gravity=False, node_mass=None, node_size=None, weight=None, dissuade_hubs=None, linlog=False, seed=None, dim=2, store_pos_as=None, dtype=None) - Position nodes using the ForceAtlas2 force-directed layout algorithm.
+nx_cugraph.drawing.forceatlas2_layout(G, pos=None, *, max_iter=100, jitter_tolerance=1.0, scaling_ratio=2.0, gravity=1.0, distributed_action=False, strong_gravity=False, node_mass=None, node_size=None, weight=None, dissuade_hubs=None, linlog=False, seed=None, dim=2, store_pos_as=None, dtype=None, barnes_hut_optimize=False, barnes_hut_theta=0, node_mobility=None) - Position nodes using the ForceAtlas2 force-directed layout algorithm.
+nx_cugraph.drawing.layout.forceatlas2_layout(G, pos=None, *, max_iter=100, jitter_tolerance=1.0, scaling_ratio=2.0, gravity=1.0, distributed_action=False, strong_gravity=False, node_mass=None, node_size=None, weight=None, dissuade_hubs=None, linlog=False, seed=None, dim=2, store_pos_as=None, dtype=None, barnes_hut_optimize=False, barnes_hut_theta=0, node_mobility=None) - Position nodes using the ForceAtlas2 force-directed layout algorithm.
 nx_cugraph.edge_betweenness_centrality(G, k=None, normalized=True, weight=None, seed=None) - Compute betweenness centrality for edges.
 nx_cugraph.ego_graph(G, n, radius=1, center=True, undirected=False, distance=None, *, dtype=None) - Returns induced subgraph of neighbors centered at node n within
 nx_cugraph.eigenvector_centrality(G, max_iter=100, tol=1e-06, nstart=None, weight=None, *, dtype=None) - Compute the eigenvector centrality for the graph G.
 nx_cugraph.empty_graph(n=0, create_using=None, default=<class 'networkx.classes.graph.Graph'>) - Returns the empty graph with n nodes and zero edges.
 nx_cugraph.florentine_families_graph() - Returns Florentine families graph.
-nx_cugraph.forceatlas2_layout(G, pos=None, *, max_iter=100, jitter_tolerance=1.0, scaling_ratio=2.0, gravity=1.0, distributed_action=False, strong_gravity=False, node_mass=None, node_size=None, weight=None, dissuade_hubs=None, linlog=False, seed=None, dim=2, store_pos_as=None, dtype=None) - Position nodes using the ForceAtlas2 force-directed layout algorithm.
+nx_cugraph.forceatlas2_layout(G, pos=None, *, max_iter=100, jitter_tolerance=1.0, scaling_ratio=2.0, gravity=1.0, distributed_action=False, strong_gravity=False, node_mass=None, node_size=None, weight=None, dissuade_hubs=None, linlog=False, seed=None, dim=2, store_pos_as=None, dtype=None, barnes_hut_optimize=False, barnes_hut_theta=0, node_mobility=None) - Position nodes using the ForceAtlas2 force-directed layout algorithm.
 nx_cugraph.from_dict_of_lists(d, create_using=None) - Returns a graph from a dictionary of lists.
 nx_cugraph.from_networkx(graph: 'nx.Graph', edge_attrs: 'AttrKey | dict[AttrKey, EdgeValue | None] | None' = None, edge_dtypes: 'Dtype | dict[AttrKey, Dtype | None] | None' = None, *, node_attrs: 'AttrKey | dict[AttrKey, NodeValue | None] | None' = None, node_dtypes: 'Dtype | dict[AttrKey, Dtype | None] | None' = None, preserve_all_attrs: 'bool' = False, preserve_edge_attrs: 'bool' = False, preserve_node_attrs: 'bool' = False, preserve_graph_attrs: 'bool' = False, as_directed: 'bool' = False, name: 'str | None' = None, graph_name: 'str | None' = None, use_compat_graph: 'bool | None' = False) -> 'nxcg.Graph | nxcg.CudaGraph' - Convert a networkx graph to nx_cugraph graph; can convert all attributes.
 nx_cugraph.from_pandas_edgelist(df, source='source', target='target', edge_attr=None, create_using=None, edge_key=None) - Returns a graph from Pandas DataFrame containing an edge list.
@@ -1421,6 +1421,7 @@ nx_cugraph.interface.BackendInterface.desargues_graph(create_using=None) - Retur
 nx_cugraph.interface.BackendInterface.descendants(G, source) - Returns all nodes reachable from `source` in `G`.
 nx_cugraph.interface.BackendInterface.descendants_at_distance(G, source, distance) - Returns all nodes at a fixed `distance` from `source` in `G`.
 nx_cugraph.interface.BackendInterface.diamond_graph(create_using=None) - Returns the Diamond graph
+nx_cugraph.interface.BackendInterface.digraph__new__(cls, *args, **kwargs) - The original docstring for digraph__new__ was empty.
 nx_cugraph.interface.BackendInterface.dijkstra_path(G, source, target, weight='weight', *, dtype=None) - Returns the shortest weighted path from source to target in G.
 nx_cugraph.interface.BackendInterface.dijkstra_path_length(G, source, target, weight='weight', *, dtype=None) - Returns the shortest weighted path length in G from source to target.
 nx_cugraph.interface.BackendInterface.dodecahedral_graph(create_using=None) - Returns the Platonic Dodecahedral graph.
@@ -1429,13 +1430,14 @@ nx_cugraph.interface.BackendInterface.ego_graph(G, n, radius=1, center=True, und
 nx_cugraph.interface.BackendInterface.eigenvector_centrality(G, max_iter=100, tol=1e-06, nstart=None, weight=None, *, dtype=None) - Compute the eigenvector centrality for the graph G.
 nx_cugraph.interface.BackendInterface.empty_graph(n=0, create_using=None, default=<class 'networkx.classes.graph.Graph'>) - Returns the empty graph with n nodes and zero edges.
 nx_cugraph.interface.BackendInterface.florentine_families_graph() - Returns Florentine families graph.
-nx_cugraph.interface.BackendInterface.forceatlas2_layout(G, pos=None, *, max_iter=100, jitter_tolerance=1.0, scaling_ratio=2.0, gravity=1.0, distributed_action=False, strong_gravity=False, node_mass=None, node_size=None, weight=None, dissuade_hubs=None, linlog=False, seed=None, dim=2, store_pos_as=None, dtype=None) - Position nodes using the ForceAtlas2 force-directed layout algorithm.
+nx_cugraph.interface.BackendInterface.forceatlas2_layout(G, pos=None, *, max_iter=100, jitter_tolerance=1.0, scaling_ratio=2.0, gravity=1.0, distributed_action=False, strong_gravity=False, node_mass=None, node_size=None, weight=None, dissuade_hubs=None, linlog=False, seed=None, dim=2, store_pos_as=None, dtype=None, barnes_hut_optimize=False, barnes_hut_theta=0, node_mobility=None) - Position nodes using the ForceAtlas2 force-directed layout algorithm.
 nx_cugraph.interface.BackendInterface.from_biadjacency_matrix(A, create_using=None, edge_attribute='weight', *, row_order=None, column_order=None) - Creates a new bipartite graph from a biadjacency matrix given as a
 nx_cugraph.interface.BackendInterface.from_dict_of_lists(d, create_using=None) - Returns a graph from a dictionary of lists.
 nx_cugraph.interface.BackendInterface.from_pandas_edgelist(df, source='source', target='target', edge_attr=None, create_using=None, edge_key=None) - Returns a graph from Pandas DataFrame containing an edge list.
 nx_cugraph.interface.BackendInterface.from_scipy_sparse_array(A, parallel_edges=False, create_using=None, edge_attribute='weight') - Creates a new graph from an adjacency matrix given as a SciPy sparse
 nx_cugraph.interface.BackendInterface.frucht_graph(create_using=None) - Returns the Frucht Graph.
 nx_cugraph.interface.BackendInterface.generic_bfs_edges(G, source, neighbors=None, depth_limit=None) - Iterate over edges in a breadth-first search.
+nx_cugraph.interface.BackendInterface.graph__new__(cls, *args, **kwargs) - The original docstring for graph__new__ was empty.
 nx_cugraph.interface.BackendInterface.has_path(G, source, target) - Returns *True* if *G* has a path from *source* to *target*.
 nx_cugraph.interface.BackendInterface.heawood_graph(create_using=None) - Returns the Heawood Graph, a (3,6) cage.
 nx_cugraph.interface.BackendInterface.hits(G, max_iter=100, tol=1e-08, nstart=None, normalized=True, *, weight='weight', dtype=None) - Returns HITS hubs and authorities values for nodes.
@@ -1464,6 +1466,8 @@ nx_cugraph.interface.BackendInterface.lollipop_graph(m, n, create_using=None) - 
 nx_cugraph.interface.BackendInterface.louvain_communities(G, weight='weight', resolution=1, threshold=1e-07, max_level=None, seed=None, *, dtype=None) - Find the best partition of a graph using the Louvain Community Detection
 nx_cugraph.interface.BackendInterface.lowest_common_ancestor(G, node1, node2, default=None) - Compute the lowest common ancestor of the given pair of nodes.
 nx_cugraph.interface.BackendInterface.moebius_kantor_graph(create_using=None) - Returns the Moebius-Kantor graph.
+nx_cugraph.interface.BackendInterface.multidigraph__new__(cls, *args, **kwargs) - The original docstring for multidigraph__new__ was empty.
+nx_cugraph.interface.BackendInterface.multigraph__new__(cls, *args, **kwargs) - The original docstring for multigraph__new__ was empty.
 nx_cugraph.interface.BackendInterface.node_connected_component(G, n) - Returns the set of nodes in the component of graph containing node n.
 nx_cugraph.interface.BackendInterface.null_graph(create_using=None) - Returns the Null graph with no nodes or edges.
 nx_cugraph.interface.BackendInterface.number_connected_components(G) - Returns the number of connected components.
@@ -1602,6 +1606,7 @@ nx_cugraph.scripts.print_table.BackendInterface.desargues_graph(create_using=Non
 nx_cugraph.scripts.print_table.BackendInterface.descendants(G, source) - Returns all nodes reachable from `source` in `G`.
 nx_cugraph.scripts.print_table.BackendInterface.descendants_at_distance(G, source, distance) - Returns all nodes at a fixed `distance` from `source` in `G`.
 nx_cugraph.scripts.print_table.BackendInterface.diamond_graph(create_using=None) - Returns the Diamond graph
+nx_cugraph.scripts.print_table.BackendInterface.digraph__new__(cls, *args, **kwargs) - The original docstring for digraph__new__ was empty.
 nx_cugraph.scripts.print_table.BackendInterface.dijkstra_path(G, source, target, weight='weight', *, dtype=None) - Returns the shortest weighted path from source to target in G.
 nx_cugraph.scripts.print_table.BackendInterface.dijkstra_path_length(G, source, target, weight='weight', *, dtype=None) - Returns the shortest weighted path length in G from source to target.
 nx_cugraph.scripts.print_table.BackendInterface.dodecahedral_graph(create_using=None) - Returns the Platonic Dodecahedral graph.
@@ -1610,13 +1615,14 @@ nx_cugraph.scripts.print_table.BackendInterface.ego_graph(G, n, radius=1, center
 nx_cugraph.scripts.print_table.BackendInterface.eigenvector_centrality(G, max_iter=100, tol=1e-06, nstart=None, weight=None, *, dtype=None) - Compute the eigenvector centrality for the graph G.
 nx_cugraph.scripts.print_table.BackendInterface.empty_graph(n=0, create_using=None, default=<class 'networkx.classes.graph.Graph'>) - Returns the empty graph with n nodes and zero edges.
 nx_cugraph.scripts.print_table.BackendInterface.florentine_families_graph() - Returns Florentine families graph.
-nx_cugraph.scripts.print_table.BackendInterface.forceatlas2_layout(G, pos=None, *, max_iter=100, jitter_tolerance=1.0, scaling_ratio=2.0, gravity=1.0, distributed_action=False, strong_gravity=False, node_mass=None, node_size=None, weight=None, dissuade_hubs=None, linlog=False, seed=None, dim=2, store_pos_as=None, dtype=None) - Position nodes using the ForceAtlas2 force-directed layout algorithm.
+nx_cugraph.scripts.print_table.BackendInterface.forceatlas2_layout(G, pos=None, *, max_iter=100, jitter_tolerance=1.0, scaling_ratio=2.0, gravity=1.0, distributed_action=False, strong_gravity=False, node_mass=None, node_size=None, weight=None, dissuade_hubs=None, linlog=False, seed=None, dim=2, store_pos_as=None, dtype=None, barnes_hut_optimize=False, barnes_hut_theta=0, node_mobility=None) - Position nodes using the ForceAtlas2 force-directed layout algorithm.
 nx_cugraph.scripts.print_table.BackendInterface.from_biadjacency_matrix(A, create_using=None, edge_attribute='weight', *, row_order=None, column_order=None) - Creates a new bipartite graph from a biadjacency matrix given as a
 nx_cugraph.scripts.print_table.BackendInterface.from_dict_of_lists(d, create_using=None) - Returns a graph from a dictionary of lists.
 nx_cugraph.scripts.print_table.BackendInterface.from_pandas_edgelist(df, source='source', target='target', edge_attr=None, create_using=None, edge_key=None) - Returns a graph from Pandas DataFrame containing an edge list.
 nx_cugraph.scripts.print_table.BackendInterface.from_scipy_sparse_array(A, parallel_edges=False, create_using=None, edge_attribute='weight') - Creates a new graph from an adjacency matrix given as a SciPy sparse
 nx_cugraph.scripts.print_table.BackendInterface.frucht_graph(create_using=None) - Returns the Frucht Graph.
 nx_cugraph.scripts.print_table.BackendInterface.generic_bfs_edges(G, source, neighbors=None, depth_limit=None) - Iterate over edges in a breadth-first search.
+nx_cugraph.scripts.print_table.BackendInterface.graph__new__(cls, *args, **kwargs) - The original docstring for graph__new__ was empty.
 nx_cugraph.scripts.print_table.BackendInterface.has_path(G, source, target) - Returns *True* if *G* has a path from *source* to *target*.
 nx_cugraph.scripts.print_table.BackendInterface.heawood_graph(create_using=None) - Returns the Heawood Graph, a (3,6) cage.
 nx_cugraph.scripts.print_table.BackendInterface.hits(G, max_iter=100, tol=1e-08, nstart=None, normalized=True, *, weight='weight', dtype=None) - Returns HITS hubs and authorities values for nodes.
@@ -1645,6 +1651,8 @@ nx_cugraph.scripts.print_table.BackendInterface.lollipop_graph(m, n, create_usin
 nx_cugraph.scripts.print_table.BackendInterface.louvain_communities(G, weight='weight', resolution=1, threshold=1e-07, max_level=None, seed=None, *, dtype=None) - Find the best partition of a graph using the Louvain Community Detection
 nx_cugraph.scripts.print_table.BackendInterface.lowest_common_ancestor(G, node1, node2, default=None) - Compute the lowest common ancestor of the given pair of nodes.
 nx_cugraph.scripts.print_table.BackendInterface.moebius_kantor_graph(create_using=None) - Returns the Moebius-Kantor graph.
+nx_cugraph.scripts.print_table.BackendInterface.multidigraph__new__(cls, *args, **kwargs) - The original docstring for multidigraph__new__ was empty.
+nx_cugraph.scripts.print_table.BackendInterface.multigraph__new__(cls, *args, **kwargs) - The original docstring for multigraph__new__ was empty.
 nx_cugraph.scripts.print_table.BackendInterface.node_connected_component(G, n) - Returns the set of nodes in the component of graph containing node n.
 nx_cugraph.scripts.print_table.BackendInterface.null_graph(create_using=None) - Returns the Null graph with no nodes or edges.
 nx_cugraph.scripts.print_table.BackendInterface.number_connected_components(G) - Returns the number of connected components.
@@ -1704,13 +1712,13 @@ nx_cugraph.scripts.print_tree.Info(networkx_path, dispatch_name, version_added, 
 nx_cugraph.scripts.print_tree.Info.count(self, value, /) - Return number of occurrences of value.
 nx_cugraph.scripts.print_tree.Info.index(self, value, start=0, stop=9223372036854775807, /) - Return first index of value.
 nx_cugraph.scripts.print_tree.assoc_in(d, keys, value) - Like Clojure's assoc-in, but modifies d in-place.
-nx_cugraph.scripts.print_tree.create_tree(path_to_info=None, *, by='networkx_path', skip=0, networkx_path=False, dispatch_name=False, version_added=False, plc=False, dispatch_name_if_different=False, incomplete=False, different=False, prefix='', strip_networkx=True, get_payload=<function get_payload at 0x7cc0772ce520>)
+nx_cugraph.scripts.print_tree.create_tree(path_to_info=None, *, by='networkx_path', skip=0, networkx_path=False, dispatch_name=False, version_added=False, plc=False, dispatch_name_if_different=False, incomplete=False, different=False, prefix='', strip_networkx=True, get_payload=<function get_payload at 0x76e2c5520680>)
 nx_cugraph.scripts.print_tree.default_get_payload_internal(keys)
 nx_cugraph.scripts.print_tree.get_argumentparser(add_help=True)
 nx_cugraph.scripts.print_tree.get_path_to_info(path_to_name=None, version_added_sep='.', plc_sep='/')
 nx_cugraph.scripts.print_tree.get_payload(info, *, networkx_path=False, dispatch_name=False, version_added=False, plc=False, dispatch_name_if_different=False, incomplete=False, different=False)
 nx_cugraph.scripts.print_tree.main(path_to_info=None, *, by='networkx_path', networkx_path=False, dispatch_name=False, version_added=False, plc=False, dispatch_name_if_different=True, incomplete=False, different=False, file=<_io.TextIOWrapper name='<stdout>' mode='w' encoding='utf-8'>)
-nx_cugraph.scripts.print_tree.tree_lines(tree, parents=(), are_levels_closing=(), get_payload_internal=<function default_get_payload_internal at 0x7cc0772ce3e0>)
+nx_cugraph.scripts.print_tree.tree_lines(tree, parents=(), are_levels_closing=(), get_payload_internal=<function default_get_payload_internal at 0x76e2c5520540>)
 nx_cugraph.sedgewick_maze_graph(create_using=None) - Return a small maze with a cycle.
 nx_cugraph.shortest_path(G, source=None, target=None, weight=None, method='dijkstra', *, dtype=None) - Compute shortest paths in the graph.
 nx_cugraph.shortest_path_length(G, source=None, target=None, weight=None, method='dijkstra', *, dtype=None) - Compute shortest path lengths in the graph.

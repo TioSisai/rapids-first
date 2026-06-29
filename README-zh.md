@@ -23,7 +23,7 @@ Prompt:
 
 > 用 `rapids-first` 改写这个 pandas 预处理脚本。
 
-改写前 —— **0.87 秒**(5 次取平均,首次 warmup 不计):
+改写前 —— **0.85 秒**(5 次取平均,首次 warmup 不计):
 
 ```python
 import pandas as pd
@@ -33,7 +33,7 @@ df["x"] = df["a"] / df["b"]
 out = df.groupby("user_id")["x"].mean()
 ```
 
-改写后 —— **0.05 秒**(5 次取平均,首次 warmup 不计)—— **约 17× 加速**:
+改写后 —— **0.06 秒**(5 次取平均,首次 warmup 不计)—— **约 15× 加速**:
 
 ```python
 import cudf
@@ -49,7 +49,7 @@ out = df.groupby("user_id")["x"].mean()
 - **链路中段不做 device 往返。** 遵循 skill 的「GPU 数据生命周期」纪律,结果一直留在 GPU 显存里,直到下游真正需要 CPU 数据才会调 `.to_pandas()`。
 - **零代码替代方案。** 如果你压根不想动现有脚本,直接用 `python -m cudf.pandas script.py` 跑;当用户的诉求是「让现有代码跑得更快」而不是「写显式的 RAPIDS import」时,skill 会自动选这条路径。
 
-复现命令(10M 行,~2M 个不同 `user_id`,RTX 4060 Ti,cudf 26.02.01,pandas 2.3.3):
+复现命令(10M 行,~2M 个不同 `user_id`,RTX 4060 Ti,cudf 26.06.00,pandas 2.3.3):
 
 ```python
 # gen_events.py —— 在 $TMPDIR 下生成 ~130 MB 的 events.parquet
@@ -65,8 +65,20 @@ pd.DataFrame({
 
 ## 依赖
 
-- [**RAPIDS**](https://rapids.ai/) —— 本 skill 引导使用的 GPU 数据科学栈(`cupy`、`cudf`、`cuml`、`cugraph`、`cucim`、`cuvs`、`nx-cugraph`、`dask-cudf`、`cuxfilter`、`pylibraft`、`raft-dask`)。底层库的 import 需要一块 CUDA 兼容的 NVIDIA GPU 以及匹配的 CUDA driver。
+- [**RAPIDS**](https://rapids.ai/) —— 本 skill 引导使用的 GPU 数据科学栈(`cupy`、`cudf`、`cuml`、`cugraph`、`cucim`、`cuvs`、`nvforest`、`nx-cugraph`、`dask-cudf`、`cuxfilter`、`pylibraft`、`raft-dask`)。底层库的 import 需要一块 CUDA 兼容的 NVIDIA GPU。仓库预生成的 API 索引基于 **RAPIDS 26.06 + CUDA 13**(`cu13` wheels,NVIDIA driver ≥ 580.65.06)抓取,但 skill 本身可配合任意较新的 RAPIDS 安装使用。
 - [**ripgrep(`rg`)**](https://github.com/BurntSushi/ripgrep) —— skill 的标准工作流全程依赖它,从 `apis/<pkg>.txt` 中一次性查到精确的 API 签名。
+
+安装 RAPIDS 本身(即仓库索引抓取所基于的环境 —— CUDA 13 / `cu13` wheels):
+
+```bash
+pip install --extra-index-url=https://pypi.nvidia.com \
+    "cudf-cu13==26.6.*" "dask-cudf-cu13==26.6.*" "cuml-cu13==26.6.*" \
+    "cugraph-cu13==26.6.*" "nx-cugraph-cu13==26.6.*" "cuxfilter-cu13==26.6.*" \
+    "cucim-cu13==26.6.*" "pylibraft-cu13==26.6.*" "raft-dask-cu13==26.6.*" \
+    "cuvs-cu13==26.6.*" "nvforest-cu13==26.6.*"
+```
+
+如需 CUDA 12,把每个 `-cu13` 后缀换成 `-cu12`。conda / Docker 安装与官方 release selector 见 [RAPIDS 安装指南](https://docs.rapids.ai/install/)。
 
 ## 安装
 
@@ -130,22 +142,23 @@ mv rapids-first/skills/rapids-first .agents/skills/rapids-first
 
 仓库中预生成的 `apis/<pkg>.txt` 是基于以下环境抓取的:
 
-| 组件         | 版本                |
-|--------------|---------------------|
-| Python       | 3.12.13             |
-| CUDA runtime | 12.9                |
-| cupy         | 14.0.1              |
-| cupyx        | (随 cupy 一同安装)  |
-| cudf         | 26.02.01            |
-| dask_cudf    | 26.02.01            |
-| cuml         | 26.02.000           |
-| cugraph      | 26.02.00            |
-| nx_cugraph   | 26.02.000           |
-| cuxfilter    | 26.02.000           |
-| cucim        | 26.02.01            |
-| pylibraft    | 26.02.00            |
-| raft_dask    | 26.02.00            |
-| cuvs         | 26.02.000           |
+| 组件         | 版本               |
+| ------------ | ------------------ |
+| Python       | 3.12.13            |
+| CUDA runtime | 13.2               |
+| cupy         | 14.1.1             |
+| cupyx        | (随 cupy 一同安装) |
+| cudf         | 26.06.00           |
+| dask_cudf    | 26.06.00           |
+| cuml         | 26.06.00           |
+| cugraph      | 26.06.00           |
+| nx_cugraph   | 26.06.00           |
+| cuxfilter    | 26.06.00           |
+| cucim        | 26.06.00           |
+| pylibraft    | 26.06.00           |
+| raft_dask    | 26.06.00           |
+| cuvs         | 26.06.00           |
+| nvforest     | 26.06.00           |
 
 ### 何时需要重新生成
 
