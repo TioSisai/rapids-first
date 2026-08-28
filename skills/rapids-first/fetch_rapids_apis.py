@@ -17,7 +17,7 @@ Design goals:
 
 Usage::
 
-    python fetch_rapids_apis.py                # Fetch the default 13 RAPIDS packages
+    python fetch_rapids_apis.py                # Fetch the default 4 RAPIDS packages
     python fetch_rapids_apis.py --packages cudf cuml
     python fetch_rapids_apis.py --output-dir /tmp/rapids-apis
 """
@@ -38,16 +38,7 @@ DEFAULT_PACKAGES = [
     "cupy",
     "cupyx",
     "cudf",
-    "dask_cudf",
     "cuml",
-    "cugraph",
-    "nx_cugraph",
-    "cuxfilter",
-    "cucim",
-    "pylibraft",
-    "raft_dask",
-    "cuvs",
-    "nvforest",
 ]
 
 # Skip purely internal implementation subtrees: objects under these paths are usually
@@ -58,17 +49,15 @@ DEFAULT_PACKAGES = [
 # prefix, either ending with . or matching exactly).
 DEFAULT_SKIP_SUBTREES: dict[str, tuple[str, ...]] = {
     "cudf": ("cudf.core",),
+    # cuml.benchmark is a standalone benchmarking harness (runners, dataset loaders,
+    # timing helpers), not part of the estimator API users target when writing code.
     "cuml": (
         "cuml.internals",
         "cuml.thirdparty_adapters",
         "cuml.common",
         "cuml.prims",
+        "cuml.benchmark",
     ),
-    "cugraph": ("cugraph.utilities",),
-    # nvforest.detail is the internal C++/Cython impl namespace (ForestInferenceImpl,
-    # treelite call wrappers); nvforest.benchmark is a standalone benchmarking harness.
-    # Neither is part of the public inference API users target when writing code.
-    "nvforest": ("nvforest.detail", "nvforest.benchmark"),
 }
 
 

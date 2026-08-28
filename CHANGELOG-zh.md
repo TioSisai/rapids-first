@@ -7,6 +7,90 @@
 格式参照 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.1.0/),
 版本号遵循 [语义化版本](https://semver.org/lang/zh-CN/spec/v2.0.0.html)。
 
+## [26.08] - 2026-08-28
+
+**rapids-first 的覆盖范围从完整 RAPIDS 栈收窄为精简核心。**skill 现在覆盖
+`cupy`、`cupyx`、`cudf`、`cuml` 四个包,26.06 时期跟踪的是十三个。仓库
+内置的 API 索引基于 **NVIDIA GH200** 上真实的 RAPIDS `26.08.00` + CUDA 13 安装
+重新生成。
+
+这是一次范围决策,而非临时缺口。`fetch_rapids_apis.py` 的默认抓取列表就是这四个
+包,在装有完整 RAPIDS 的环境里重新生成同样只产出四个索引文件。需要索引本地环境
+提供的其他包时,用 `--packages` 指定,并自行补上对应的
+`cpu-rapids-cuda-mapping.tsv` 映射行。
+
+### 移除
+
+- **九个 API 索引文件**,对应退出覆盖范围的包:`cucim.txt`、`cugraph.txt`、
+  `cuvs.txt`、`cuxfilter.txt`、`dask_cudf.txt`、`nvforest.txt`、`nx_cugraph.txt`、
+  `pylibraft.txt`、`raft_dask.txt`。
+- **指向这些包的全部映射行、零代码条目、示例与文档表述**,包括 `nx-cugraph` 与
+  `dask-cudf` 两条零代码 backend,以及 26.06 新增的整个 nvForest 森林推理
+  **Example 5**。
+- **精简后的技术栈不再覆盖的能力**:图算法、图像与全切片 I/O、CAGRA 类 ANN 索引、
+  多 GPU / 外存 dataframe、可视化面板,以及针对 XGBoost 与 LightGBM 模型的 GPU
+  森林推理。
+
+### 变更
+
+- **基于 RAPIDS `26.08.00` 重新生成保留下来的四个包的 `apis/<pkg>.txt`**:
+  `cupy` 1067、`cupyx` 1453、`cudf` 4779、`cuml` 3290,合计 **10589** 条。
+- **`fetch_rapids_apis.py`** —— `DEFAULT_PACKAGES` 从 **13** 个包缩减到 **4** 个;
+  移除 `cugraph` 与 `nvforest` 的跳过项;新增跳过 `cuml.benchmark`,它是独立的
+  benchmark 工具,不是 estimator API。
+- **`cpu-rapids-cuda-mapping.tsv` 重新对齐** —— `faiss`、`hnswlib`、`annoy`、
+  `scann`、`pynndescent` 现指向 `cuml.neighbors.NearestNeighbors`,
+  `sklearn.metrics.pairwise_distances` 指向 `cuml.metrics.pairwise_distances`。
+- **修正零代码相关表述。** `cuml.accel` 将 `sklearn.naive_bayes`、
+  `sklearn.metrics`、`sklearn.feature_extraction`、`sklearn.random_projection`、
+  `sklearn.model_selection`、`sklearn.multiclass` 与 `sklearn.compose` 留在
+  CPU 上,这些行的零代码列改为 `-`,各自保留显式的 cuML 对应物。`cuml.accel`
+  新增覆盖 `sklearn.covariance` 与 `sklearn.kernel_ridge`,并为互操作性 patch
+  `sklearn.compose` / `sklearn.pipeline`,但不代理其中的 estimator。
+- **Quick demo 数字**在 1× NVIDIA GH200 120GB 上重新测量(pandas `3.0.3`
+  `0.59 秒` → cudf `26.08.00` `0.019 秒`,约 31×)。
+- **README / README-zh 的环境表**收缩为 Python 3.12.14、CUDA 13.2、cupy 14.2.0、
+  cudf 26.08.00、cuml 26.08.00;pip 安装命令精简为 `cudf-cu13` / `cuml-cu13` /
+  `cupy-cuda13x`。
+- **`.gitignore`** —— `cufile.log` 的注释只保留 cudf 作为产生方,cucim 与
+  pylibraft 已不属于这套技术栈。
+
+### 新增
+
+- **重新生成的索引捕获到的 26.08 新 API 表面**:
+  - `cuml.IsolationForest` —— GPU 加速的 Isolation Forest 异常检测,现位于
+    cuML 顶层。
+  - `cuml.Lars` —— 最小角回归,从 `cuml.experimental.linear_model` 提升到
+    cuML 顶层。
+  - `cupyx.scipy.sparse.csr_array` / `csc_array` / `coo_array` / `dia_array`
+    —— SciPy 风格的稀疏 **array** 类,与既有的 matrix 类并存(CuPy `14.2.0`)。
+- **`SKILL.md`** —— 新增一条条目,写明这套精简技术栈未覆盖的范围,让助手直接
+  说明现状,而不是凭空编造 API。
+
+### 说明
+
+- `nvforest 26.08.00` 与 `pylibraft 26.08.00` 仍作为 cuML 与 cuDF 的传递依赖
+  安装在目标环境中,并 **不在 skill 的范围内**。
+- **cudf 26.08 跟进 pandas 3.0。** `applymap`、`backfill`、`pad`、`first`、
+  `last`、`values_host` 以及 `Index.is_*` 系列 dtype 判定方法已移除;
+  `DataFrame.flags` / `set_flags` 与 `cudf.api.types.is_dtype_obj_numeric` /
+  `is_dtype_obj_string` 为新增。
+- 索引不再包含 `cuml.dask`,目标环境中没有 `dask`。
+- `cudf.pandas` 与 `cuml.accel` 的零代码激活语法相对 26.06 **保持不变**。
+
+### 抓取环境
+
+仓库内置的 `apis/<pkg>.txt` 基于以下环境重新生成:
+
+| 组件         | 版本                |
+|--------------|---------------------|
+| Python       | 3.12.14             |
+| CUDA runtime | 13.2                |
+| GPU          | NVIDIA GH200 120GB  |
+| cupy         | 14.2.0              |
+| cudf         | 26.08.00            |
+| cuml         | 26.08.00            |
+
 ## [26.06] - 2026-06-29
 
 面向 **RAPIDS 26.06** + **CUDA 13**(`cu13` wheels)的刷新。仓库内置的 API 索引
@@ -127,5 +211,6 @@
 升级 RAPIDS 或本地版本与上表不一致时,用
 `python <skill-dir>/fetch_rapids_apis.py` 重新生成。
 
+[26.08]: https://github.com/TioSisai/rapids-first/releases/tag/v26.08-cuml-cudf-only
 [26.06]: https://github.com/TioSisai/rapids-first/releases/tag/v26.06
 [26.02]: https://github.com/TioSisai/rapids-first/releases/tag/v26.02

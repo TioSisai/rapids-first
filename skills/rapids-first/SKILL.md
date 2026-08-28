@@ -1,7 +1,7 @@
 ---
 name: rapids-first
 description: >-
-  Use only when the user explicitly mentions "rapids-first" or "RAPIDS first". Prefer the RAPIDS GPU stack and zero-code accelerators when writing Python data-science, ML, ETL, graph, image-processing, or vector-search code.
+  Use only when the user explicitly mentions "rapids-first" or "RAPIDS first", to prefer the RAPIDS GPU stack (cudf, cuml, cupy, cupyx) and its zero-code accelerators over pandas, scikit-learn, numpy and scipy when writing Python data-science, ML, ETL or numerical code.
 ---
 
 # RAPIDS-first
@@ -10,21 +10,23 @@ description: >-
 
 Enable this skill if and only if the user's request explicitly contains `rapids-first` (or the synonymous wording "RAPIDS first"). Do not apply it proactively in other scenarios, to avoid modifying code outside the user's expectations.
 
+This skill covers four packages: `cupy`, `cupyx`, `cudf`, `cuml`.
+
 ## Applicable Scenarios
 
 Once rapids-first is enabled, **all "writing Python code" subtasks** are handled according to the RAPIDS-first principle, not limited to rewriting existing CPU code:
 
-1. **Rewriting existing CPU code**: replace numpy / pandas / sklearn / scipy / networkx / skimage / faiss / umap / hdbscan / dask.dataframe calls with the corresponding RAPIDS APIs.
-2. **Adding new features / implementing new algorithms**: when writing implementations from scratch, prefer RAPIDS APIs as the foundation rather than numpy / scipy / sklearn. Example: for matrix decomposition → directly choose `cuml.decomposition` over `sklearn.decomposition`; for nearest neighbors → directly choose `cuvs.neighbors` / `cuml.neighbors` over `faiss` / `sklearn.neighbors`; for inference on an already-trained tree model (XGBoost / LightGBM / RandomForest) → directly choose `nvforest` over the framework's native `predict`.
-3. **Creating new scripts (ETL / training / inference / batch processing)**: use `cudf.read_*` / `dask_cudf.read_*` for data loading, `cupy` for matrix computation, `cudf` + `cuml.preprocessing` for feature engineering, `cuml` / `cugraph` for model training, `cucim.skimage` / `cupyx.scipy.ndimage` for image processing.
-4. **Adding new tests**: use RAPIDS as much as possible for test data generation and assertion comparison (`cudf.testing` / `cuml.testing`, etc.); let numpy / pandas appear only for RAPIDS↔CPU numerical comparisons, with a one-shot conversion at the boundary.
+1. **Rewriting existing CPU code**: replace numpy / pandas / sklearn / scipy / umap-learn / hdbscan / faiss calls with the corresponding RAPIDS APIs.
+2. **Adding new features / implementing new algorithms**: when writing implementations from scratch, prefer RAPIDS APIs as the foundation rather than numpy / scipy / sklearn. Example: for matrix decomposition → directly choose `cuml.decomposition` over `sklearn.decomposition`; for nearest neighbors → directly choose `cuml.neighbors.NearestNeighbors` over `faiss` / `sklearn.neighbors`; for sparse iterative solves → directly choose `cupyx.scipy.sparse.linalg` over `scipy.sparse.linalg`.
+3. **Creating new scripts (ETL / training / inference / batch processing)**: use `cudf.read_csv` / `cudf.read_parquet` / `cudf.read_orc` / `cudf.read_json` for data loading, `cupy` for matrix computation, `cudf` + `cuml.preprocessing` for feature engineering, `cuml` for model training and prediction, `cupyx.scipy.ndimage` / `cupyx.scipy.signal` for image-style filtering and signal processing.
+4. **Adding new tests**: use RAPIDS as much as possible for test data generation and assertion comparison (`cudf.testing` / `cuml.testing` / `cupy.testing`, plus `cuml.datasets.make_blobs` and `cupy.random` for synthetic data); let numpy / pandas appear only for RAPIDS↔CPU numerical comparisons, with a one-shot conversion at the boundary.
 5. **Fixing bugs**: even when just fixing a single numpy function call, if a suitable RAPIDS equivalent exists in the context, replace it in passing.
 
 In short: after enabling this skill, "think first how to do it with RAPIDS" takes priority over "think first how to do it with numpy / pandas / sklearn". Only fall back to the CPU path when the RAPIDS stack truly has no corresponding implementation.
 
 ## Three Core Principles
 
-1. **Zero-code acceleration first**: RAPIDS provides monkey-patch or backend-dispatch mechanisms for the most common CPU libraries (pandas, sklearn, umap, hdbscan, networkx, dask.dataframe), allowing existing CPU code to run on GPU without changing any imports. Use zero-code whenever possible — especially in the "rewriting existing CPU code" scenario.
+1. **Zero-code acceleration first**: this stack ships two monkey-patch accelerators. `cudf.pandas` covers pandas, and `cuml.accel` covers scikit-learn and umap-learn (plus the standalone hdbscan package when the user has installed it). Both let existing CPU code run on GPU without changing any imports. Use zero-code whenever possible — especially in the "rewriting existing CPU code" scenario.
 2. **Avoid redundant CPU↔GPU conversions**: once data is on GPU, keep it on GPU as much as possible, minimizing calls like `.to_pandas()` / `.to_numpy()` / `.get()` that trigger device synchronization and copying; only do a one-shot downlink at the pipeline endpoint or at necessary output/visualization boundaries. Mixing `cupy.ndarray` with `numpy.ndarray` (or `cudf.DataFrame` with `pandas.DataFrame`) triggers implicit synchronization and should be proactively eliminated.
 3. **Precise API targeting**: this skill directory ships a complete API index `apis/<pkg>.txt` for each RAPIDS package, with each line formatted as "full path(signature) - first line of docstring". A single `ripgrep` search retrieves both the call syntax and purpose, **avoiding writing signatures from memory** (cuML and sklearn often differ in parameter order, default values, `output_type`, etc.).
 
@@ -37,18 +39,9 @@ ${SKILL_DIR}/
 ├── fetch_rapids_apis.py           # Script that (re-)generates apis/<pkg>.txt
 └── apis/                          # One API index file per package
     ├── cupy.txt                   # CuPy (replaces numpy)
-    ├── cupyx.txt                  # CuPy.scipy and other extensions (replaces scipy)
+    ├── cupyx.txt                  # CuPy's SciPy mirror and extensions (replaces scipy)
     ├── cudf.txt                   # cuDF (replaces pandas)
-    ├── dask_cudf.txt              # dask-cuDF
-    ├── cuml.txt                   # cuML (replaces scikit-learn / umap / hdbscan / statsmodels.tsa)
-    ├── cugraph.txt                # cuGraph (explicit graph algorithm APIs)
-    ├── nx_cugraph.txt             # nx-cugraph (NetworkX backend)
-    ├── cuxfilter.txt              # cuXfilter
-    ├── cucim.txt                  # cuCIM (replaces scikit-image / openslide)
-    ├── pylibraft.txt              # RAFT primitives
-    ├── raft_dask.txt              # RAFT-Dask communication layer
-    ├── cuvs.txt                   # cuVS (replaces faiss and other vector search)
-    └── nvforest.txt               # nvForest (GPU/CPU forest inference; successor to cuML FIL)
+    └── cuml.txt                   # cuML (replaces scikit-learn / umap-learn / hdbscan / statsmodels.tsa)
 ```
 
 `${SKILL_DIR}` is the directory containing this `SKILL.md` — typically `~/.claude/skills/rapids-first` (user-level) or `.claude/skills/rapids-first` (project-level), with `.claude` replaced by `.agents` for Codex. Export it once before the first `rg`:
@@ -61,7 +54,7 @@ SKILL_DIR=$HOME/.claude/skills/rapids-first  # adjust to your install
 
 ### Step 1: Identify the CPU library to replace/select
 
-- **Rewrite scenario**: scan the user's code to find the imports to accelerate (`import numpy as np`, `import pandas as pd`, `from sklearn.cluster import KMeans`, `import scipy.ndimage`, `import networkx as nx`, `from skimage import ...`, `import faiss / hnswlib / umap / hdbscan`, `import dask.dataframe as dd`, etc.).
+- **Rewrite scenario**: scan the user's code to find the imports to accelerate (`import numpy as np`, `import pandas as pd`, `from sklearn.cluster import KMeans`, `import scipy.ndimage`, `from scipy import sparse`, `import faiss / hnswlib / annoy / umap / hdbscan`, etc.).
 - **New code scenario**: against the functional requirements, **first mentally write out "if using a CPU library, which one would I use"** (pandas? sklearn? scipy?), then follow the steps below to convert it to RAPIDS.
 
 ### Step 2: Use ripgrep on mapping.tsv to locate the RAPIDS package
@@ -74,12 +67,22 @@ cpu_module  rapids_target  zero_code  notes
 
 For an exact top-level package lookup use `^pkg\t`; for fuzzy submodule lookup use plain grep:
 
-```bash
-rg -P '^pandas\t'            "$SKILL_DIR/cpu-rapids-cuda-mapping.tsv"
-rg -P '^sklearn\.cluster\t'  "$SKILL_DIR/cpu-rapids-cuda-mapping.tsv"
-rg -P '^scipy\.ndimage\t'    "$SKILL_DIR/cpu-rapids-cuda-mapping.tsv"
-rg -P '^networkx\t'          "$SKILL_DIR/cpu-rapids-cuda-mapping.tsv"
-rg -i 'faiss'                "$SKILL_DIR/cpu-rapids-cuda-mapping.tsv"
+```
+$ rg -P '^pandas\t' "$SKILL_DIR/cpu-rapids-cuda-mapping.tsv"
+pandas	cudf	cudf.pandas	zero-code via `python -m cudf.pandas script.py` or first-cell `%load_ext cudf.pandas`; or `import cudf.pandas; cudf.pandas.install()` BEFORE `import pandas`
+
+$ rg -P '^sklearn\.cluster\t' "$SKILL_DIR/cpu-rapids-cuda-mapping.tsv"
+sklearn.cluster	cuml.cluster	cuml.accel	accel proxies KMeans, DBSCAN, SpectralClustering; HDBSCAN and AgglomerativeClustering need an explicit cuml.cluster import
+
+$ rg -P '^scipy\.ndimage\t' "$SKILL_DIR/cpu-rapids-cuda-mapping.tsv"
+scipy.ndimage	cupyx.scipy.ndimage	-	-
+
+$ rg -P '^sklearn\.neighbors\t' "$SKILL_DIR/cpu-rapids-cuda-mapping.tsv"
+sklearn.neighbors	cuml.neighbors	cuml.accel	NearestNeighbors, KNeighborsClassifier, KNeighborsRegressor, KernelDensity
+
+$ rg -i 'faiss' "$SKILL_DIR/cpu-rapids-cuda-mapping.tsv"
+faiss	cuml.neighbors.NearestNeighbors	-	exact and IVF search via algorithm='brute'/'ivfflat'/'ivfpq' ('rbc' is limited to <=3 dims); this stack ships no graph index (CAGRA/HNSW)
+faiss.Kmeans	cuml.cluster.KMeans	-	GPU k-means with scalable-k-means++ init
 ```
 
 Read out `rapids_target` (target import path) and `zero_code` (zero-code solution identifier).
@@ -92,10 +95,10 @@ If the `zero_code` field is not `-` and the scenario allows it (primarily "rewri
 |---|---|
 | `cudf.pandas` | CLI: `python -m cudf.pandas script.py`<br>Jupyter first cell: `%load_ext cudf.pandas`<br>In-program (must precede `import pandas`): `import cudf.pandas; cudf.pandas.install()` |
 | `cuml.accel` | CLI: `python -m cuml.accel script.py`<br>Jupyter first cell: `%load_ext cuml.accel`<br>Environment variable: `CUML_ACCEL_ENABLED=1`<br>In-program (must precede `import sklearn` / `umap` / `hdbscan`): `from cuml.accel import install; install()` |
-| `nx-cugraph-backend` | Environment variable: `NX_CUGRAPH_AUTOCONFIG=True` (automatic)<br>Or single call: `nx.pagerank(G, backend="cugraph")`<br>Or config: `nx.config.backend_priority = ["cugraph"]` (NetworkX ≥ 3.2) |
-| `dask-cudf-backend` | `dask.config.set({"dataframe.backend": "cudf"})`, continue using `dask.dataframe`; often combined with `dask_cuda.LocalCUDACluster` |
 
 Once a zero-code solution is enabled, **the original code does not need any import changes**; unsupported APIs automatically fall back to CPU without raising errors.
+
+`cuml.accel` proxies a fixed estimator list: `sklearn.cluster` KMeans / DBSCAN / SpectralClustering, `sklearn.covariance` EmpiricalCovariance / LedoitWolf, `sklearn.decomposition` PCA / IncrementalPCA / TruncatedSVD, `sklearn.ensemble` RandomForestClassifier / RandomForestRegressor, `sklearn.kernel_ridge` KernelRidge, `sklearn.linear_model` LinearRegression / LogisticRegression / Ridge / Lasso / ElasticNet, `sklearn.manifold` TSNE / SpectralEmbedding, `sklearn.neighbors` NearestNeighbors / KNeighborsClassifier / KNeighborsRegressor / KernelDensity, `sklearn.preprocessing` StandardScaler / MinMaxScaler / MaxAbsScaler / LabelEncoder / LabelBinarizer / PolynomialFeatures / TargetEncoder, `sklearn.svm` SVC / SVR / LinearSVC / LinearSVR, `umap.UMAP`, and `hdbscan.HDBSCAN` when the standalone hdbscan package is installed. `sklearn.compose`, `sklearn.pipeline` and `sklearn.utils` are patched for interoperability rather than proxied. **Anything outside that list silently stays on CPU** — `sklearn.naive_bayes`, `sklearn.metrics`, `sklearn.feature_extraction`, `sklearn.random_projection`, `sklearn.model_selection` and `sklearn.multiclass` have explicit `cuml` counterparts but no zero-code path, so reach them through an explicit import (Step 4).
 
 **Applicability decision**:
 - Rewrite scenario + user wants "to make existing code run faster" → zero-code
@@ -105,9 +108,9 @@ Once a zero-code solution is enabled, **the original code does not need any impo
 
 Two-step API location:
 
-1. Get `rapids_target` from mapping.tsv. Examples: `numpy → cupy`, `scipy.ndimage → cupyx.scipy.ndimage`, `sklearn.cluster → cuml.cluster`, `faiss → cuvs.neighbors`.
+1. Get `rapids_target` from mapping.tsv. Examples: `numpy → cupy`, `scipy.ndimage → cupyx.scipy.ndimage`, `sklearn.cluster → cuml.cluster`, `faiss → cuml.neighbors.NearestNeighbors`.
 
-2. Search for the target API in `${SKILL_DIR}/apis/<pkg>.txt` using `ripgrep`:
+2. Search for the target API in `${SKILL_DIR}/apis/<pkg>.txt` using `ripgrep`. The four shipped index files are `cupy.txt`, `cupyx.txt`, `cudf.txt` and `cuml.txt`:
 
    ```bash
    # Search for a class: exact match of class name followed by ( or .
@@ -121,20 +124,21 @@ Two-step API location:
 
    # Search for all APIs under a given submodule
    rg '^cuml\.cluster\.'           "$SKILL_DIR/apis/cuml.txt"
-   rg '^cuvs\.neighbors\.cagra\.'  "$SKILL_DIR/apis/cuvs.txt"
+   rg '^cupyx\.scipy\.ndimage\.'   "$SKILL_DIR/apis/cupyx.txt"
 
    # Search multiple files at once
-   rg -i '\.PCA\('                 "$SKILL_DIR/apis/cuml.txt" "$SKILL_DIR/apis/cuvs.txt"
+   rg -i '\.PCA\('                 "$SKILL_DIR/apis/cuml.txt" "$SKILL_DIR/apis/cupyx.txt"
    ```
 
    Each matched line is formatted as "full path(signature) - first line of docstring"; **copy the signature directly when writing code**.
 
 ### Step 5: Respect the GPU data lifecycle
 
-- **Continuous GPU pipeline**: avoid mid-stream round-trips like `cudf.to_pandas() → processing → cudf.from_pandas()`. If some intermediate step does not yet provide a GPU version, search `${SKILL_DIR}/apis/*.txt` once more to confirm before falling back.
+- **Continuous GPU pipeline**: avoid mid-stream round-trips like `cudf.DataFrame.to_pandas() → processing → cudf.from_pandas()`. If some intermediate step does not yet provide a GPU version, search `${SKILL_DIR}/apis/*.txt` once more to confirm before falling back.
 - **No device mixing**: mixing `cupy.ndarray` with `numpy.ndarray`, or `cudf.DataFrame` with `pandas.DataFrame`, triggers implicit copying and forces stream synchronization. All array types within the same computation graph should be consistent.
 - **I/O lands directly on GPU**: use `cudf.read_csv` / `cudf.read_parquet` / `cudf.read_orc` / `cudf.read_json`, etc., to go from disk straight to GPU memory, rather than `pandas.read_*` followed by an upload; the same applies to `cuml.preprocessing`, which works directly on cuDF.
-- **Default dtypes**: some cuDF / cuML operators default to `float32`, while sklearn defaults to `float64`. For high-precision comparisons, explicitly pass `dtype=cupy.float64` or `convert_dtype=False`.
+- **cuDF 26.08 tracks pandas 3.0**: `applymap`, `backfill`, `pad`, `first`, `last` and `values_host` are gone on both sides, as are the `Index.is_boolean` / `is_categorical` / `is_floating` / `is_integer` / `is_interval` / `is_numeric` dtype predicates. Write `map`, `bfill`, `ffill` and label slicing instead, and reach for `cudf.api.types.is_dtype_obj_numeric` / `is_dtype_obj_string` for dtype checks. `DataFrame.flags` / `set_flags` and `Series.set_flags` are new in this release.
+- **Default dtypes**: some cuDF / cuML operators default to `float32`, while sklearn defaults to `float64`. For high-precision comparisons, explicitly pass `dtype="float64"` or `convert_dtype=False`.
 - **Fail-fast, no existence checks**: importing a RAPIDS package already requires CUDA to be available; do not write defensive fallbacks like `try: import cupy except: import numpy as cupy` — if the environment is missing, let it fail directly.
 
 ## Search Examples
@@ -143,16 +147,16 @@ Two-step API location:
 
 ```
 $ rg -P '^sklearn\.cluster\t' "$SKILL_DIR/cpu-rapids-cuda-mapping.tsv"
-sklearn.cluster	cuml.cluster	cuml.accel	KMeans, DBSCAN, HDBSCAN, AgglomerativeClustering
+sklearn.cluster	cuml.cluster	cuml.accel	accel proxies KMeans, DBSCAN, SpectralClustering; HDBSCAN and AgglomerativeClustering need an explicit cuml.cluster import
 ```
 
 - **Zero-code preferred**: have the user run with `python -m cuml.accel script.py`; the original code stays untouched.
 - **Explicit replacement** (if the user prefers):
   ```
   $ rg -i '^cuml\.cluster\.KMeans\(' "$SKILL_DIR/apis/cuml.txt"
-  cuml.cluster.KMeans(*, handle=None, n_clusters=8, max_iter=300, tol=0.0001, ...) - KMeans is a basic but powerful clustering method ...
+  cuml.cluster.KMeans(*, n_clusters=8, max_iter=300, tol=0.0001, verbose=False, random_state=None, init='scalable-k-means++', n_init='auto', oversampling_factor=2.0, max_samples_per_batch=32768, device_buffer_samples=0, init_size=0, output_type=None) - KMeans is a basic but powerful clustering method which is optimized via
   ```
-  Per the signature, change directly to `from cuml.cluster import KMeans`.
+  Per the signature, change directly to `from cuml.cluster import KMeans`. Note the defaults that differ from sklearn: `init='scalable-k-means++'`, and every parameter is keyword-only.
 
 ### Example 2: Implement a matrix FFT pipeline from scratch (new code scenario)
 
@@ -175,54 +179,62 @@ Requirement: perform fft2 + magnitude + normalization on a batch of 2D matrices.
 
 Requirement: test that a GPU-implemented PCA produces numerically consistent results with sklearn's PCA.
 
-1. Data generation: `cuml.datasets.make_blobs(...)` or `cupy.random.RandomState(seed).normal(...)` — **not** `sklearn.datasets` / `numpy.random`.
-2. Run on GPU: `cuml.decomposition.PCA(...).fit_transform(X)`.
+1. Data generation on GPU — **not** `sklearn.datasets` / `numpy.random`:
+   ```
+   $ rg -i '^cuml\.datasets\.make_blobs\(' "$SKILL_DIR/apis/cuml.txt"
+   cuml.datasets.make_blobs(n_samples=100, n_features=2, centers=None, cluster_std=1.0, center_box=(-10.0, 10.0), shuffle=True, random_state=None, return_centers=False, order='F', dtype='float32') - Generate isotropic Gaussian blobs for clustering.
+   ```
+   `dtype='float32'` is the default here, so pass `dtype='float64'` when the test compares against a float64 sklearn baseline.
+2. Run on GPU:
+   ```
+   $ rg -i '^cuml\.decomposition\.PCA\(' "$SKILL_DIR/apis/cuml.txt"
+   cuml.decomposition.PCA(*, copy=True, iterated_power=15, n_components=None, svd_solver='auto', tol=1e-07, verbose=False, whiten=False, output_type=None) - PCA (Principal Component Analysis) is a fundamental dimensionality
+   ```
+   `cuml.decomposition.PCA(n_components=k).fit_transform(X)`; `n_components` is keyword-only, unlike sklearn's positional first argument.
 3. CPU comparison: one-shot downlink with `X.get()` → `sklearn.decomposition.PCA(...).fit_transform(X_cpu)`.
-4. Assertion: `cupy.testing.assert_allclose(...)`, or `numpy.testing.assert_allclose` on the CPU side (because the comparison target is numpy).
+4. Assertion:
+   ```
+   $ rg -i '^cupy\.testing\.assert_allclose\(' "$SKILL_DIR/apis/cupy.txt"
+   cupy.testing.assert_allclose(actual, desired, rtol=1e-07, atol=0, equal_nan=True, err_msg='', verbose=True, *, strict=False) - Raises an AssertionError if objects are not equal up to desired tolerance.
+   ```
+   Compare the absolute values of components, since PCA sign is arbitrary. For dataframe results use `cudf.testing.assert_frame_equal`.
 5. Across the whole process, data transfer happens only once, at step 3.
 
-### Example 4: Replace faiss for ANN search (rewrite scenario)
+### Example 4: Replace faiss for nearest-neighbor search (rewrite scenario)
 
 ```
 $ rg -i 'faiss' "$SKILL_DIR/cpu-rapids-cuda-mapping.tsv"
-faiss	cuvs.neighbors	-	ANN vector search; CAGRA/IVF-Flat/IVF-PQ/HNSW/Brute-Force ...
+faiss	cuml.neighbors.NearestNeighbors	-	exact and IVF search via algorithm='brute'/'ivfflat'/'ivfpq' ('rbc' is limited to <=3 dims); this stack ships no graph index (CAGRA/HNSW)
+faiss.Kmeans	cuml.cluster.KMeans	-	GPU k-means with scalable-k-means++ init
 
-$ rg '^cuvs\.neighbors\.cagra\.' "$SKILL_DIR/apis/cuvs.txt" | head
-cuvs.neighbors.cagra.IndexParams(...) - ...
-cuvs.neighbors.cagra.SearchParams(...) - ...
-cuvs.neighbors.cagra.build(index_params, dataset, ...) - ...
-cuvs.neighbors.cagra.search(search_params, index, queries, k, ...) - ...
+$ rg -i '^cuml\.neighbors\.NearestNeighbors[(.]' "$SKILL_DIR/apis/cuml.txt"
+cuml.neighbors.NearestNeighbors(*, n_neighbors=5, radius=1.0, algorithm='auto', metric='euclidean', p=2, algo_params=None, metric_params=None, n_jobs=None, verbose=False, output_type=None) - NearestNeighbors is an queries neighborhoods from a given set of
+cuml.neighbors.NearestNeighbors.as_sklearn(self) - Convert this estimator into an equivalent scikit-learn (or scikit-learn
+cuml.neighbors.NearestNeighbors.fit(self, X, y=None, *, convert_dtype='deprecated') -> "'NearestNeighbors'" - NeighborsBase.fit(self, X, y=None, *, convert_dtype='deprecated') -> 'NearestNeighbors'
+cuml.neighbors.NearestNeighbors.from_sklearn(model) - Create a cuml estimator from a scikit-learn estimator.
+cuml.neighbors.NearestNeighbors.get_params(self, deep=True) - Returns a dict of all params owned by this class. If the child class
+cuml.neighbors.NearestNeighbors.kneighbors(self, X=None, n_neighbors=None, return_distance=True, *, convert_dtype='deprecated', two_pass_precision=False) - NeighborsBase.kneighbors(self, X=None, n_neighbors=None, return_distance=True, *, convert_dtype='deprecated', two_pass_precision=False)
+cuml.neighbors.NearestNeighbors.kneighbors_graph(self, X=None, n_neighbors=None, mode='connectivity') - NeighborsBase.kneighbors_graph(self, X=None, n_neighbors=None, mode='connectivity')
+cuml.neighbors.NearestNeighbors.radius_neighbors_graph(self, X=None, radius=None) - NearestNeighbors.radius_neighbors_graph(self, X=None, radius=None)
+cuml.neighbors.NearestNeighbors.set_nvtx_annotations(self)
+cuml.neighbors.NearestNeighbors.set_params(self, **params) - Accepts a dict of params and updates the corresponding ones owned by
 ```
 
-Rewrite per the signatures: `build` builds the index, `search` queries k-nearest neighbors. CAGRA is cuVS's flagship GPU graph index.
-
-### Example 5: Accelerate XGBoost / LightGBM / RandomForest inference (rewrite scenario)
-
-nvForest runs *inference* for already-trained tree models on GPU (and CPU); it does **not** train. It is the standalone successor to cuML's Forest Inference Library — `cuml.fil` / `cuml.ForestInference` is deprecated in RAPIDS 26.06 in favor of `nvforest`, so route forest *prediction* here while keeping training in XGBoost / LightGBM / `cuml.ensemble`.
-
-```
-$ rg -P '^(xgboost|lightgbm)\t' "$SKILL_DIR/cpu-rapids-cuda-mapping.tsv"
-xgboost	nvforest	-	forest INFERENCE only (no training): load_model(path, model_type='xgboost_ubj'/...) -> .predict()/.predict_proba(); ...
-lightgbm	nvforest	-	forest INFERENCE only: load_model(path, model_type='lightgbm') -> .predict(); ...
-
-$ rg '^nvforest\.load' "$SKILL_DIR/apis/nvforest.txt"
-nvforest.load_from_sklearn(skl_model, *, device='auto', ...) -> nvforest._base.ForestInference - Load a Scikit-Learn forest model to nvForest
-nvforest.load_from_treelite_model(tl_model, *, device='auto', ...) -> nvforest._base.ForestInference - Load a Treelite forest model to nvForest
-nvforest.load_model(model_file, *, model_type=None, device='auto', ...) -> nvforest._base.ForestInference - Load a model into nvForest from a serialized model file.
-```
-
-Pick the loader that matches where the model comes from — `load_model` for a serialized XGBoost / LightGBM file (set `model_type`, e.g. `'xgboost_ubj'` / `'xgboost_json'` / `'lightgbm'`), `load_from_sklearn` for an in-memory scikit-learn / cuML forest, `load_from_treelite_model` for a Treelite handle — then call `.predict()` / `.predict_proba()` / `.apply()` on the returned object. Pass `device='gpu'` to force GPU (default `'auto'` falls back to CPU when no GPU is present); `X` may be a `numpy.ndarray` or `cupy.ndarray`.
+Rewrite per the signatures: `fit(X)` ingests the corpus, `kneighbors(Q, n_neighbors=k)` returns `(distances, indices)`. Pick the index through `algorithm`: `'brute'` for exact search, `'ivfflat'` / `'ivfpq'` for the approximate IVF variants (tune them via `algo_params`), `'rbc'` for the random ball cover, which only accepts 3 or fewer dimensions. This stack ships no graph index, so a faiss HNSW or a CAGRA index has no direct counterpart — say so and pick the closest IVF configuration instead. `faiss.Kmeans` maps to `cuml.cluster.KMeans`.
 
 ## When RAPIDS Has No Corresponding Implementation
 
-Handle by priority:
-1. Search for similar keywords again in `${SKILL_DIR}/apis/<pkg>.txt`. RAPIDS naming often differs slightly from sklearn / scipy (e.g., sklearn's `cross_val_score` has no direct counterpart in cuml, but can be reproduced with `train_test_split` plus a handwritten loop; sklearn's `Pipeline` is also absent in cuml but can be chained manually).
-2. Check neighboring packages: when a scikit-image operator is not found in cuCIM, see whether `cupyx.scipy.ndimage` / `cupy` can implement it by hand.
+- **Know the edges of this stack.** It ships `cupy`, `cupyx`, `cudf` and `cuml` only. Tell the user plainly rather than inventing an API for: graph algorithms (no `cugraph`, no `nx-cugraph` backend), image and whole-slide file I/O (no `cucim`; `cupyx.scipy.ndimage` covers filtering, morphology, geometric transforms and labelling, but no image decoding or slide readers), ANN graph indexes (no `cuvs`; `cuml.neighbors` covers exact and IVF search), multi-GPU or out-of-core dataframes (no `dask-cudf`), dashboards (no `cuxfilter`), and GPU forest inference for XGBoost or LightGBM models (`cuml.fil` / `cuml.ForestInference` still imports but was deprecated upstream in 26.06, so do not target it in new code).
+
+Otherwise handle by priority:
+
+1. Search for similar keywords again in `${SKILL_DIR}/apis/<pkg>.txt`. RAPIDS naming often differs slightly from sklearn / scipy (e.g., sklearn's `cross_val_score` has no direct counterpart in cuml, but can be reproduced with `cuml.model_selection.train_test_split` / `KFold` plus a handwritten loop; sklearn's `Pipeline` is also absent in cuml but can be chained manually, and `cuml.compose.ColumnTransformer` covers the column-routing half).
+2. Check neighboring packages: an operator missing from `cuml` or `cudf` can often be assembled by hand from `cupy` and `cupyx.scipy` primitives.
 3. When there is still no counterpart, **explicitly tell the user that the operator is not in the current RAPIDS stack**, then use the CPU version and consolidate data transfers at the CPU↔GPU boundary to minimize the number of transfers (ideal: the entire pipeline does `.get()` / `.to_pandas()` only once at the end).
 
 ## (Re-)Generating apis/
 
-- After any RAPIDS package upgrade, run `python "$SKILL_DIR/fetch_rapids_apis.py"` to regenerate `${SKILL_DIR}/apis/<pkg>.txt`.
+- After any RAPIDS package upgrade, run `python "$SKILL_DIR/fetch_rapids_apis.py"` to regenerate `${SKILL_DIR}/apis/<pkg>.txt`. The script defaults to the four packages this skill covers: `cupy`, `cupyx`, `cudf`, `cuml`.
 - You can also target specific packages only: `python "$SKILL_DIR/fetch_rapids_apis.py" --packages cudf cuml`.
 - The script writes back to `${SKILL_DIR}/apis/` by default (defaults to its own directory), regardless of the current working directory.
 - The script must run in "a Python environment with RAPIDS installed" and requires the CUDA driver to be visible.
@@ -234,3 +246,4 @@ Handle by priority:
 - **Do not convert every numpy / pandas call to cupy / cudf** — in rewrite scenarios, the user may only want to accelerate the hot path; check the context before deciding the scope of refactoring.
 - **Do not write RAPIDS API signatures from memory**; first `rg` once into `${SKILL_DIR}/apis/<pkg>.txt` to get the accurate signature (cuml and sklearn often differ in `n_init`, `output_type`, keyword-only parameters, etc.).
 - **Do not let data downlink mid-stream**; place `cudf.DataFrame.to_pandas()` only at the very end of the pipeline or at necessary integration points (plotting, writing compatible output formats, etc.).
+- **Do not name a package this stack does not ship** (`cugraph`, `nx_cugraph`, `cucim`, `cuvs`, `dask_cudf`, `cuxfilter`); an import that fails is worse than an honest "no GPU path here".

@@ -1,4 +1,4 @@
-# cuFile / GPUDirect Storage log emitted when importing cudf / cucim / pylibraft
+# cuFile / GPUDirect Storage log emitted when importing cudf
 # (e.g. while running skills/rapids-first/fetch_rapids_apis.py). Never commit it.
 cufile.log
 **/cufile.log

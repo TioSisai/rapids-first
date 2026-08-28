@@ -5,80 +5,48 @@ numpy.linalg	cupy.linalg	-	-
 numpy.random	cupy.random	-	-
 numpy.polynomial	cupy.polynomial	-	-
 numpy.testing	cupy.testing	-	-
-scipy	cupyx.scipy	-	full GPU mirror of scipy submodules
+scipy	cupyx.scipy	-	partial GPU mirror: fft, fftpack, interpolate, linalg, ndimage, signal, sparse, spatial, special, stats. No cupyx counterpart for scipy.optimize, integrate, cluster, io, odr, constants; cupyx.scipy.stats and special cover only a subset
 scipy.fft	cupyx.scipy.fft	-	-
 scipy.fftpack	cupyx.scipy.fftpack	-	legacy scipy.fftpack
 scipy.interpolate	cupyx.scipy.interpolate	-	-
 scipy.linalg	cupyx.scipy.linalg	-	-
 scipy.ndimage	cupyx.scipy.ndimage	-	-
 scipy.signal	cupyx.scipy.signal	-	includes scipy.signal.windows
-scipy.sparse	cupyx.scipy.sparse	-	csr/csc/coo/dia matrix all available
-scipy.sparse.linalg	cupyx.scipy.sparse.linalg	-	-
-scipy.sparse.csgraph	cupyx.scipy.sparse.csgraph	-	-
+scipy.sparse	cupyx.scipy.sparse	-	csr/csc/coo/dia_matrix plus the SciPy-style csr/csc/coo/dia_array classes added in CuPy 14.2
+scipy.sparse.linalg	cupyx.scipy.sparse.linalg	-	cg, gmres, bicgstab, lsmr, eigsh, lobpcg, LinearOperator
+scipy.sparse.csgraph	cupyx.scipy.sparse.csgraph	-	connected_components only
 scipy.spatial	cupyx.scipy.spatial	-	-
-scipy.spatial.distance	cupyx.scipy.spatial.distance	-	-
+scipy.spatial.distance	cupyx.scipy.spatial.distance	-	cdist, pdist, distance_matrix and the scalar metrics
 scipy.special	cupyx.scipy.special	-	-
 scipy.stats	cupyx.scipy.stats	-	-
 pandas	cudf	cudf.pandas	zero-code via `python -m cudf.pandas script.py` or first-cell `%load_ext cudf.pandas`; or `import cudf.pandas; cudf.pandas.install()` BEFORE `import pandas`
 pandas.api.types	cudf.api.types	cudf.pandas	-
 pandas.testing	cudf.testing	cudf.pandas	-
-dask.dataframe	dask_cudf	dask-cudf-backend	zero-code via `dask.config.set({'dataframe.backend': 'cudf'})`; pair with dask_cuda.LocalCUDACluster
 sklearn	cuml	cuml.accel	zero-code via `python -m cuml.accel script.py` or `%load_ext cuml.accel` or env `CUML_ACCEL_ENABLED=1`
-sklearn.cluster	cuml.cluster	cuml.accel	KMeans, DBSCAN, HDBSCAN, AgglomerativeClustering
-sklearn.linear_model	cuml.linear_model	cuml.accel	LinearRegression, LogisticRegression, Ridge, Lasso, ElasticNet, MBSGD*
-sklearn.ensemble	cuml.ensemble	cuml.accel	RandomForestClassifier/Regressor
-sklearn.neighbors	cuml.neighbors	cuml.accel	uses cuvs under the hood
-sklearn.decomposition	cuml.decomposition	cuml.accel	PCA, TruncatedSVD, IncrementalPCA
-sklearn.manifold	cuml.manifold	cuml.accel	TSNE, UMAP
-sklearn.preprocessing	cuml.preprocessing	cuml.accel	StandardScaler/MinMaxScaler/MaxAbsScaler/OneHot/LabelEncoder/...
+sklearn.cluster	cuml.cluster	cuml.accel	accel proxies KMeans, DBSCAN, SpectralClustering; HDBSCAN and AgglomerativeClustering need an explicit cuml.cluster import
+sklearn.compose	cuml.compose	-	explicit import; ColumnTransformer, make_column_transformer, make_column_selector. cuml.accel patches compose for interop but proxies no estimator here
+sklearn.covariance	cuml.covariance	cuml.accel	EmpiricalCovariance, LedoitWolf
+sklearn.decomposition	cuml.decomposition	cuml.accel	PCA, IncrementalPCA, TruncatedSVD
+sklearn.ensemble	cuml.ensemble	cuml.accel	accel proxies RandomForestClassifier/Regressor; IsolationForest is new in 26.08 and needs an explicit cuml.ensemble or cuml.IsolationForest import
+sklearn.kernel_ridge	cuml.kernel_ridge	cuml.accel	KernelRidge
+sklearn.linear_model	cuml.linear_model	cuml.accel	accel proxies LinearRegression, LogisticRegression, Ridge, Lasso, ElasticNet; MBSGDClassifier/Regressor and Lars (also cuml.Lars) need an explicit import
+sklearn.manifold	cuml.manifold	cuml.accel	accel proxies TSNE and SpectralEmbedding; UMAP lives here too
+sklearn.neighbors	cuml.neighbors	cuml.accel	NearestNeighbors, KNeighborsClassifier, KNeighborsRegressor, KernelDensity
+sklearn.preprocessing	cuml.preprocessing	cuml.accel	accel proxies StandardScaler, MinMaxScaler, MaxAbsScaler, LabelEncoder, LabelBinarizer, PolynomialFeatures, TargetEncoder; OneHotEncoder, SimpleImputer and friends need an explicit import
 sklearn.svm	cuml.svm	cuml.accel	SVC, SVR, LinearSVC, LinearSVR
-sklearn.naive_bayes	cuml.naive_bayes	cuml.accel	Gaussian/Multinomial/Bernoulli/Complement/CategoricalNB
-sklearn.metrics	cuml.metrics	cuml.accel	-
-sklearn.feature_extraction	cuml.feature_extraction	cuml.accel	-
-sklearn.random_projection	cuml.random_projection	cuml.accel	-
-sklearn.model_selection	cuml.model_selection	cuml.accel	train_test_split
-umap	cuml.manifold.UMAP	cuml.accel	standalone umap-learn -> cuML
-hdbscan	cuml.cluster.HDBSCAN	cuml.accel	standalone hdbscan -> cuML
-statsmodels.tsa	cuml.tsa	-	ARIMA, AutoARIMA, Holt-Winters
-xgboost	nvforest	-	forest INFERENCE only (no training): load_model(path, model_type='xgboost_ubj'/'xgboost_json'/'xgboost_legacy') -> .predict()/.predict_proba(); pass device='gpu'; successor to deprecated cuML FIL
-lightgbm	nvforest	-	forest INFERENCE only: load_model(path, model_type='lightgbm') -> .predict(); training stays in lightgbm
-treelite	nvforest	-	Treelite is nvforest's model-exchange format; load_from_treelite_model(tl_model, device='auto'/'gpu'/'cpu') -> ForestInference
-cuml.ForestInference	nvforest	-	cuML FIL (cuml.fil / cuml.ForestInference) is DEPRECATED in 26.06 -> migrate to standalone nvforest; load_from_sklearn(rf) also accelerates a trained sklearn/cuML RandomForest at inference
-networkx	nx_cugraph	nx-cugraph-backend	zero-code via env `NX_CUGRAPH_AUTOCONFIG=True` (NetworkX backend dispatch, requires NetworkX >= 3.2); per-call: `nx.func(G, backend='cugraph')`
-networkx.algorithms.centrality	cugraph.centrality	nx-cugraph-backend	betweenness/eigenvector/Katz/degree
-networkx.algorithms.community	cugraph.community	nx-cugraph-backend	Louvain, Leiden, ECG, triangle count
-networkx.algorithms.components	cugraph.components	nx-cugraph-backend	connected/strongly connected
-networkx.algorithms.core	cugraph.cores	nx-cugraph-backend	k-core, core number
-networkx.algorithms.link_analysis	cugraph.link_analysis	nx-cugraph-backend	PageRank, HITS
-networkx.algorithms.link_prediction	cugraph.link_prediction	nx-cugraph-backend	Jaccard, Cosine, Overlap, Sorensen
-networkx.algorithms.traversal	cugraph.traversal	nx-cugraph-backend	BFS, SSSP
-networkx.algorithms.tree	cugraph.tree	nx-cugraph-backend	min/max spanning tree
-networkx.drawing.layout	cugraph.layout	-	ForceAtlas2 etc.
-skimage	cucim.skimage	-	scikit-image on GPU; operates on cupy arrays
-skimage.color	cucim.skimage.color	-	includes stain deconv (rgb2hed, separate_stains)
-skimage.exposure	cucim.skimage.exposure	-	-
-skimage.feature	cucim.skimage.feature	-	-
-skimage.filters	cucim.skimage.filters	-	-
-skimage.measure	cucim.skimage.measure	-	-
-skimage.metrics	cucim.skimage.metrics	-	-
-skimage.morphology	cucim.skimage.morphology	-	-
-skimage.registration	cucim.skimage.registration	-	-
-skimage.restoration	cucim.skimage.restoration	-	-
-skimage.segmentation	cucim.skimage.segmentation	-	-
-skimage.transform	cucim.skimage.transform	-	-
-openslide	cucim.clara.CuImage	-	whole-slide-image I/O (.svs/.tiff); supports read_region, multi-resolution pyramid, GPU Direct Storage
-tifffile	cucim.clara.CuImage	-	large tiled TIFF read via cucim
-faiss	cuvs.neighbors	-	ANN vector search; CAGRA/IVF-Flat/IVF-PQ/HNSW/Brute-Force/NN-Descent/Vamana; cuvs is RAPIDS' FAISS-equivalent
-hnswlib	cuvs.neighbors.hnsw	-	HNSW search of GPU-built index
-scann	cuvs.neighbors	-	ANN
-annoy	cuvs.neighbors	-	ANN
-pynndescent	cuvs.neighbors.nn_descent	-	NN-Descent
-faiss.Kmeans	cuvs.cluster.kmeans	-	or cuml.cluster.KMeans
-faiss.ProductQuantizer	cuvs.preprocessing.ProductQuantizer	-	-
-faiss.ScalarQuantizer	cuvs.preprocessing.ScalarQuantizer	-	-
-sklearn.metrics.pairwise_distances	cuvs.distance.pairwise_distance	-	also pylibraft.distance.pairwise_distance (low-level)
-crossfilter	cuxfilter	-	GPU cross-filtering dashboards (interactive 100M+ rows)
-datashader	cuxfilter	-	cuxfilter composes datashader+bokeh+panel
-holoviews	cuxfilter	-	dashboard composition (partial)
-bokeh	cuxfilter	-	cuxfilter wraps bokeh for charts
-mpi4py	raft_dask	-	additive: NCCL/UCX collective comms over dask.distributed (not a replacement for dask)
+sklearn.feature_extraction	cuml.feature_extraction	-	explicit import; cuml.feature_extraction.text has CountVectorizer, HashingVectorizer, TfidfTransformer, TfidfVectorizer
+sklearn.metrics	cuml.metrics	-	explicit import; accuracy_score, confusion_matrix, adjusted_rand_score, r2_score, roc_auc_score, log_loss on cuml.metrics; silhouette_score / silhouette_samples live under cuml.metrics.cluster
+sklearn.metrics.pairwise_distances	cuml.metrics.pairwise_distances	-	same call shape: pairwise_distances(X, Y=None, metric='euclidean')
+sklearn.model_selection	cuml.model_selection	-	explicit import; train_test_split, KFold, StratifiedKFold
+sklearn.multiclass	cuml.multiclass	-	explicit import; OneVsRestClassifier, OneVsOneClassifier
+sklearn.naive_bayes	cuml.naive_bayes	-	explicit import; Gaussian/Multinomial/Bernoulli/Complement/CategoricalNB
+sklearn.random_projection	cuml.random_projection	-	explicit import; GaussianRandomProjection, SparseRandomProjection, johnson_lindenstrauss_min_dim
+umap	cuml.manifold.UMAP	cuml.accel	standalone umap-learn maps to cuML UMAP
+hdbscan	cuml.cluster.HDBSCAN	cuml.accel	accel patches the standalone hdbscan module when the user has installed it
+statsmodels.tsa	cuml.tsa	-	cuml.tsa.ARIMA and cuml.tsa.ExponentialSmoothing (Holt-Winters); AutoARIMA is exposed as cuml.AutoARIMA
+faiss	cuml.neighbors.NearestNeighbors	-	exact and IVF search via algorithm='brute'/'ivfflat'/'ivfpq' ('rbc' is limited to <=3 dims); this stack ships no graph index (CAGRA/HNSW)
+hnswlib	cuml.neighbors.NearestNeighbors	-	closest match is IVF search via algorithm='ivfflat'/'ivfpq'; HNSW itself is unavailable here
+annoy	cuml.neighbors.NearestNeighbors	-	closest match is IVF search via algorithm='ivfflat'/'ivfpq'
+scann	cuml.neighbors.NearestNeighbors	-	closest match is IVF search via algorithm='ivfflat'/'ivfpq'
+pynndescent	cuml.neighbors.NearestNeighbors	-	brute-force or IVF kNN; cuml.manifold.UMAP builds its own kNN graph internally
+faiss.Kmeans	cuml.cluster.KMeans	-	GPU k-means with scalable-k-means++ init

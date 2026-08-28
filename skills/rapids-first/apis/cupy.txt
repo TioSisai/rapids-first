@@ -235,36 +235,6 @@ cupy.cuda.cub.device_reduce(...) - device_reduce(_ndarray_base x, op, tuple redu
 cupy.cuda.cub.device_scan(...) - device_scan(_ndarray_base x, op)
 cupy.cuda.cub.device_segmented_reduce(...) - device_segmented_reduce(_ndarray_base x, op, tuple reduce_axis, tuple out_axis, out=None, bool keepdims=False, Py_ssize_t contiguous_size=0)
 cupy.cuda.cub.get_build_version(...) - get_build_version()
-cupy.cuda.cufft.CuFFTError(result) - Unspecified run-time error.
-cupy.cuda.cufft.CuFFTError.add_note(...) - Exception.add_note(note) --
-cupy.cuda.cufft.CuFFTError.with_traceback(...) - Exception.with_traceback(tb) --
-cupy.cuda.cufft.Plan1d(...) - Plan1d(int nx, int fft_type, int batch, devices=None, *, out=None, intptr_t prealloc_plan=0)
-cupy.cuda.cufft.Plan1d.check_output_array(...) - Plan1d.check_output_array(self, a, out)
-cupy.cuda.cufft.Plan1d.fft(...) - Plan1d.fft(self, a, out, direction)
-cupy.cuda.cufft.Plan1d.get_output_array(...) - Plan1d.get_output_array(self, a)
-cupy.cuda.cufft.PlanNd(...) - PlanNd(shape, inembed, int istride, int idist, onembed, int ostride, int odist, int fft_type, int batch, str order, int last_axis, last_size, intptr_t prealloc_plan=0, *)
-cupy.cuda.cufft.PlanNd.check_output_array(...) - PlanNd.check_output_array(self, a, out)
-cupy.cuda.cufft.PlanNd.fft(...) - PlanNd.fft(self, a, out, direction)
-cupy.cuda.cufft.PlanNd.get_output_array(...) - PlanNd.get_output_array(self, a, order='C')
-cupy.cuda.cufft.XtExec(...) - XtExec(intptr_t plan, intptr_t idata, intptr_t odata, int direction)
-cupy.cuda.cufft.XtPlanNd(...) - XtPlanNd(shape, inembed, long long istride, long long idist, idtype, onembed, long long ostride, long long odist, odtype, long long batch, edtype, str order, *, int last_axis, last_size, intptr_t prealloc_plan=0)
-cupy.cuda.cufft.XtPlanNd.fft(...) - XtPlanNd.fft(self, a, out, direction)
-cupy.cuda.cufft.XtPlanNd.get_output_array(...) - XtPlanNd.get_output_array(self, a, order='C')
-cupy.cuda.cufft.check_result(...) - check_result(int result) -> void
-cupy.cuda.cufft.create(...) - create() -> intptr_t
-cupy.cuda.cufft.execC2C(...) - execC2C(intptr_t plan, intptr_t idata, intptr_t odata, int direction)
-cupy.cuda.cufft.execC2R(...) - execC2R(intptr_t plan, intptr_t idata, intptr_t odata)
-cupy.cuda.cufft.execD2Z(...) - execD2Z(intptr_t plan, intptr_t idata, intptr_t odata)
-cupy.cuda.cufft.execR2C(...) - execR2C(intptr_t plan, intptr_t idata, intptr_t odata)
-cupy.cuda.cufft.execZ2D(...) - execZ2D(intptr_t plan, intptr_t idata, intptr_t odata)
-cupy.cuda.cufft.execZ2Z(...) - execZ2Z(intptr_t plan, intptr_t idata, intptr_t odata, int direction)
-cupy.cuda.cufft.getVersion(...) - getVersion() -> int
-cupy.cuda.cufft.get_current_plan(...) - get_current_plan()
-cupy.cuda.cufft.multi_gpu_execC2C(...) - multi_gpu_execC2C(intptr_t plan, intptr_t idata, intptr_t odata, int direction)
-cupy.cuda.cufft.multi_gpu_execZ2Z(...) - multi_gpu_execZ2Z(intptr_t plan, intptr_t idata, intptr_t odata, int direction)
-cupy.cuda.cufft.setAutoAllocation(...) - setAutoAllocation(intptr_t plan, int autoAllocate) -> int
-cupy.cuda.cufft.setCallback(...) - setCallback(intptr_t plan, int cb_type, bool is_load, intptr_t aux_arr=0) -> intptr_t
-cupy.cuda.cufft.setJITCallback(...) - setJITCallback(intptr_t plan, str callback_name, bytes callback, int callback_type, intptr_t caller_info) -> int
 cupy.cuda.device.Device(...) - Device(device=None)
 cupy.cuda.device.Device.from_pci_bus_id(...) - Device.from_pci_bus_id(cls, pci_bus_id)
 cupy.cuda.device.Device.synchronize(...) - Device.synchronize(self)
@@ -308,9 +278,6 @@ cupy.cuda.graph.Graph.debug_dot_str(...) - Graph.debug_dot_str(self, flags=0)
 cupy.cuda.graph.Graph.launch(...) - Graph.launch(self, stream=None)
 cupy.cuda.graph.Graph.upload(...) - Graph.upload(self, stream=None)
 cupy.cuda.is_available()
-cupy.cuda.jitify.get_build_version(...) - get_build_version()
-cupy.cuda.jitify.get_cuda_version(...) - get_cuda_version() -> str
-cupy.cuda.jitify.jitify(...) - jitify(str code, tuple opt)
 cupy.cuda.malloc_async(...) - malloc_async(size_t size) -> MemoryPointer
 cupy.cuda.malloc_managed(...) - malloc_managed(size_t size) -> MemoryPointer
 cupy.cuda.memory.BaseMemory(...) - Memory on a CUDA device.
@@ -488,6 +455,8 @@ cupy.cuda.using_allocator(allocator=None) - Sets a thread-local allocator for GP
 cupy.cumprod(a, axis=None, dtype=None, out=None) - Returns the cumulative product of an array along a given axis.
 cupy.cumproduct(a, axis=None, dtype=None, out=None)
 cupy.cumsum(a, axis=None, dtype=None, out=None) - Returns the cumulative sum of an array along a given axis.
+cupy.cumulative_prod(x, /, *, axis=None, dtype=None, out=None, include_initial=False) - Returns the cumulative product of elements along a given axis.
+cupy.cumulative_sum(x, /, *, axis=None, dtype=None, out=None, include_initial=False) - Returns the cumulative sum of elements along a given axis.
 cupy.delete(arr, indices, axis=None) - Delete values from an array along the specified axis.
 cupy.diag(v, k=0) - Returns a diagonal or a diagonal array.
 cupy.diag_indices(n, ndim=2) - Return the indices to access the main diagonal of an array.
@@ -678,7 +647,7 @@ cupy.ndarray.put(...) - _ndarray_base.put(self, indices, values, mode='wrap')
 cupy.ndarray.ravel(...) - _ndarray_base.ravel(self, order='C') -> _ndarray_base
 cupy.ndarray.reduced_view(...) - _ndarray_base.reduced_view(self, dtype=None) -> _ndarray_base
 cupy.ndarray.repeat(...) - _ndarray_base.repeat(self, repeats, axis=None)
-cupy.ndarray.reshape(...) - _ndarray_base.reshape(self, *shape, order='C')
+cupy.ndarray.reshape(...) - _ndarray_base.reshape(self, *shape, order='C', copy=None)
 cupy.ndarray.round(...) - _ndarray_base.round(self, decimals=0, out=None) -> _ndarray_base
 cupy.ndarray.scatter_add(...) - _ndarray_base.scatter_add(self, slices, value)
 cupy.ndarray.scatter_max(...) - _ndarray_base.scatter_max(self, slices, value)
@@ -852,7 +821,7 @@ cupy.real(val) - Returns the real part of the elements of the array.
 cupy.real_if_close(a, tol=100) - If input is complex with all imaginary parts close to zero, return real
 cupy.repeat(a, repeats, axis=None) - Repeat arrays along an axis.
 cupy.require(a, dtype=None, requirements=None) - Return an array which satisfies the requirements.
-cupy.reshape(a, newshape, order='C') - Returns an array with new shape and same elements.
+cupy.reshape(a, newshape, order='C', *, copy=None) - Returns an array with new shape and same elements.
 cupy.resize(a, new_shape) - Return a new array with the specified shape.
 cupy.result_type(*arrays_and_dtypes) - Returns the type that results from applying the NumPy type promotion
 cupy.roll(a, shift, axis=None) - Roll array elements along a given axis.
@@ -945,7 +914,7 @@ cupy.testing.NumpyAliasBasicTestBase.setUp(self) - Hook method for setting up th
 cupy.testing.NumpyAliasBasicTestBase.setUpClass() - Hook method for setting up class fixture before running tests in the class.
 cupy.testing.NumpyAliasBasicTestBase.shortDescription(self) - Returns a one-line description of the test, or None if no
 cupy.testing.NumpyAliasBasicTestBase.skipTest(self, reason) - Skip this test.
-cupy.testing.NumpyAliasBasicTestBase.subTest(self, msg=<object object at 0x76e3fff1ae50>, **params) - Return a context manager that will return the enclosed block
+cupy.testing.NumpyAliasBasicTestBase.subTest(self, msg=<object object at 0xffff9f48aeb0>, **params) - Return a context manager that will return the enclosed block
 cupy.testing.NumpyAliasBasicTestBase.tearDown(self) - Hook method for deconstructing the test fixture after testing it.
 cupy.testing.NumpyAliasBasicTestBase.tearDownClass() - Hook method for deconstructing the class fixture after running all tests in the class.
 cupy.testing.NumpyAliasBasicTestBase.test_argspec(self)
@@ -1005,7 +974,7 @@ cupy.testing.NumpyAliasValuesTestBase.setUp(self) - Hook method for setting up t
 cupy.testing.NumpyAliasValuesTestBase.setUpClass() - Hook method for setting up class fixture before running tests in the class.
 cupy.testing.NumpyAliasValuesTestBase.shortDescription(self) - Returns a one-line description of the test, or None if no
 cupy.testing.NumpyAliasValuesTestBase.skipTest(self, reason) - Skip this test.
-cupy.testing.NumpyAliasValuesTestBase.subTest(self, msg=<object object at 0x76e3fff1ae50>, **params) - Return a context manager that will return the enclosed block
+cupy.testing.NumpyAliasValuesTestBase.subTest(self, msg=<object object at 0xffff9f48aeb0>, **params) - Return a context manager that will return the enclosed block
 cupy.testing.NumpyAliasValuesTestBase.tearDown(self) - Hook method for deconstructing the test fixture after testing it.
 cupy.testing.NumpyAliasValuesTestBase.tearDownClass() - Hook method for deconstructing the class fixture after running all tests in the class.
 cupy.testing.NumpyAliasValuesTestBase.test_values(self)
@@ -1033,7 +1002,7 @@ cupy.testing.for_signed_dtypes(name='dtype') - Decorator that checks the fixture
 cupy.testing.for_signed_dtypes_combination(names=('dtype',), full=None) - Decorator for parameterized test w.r.t. the product set of signed dtypes.
 cupy.testing.for_unsigned_dtypes(name='dtype') - Decorator that checks the fixture with unsigned dtypes.
 cupy.testing.for_unsigned_dtypes_combination(names=('dtype',), full=None) - Decorator for parameterized test w.r.t. the product set of unsigned dtypes.
-cupy.testing.generate_matrix(shape, xp=<module 'cupy' from '/home/zhangshi/miniconda3/envs/audioal/lib/python3.12/site-packages/cupy/__init__.py'>, dtype=<class 'numpy.float32'>, *, singular_values=None) - Returns a matrix with specified singular values.
+cupy.testing.generate_matrix(shape, xp=<module 'cupy' from '/opt/venv/lib64/python3.12/site-packages/cupy/__init__.py'>, dtype=<class 'numpy.float32'>, *, singular_values=None) - Returns a matrix with specified singular values.
 cupy.testing.generate_seed()
 cupy.testing.installed(*specifiers: 'str') -> 'bool' - Returns True if the current environment satisfies the specified
 cupy.testing.multi_gpu(gpu_num) - Decorator to indicate number of GPUs required to run the test.
@@ -1050,10 +1019,10 @@ cupy.testing.numpy_satisfies(version_range: 'str') -> 'bool' - Returns True if n
 cupy.testing.parameterize(*params, **kwargs) - Generates test classes with given sets of additional attributes
 cupy.testing.product(parameter)
 cupy.testing.product_dict(*parameters)
-cupy.testing.shaped_arange(shape, xp=<module 'cupy' from '/home/zhangshi/miniconda3/envs/audioal/lib/python3.12/site-packages/cupy/__init__.py'>, dtype=<class 'numpy.float32'>, order='C') - Returns an array with given shape, array module, and dtype.
-cupy.testing.shaped_linspace(start, stop, shape, xp=<module 'cupy' from '/home/zhangshi/miniconda3/envs/audioal/lib/python3.12/site-packages/cupy/__init__.py'>, dtype=<class 'numpy.float32'>) - Returns an array with given shape, array module, and dtype.
-cupy.testing.shaped_random(shape, xp=<module 'cupy' from '/home/zhangshi/miniconda3/envs/audioal/lib/python3.12/site-packages/cupy/__init__.py'>, dtype=<class 'numpy.float32'>, scale=10, seed=0, order='C') - Returns an array filled with random values.
-cupy.testing.shaped_reverse_arange(shape, xp=<module 'cupy' from '/home/zhangshi/miniconda3/envs/audioal/lib/python3.12/site-packages/cupy/__init__.py'>, dtype=<class 'numpy.float32'>) - Returns an array filled with decreasing numbers.
+cupy.testing.shaped_arange(shape, xp=<module 'cupy' from '/opt/venv/lib64/python3.12/site-packages/cupy/__init__.py'>, dtype=<class 'numpy.float32'>, order='C') - Returns an array with given shape, array module, and dtype.
+cupy.testing.shaped_linspace(start, stop, shape, xp=<module 'cupy' from '/opt/venv/lib64/python3.12/site-packages/cupy/__init__.py'>, dtype=<class 'numpy.float32'>) - Returns an array with given shape, array module, and dtype.
+cupy.testing.shaped_random(shape, xp=<module 'cupy' from '/opt/venv/lib64/python3.12/site-packages/cupy/__init__.py'>, dtype=<class 'numpy.float32'>, scale=10, seed=0, order='C') - Returns an array filled with random values.
+cupy.testing.shaped_reverse_arange(shape, xp=<module 'cupy' from '/opt/venv/lib64/python3.12/site-packages/cupy/__init__.py'>, dtype=<class 'numpy.float32'>) - Returns an array filled with decreasing numbers.
 cupy.testing.shaped_sparse_random(shape, sp=None, dtype=<class 'numpy.float32'>, density=0.01, format='coo', seed=0) - Returns an array filled with random values.
 cupy.testing.slow(*args, **kwargs)
 cupy.testing.with_requires(*requirements: 'str') -> 'Callable[[Callable], Callable]' - Run a test case only when given requirements are satisfied.
