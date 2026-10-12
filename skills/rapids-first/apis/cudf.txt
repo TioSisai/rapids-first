@@ -328,6 +328,7 @@ cudf.DatetimeIndex.has_duplicates
 cudf.DatetimeIndex.host_deserialize(header, frames) - Perform device-side deserialization tasks.
 cudf.DatetimeIndex.host_serialize(self) - Serialize data and metadata associated with host memory.
 cudf.DatetimeIndex.hour - The hours of the datetime.
+cudf.DatetimeIndex.indexer_between_time(self, start_time, end_time, include_start: 'bool' = True, include_end: 'bool' = True) -> 'cupy.ndarray' - Return index positions of values between particular times of day.
 cudf.DatetimeIndex.inferred_freq
 cudf.DatetimeIndex.intersection(self, other, sort: 'bool | None' = False) -> 'Index' - Form the intersection of two Index objects.
 cudf.DatetimeIndex.is_leap_year - Boolean indicator if the date belongs to a leap year.
@@ -1576,7 +1577,7 @@ cudf.cut(x, bins, right: bool = True, labels=None, retbins: bool = False, precis
 cudf.datasets.randomdata(nrows=10, dtypes=None, seed=None) - Create a dataframe with random data
 cudf.datasets.timeseries(start='2000-01-01', end='2000-01-31', freq='1s', dtypes=None, nulls_frequency=0, seed=None) - Create timeseries dataframe with random data
 cudf.date_range(start=None, end=None, periods=None, freq=None, tz=None, normalize: 'bool' = False, name=None, inclusive: "Literal['left', 'right', 'both', 'neither']" = 'both', *, unit: 'str | None' = None) - Return a fixed frequency DatetimeIndex.
-cudf.describe_option(name: 'str | None' = None) - Prints the description of an option.
+cudf.describe_option(name: 'str | None' = None) - Print the description of an option.
 cudf.dtype(arbitrary: 'Any') -> 'DtypeObj' - Return the cuDF-supported dtype corresponding to `arbitrary`.
 cudf.errors.MixedTypeError(...) - Inappropriate argument type.
 cudf.errors.MixedTypeError.add_note(...) - Exception.add_note(note) --
@@ -1588,9 +1589,9 @@ cudf.factorize(values, sort: 'bool' = False, use_na_sentinel: 'bool' = True, siz
 cudf.from_dlpack(pycapsule_obj) -> 'Series | DataFrame' - Converts from a DLPack tensor to a cuDF object.
 cudf.from_pandas(obj, nan_as_null=<no_default>) - Convert certain Pandas objects into the cudf equivalent.
 cudf.get_dummies(data, prefix=None, prefix_sep='_', dummy_na=False, columns=None, sparse=False, drop_first=False, dtype='bool') - Returns a dataframe whose columns are the one hot encodings of all
-cudf.get_option(name: 'str') -> 'Any' - Get the value of option.
+cudf.get_option(name: 'str') -> 'Any' - Get the value of the specified option.
 cudf.interval_range(start=None, end=None, periods=None, freq=None, name=None, closed='right') -> 'IntervalIndex' - Returns a fixed frequency IntervalIndex.
-cudf.io.ParquetDatasetWriter(path, partition_cols, index=None, compression: "Literal['snappy', 'ZSTD', 'ZLIB', 'LZ4', None]" = 'snappy', statistics: "Literal['ROWGROUP', 'PAGE', 'COLUMN', 'NONE']" = 'ROWGROUP', max_file_size=None, file_name_prefix=None, storage_options=None) -> 'None' - Write a parquet file or dataset incrementally
+cudf.io.ParquetDatasetWriter(path, partition_cols, index=None, compression: "Literal['snappy', 'ZSTD', 'LZ4', 'GZIP', None]" = 'snappy', statistics: "Literal['ROWGROUP', 'PAGE', 'COLUMN', 'NONE']" = 'ROWGROUP', max_file_size=None, file_name_prefix=None, storage_options=None) -> 'None' - Write a parquet file or dataset incrementally
 cudf.io.ParquetDatasetWriter.close(self, return_metadata=False) - Close all open files and optionally return footer metadata as a binary
 cudf.io.ParquetDatasetWriter.write_table(self, df) - Write a dataframe to the file/dataset
 cudf.io.avro.DataFrame(data=None, index=None, columns=None, dtype=None, copy=None, nan_as_null=<no_default>) - A GPU Dataframe object.
@@ -2098,7 +2099,7 @@ cudf.io.csv.StructDtype.type - The scalar type for the array, e.g. ``int``
 cudf.io.csv.access_columns(*objs: 'Any', **kwargs: 'Any') -> '_AccessColumnsStack' - Context manager to access multiple columns simultaneously.
 cudf.io.csv.cudf_dtype(arbitrary: 'Any') -> 'DtypeObj' - Return the cuDF-supported dtype corresponding to `arbitrary`.
 cudf.io.csv.dtype_to_pylibcudf_type(dtype: 'DtypeObj') -> 'plc.DataType'
-cudf.io.csv.get_option(name: 'str') -> 'Any' - Get the value of option.
+cudf.io.csv.get_option(name: 'str') -> 'Any' - Get the value of the specified option.
 cudf.io.csv.is_scalar(val) - Return True if given object is scalar.
 cudf.io.csv.read_csv(filepath_or_buffer, sep: 'str' = ',', delimiter: 'str | None' = None, header='infer', names=None, index_col=None, usecols=None, prefix=None, mangle_dupe_cols: 'bool' = True, dtype=None, true_values=None, false_values=None, skipinitialspace: 'bool' = False, skiprows: 'int' = 0, skipfooter: 'int' = 0, nrows: 'int | None' = None, na_values=None, keep_default_na: 'bool' = True, na_filter: 'bool' = True, skip_blank_lines: 'bool' = True, parse_dates=None, dayfirst: 'bool' = False, compression='infer', thousands: 'str | None' = None, decimal: 'str' = '.', lineterminator: 'str' = '\n', quotechar: 'str' = '"', quoting: 'int' = 0, doublequote: 'bool' = True, comment: 'str | None' = None, byte_range: 'list[int] | tuple[int, int] | None' = None, storage_options=None, bytes_per_thread: 'int | None' = None) -> 'DataFrame' - Load a comma-separated-values (CSV) dataset into a DataFrame
 cudf.io.csv.to_csv(df: 'DataFrame', path_or_buf=None, sep: 'str' = ',', na_rep: 'str' = '', columns=None, header: 'bool' = True, index: 'bool' = True, encoding=None, compression=None, quoting: 'int | None' = None, lineterminator: 'str' = '\n', chunksize: 'int | None' = None, storage_options=None) - Write a dataframe to csv file format.
@@ -2116,7 +2117,7 @@ cudf.io.dlpack.ColumnAccessor.level_dtypes - Per-level dtypes used to rebuild an
 cudf.io.dlpack.ColumnAccessor.level_names
 cudf.io.dlpack.ColumnAccessor.name
 cudf.io.dlpack.ColumnAccessor.nlevels
-cudf.io.dlpack.ColumnAccessor.pop(self, key, default=<object object at 0xffff9f4881b0>) - D.pop(k[,d]) -> v, remove specified key and return the corresponding value.
+cudf.io.dlpack.ColumnAccessor.pop(self, key, default=<object object at 0xffff858f81d0>) - D.pop(k[,d]) -> v, remove specified key and return the corresponding value.
 cudf.io.dlpack.ColumnAccessor.popitem(self) - D.popitem() -> (k, v), remove and return some (key, value) pair
 cudf.io.dlpack.ColumnAccessor.rename_levels(self, mapper: 'Mapping[Hashable, Hashable] | Callable', level: 'int | None' = None) -> 'Self' - Rename the specified levels of the given ColumnAccessor
 cudf.io.dlpack.ColumnAccessor.select_by_index(self, index: 'Any') -> 'Self' - Return a ColumnAccessor composed of the columns
@@ -2132,6 +2133,7 @@ cudf.io.dlpack.ColumnBase.all(self, skipna: 'bool' = True, min_count: 'int' = 0,
 cudf.io.dlpack.ColumnBase.any(self, skipna: 'bool' = True, min_count: 'int' = 0, **kwargs: 'Any') -> 'ScalarLike'
 cudf.io.dlpack.ColumnBase.append(self, other: 'ColumnBase') -> 'ColumnBase'
 cudf.io.dlpack.ColumnBase.apply_boolean_mask(self, mask: 'ColumnBase') -> 'ColumnBase'
+cudf.io.dlpack.ColumnBase.apply_retention_mask(self, mask: 'ColumnBase') -> 'ColumnBase'
 cudf.io.dlpack.ColumnBase.argsort(self, ascending: 'bool' = True, na_position: "Literal['first', 'last']" = 'last') -> 'NumericalColumn'
 cudf.io.dlpack.ColumnBase.as_categorical_column(self, dtype: 'CategoricalDtype') -> 'CategoricalColumn'
 cudf.io.dlpack.ColumnBase.as_datetime_column(self, dtype: 'np.dtype') -> 'DatetimeColumn'
@@ -3156,7 +3158,7 @@ cudf.io.json.StructDtype.type - The scalar type for the array, e.g. ``int``
 cudf.io.json.access_columns(*objs: 'Any', **kwargs: 'Any') -> '_AccessColumnsStack' - Context manager to access multiple columns simultaneously.
 cudf.io.json.cudf_dtype(arbitrary: 'Any') -> 'DtypeObj' - Return the cuDF-supported dtype corresponding to `arbitrary`.
 cudf.io.json.dtype_to_pylibcudf_type(dtype: 'DtypeObj') -> 'plc.DataType'
-cudf.io.json.get_option(name: 'str') -> 'Any' - Get the value of option.
+cudf.io.json.get_option(name: 'str') -> 'Any' - Get the value of the specified option.
 cudf.io.json.read_json(path_or_buf, engine: "Literal['auto', 'pandas', 'cudf']" = 'auto', orient=None, dtype=None, lines: 'bool' = False, compression: "Literal['bz2', 'gzip', 'infer', 'snappy', 'zip', 'zstd'] | None" = 'infer', byte_range: 'None | list[int]' = None, keep_quotes: 'bool' = False, storage_options=None, mixed_types_as_string: 'bool' = False, prune_columns: 'bool' = False, on_bad_lines: "Literal['error', 'recover']" = 'error', *args, **kwargs) -> 'DataFrame' - Load a JSON dataset into a DataFrame
 cudf.io.json.to_json(cudf_val: 'DataFrame | Series', path_or_buf=None, compression: "Literal['gzip', 'snappy', 'zstd'] | None" = None, engine: "Literal['auto', 'pandas', 'cudf']" = 'auto', orient=None, storage_options=None, *args, **kwargs) - Convert the cuDF object to a JSON string.
 cudf.io.merge_parquet_filemetadata(filemetadata_list: 'list') -> 'np.ndarray' - Merge multiple parquet metadata blobs
@@ -3680,6 +3682,7 @@ cudf.io.parquet.ColumnBase.all(self, skipna: 'bool' = True, min_count: 'int' = 0
 cudf.io.parquet.ColumnBase.any(self, skipna: 'bool' = True, min_count: 'int' = 0, **kwargs: 'Any') -> 'ScalarLike'
 cudf.io.parquet.ColumnBase.append(self, other: 'ColumnBase') -> 'ColumnBase'
 cudf.io.parquet.ColumnBase.apply_boolean_mask(self, mask: 'ColumnBase') -> 'ColumnBase'
+cudf.io.parquet.ColumnBase.apply_retention_mask(self, mask: 'ColumnBase') -> 'ColumnBase'
 cudf.io.parquet.ColumnBase.argsort(self, ascending: 'bool' = True, na_position: "Literal['first', 'last']" = 'last') -> 'NumericalColumn'
 cudf.io.parquet.ColumnBase.as_categorical_column(self, dtype: 'CategoricalDtype') -> 'CategoricalColumn'
 cudf.io.parquet.ColumnBase.as_datetime_column(self, dtype: 'np.dtype') -> 'DatetimeColumn'
@@ -4126,10 +4129,10 @@ cudf.io.parquet.MultiIndex.union(self, other, sort=None) -> 'Self' - Form the un
 cudf.io.parquet.MultiIndex.unique(self, level: 'int | None' = None) -> 'Self | Index'
 cudf.io.parquet.MultiIndex.values - Return a CuPy representation of the MultiIndex.
 cudf.io.parquet.MultiIndex.where(self, cond, other=None, inplace=False) - Replace values where the condition is False.
-cudf.io.parquet.ParquetDatasetWriter(path, partition_cols, index=None, compression: "Literal['snappy', 'ZSTD', 'ZLIB', 'LZ4', None]" = 'snappy', statistics: "Literal['ROWGROUP', 'PAGE', 'COLUMN', 'NONE']" = 'ROWGROUP', max_file_size=None, file_name_prefix=None, storage_options=None) -> 'None' - Write a parquet file or dataset incrementally
+cudf.io.parquet.ParquetDatasetWriter(path, partition_cols, index=None, compression: "Literal['snappy', 'ZSTD', 'LZ4', 'GZIP', None]" = 'snappy', statistics: "Literal['ROWGROUP', 'PAGE', 'COLUMN', 'NONE']" = 'ROWGROUP', max_file_size=None, file_name_prefix=None, storage_options=None) -> 'None' - Write a parquet file or dataset incrementally
 cudf.io.parquet.ParquetDatasetWriter.close(self, return_metadata=False) - Close all open files and optionally return footer metadata as a binary
 cudf.io.parquet.ParquetDatasetWriter.write_table(self, df) - Write a dataframe to the file/dataset
-cudf.io.parquet.ParquetWriter(filepath_or_buffer, index: 'bool | None' = None, compression: "Literal['snappy', 'ZSTD', 'ZLIB', 'LZ4', None]" = 'snappy', statistics: "Literal['ROWGROUP', 'PAGE', 'COLUMN', 'NONE']" = 'ROWGROUP', row_group_size_bytes: 'int' = 18446744073709551615, row_group_size_rows: 'int' = 1000000, max_page_size_bytes: 'int' = 524288, max_page_size_rows: 'int' = 20000, max_dictionary_size: 'int' = 1048576, use_dictionary: 'bool' = True, store_schema: 'bool' = False) - ParquetWriter lets you incrementally write out a Parquet file from a series
+cudf.io.parquet.ParquetWriter(filepath_or_buffer, index: 'bool | None' = None, compression: "Literal['snappy', 'ZSTD', 'LZ4', 'GZIP', None]" = 'snappy', statistics: "Literal['ROWGROUP', 'PAGE', 'COLUMN', 'NONE']" = 'ROWGROUP', row_group_size_bytes: 'int' = 18446744073709551615, row_group_size_rows: 'int' = 1000000, max_page_size_bytes: 'int' = 524288, max_page_size_rows: 'int' = 20000, max_dictionary_size: 'int' = 1048576, use_dictionary: 'bool' = True, store_schema: 'bool' = False) - ParquetWriter lets you incrementally write out a Parquet file from a series
 cudf.io.parquet.ParquetWriter.close(self, metadata_file_path=None) -> 'np.ndarray | None'
 cudf.io.parquet.ParquetWriter.write_table(self, table, partitions_info=None) -> 'None' - Writes a single table to the file
 cudf.io.parquet.RangeIndex(start, stop=None, step=1, dtype=None, copy=False, name=None, nan_as_null=<no_default>) - Immutable Index implementing a monotonic integer range.
@@ -4231,7 +4234,7 @@ cudf.io.parquet.access_columns(*objs: 'Any', **kwargs: 'Any') -> '_AccessColumns
 cudf.io.parquet.as_column(arbitrary: 'Any', nan_as_null: 'bool | None' = None, dtype: 'DtypeObj | None' = None, length: 'int | None' = None) -> 'ColumnBase' - Create a Column from an arbitrary object.
 cudf.io.parquet.column_empty(row_count: 'int', dtype: 'DtypeObj' = <StringDtype(na_value=nan)>) -> 'ColumnBase' - Allocate a new column with the given row_count and dtype.
 cudf.io.parquet.concat(objs, axis=0, join='outer', ignore_index=False, keys=None, levels=None, names=None, verify_integrity=False, sort=None) - Concatenate DataFrames, Series, or Indices row-wise.
-cudf.io.parquet.get_option(name: 'str') -> 'Any' - Get the value of option.
+cudf.io.parquet.get_option(name: 'str') -> 'Any' - Get the value of the specified option.
 cudf.io.parquet.is_list_like(obj) - Return `True` if the given `obj` is list-like (list, tuple, Series...).
 cudf.io.parquet.is_supported_read_parquet(compression: "Literal['SNAPPY', 'GZIP', 'BROTLI', 'LZ4', 'ZSTD', 'NONE']") -> 'bool' - Check if the compression type is supported for reading Parquet files.
 cudf.io.parquet.is_supported_write_parquet(compression: "Literal['SNAPPY', 'GZIP', 'BROTLI', 'LZ4', 'ZSTD', 'NONE']") -> 'bool' - Check if the compression type is supported for writing Parquet files.
@@ -4240,9 +4243,9 @@ cudf.io.parquet.make_literal(v: 'Any') -> 'plc_expr.Literal'
 cudf.io.parquet.merge_parquet_filemetadata(filemetadata_list: 'list') -> 'np.ndarray' - Merge multiple parquet metadata blobs
 cudf.io.parquet.read_parquet(filepath_or_buffer, engine='cudf', columns=None, storage_options=None, filesystem=None, filters=None, row_groups=None, use_pandas_metadata=True, categorical_partitions=True, bytes_per_thread=None, dataset_kwargs=None, nrows=None, skip_rows=None, allow_mismatched_pq_schemas=False, ignore_missing_columns=True, case_sensitive_names=True, *args, **kwargs) - Load a Parquet dataset into a DataFrame
 cudf.io.parquet.read_parquet_metadata(filepath_or_buffer) -> 'tuple[int, int, Sequence[Hashable], int, Sequence[dict[str, int]]]' - Read metadata and schema of a list of Parquet files
-cudf.io.parquet.to_parquet(df, path, engine='cudf', compression: "Literal['snappy', 'ZSTD', 'ZLIB', 'LZ4', None]" = 'snappy', index: 'bool | None' = None, partition_cols=None, partition_file_name=None, partition_offsets=None, statistics: "Literal['ROWGROUP', 'PAGE', 'COLUMN', 'NONE']" = 'ROWGROUP', metadata_file_path: 'str | None' = None, int96_timestamps: 'bool' = False, row_group_size_bytes: 'int | None' = None, row_group_size_rows: 'int | None' = None, max_page_size_bytes: 'int | None' = None, max_page_size_rows: 'int | None' = None, max_dictionary_size: 'int | None' = None, storage_options=None, return_metadata: 'bool' = False, force_nullable_schema: 'bool' = False, header_version: "Literal['1.0', '2.0']" = '1.0', use_dictionary: 'bool' = True, skip_compression: 'set[Hashable] | None' = None, column_encoding: "dict[Hashable, Literal['PLAIN', 'DICTIONARY', 'DELTA_BINARY_PACKED', 'DELTA_LENGTH_BYTE_ARRAY', 'DELTA_BYTE_ARRAY', 'BYTE_STREAM_SPLIT', 'USE_DEFAULT']] | None" = None, column_type_length: 'dict | None' = None, output_as_binary: 'set[Hashable] | None' = None, store_schema=False, page_level_compression: 'bool' = False, *args, **kwargs) - Write a DataFrame to the parquet format.
+cudf.io.parquet.to_parquet(df, path, engine='cudf', compression: "Literal['snappy', 'ZSTD', 'LZ4', 'GZIP', None]" = 'snappy', index: 'bool | None' = None, partition_cols=None, partition_file_name=None, partition_offsets=None, statistics: "Literal['ROWGROUP', 'PAGE', 'COLUMN', 'NONE']" = 'ROWGROUP', metadata_file_path: 'str | None' = None, int96_timestamps: 'bool' = False, row_group_size_bytes: 'int | None' = None, row_group_size_rows: 'int | None' = None, max_page_size_bytes: 'int | None' = None, max_page_size_rows: 'int | None' = None, max_dictionary_size: 'int | None' = None, storage_options=None, return_metadata: 'bool' = False, force_nullable_schema: 'bool' = False, header_version: "Literal['1.0', '2.0']" = '1.0', use_dictionary: 'bool' = True, skip_compression: 'set[Hashable] | None' = None, column_encoding: "dict[Hashable, Literal['PLAIN', 'DICTIONARY', 'DELTA_BINARY_PACKED', 'DELTA_LENGTH_BYTE_ARRAY', 'DELTA_BYTE_ARRAY', 'BYTE_STREAM_SPLIT', 'USE_DEFAULT']] | None" = None, column_type_length: 'dict | None' = None, output_as_binary: 'set[Hashable] | None' = None, store_schema=False, page_level_compression: 'bool' = False, *args, **kwargs) - Write a DataFrame to the parquet format.
 cudf.io.parquet.translate_filters_to_ast(filters: 'list[list[tuple[str, str, Any]]]') -> 'plc_expr.Expression' - Convert a filter expression in Disjunctive Normal Form (DNF) to a pylibcudf AST.
-cudf.io.parquet.write_to_dataset(df, root_path, compression: "Literal['snappy', 'ZSTD', 'ZLIB', 'LZ4', None]" = 'snappy', filename=None, partition_cols=None, fs=None, preserve_index: 'bool' = False, return_metadata: 'bool' = False, statistics: "Literal['ROWGROUP', 'PAGE', 'COLUMN', 'NONE']" = 'ROWGROUP', int96_timestamps: 'bool' = False, row_group_size_bytes: 'int | None' = None, row_group_size_rows: 'int | None' = None, max_page_size_bytes: 'int | None' = None, max_page_size_rows: 'int | None' = None, storage_options=None, force_nullable_schema: 'bool' = False, header_version: "Literal['1.0', '2.0']" = '1.0', use_dictionary: 'bool' = True, skip_compression: 'set[Hashable] | None' = None, column_encoding: "dict[Hashable, Literal['PLAIN', 'DICTIONARY', 'DELTA_BINARY_PACKED', 'DELTA_LENGTH_BYTE_ARRAY', 'DELTA_BYTE_ARRAY', 'BYTE_STREAM_SPLIT', 'USE_DEFAULT']] | None" = None, column_type_length: 'dict | None' = None, output_as_binary: 'set[Hashable] | None' = None, store_schema=False, page_level_compression: 'bool' = False) - Wraps `to_parquet` to write partitioned Parquet datasets.
+cudf.io.parquet.write_to_dataset(df, root_path, compression: "Literal['snappy', 'ZSTD', 'LZ4', 'GZIP', None]" = 'snappy', filename=None, partition_cols=None, fs=None, preserve_index: 'bool' = False, return_metadata: 'bool' = False, statistics: "Literal['ROWGROUP', 'PAGE', 'COLUMN', 'NONE']" = 'ROWGROUP', int96_timestamps: 'bool' = False, row_group_size_bytes: 'int | None' = None, row_group_size_rows: 'int | None' = None, max_page_size_bytes: 'int | None' = None, max_page_size_rows: 'int | None' = None, storage_options=None, force_nullable_schema: 'bool' = False, header_version: "Literal['1.0', '2.0']" = '1.0', use_dictionary: 'bool' = True, skip_compression: 'set[Hashable] | None' = None, column_encoding: "dict[Hashable, Literal['PLAIN', 'DICTIONARY', 'DELTA_BINARY_PACKED', 'DELTA_LENGTH_BYTE_ARRAY', 'DELTA_BYTE_ARRAY', 'BYTE_STREAM_SPLIT', 'USE_DEFAULT']] | None" = None, column_type_length: 'dict | None' = None, output_as_binary: 'set[Hashable] | None' = None, store_schema=False, page_level_compression: 'bool' = False) - Wraps `to_parquet` to write partitioned Parquet datasets.
 cudf.io.read_avro(filepath_or_buffer, columns=None, skiprows=None, num_rows=None, storage_options=None) - Load an Avro dataset into a DataFrame
 cudf.io.read_csv(filepath_or_buffer, sep: 'str' = ',', delimiter: 'str | None' = None, header='infer', names=None, index_col=None, usecols=None, prefix=None, mangle_dupe_cols: 'bool' = True, dtype=None, true_values=None, false_values=None, skipinitialspace: 'bool' = False, skiprows: 'int' = 0, skipfooter: 'int' = 0, nrows: 'int | None' = None, na_values=None, keep_default_na: 'bool' = True, na_filter: 'bool' = True, skip_blank_lines: 'bool' = True, parse_dates=None, dayfirst: 'bool' = False, compression='infer', thousands: 'str | None' = None, decimal: 'str' = '.', lineterminator: 'str' = '\n', quotechar: 'str' = '"', quoting: 'int' = 0, doublequote: 'bool' = True, comment: 'str | None' = None, byte_range: 'list[int] | tuple[int, int] | None' = None, storage_options=None, bytes_per_thread: 'int | None' = None) -> 'DataFrame' - Load a comma-separated-values (CSV) dataset into a DataFrame
 cudf.io.read_feather(path, *args, **kwargs) - Load an feather object from the file path, returning a DataFrame.
@@ -4428,13 +4431,13 @@ cudf.io.text.Series.where(self, cond, other=None, inplace: 'bool' = False, axis=
 cudf.io.text.read_text(filepath_or_buffer, delimiter=None, byte_range=None, strip_delimiters=False, compression=None, compression_offsets=None, storage_options=None) -> cudf.core.series.Series - Configuration object for a text Datasource
 cudf.io.to_csv(df: 'DataFrame', path_or_buf=None, sep: 'str' = ',', na_rep: 'str' = '', columns=None, header: 'bool' = True, index: 'bool' = True, encoding=None, compression=None, quoting: 'int | None' = None, lineterminator: 'str' = '\n', chunksize: 'int | None' = None, storage_options=None) - Write a dataframe to csv file format.
 cudf.io.to_orc(df: 'DataFrame', fname, compression: "Literal[False, None, 'SNAPPY', 'ZLIB', 'ZSTD', 'LZ4']" = 'SNAPPY', statistics: "Literal['NONE', 'STRIPE', 'ROWGROUP']" = 'ROWGROUP', stripe_size_bytes: 'int | None' = None, stripe_size_rows: 'int | None' = None, row_index_stride: 'int | None' = None, cols_as_map_type=None, storage_options=None, index: 'bool | None' = None) - Write a DataFrame to the ORC format.
-cudf.io.write_to_dataset(df, root_path, compression: "Literal['snappy', 'ZSTD', 'ZLIB', 'LZ4', None]" = 'snappy', filename=None, partition_cols=None, fs=None, preserve_index: 'bool' = False, return_metadata: 'bool' = False, statistics: "Literal['ROWGROUP', 'PAGE', 'COLUMN', 'NONE']" = 'ROWGROUP', int96_timestamps: 'bool' = False, row_group_size_bytes: 'int | None' = None, row_group_size_rows: 'int | None' = None, max_page_size_bytes: 'int | None' = None, max_page_size_rows: 'int | None' = None, storage_options=None, force_nullable_schema: 'bool' = False, header_version: "Literal['1.0', '2.0']" = '1.0', use_dictionary: 'bool' = True, skip_compression: 'set[Hashable] | None' = None, column_encoding: "dict[Hashable, Literal['PLAIN', 'DICTIONARY', 'DELTA_BINARY_PACKED', 'DELTA_LENGTH_BYTE_ARRAY', 'DELTA_BYTE_ARRAY', 'BYTE_STREAM_SPLIT', 'USE_DEFAULT']] | None" = None, column_type_length: 'dict | None' = None, output_as_binary: 'set[Hashable] | None' = None, store_schema=False, page_level_compression: 'bool' = False) - Wraps `to_parquet` to write partitioned Parquet datasets.
+cudf.io.write_to_dataset(df, root_path, compression: "Literal['snappy', 'ZSTD', 'LZ4', 'GZIP', None]" = 'snappy', filename=None, partition_cols=None, fs=None, preserve_index: 'bool' = False, return_metadata: 'bool' = False, statistics: "Literal['ROWGROUP', 'PAGE', 'COLUMN', 'NONE']" = 'ROWGROUP', int96_timestamps: 'bool' = False, row_group_size_bytes: 'int | None' = None, row_group_size_rows: 'int | None' = None, max_page_size_bytes: 'int | None' = None, max_page_size_rows: 'int | None' = None, storage_options=None, force_nullable_schema: 'bool' = False, header_version: "Literal['1.0', '2.0']" = '1.0', use_dictionary: 'bool' = True, skip_compression: 'set[Hashable] | None' = None, column_encoding: "dict[Hashable, Literal['PLAIN', 'DICTIONARY', 'DELTA_BINARY_PACKED', 'DELTA_LENGTH_BYTE_ARRAY', 'DELTA_BYTE_ARRAY', 'BYTE_STREAM_SPLIT', 'USE_DEFAULT']] | None" = None, column_type_length: 'dict | None' = None, output_as_binary: 'set[Hashable] | None' = None, store_schema=False, page_level_compression: 'bool' = False) - Wraps `to_parquet` to write partitioned Parquet datasets.
 cudf.melt(frame: 'DataFrame', id_vars=None, value_vars=None, var_name=None, value_name: 'Hashable' = 'value', col_level=None, ignore_index: 'bool' = True) -> 'DataFrame' - Unpivots a DataFrame from wide format to long format,
 cudf.merge(left, right, *args, **kwargs) - Merge GPU DataFrame objects by performing a database-style join
 cudf.option_context(*args) -> 'None' - Context manager to temporarily set options in the `with` statement context.
-cudf.options.Option(default: 'Any', value: 'Any', description: 'str', validator: 'Callable') -> None - Option(default: 'Any', value: 'Any', description: 'str', validator: 'Callable')
-cudf.options.describe_option(name: 'str | None' = None) - Prints the description of an option.
-cudf.options.get_option(name: 'str') -> 'Any' - Get the value of option.
+cudf.options.Option(default: 'Any', value: 'Any', description: 'str', validator: 'Callable') -> None - Store the definition and current state of a single cuDF option.
+cudf.options.describe_option(name: 'str | None' = None) - Print the description of an option.
+cudf.options.get_option(name: 'str') -> 'Any' - Get the value of the specified option.
 cudf.options.option_context(*args) -> 'None' - Context manager to temporarily set options in the `with` statement context.
 cudf.options.set_option(name: 'str', val: 'Any') - Set the value of option.
 cudf.pandas.Profiler()
@@ -4707,7 +4710,6 @@ cudf.testing.dataset_generator.make_lists(dtype, lists_max_length, nesting_depth
 cudf.testing.dataset_generator.rand_dataframe(dtypes_meta, rows, seed=0, use_threads=True) - Generates a random table.
 cudf.testing.dataset_generator.struct_generator(dtype, cardinality, size, max_null_frequency, rng) - Generator for struct data
 cudf.testing.dataset_generator.timedelta_generator(dtype, size, rng, min_bound=None, max_bound=None) - Generator for timedelta data
-cudf.testing.narwhals_test_plugin.pytest_collection_modifyitems(session, config, items) -> 'None' - Mark known failing tests.
 cudf.testing.testing.assert_arrow_table_equal(left: 'pa.Table', right: 'pa.Table') -> 'None' - Check if two pyarrow Tables are equal.
 cudf.testing.testing.assert_column_equal(left, right, check_dtype=True, check_column_type='equiv', check_exact=False, check_datetimelike_compat=False, check_categorical=True, check_category_order=True, rtol=1e-05, atol=1e-08, obj='ColumnBase') - Check that left and right columns are equal
 cudf.testing.testing.assert_eq(left, right, **kwargs) - Assert that two cudf-like things are equivalent
@@ -4762,7 +4764,7 @@ cudf.utils.ioutils.is_list_like(obj) - Return `True` if the given `obj` is list-
 cudf.utils.ioutils.is_url(url) - Check if a string is a valid URL to a network location.
 cudf.utils.ioutils.stringify_pathlike(pathlike) - Convert any object that implements the fspath protocol
 cudf.utils.performance_tracking.get_memory_records() -> 'dict[str, rmm.statistics.ProfilerRecords.MemoryRecord]' - Get the memory records from the memory profiling
-cudf.utils.performance_tracking.get_option(name: 'str') -> 'Any' - Get the value of option.
+cudf.utils.performance_tracking.get_option(name: 'str') -> 'Any' - Get the value of the specified option.
 cudf.utils.performance_tracking.print_memory_report(file=<_io.TextIOWrapper name='<stdout>' mode='w' encoding='utf-8'>) -> 'None' - Pretty print the result of the memory profiling
 cudf.utils.queryutils.QuerySyntaxError(...) - Inappropriate argument value (of correct type).
 cudf.utils.queryutils.QuerySyntaxError.add_note(...) - Exception.add_note(note) --

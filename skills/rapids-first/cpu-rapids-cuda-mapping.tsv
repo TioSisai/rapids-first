@@ -14,27 +14,28 @@ scipy.ndimage	cupyx.scipy.ndimage	-	-
 scipy.signal	cupyx.scipy.signal	-	includes scipy.signal.windows
 scipy.sparse	cupyx.scipy.sparse	-	csr/csc/coo/dia_matrix plus the SciPy-style csr/csc/coo/dia_array classes added in CuPy 14.2
 scipy.sparse.linalg	cupyx.scipy.sparse.linalg	-	cg, gmres, bicgstab, lsmr, eigsh, lobpcg, LinearOperator
-scipy.sparse.csgraph	cupyx.scipy.sparse.csgraph	-	connected_components only
-scipy.spatial	cupyx.scipy.spatial	-	-
-scipy.spatial.distance	cupyx.scipy.spatial.distance	-	cdist, pdist, distance_matrix and the scalar metrics
+scipy.sparse.csgraph	cupyx.scipy.sparse.csgraph	-	connected_components only, and it raises RuntimeError without pylibcugraph, which this stack does not ship
+scipy.spatial	cupyx.scipy.spatial	-	KDTree queries and Delaunay run on GPU; distance_matrix and KDTree.sparse_distance_matrix need the cuVS Python package (see scipy.spatial.distance)
+scipy.spatial.distance	cuml.metrics.pairwise_distances	-	cupyx.scipy.spatial.distance (cdist, pdist, distance_matrix and the scalar metrics) raises RuntimeError without the cuVS Python package, which this stack does not ship; pairwise_distances(X, Y=None, metric='euclidean') returns the full cdist-style matrix
 scipy.special	cupyx.scipy.special	-	-
 scipy.stats	cupyx.scipy.stats	-	-
 pandas	cudf	cudf.pandas	zero-code via `python -m cudf.pandas script.py` or first-cell `%load_ext cudf.pandas`; or `import cudf.pandas; cudf.pandas.install()` BEFORE `import pandas`
 pandas.api.types	cudf.api.types	cudf.pandas	-
 pandas.testing	cudf.testing	cudf.pandas	-
 sklearn	cuml	cuml.accel	zero-code via `python -m cuml.accel script.py` or `%load_ext cuml.accel` or env `CUML_ACCEL_ENABLED=1`
-sklearn.cluster	cuml.cluster	cuml.accel	accel proxies KMeans, DBSCAN, SpectralClustering; HDBSCAN and AgglomerativeClustering need an explicit cuml.cluster import
+sklearn.cluster	cuml.cluster	cuml.accel	accel proxies KMeans, DBSCAN, HDBSCAN, SpectralClustering; AgglomerativeClustering needs an explicit cuml.cluster import
 sklearn.compose	cuml.compose	-	explicit import; ColumnTransformer, make_column_transformer, make_column_selector. cuml.accel patches compose for interop but proxies no estimator here
 sklearn.covariance	cuml.covariance	cuml.accel	EmpiricalCovariance, LedoitWolf
 sklearn.decomposition	cuml.decomposition	cuml.accel	PCA, IncrementalPCA, TruncatedSVD
-sklearn.ensemble	cuml.ensemble	cuml.accel	accel proxies RandomForestClassifier/Regressor; IsolationForest is new in 26.08 and needs an explicit cuml.ensemble or cuml.IsolationForest import
+sklearn.ensemble	cuml.ensemble	cuml.accel	accel proxies RandomForestClassifier/Regressor and IsolationForest; the explicit cuml.IsolationForest takes no warm_start and no fit(sample_weight)
 sklearn.kernel_ridge	cuml.kernel_ridge	cuml.accel	KernelRidge
 sklearn.linear_model	cuml.linear_model	cuml.accel	accel proxies LinearRegression, LogisticRegression, Ridge, Lasso, ElasticNet; MBSGDClassifier/Regressor and Lars (also cuml.Lars) need an explicit import
 sklearn.manifold	cuml.manifold	cuml.accel	accel proxies TSNE and SpectralEmbedding; UMAP lives here too
 sklearn.neighbors	cuml.neighbors	cuml.accel	NearestNeighbors, KNeighborsClassifier, KNeighborsRegressor, KernelDensity
-sklearn.preprocessing	cuml.preprocessing	cuml.accel	accel proxies StandardScaler, MinMaxScaler, MaxAbsScaler, LabelEncoder, LabelBinarizer, PolynomialFeatures, TargetEncoder; OneHotEncoder, SimpleImputer and friends need an explicit import
+sklearn.preprocessing	cuml.preprocessing	cuml.accel	accel proxies StandardScaler, MinMaxScaler, MaxAbsScaler, LabelEncoder, LabelBinarizer, OneHotEncoder, PolynomialFeatures, TargetEncoder; OrdinalEncoder, RobustScaler and the rest of cuml.preprocessing need an explicit import
 sklearn.svm	cuml.svm	cuml.accel	SVC, SVR, LinearSVC, LinearSVR
-sklearn.feature_extraction	cuml.feature_extraction	-	explicit import; cuml.feature_extraction.text has CountVectorizer, HashingVectorizer, TfidfTransformer, TfidfVectorizer
+sklearn.feature_extraction	cuml.feature_extraction	-	explicit import; cuml.feature_extraction.text has CountVectorizer, HashingVectorizer, TfidfTransformer, TfidfVectorizer; the three vectorizers drop input, encoding, decode_error, strip_accents and token_pattern
+sklearn.impute	cuml.preprocessing	-	explicit import; SimpleImputer, MissingIndicator
 sklearn.metrics	cuml.metrics	-	explicit import; accuracy_score, confusion_matrix, adjusted_rand_score, r2_score, roc_auc_score, log_loss on cuml.metrics; silhouette_score / silhouette_samples live under cuml.metrics.cluster
 sklearn.metrics.pairwise_distances	cuml.metrics.pairwise_distances	-	same call shape: pairwise_distances(X, Y=None, metric='euclidean')
 sklearn.model_selection	cuml.model_selection	-	explicit import; train_test_split, KFold, StratifiedKFold
@@ -43,7 +44,7 @@ sklearn.naive_bayes	cuml.naive_bayes	-	explicit import; Gaussian/Multinomial/Ber
 sklearn.random_projection	cuml.random_projection	-	explicit import; GaussianRandomProjection, SparseRandomProjection, johnson_lindenstrauss_min_dim
 umap	cuml.manifold.UMAP	cuml.accel	standalone umap-learn maps to cuML UMAP
 hdbscan	cuml.cluster.HDBSCAN	cuml.accel	accel patches the standalone hdbscan module when the user has installed it
-statsmodels.tsa	cuml.tsa	-	cuml.tsa.ARIMA and cuml.tsa.ExponentialSmoothing (Holt-Winters); AutoARIMA is exposed as cuml.AutoARIMA
+statsmodels.tsa	cuml.tsa	-	deprecated since 26.08 and scheduled for removal in 26.12 (constructors emit FutureWarning); cuml.tsa.ARIMA and cuml.tsa.ExponentialSmoothing (Holt-Winters), AutoARIMA as cuml.AutoARIMA; tell the user before using it in new code
 faiss	cuml.neighbors.NearestNeighbors	-	exact and IVF search via algorithm='brute'/'ivfflat'/'ivfpq' ('rbc' is limited to <=3 dims); this stack ships no graph index (CAGRA/HNSW)
 hnswlib	cuml.neighbors.NearestNeighbors	-	closest match is IVF search via algorithm='ivfflat'/'ivfpq'; HNSW itself is unavailable here
 annoy	cuml.neighbors.NearestNeighbors	-	closest match is IVF search via algorithm='ivfflat'/'ivfpq'

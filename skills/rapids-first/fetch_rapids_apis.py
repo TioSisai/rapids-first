@@ -9,7 +9,7 @@ Design goals:
   yields both the call syntax and purpose;
 - The same qualname is kept only once, but all re-export paths are allowed to appear
   (e.g., ``cuml.KMeans`` and ``cuml.cluster.KMeans`` both exist, corresponding to the
-  submodule paths in mapping.tsv);
+  submodule paths in cpu-rapids-cuda-mapping.tsv);
 - Skip private names (``_*``), purely internal subtrees (e.g., ``cudf.core``), and
   objects not defined in this package;
 - A single package's failure does not affect other packages (submodule import
@@ -42,9 +42,9 @@ DEFAULT_PACKAGES = [
 ]
 
 # Skip purely internal implementation subtrees: objects under these paths are usually
-# already exposed via higher-level re-exports, and re-listing them only bloats api.md
-# and produces noise (e.g., cudf.core.dataframe.DataFrame is already retrievable via
-# cudf.DataFrame and cudf.core.DataFrame).
+# already exposed via higher-level re-exports, and re-listing them only bloats
+# apis/<pkg>.txt and produces noise (e.g., cudf.core.dataframe.DataFrame is already
+# retrievable via cudf.DataFrame).
 # Key is the top-level package name; value is a tuple of prefixes (full module path
 # prefix, either ending with . or matching exactly).
 DEFAULT_SKIP_SUBTREES: dict[str, tuple[str, ...]] = {
@@ -170,7 +170,7 @@ def _collect_class_members(cls, qualname: str, emit) -> None:
 
 def fetch_package(pkg_name: str, output_dir: Path,
                   skip_subtrees: tuple[str, ...] = ()) -> int:
-    """Fetch a single package and write to ``<output_dir>/<pkg_name>/api.md``. Returns the number of entries."""
+    """Fetch a single package and write to ``<output_dir>/apis/<pkg_name>.txt``. Returns the number of entries."""
     try:
         with warnings.catch_warnings():
             warnings.simplefilter("ignore")
@@ -219,8 +219,6 @@ def fetch_package(pkg_name: str, output_dir: Path,
             if inspect.ismodule(obj):
                 continue
             if not _belongs_to(obj, pkg_name):
-                # Also allowed: even if __module__ does not point to this package, it
-                # may actually be a wrapper of this package (rare) → skip
                 continue
 
             qualname = f"{mod_name}.{name}"

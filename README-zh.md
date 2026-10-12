@@ -23,7 +23,7 @@ Prompt:
 
 > 用 `rapids-first` 改写这个 pandas 预处理脚本。
 
-改写前 —— **0.59 秒**(5 次取平均,首次 warmup 不计):
+改写前 —— **0.60 秒**(5 次取平均,首次 warmup 不计):
 
 ```python
 import pandas as pd
@@ -33,7 +33,7 @@ df["x"] = df["a"] / df["b"]
 out = df.groupby("user_id")["x"].mean()
 ```
 
-改写后 —— **0.019 秒**(5 次取平均,首次 warmup 不计)—— **约 31× 加速**:
+改写后 —— **0.021 秒**(5 次取平均,首次 warmup 不计)—— **约 29× 加速**:
 
 ```python
 import cudf
@@ -49,7 +49,7 @@ out = df.groupby("user_id")["x"].mean()
 - **链路中段不做 device 往返。** 遵循 skill 的「GPU 数据生命周期」纪律,结果一直留在 GPU 显存里,直到下游真正需要 CPU 数据才会调 `.to_pandas()`。
 - **零代码替代方案。** 如果你压根不想动现有脚本,直接用 `python -m cudf.pandas script.py` 跑;当用户的诉求是「让现有代码跑得更快」而不是「写显式的 RAPIDS import」时,skill 会自动选这条路径。
 
-复现命令(10M 行,~2M 个不同 `user_id`,1× NVIDIA GH200 120GB,cudf 26.08.00,pandas 3.0.3):
+复现命令(10M 行,~2M 个不同 `user_id`,1× NVIDIA GH200 120GB,cudf 26.10.00,pandas 3.0.6):
 
 ```python
 # gen_events.py —— 在 $TMPDIR 下生成 ~130 MB 的 events.parquet
@@ -65,17 +65,16 @@ pd.DataFrame({
 
 ## 依赖
 
-- [**RAPIDS**](https://rapids.ai/) —— 本 skill 引导使用的 GPU 数据科学栈(`cupy`、`cupyx`、`cudf`、`cuml`)。底层库的 import 需要一块 CUDA 兼容的 NVIDIA GPU。仓库预生成的 API 索引基于 **RAPIDS 26.08 + CUDA 13**(`cu13` wheels,NVIDIA driver ≥ 580.65.06)抓取,但 skill 本身可配合任意较新的 RAPIDS 安装使用。
+- [**RAPIDS**](https://rapids.ai/) —— 本 skill 引导使用的 GPU 数据科学栈(`cupy`、`cupyx`、`cudf`、`cuml`)。底层库的 import 需要一块 CUDA 兼容的 NVIDIA GPU。仓库预生成的 API 索引基于 **RAPIDS 26.10 + CUDA 13**(`cu13` wheels,NVIDIA driver ≥ 580.65.06)抓取,但 skill 本身可配合任意较新的 RAPIDS 安装使用。
 - [**ripgrep(`rg`)**](https://github.com/BurntSushi/ripgrep) —— skill 的标准工作流全程依赖它,从 `apis/<pkg>.txt` 中一次性查到精确的 API 签名。
 
 安装 RAPIDS 本身(即仓库索引抓取所基于的环境 —— CUDA 13 / `cu13` wheels):
 
 ```bash
-pip install --extra-index-url=https://pypi.nvidia.com \
-    "cudf-cu13==26.8.*" "cuml-cu13==26.8.*" "cupy-cuda13x"
+pip install "cudf-cu13==26.10.*" "cuml-cu13==26.10.*" "cupy-cuda13x"
 ```
 
-`cupyx` 随 `cupy` 一同安装。如需 CUDA 12,把每个 `-cu13` 后缀换成 `-cu12`,并改装 `cupy-cuda12x`。conda / Docker 安装与官方 release selector 见 [RAPIDS 安装指南](https://docs.rapids.ai/install/)。
+`cupyx` 随 `cupy` 一同安装。如需 CUDA 12,把每个 `-cu13` 后缀换成 `-cu12`,并改装 `cupy-cuda12x`。conda / Docker 安装与官方 release selector 见 [RAPIDS 安装指南](https://docs.nvidia.com/datascience/install/)。
 
 ## 安装
 
@@ -141,12 +140,14 @@ mv rapids-first/skills/rapids-first .agents/skills/rapids-first
 
 | 组件         | 版本               |
 | ------------ | ------------------ |
-| Python       | 3.12.14            |
+| Python       | 3.12.15            |
 | CUDA runtime | 13.2               |
 | cupy         | 14.2.0             |
 | cupyx        | (随 cupy 一同安装) |
-| cudf         | 26.08.00           |
-| cuml         | 26.08.00           |
+| cudf         | 26.10.00           |
+| cuml         | 26.10.00           |
+
+各版本的更新日志(含此前各版索引的抓取环境)见 [`CHANGELOGS/zh/`](./CHANGELOGS/zh/)。
 
 ### 何时需要重新生成
 

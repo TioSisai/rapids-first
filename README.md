@@ -23,7 +23,7 @@ Prompt:
 
 > Rewrite this pandas preprocessing script with `rapids-first`.
 
-Before — **0.59 s** (mean of 5 runs, after a warmup pass):
+Before — **0.60 s** (mean of 5 runs, after a warmup pass):
 
 ```python
 import pandas as pd
@@ -33,7 +33,7 @@ df["x"] = df["a"] / df["b"]
 out = df.groupby("user_id")["x"].mean()
 ```
 
-After — **0.019 s** (mean of 5 runs, after a warmup pass) — **~31× faster**:
+After — **0.021 s** (mean of 5 runs, after a warmup pass) — **~29× faster**:
 
 ```python
 import cudf
@@ -49,7 +49,7 @@ Three things to notice:
 - **No mid-stream device round-trips.** Per the skill's GPU-data-lifecycle rule, the result stays in GPU memory; we don't call `.to_pandas()` until the consumer actually needs CPU data.
 - **Zero-code alternative.** For an existing script you'd rather not touch at all, run it as `python -m cudf.pandas script.py` — the skill picks this path automatically when the user wants "make existing code run faster" instead of "show me explicit RAPIDS imports".
 
-Reproduce locally (10M rows, ~2M unique `user_id`, 1× NVIDIA GH200 120GB, cudf 26.08.00, pandas 3.0.3):
+Reproduce locally (10M rows, ~2M unique `user_id`, 1× NVIDIA GH200 120GB, cudf 26.10.00, pandas 3.0.6):
 
 ```python
 # gen_events.py — generate ~130 MB events.parquet in $TMPDIR
@@ -65,17 +65,16 @@ pd.DataFrame({
 
 ## Requirements
 
-- [**RAPIDS**](https://rapids.ai/) — the GPU data-science stack this skill steers toward (`cupy`, `cupyx`, `cudf`, `cuml`). A CUDA-capable NVIDIA GPU is required for the underlying libraries to import. The pre-built API index targets **RAPIDS 26.08 on CUDA 13** (`cu13` wheels, NVIDIA driver ≥ 580.65.06), but the skill works against any recent RAPIDS install.
+- [**RAPIDS**](https://rapids.ai/) — the GPU data-science stack this skill steers toward (`cupy`, `cupyx`, `cudf`, `cuml`). A CUDA-capable NVIDIA GPU is required for the underlying libraries to import. The pre-built API index targets **RAPIDS 26.10 on CUDA 13** (`cu13` wheels, NVIDIA driver ≥ 580.65.06), but the skill works against any recent RAPIDS install.
 - [**ripgrep (`rg`)**](https://github.com/BurntSushi/ripgrep) — used throughout the skill's standard workflow to recover exact API signatures from `apis/<pkg>.txt` in a single grep.
 
 Installing RAPIDS itself (the environment the shipped index was captured against — CUDA 13 / `cu13` wheels):
 
 ```bash
-pip install --extra-index-url=https://pypi.nvidia.com \
-    "cudf-cu13==26.8.*" "cuml-cu13==26.8.*" "cupy-cuda13x"
+pip install "cudf-cu13==26.10.*" "cuml-cu13==26.10.*" "cupy-cuda13x"
 ```
 
-`cupyx` ships inside `cupy`. For CUDA 12, swap each `-cu13` suffix for `-cu12` and install `cupy-cuda12x` instead. See the [RAPIDS install guide](https://docs.rapids.ai/install/) for conda / Docker and the official release selector.
+`cupyx` ships inside `cupy`. For CUDA 12, swap each `-cu13` suffix for `-cu12` and install `cupy-cuda12x` instead. See the [RAPIDS install guide](https://docs.nvidia.com/datascience/install/) for conda / Docker and the official release selector.
 
 ## Installation
 
@@ -141,12 +140,14 @@ The four pre-built `apis/<pkg>.txt` files in this repository were generated agai
 
 | Component    | Version             |
 |--------------|---------------------|
-| Python       | 3.12.14             |
+| Python       | 3.12.15             |
 | CUDA runtime | 13.2                |
 | cupy         | 14.2.0              |
 | cupyx        | (ships with cupy)   |
-| cudf         | 26.08.00            |
-| cuml         | 26.08.00            |
+| cudf         | 26.10.00            |
+| cuml         | 26.10.00            |
+
+Release notes for every version, including the environments earlier indexes were captured against, live in [`CHANGELOGS/en/`](./CHANGELOGS/en/).
 
 ### When to regenerate
 
